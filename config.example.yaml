@@ -2,7 +2,7 @@ robot:
   # Spark2 V2 without a gripper. Relative paths resolve from this file.
   urdf: ../cuarm_configuration/spark2_v2/share/no_gripper/arm_v2_stl.urdf
   base_link: base_link
-  ee_links: [end_effector]
+  ee_links: [arm_end_effector]
 
 grid:
   x_range: [-1.0, 1.0]

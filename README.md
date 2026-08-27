@@ -9,7 +9,7 @@ condition numbers with cuRobo.
 robot:
   urdf: ../cuarm_configuration/spark2_v2/share/no_gripper/arm_v2_stl.urdf
   base_link: base_link
-  ee_links: [end_effector]
+  ee_links: [arm_end_effector]
 ```
 
 The program fits cuRobo collision spheres from the URDF collision geometry and
