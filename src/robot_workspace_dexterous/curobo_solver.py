@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from copy import deepcopy
 from pathlib import Path
 import time
 from typing import Callable
@@ -10,68 +11,110 @@ import yaml
 from .sampling import DexterousWorkspace, regular_grid
 
 
+def _resolve_model_path(config_path: Path, value: str) -> Path:
+    source = Path(value)
+    if source.is_absolute() and source.is_file():
+        return source
+    for root in (config_path.parent, *config_path.parents):
+        candidate = (root / source).resolve()
+        if candidate.is_file():
+            return candidate
+    raise FileNotFoundError(f"cannot resolve {value!r} referenced by {config_path}")
+
+
+def build_collision_robots_from_config(
+    config_path: str, base_link: str, ee_links: tuple[str, ...]
+) -> dict[str, object]:
+    from curobo._src.types.robot import RobotCfg
+
+    path = Path(config_path).expanduser().resolve()
+    with path.open("r", encoding="utf-8") as stream:
+        data = yaml.safe_load(stream)
+    if not data:
+        raise ValueError(f"cuRobo configuration is empty: {path}")
+    data = deepcopy(data)
+    kin = data["robot_cfg"]["kinematics"]
+    kin["urdf_path"] = str(_resolve_model_path(path, kin["urdf_path"]))
+    asset = kin.get("asset_root_path")
+    kin["asset_root_path"] = str(Path(kin["urdf_path"]).parent) if not asset else str(
+        _resolve_model_path(path, asset)
+    )
+    if str(kin.get("base_link", base_link)) != base_link:
+        raise ValueError("base_link differs from the selected cuRobo configuration")
+    for key in (
+        "ee_link", "link_names", "usd_path", "usd_robot_root", "isaac_usd_path",
+        "usd_flip_joints", "usd_flip_joint_limits",
+    ):
+        kin.pop(key, None)
+    result = {}
+    for link in ee_links:
+        per_link = deepcopy(data)
+        per_link["robot_cfg"]["kinematics"]["tool_frames"] = [link]
+        result[link] = RobotCfg.create(per_link, load_collision_spheres=True)
+    return result
+
+
+def build_collision_robots_from_urdf(
+    urdf_path: str, base_link: str, ee_links: tuple[str, ...],
+    sphere_density: float = 1.0, collision_matrix_samples: int = 1000,
+    prune_collision_matrix: bool = True, generated_config_path: str | None = None,
+) -> dict[str, object]:
+    from curobo._src.robot.kinematics.kinematics_cfg import KinematicsCfg
+    from curobo._src.types.robot import RobotCfg
+    from curobo.robot_builder import RobotBuilder
+
+    builder = RobotBuilder(urdf_path, str(Path(urdf_path).resolve().parent), list(ee_links))
+    builder.fit_collision_spheres(
+        sphere_density=sphere_density, use_collision_mesh=True, compute_metrics=True
+    )
+    builder.compute_collision_matrix(
+        prune_collisions=prune_collision_matrix, num_samples=collision_matrix_samples
+    )
+    loader = builder.build()
+    if loader.base_link != base_link:
+        raise ValueError(f"base_link must be URDF root {loader.base_link!r}")
+    if generated_config_path:
+        builder.save(loader, generated_config_path)
+    result = {}
+    for link in ee_links:
+        cfg = deepcopy(loader)
+        cfg.tool_frames = [link]
+        kin = KinematicsCfg.from_config(cfg)
+        result[link] = RobotCfg(kinematics=kin, device_cfg=kin.device_cfg)
+    return result
+
+
 def compute_dexterous_workspace(
-    robot_config: str | Path,
-    base_link: str,
-    ee_link: str,
-    x_range: tuple[float, float],
-    y_range: tuple[float, float],
-    heights: np.ndarray,
-    resolution: float,
-    orientations_wxyz: np.ndarray,
-    num_seeds: int = 8,
-    batch_size: int = 256,
-    position_tolerance: float = 0.005,
-    orientation_tolerance: float = 0.08,
+    urdf_path: str, base_link: str, ee_link: str,
+    x_range: tuple[float, float], y_range: tuple[float, float],
+    heights: np.ndarray, resolution: float, orientations_wxyz: np.ndarray,
+    num_seeds: int = 8, batch_size: int = 256,
+    position_tolerance: float = 0.005, orientation_tolerance: float = 0.08,
     self_collision: bool = True,
     progress: Callable[[int, int, float], None] | None = None,
+    robot: object | None = None,
 ) -> DexterousWorkspace:
-    """Evaluate collision-free orientation reachability at every grid point.
-
-    Dexterity is the fraction of sampled SO(3) orientations for which at least
-    one cuRobo IK seed converges. This is a discrete orientation-coverage index,
-    not a Jacobian manipulability measure.
-    """
-    if num_seeds < 1 or batch_size < 1:
-        raise ValueError("num_seeds and batch_size must be positive")
     import torch
     if not torch.cuda.is_available():
         raise RuntimeError("cuRobo workspace computation requires CUDA-enabled PyTorch")
+    from curobo.inverse_kinematics import InverseKinematics, InverseKinematicsCfg
+    from curobo._src.types.robot import RobotCfg
+    from curobo.kinematics import Kinematics, KinematicsCfg
+    from curobo.types import GoalToolPose, Pose
 
-    try:
-        from curobo.inverse_kinematics import InverseKinematics, InverseKinematicsCfg
-        from curobo._src.types.robot import RobotCfg
-        from curobo.kinematics import Kinematics
-        from curobo.types import GoalToolPose, Pose
-    except ImportError as exc:
-        raise RuntimeError(
-            "This package requires the cuRobo V2 inverse_kinematics API"
-        ) from exc
-
-    config_path = Path(robot_config).expanduser().resolve()
-    with config_path.open("r", encoding="utf-8") as stream:
-        robot_data = yaml.safe_load(stream)
-    kinematics = robot_data["robot_cfg"]["kinematics"]
-    urdf = Path(kinematics["urdf_path"])
-    if not urdf.is_absolute():
-        urdf = (config_path.parent / urdf).resolve()
-    if not urdf.is_file():
-        raise FileNotFoundError(urdf)
-    kinematics["urdf_path"] = str(urdf)
-    kinematics["asset_root_path"] = str(config_path.parent)
-    kinematics["base_link"] = base_link
-    kinematics["tool_frames"] = [ee_link]
-
-    robot = RobotCfg.create(robot_data, load_collision_spheres=self_collision)
+    if robot is None:
+        if self_collision:
+            robot = build_collision_robots_from_urdf(
+                urdf_path, base_link, (ee_link,)
+            )[ee_link]
+        else:
+            kin = KinematicsCfg.from_basic_urdf(urdf_path, base_link, [ee_link])
+            robot = RobotCfg(kinematics=kin, device_cfg=kin.device_cfg)
     solver_cfg = InverseKinematicsCfg.create(
-        robot=robot,
-        num_seeds=num_seeds,
-        seed_solver_num_seeds=num_seeds,
-        max_batch_size=batch_size,
-        position_tolerance=position_tolerance,
+        robot=robot, num_seeds=num_seeds, seed_solver_num_seeds=num_seeds,
+        max_batch_size=batch_size, position_tolerance=position_tolerance,
         orientation_tolerance=orientation_tolerance,
-        self_collision_check=self_collision,
-        load_collision_spheres=self_collision,
+        self_collision_check=self_collision, load_collision_spheres=self_collision,
     )
     solver = InverseKinematics(solver_cfg)
     jacobian_model = Kinematics(
@@ -82,68 +125,51 @@ def compute_dexterous_workspace(
     orientations = np.asarray(orientations_wxyz, dtype=np.float32)
     orientation_count = len(orientations)
     counts = np.zeros(len(positions), dtype=np.int32)
-    manipulability_sum = np.zeros(len(positions), dtype=np.float64)
-    manipulability_squared_sum = np.zeros(len(positions), dtype=np.float64)
-    condition_number_max = np.full(len(positions), np.nan, dtype=np.float64)
-    minimum_singular_value = np.full(len(positions), np.nan, dtype=np.float64)
-
-    # Chunk flattened (position, orientation) queries. A position may span
-    # chunks; np.add.at safely accumulates every successful orientation.
+    w_sum = np.zeros(len(positions), dtype=np.float64)
+    w2_sum = np.zeros(len(positions), dtype=np.float64)
+    condition_max = np.full(len(positions), np.nan, dtype=np.float64)
+    sigma_minimum = np.full(len(positions), np.nan, dtype=np.float64)
     total = len(positions) * orientation_count
     started = time.monotonic()
     for start in range(0, total, batch_size):
         stop = min(start + batch_size, total)
         flat = np.arange(start, stop, dtype=np.int64)
-        position_index = flat // orientation_count
+        point_index = flat // orientation_count
         orientation_index = flat % orientation_count
-        position_tensor = torch.as_tensor(
-            positions[position_index], device=device, dtype=dtype
+        pose = Pose(
+            position=torch.as_tensor(positions[point_index], device=device, dtype=dtype),
+            quaternion=torch.as_tensor(
+                orientations[orientation_index], device=device, dtype=dtype
+            ),
         )
-        quaternion_tensor = torch.as_tensor(
-            orientations[orientation_index], device=device, dtype=dtype
-        )
-        pose = Pose(position=position_tensor, quaternion=quaternion_tensor)
         goals = GoalToolPose.from_poses({ee_link: pose}, num_goalset=1)
-        result = solver.solve_pose(goal_tool_poses=goals)
-        success = result.success.reshape(-1)[: len(flat)].detach().cpu().numpy().astype(bool)
-        np.add.at(counts, position_index[success], 1)
+        solved = solver.solve_pose(goal_tool_poses=goals)
+        success = solved.success.reshape(-1)[: len(flat)].detach().cpu().numpy().astype(bool)
+        np.add.at(counts, point_index[success], 1)
         if np.any(success):
-            joint_state = result.js_solution
-            state = jacobian_model.compute_kinematics(joint_state)
-            jacobian = state.tool_jacobians.reshape(len(flat), -1, 6, state.tool_jacobians.shape[-1])[:, 0]
-            singular_values = torch.linalg.svdvals(jacobian)[success]
-            singular_np = singular_values.detach().cpu().numpy().astype(np.float64)
-            successful_position_index = position_index[success]
-            # Yoshikawa w = sqrt(det(J J^T)) = product of singular values.
-            w = np.prod(singular_np, axis=1)
-            sigma_min = singular_np[:, -1]
-            sigma_max = singular_np[:, 0]
+            state = jacobian_model.compute_kinematics(solved.js_solution)
+            jac = state.tool_jacobians.reshape(
+                len(flat), -1, 6, state.tool_jacobians.shape[-1]
+            )[:, 0]
+            singular = torch.linalg.svdvals(jac)[success].detach().cpu().numpy()
+            successful_points = point_index[success]
+            w = np.prod(singular, axis=1).astype(np.float64)
+            sigma_min = singular[:, -1].astype(np.float64)
             condition = np.divide(
-                sigma_max, sigma_min,
-                out=np.full_like(sigma_max, np.inf), where=sigma_min > 1e-9,
+                singular[:, 0], sigma_min,
+                out=np.full(len(sigma_min), np.inf), where=sigma_min > 1e-9,
             )
-            np.add.at(manipulability_sum, successful_position_index, w)
-            np.add.at(manipulability_squared_sum, successful_position_index, w * w)
-            for point_index, point_condition, point_sigma_min in zip(
-                successful_position_index, condition, sigma_min
-            ):
-                condition_number_max[point_index] = np.fmax(
-                    condition_number_max[point_index], point_condition
-                )
-                minimum_singular_value[point_index] = np.fmin(
-                    minimum_singular_value[point_index], point_sigma_min
-                )
-        if progress is not None:
+            np.add.at(w_sum, successful_points, w)
+            np.add.at(w2_sum, successful_points, w * w)
+            for index, kappa, sigma in zip(successful_points, condition, sigma_min):
+                condition_max[index] = np.fmax(condition_max[index], kappa)
+                sigma_minimum[index] = np.fmin(sigma_minimum[index], sigma)
+        if progress:
             progress(stop, total, time.monotonic() - started)
-
     denominator = np.maximum(counts, 1)
     return DexterousWorkspace(
-        positions=positions,
-        dexterity=counts.astype(np.float32) / float(orientation_count),
-        reachable_orientations=counts,
-        orientation_count=orientation_count,
-        manipulability_mean=(manipulability_sum / denominator).astype(np.float32),
-        manipulability_squared_mean=(manipulability_squared_sum / denominator).astype(np.float32),
-        condition_number_max=condition_number_max.astype(np.float32),
-        minimum_singular_value=minimum_singular_value.astype(np.float32),
+        positions, counts.astype(np.float32) / orientation_count, counts,
+        orientation_count, (w_sum / denominator).astype(np.float32),
+        (w2_sum / denominator).astype(np.float32), condition_max.astype(np.float32),
+        sigma_minimum.astype(np.float32),
     )

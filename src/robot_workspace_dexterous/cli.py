@@ -7,7 +7,11 @@ from pathlib import Path
 import numpy as np
 
 from .config import load_config
-from .curobo_solver import compute_dexterous_workspace
+from .curobo_solver import (
+    build_collision_robots_from_config,
+    build_collision_robots_from_urdf,
+    compute_dexterous_workspace,
+)
 from .sampling import DexterousWorkspace
 from .visualize import save_metric_top_view, save_top_view
 
@@ -28,15 +32,31 @@ def main(argv: list[str] | None = None) -> None:
     config = load_config(args.config)
     output_dir = Path(args.output_dir).expanduser().resolve()
     output_dir.mkdir(parents=True, exist_ok=True)
+    collision_robots = None
+    if config.self_collision:
+        if config.curobo_config_path is not None:
+            print(f"loading existing collision model: {config.curobo_config_path}")
+            collision_robots = build_collision_robots_from_config(
+                str(config.curobo_config_path), config.base_link, config.ee_links
+            )
+        else:
+            print("building cuRobo collision spheres and self-collision matrix from URDF...")
+            collision_robots = build_collision_robots_from_urdf(
+                str(config.urdf_path), config.base_link, config.ee_links,
+                config.sphere_density, config.collision_matrix_samples,
+                config.prune_collision_matrix,
+                str(output_dir / "generated_collision_robot.yml"),
+            )
     workspaces: dict[str, DexterousWorkspace] = {}
     for link in config.ee_links:
         print(f"computing {link}: {len(config.orientations)} orientations per XYZ cell")
         workspace = compute_dexterous_workspace(
-            config.robot_config, config.base_link, link,
+            str(config.urdf_path or ""), config.base_link, link,
             config.x_range, config.y_range, config.heights, config.resolution,
             config.orientations, config.ik_seeds, config.batch_size,
             config.position_tolerance, config.orientation_tolerance,
             config.self_collision, _progress,
+            None if collision_robots is None else collision_robots[link],
         )
         workspace.save(str(output_dir / f"{link}.npz"))
         filtered = workspace.threshold(config.minimum_dexterity)

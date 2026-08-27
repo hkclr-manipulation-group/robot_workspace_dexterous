@@ -1,8 +1,8 @@
 robot:
-  # Reuse the project-local model from robot_workspace_projection.
-  curobo_config: ../robot_workspace_projection/dual_arm.yaml
-  base_link: dummy_world
-  ee_links: [arm_end_effector_l, arm_end_effector_r]
+  # Spark2 V2 without a gripper. Relative paths resolve from this file.
+  urdf: ../cuarm_configuration/spark2_v2/share/no_gripper/arm_v2_stl.urdf
+  base_link: base_link
+  ee_links: [end_effector]
 
 grid:
   x_range: [-1.0, 1.0]
@@ -25,7 +25,12 @@ solver:
   batch_size: 256
   position_tolerance: 0.005
   orientation_tolerance: 0.08
+  # cuRobo RobotBuilder automatically fits spheres to URDF collision geometry.
   self_collision: true
+  sphere_density: 1.0
+  # Random configurations used to prune link pairs that never collide.
+  collision_matrix_samples: 1000
+  prune_collision_matrix: true
 
 output:
   # Strict DWS: every sampled orientation must be reachable. Lower this value
