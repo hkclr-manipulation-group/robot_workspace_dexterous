@@ -16,6 +16,10 @@ The program fits cuRobo collision spheres from the URDF collision geometry and
 enables self-collision checking. The URDF, included Xacro files, and collision
 meshes must be non-empty before running.
 
+Spark2 V2 uses `package://arm_v2/meshes/arm/...` mesh URIs. Before fitting,
+the program resolves these URIs to the repository's actual
+`spark2_v2/share/meshes/arm` files and writes `output/normalized_robot.urdf`.
+
 ## Configuration
 
 Edit `config.yaml`. Start with `resolution: 0.05` and

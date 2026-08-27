@@ -4,11 +4,49 @@ from copy import deepcopy
 from pathlib import Path
 import time
 from typing import Callable
+import xml.etree.ElementTree as ET
 
 import numpy as np
 import yaml
 
 from .sampling import DexterousWorkspace, regular_grid
+
+
+def _normalized_urdf_for_curobo(urdf_path: str, output_path: str | None) -> str:
+    """Resolve ROS package mesh URIs for cuRobo's filesystem-only parser."""
+    source = Path(urdf_path).expanduser().resolve()
+    root = ET.parse(source).getroot()
+    changed = False
+    for mesh in root.findall(".//mesh"):
+        value = mesh.get("filename")
+        if not value or not value.startswith("package://"):
+            continue
+        package_relative = Path(value[len("package://") :])
+        # ROS package URIs contain a package name followed by the path within
+        # that package. In this repository the package share directory itself
+        # is available, not an installed ROS package index.
+        suffix = Path(*package_relative.parts[1:])
+        resolved = None
+        for parent in source.parents:
+            candidate = (parent / suffix).resolve()
+            if candidate.is_file() and candidate.stat().st_size > 0:
+                resolved = candidate
+                break
+        if resolved is None:
+            raise FileNotFoundError(
+                f"cannot resolve URDF mesh URI {value!r} from {source}"
+            )
+        mesh.set("filename", resolved.as_posix())
+        changed = True
+    if not changed:
+        return str(source)
+    destination = (
+        Path(output_path).expanduser().resolve()
+        if output_path else source.with_name(source.stem + "_curobo.urdf")
+    )
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    ET.ElementTree(root).write(destination, encoding="utf-8", xml_declaration=True)
+    return str(destination)
 
 
 def _resolve_model_path(config_path: Path, value: str) -> Path:
@@ -63,7 +101,14 @@ def build_collision_robots_from_urdf(
     from curobo._src.types.robot import RobotCfg
     from curobo.robot_builder import RobotBuilder
 
-    builder = RobotBuilder(urdf_path, str(Path(urdf_path).resolve().parent), list(ee_links))
+    normalized_output = (
+        str(Path(generated_config_path).with_name("normalized_robot.urdf"))
+        if generated_config_path else None
+    )
+    resolved_urdf = _normalized_urdf_for_curobo(urdf_path, normalized_output)
+    builder = RobotBuilder(
+        resolved_urdf, str(Path(resolved_urdf).resolve().parent), list(ee_links)
+    )
     builder.fit_collision_spheres(
         sphere_density=sphere_density, use_collision_mesh=True, compute_metrics=True
     )
