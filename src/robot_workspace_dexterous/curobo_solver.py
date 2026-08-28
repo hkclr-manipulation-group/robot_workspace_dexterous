@@ -62,7 +62,17 @@ def _load_collision_spheres(path: str) -> dict[str, list[dict[str, object]]]:
         for entry in entries:
             center = entry.get("center") if isinstance(entry, dict) else None
             radius = entry.get("radius") if isinstance(entry, dict) else None
-            if not isinstance(center, list) or len(center) != 3 or float(radius) <= 0:
+            try:
+                valid_values = (
+                    isinstance(center, list)
+                    and len(center) == 3
+                    and all(np.isfinite(float(value)) for value in center)
+                    and np.isfinite(float(radius))
+                    and float(radius) > 0
+                )
+            except (TypeError, ValueError):
+                valid_values = False
+            if not valid_values:
                 raise ValueError(f"invalid collision sphere for link {link!r}: {entry!r}")
     return spheres
 
@@ -81,6 +91,17 @@ def build_collision_robots(
     resolved_urdf = _normalized_urdf_for_curobo(urdf_path, normalized_urdf_path)
     root = ET.parse(resolved_urdf).getroot()
     urdf_links = {link.get("name") for link in root.findall("link")}
+    child_links = {
+        child.get("link")
+        for child in root.findall("joint/child")
+        if child.get("link") is not None
+    }
+    root_links = urdf_links.difference(child_links)
+    if base_link not in root_links:
+        raise ValueError(
+            f"base_link must be a URDF root; got {base_link!r}, expected one of "
+            + ", ".join(sorted(root_links))
+        )
     spheres = _load_collision_spheres(collision_spheres_path)
     required_links = set(spheres) | set(ee_links) | {base_link}
     unknown = required_links.difference(urdf_links)
