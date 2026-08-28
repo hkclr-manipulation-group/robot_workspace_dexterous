@@ -37,8 +37,10 @@ robot:
     arm_L5: [arm_L6]
 ```
 
-Adjacent links are ignored because their meshes overlap at physical joint
-interfaces. Non-adjacent self-collisions remain enabled.
+Connected links are ignored where their meshes overlap at physical joint
+interfaces. `arm_L3`/`arm_L5` is also ignored because the intervening wrist
+geometry overlaps at the zero pose. All other non-adjacent self-collisions
+remain enabled.
 
 ## Installation
 
@@ -90,6 +92,12 @@ solver:
 Strict DWS requires every sampled orientation to be reachable and uses
 `minimum_dexterity: 1.0`. Lower this threshold only when the task definition
 allows a relaxed dexterous workspace.
+
+Plots omit cells with zero reachable orientations instead of coloring the
+entire unreachable grid. Manipulability and condition-number plots apply the
+same reachability mask. At runtime the program reports the number of reachable
+cells and maximum dexterity; it stops with a diagnostic error if every cell is
+unreachable, and warns when only the selected DWS threshold is empty.
 
 ## Outputs
 
