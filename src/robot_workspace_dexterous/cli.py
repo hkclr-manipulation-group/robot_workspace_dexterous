@@ -12,7 +12,7 @@ from .curobo_solver import (
     compute_dexterous_workspace,
 )
 from .sampling import DexterousWorkspace
-from .visualize import save_metric_top_view, save_top_view
+from .visualize import save_dexterity_center_views, save_metric_top_view
 
 
 def _progress(done: int, total: int, elapsed: float) -> None:
@@ -26,7 +26,12 @@ def main(argv: list[str] | None = None) -> None:
     parser = argparse.ArgumentParser(description="Compute a cuRobo dexterous workspace")
     parser.add_argument("--config", default="config.yaml")
     parser.add_argument("--output-dir", default="output")
-    parser.add_argument("--plot-height", type=float, default=None)
+    parser.add_argument(
+        "--plot-height",
+        type=float,
+        default=None,
+        help="Z coordinate for the XY dexterity section; defaults to the center layer",
+    )
     args = parser.parse_args(argv)
     config = load_config(args.config)
     output_dir = Path(args.output_dir).expanduser().resolve()
@@ -71,7 +76,12 @@ def main(argv: list[str] | None = None) -> None:
                 f"{config.minimum_dexterity:.4f}; unfiltered RWS outputs are still saved"
             )
         filtered.save(str(output_dir / f"{link}_filtered.npz"))
-        plot = save_top_view(workspace, output_dir / f"{link}.png", link, args.plot_height)
+        plot = save_dexterity_center_views(
+            workspace,
+            output_dir / f"{link}_dexterity_views.png",
+            link,
+            args.plot_height,
+        )
         save_metric_top_view(
             workspace, workspace.manipulability_mean,
             output_dir / f"{link}_manipulability.png", f"{link} manipulability",
@@ -119,7 +129,12 @@ def main(argv: list[str] | None = None) -> None:
             ordered[0].orientation_count,
         )
         shared.save(str(output_dir / "shared.npz"))
-        save_top_view(shared, output_dir / "shared.png", "shared dexterous workspace", args.plot_height)
+        save_dexterity_center_views(
+            shared,
+            output_dir / "shared_dexterity_views.png",
+            "shared dexterous workspace",
+            args.plot_height,
+        )
 
 
 if __name__ == "__main__":

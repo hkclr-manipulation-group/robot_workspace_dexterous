@@ -99,12 +99,19 @@ same reachability mask. At runtime the program reports the number of reachable
 cells and maximum dexterity; it stops with a diagnostic error if every cell is
 unreachable, and warns when only the selected DWS threshold is empty.
 
+The dexterity image contains three orthogonal sections through the workspace:
+
+- `XY` at the Z value selected by `--plot-height`, or the center Z layer when
+  the option is omitted
+- `XZ` at the center Y layer
+- `YZ` at the center X layer
+
 ## Outputs
 
 - `<ee_link>.npz`: grid points and all computed metrics
 - `<ee_link>_filtered.npz`: points meeting the dexterity threshold
 - `<ee_link>_summary.json`: RWS/DWS volumes and aggregate metrics
-- `<ee_link>.png`: dexterity map
+- `<ee_link>_dexterity_views.png`: XY/XZ/YZ dexterity center sections
 - `<ee_link>_manipulability.png`: mean manipulability map
 - `<ee_link>_condition_number.png`: worst condition-number map
 - `normalized_robot.urdf`: URI-normalized temporary model used by cuRobo

@@ -8,6 +8,63 @@ import numpy as np
 from .sampling import DexterousWorkspace
 
 
+def save_dexterity_center_views(
+    workspace: DexterousWorkspace,
+    path: str | Path,
+    title: str,
+    xy_height: float | None = None,
+) -> Path:
+    """Save positive-dexterity XY, XZ, and YZ center sections."""
+    points = workspace.positions
+    scores = workspace.dexterity
+    planes = (
+        ("XY", 2, (0, 1), xy_height, "X (m)", "Y (m)"),
+        ("XZ", 1, (0, 2), None, "X (m)", "Z (m)"),
+        ("YZ", 0, (1, 2), None, "Y (m)", "Z (m)"),
+    )
+    output = Path(path).expanduser().resolve()
+    output.parent.mkdir(parents=True, exist_ok=True)
+    figure, axes = plt.subplots(1, 3, figsize=(18, 5.8), constrained_layout=True)
+    artist = None
+
+    for axis, (name, normal, dimensions, requested, x_label, y_label) in zip(axes, planes):
+        available = np.unique(points[:, normal])
+        center = float((available[0] + available[-1]) * 0.5) if requested is None else requested
+        selected = float(available[np.argmin(np.abs(available - center))])
+        in_plane = np.isclose(points[:, normal], selected, atol=1e-6)
+        plane_points = points[in_plane]
+        plane_scores = scores[in_plane]
+        visible = plane_scores > 0
+        artist = axis.scatter(
+            plane_points[visible, dimensions[0]],
+            plane_points[visible, dimensions[1]],
+            c=plane_scores[visible],
+            s=22,
+            cmap="turbo",
+            vmin=0,
+            vmax=1,
+        )
+        horizontal = points[:, dimensions[0]]
+        vertical = points[:, dimensions[1]]
+        axis.set_xlim(float(horizontal.min()), float(horizontal.max()))
+        axis.set_ylim(float(vertical.min()), float(vertical.max()))
+        axis.scatter([0], [0], marker="+", color="black", s=100, label="base")
+        axis.set(
+            xlabel=x_label,
+            ylabel=y_label,
+            title=f"{name} section at {'XYZ'[normal]}={selected:.3f} m",
+            aspect="equal",
+        )
+        axis.grid(alpha=0.25)
+        axis.legend(loc="upper right")
+
+    figure.suptitle(f"{title} — dexterity center sections", fontsize=15)
+    figure.colorbar(artist, ax=axes, label="orientation coverage / dexterity", shrink=0.88)
+    figure.savefig(output, dpi=180)
+    plt.close(figure)
+    return output
+
+
 def save_top_view(
     workspace: DexterousWorkspace, path: str | Path, title: str, height: float | None = None
 ) -> Path:
