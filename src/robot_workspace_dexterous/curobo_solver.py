@@ -207,9 +207,8 @@ def compute_dexterous_workspace(
             )
             np.add.at(w_sum, successful_points, w)
             np.add.at(w2_sum, successful_points, w * w)
-            for index, kappa, sigma in zip(successful_points, condition, sigma_min):
-                condition_max[index] = np.fmax(condition_max[index], kappa)
-                sigma_minimum[index] = np.fmin(sigma_minimum[index], sigma)
+            np.fmax.at(condition_max, successful_points, condition)
+            np.fmin.at(sigma_minimum, successful_points, sigma_min)
         if progress:
             progress(stop, total, time.monotonic() - started)
     denominator = np.maximum(counts, 1)

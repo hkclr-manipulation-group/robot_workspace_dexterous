@@ -9,7 +9,7 @@ robot:
     arm_base_link: [arm_L1]
     arm_L1: [arm_L2]
     arm_L2: [arm_L3]
-    arm_L3: [arm_L4]
+    arm_L3: [arm_L4, arm_L5]
     arm_L4: [arm_L5]
     arm_L5: [arm_L6]
 
