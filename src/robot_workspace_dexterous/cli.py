@@ -91,7 +91,7 @@ def main(argv: list[str] | None = None) -> None:
             workspace, workspace.condition_number_max,
             output_dir / f"{link}_condition_number.png", f"{link} worst condition number",
             "max sigma_max / sigma_min (95th percentile color cap)", args.plot_height,
-            cmap="RdYlGn_r",
+            cmap="coolwarm",
             vmin=1.0,
             cap_positive_infinity=True,
         )

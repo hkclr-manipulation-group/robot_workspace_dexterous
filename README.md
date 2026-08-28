@@ -119,6 +119,7 @@ the three sections can be compared at an identical scale.
 - `normalized_robot.urdf`: URI-normalized temporary model used by cuRobo
 
 Condition number is `sigma_max / sigma_min`: `1` is ideal and larger values are
-worse. Its plots use green for values near `1` and red for large or infinite
-values. The upper color limit is the finite 95th percentile so isolated
-singularities do not compress the useful color range.
+worse. Its colorblind-friendlier blue-to-red plots use blue for values near `1`
+and red for large or infinite values, without relying on green. The upper color
+limit is the finite 95th percentile so isolated singularities do not compress
+the useful color range.
