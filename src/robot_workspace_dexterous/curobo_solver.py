@@ -13,7 +13,7 @@ from .sampling import DexterousWorkspace, regular_grid
 
 
 def _normalized_urdf_for_curobo(urdf_path: str, output_path: str | None) -> str:
-    """Resolve ROS package mesh URIs for cuRobo's filesystem-only parser."""
+    """Resolve URI-style mesh references for cuRobo's filesystem-only parser."""
     source = Path(urdf_path).expanduser().resolve()
     root = ET.parse(source).getroot()
     changed = False
@@ -22,9 +22,8 @@ def _normalized_urdf_for_curobo(urdf_path: str, output_path: str | None) -> str:
         if not value or not value.startswith("package://"):
             continue
         package_relative = Path(value[len("package://") :])
-        # ROS package URIs contain a package name followed by the path within
-        # that package. In this repository the package share directory itself
-        # is available, not an installed ROS package index.
+        # The first URI path component is a logical asset name. The remaining
+        # path is resolved directly from directories surrounding the URDF.
         suffix = Path(*package_relative.parts[1:])
         resolved = None
         for parent in source.parents:
@@ -49,83 +48,66 @@ def _normalized_urdf_for_curobo(urdf_path: str, output_path: str | None) -> str:
     return str(destination)
 
 
-def _resolve_model_path(config_path: Path, value: str) -> Path:
-    source = Path(value)
-    if source.is_absolute() and source.is_file():
-        return source
-    for root in (config_path.parent, *config_path.parents):
-        candidate = (root / source).resolve()
-        if candidate.is_file():
-            return candidate
-    raise FileNotFoundError(f"cannot resolve {value!r} referenced by {config_path}")
-
-
-def build_collision_robots_from_config(
-    config_path: str, base_link: str, ee_links: tuple[str, ...]
-) -> dict[str, object]:
-    from curobo._src.types.robot import RobotCfg
-
-    path = Path(config_path).expanduser().resolve()
-    with path.open("r", encoding="utf-8") as stream:
+def _load_collision_spheres(path: str) -> dict[str, list[dict[str, object]]]:
+    """Load and validate a collision sphere file generated for cuRobo."""
+    source = Path(path).expanduser().resolve()
+    with source.open("r", encoding="utf-8") as stream:
         data = yaml.safe_load(stream)
-    if not data:
-        raise ValueError(f"cuRobo configuration is empty: {path}")
-    data = deepcopy(data)
-    kin = data["robot_cfg"]["kinematics"]
-    kin["urdf_path"] = str(_resolve_model_path(path, kin["urdf_path"]))
-    asset = kin.get("asset_root_path")
-    kin["asset_root_path"] = str(Path(kin["urdf_path"]).parent) if not asset else str(
-        _resolve_model_path(path, asset)
-    )
-    if str(kin.get("base_link", base_link)) != base_link:
-        raise ValueError("base_link differs from the selected cuRobo configuration")
-    for key in (
-        "ee_link", "link_names", "usd_path", "usd_robot_root", "isaac_usd_path",
-        "usd_flip_joints", "usd_flip_joint_limits",
-    ):
-        kin.pop(key, None)
-    result = {}
-    for link in ee_links:
-        per_link = deepcopy(data)
-        per_link["robot_cfg"]["kinematics"]["tool_frames"] = [link]
-        result[link] = RobotCfg.create(per_link, load_collision_spheres=True)
-    return result
+    spheres = data.get("collision_spheres") if isinstance(data, dict) else None
+    if not isinstance(spheres, dict) or not spheres:
+        raise ValueError(f"collision sphere file is empty or invalid: {source}")
+    for link, entries in spheres.items():
+        if not isinstance(entries, list) or not entries:
+            raise ValueError(f"collision sphere list is empty for link {link!r}")
+        for entry in entries:
+            center = entry.get("center") if isinstance(entry, dict) else None
+            radius = entry.get("radius") if isinstance(entry, dict) else None
+            if not isinstance(center, list) or len(center) != 3 or float(radius) <= 0:
+                raise ValueError(f"invalid collision sphere for link {link!r}: {entry!r}")
+    return spheres
 
 
-def build_collision_robots_from_urdf(
-    urdf_path: str, base_link: str, ee_links: tuple[str, ...],
-    sphere_density: float = 1.0, collision_matrix_samples: int = 1000,
-    prune_collision_matrix: bool = True, generated_config_path: str | None = None,
+def build_collision_robots(
+    urdf_path: str,
+    collision_spheres_path: str,
+    base_link: str,
+    ee_links: tuple[str, ...],
+    self_collision_ignore: dict[str, list[str]],
+    normalized_urdf_path: str | None = None,
 ) -> dict[str, object]:
-    from curobo._src.robot.kinematics.kinematics_cfg import KinematicsCfg
+    """Build cuRobo models from precomputed spheres without collision fitting."""
     from curobo._src.types.robot import RobotCfg
-    from curobo.robot_builder import RobotBuilder
 
-    normalized_output = (
-        str(Path(generated_config_path).with_name("normalized_robot.urdf"))
-        if generated_config_path else None
-    )
-    resolved_urdf = _normalized_urdf_for_curobo(urdf_path, normalized_output)
-    builder = RobotBuilder(
-        resolved_urdf, str(Path(resolved_urdf).resolve().parent), list(ee_links)
-    )
-    builder.fit_collision_spheres(
-        sphere_density=sphere_density, use_collision_mesh=True, compute_metrics=True
-    )
-    builder.compute_collision_matrix(
-        prune_collisions=prune_collision_matrix, num_samples=collision_matrix_samples
-    )
-    loader = builder.build()
-    if loader.base_link != base_link:
-        raise ValueError(f"base_link must be URDF root {loader.base_link!r}")
-    if generated_config_path:
-        builder.save(loader, generated_config_path)
-    result = {}
+    resolved_urdf = _normalized_urdf_for_curobo(urdf_path, normalized_urdf_path)
+    root = ET.parse(resolved_urdf).getroot()
+    urdf_links = {link.get("name") for link in root.findall("link")}
+    spheres = _load_collision_spheres(collision_spheres_path)
+    required_links = set(spheres) | set(ee_links) | {base_link}
+    unknown = required_links.difference(urdf_links)
+    if unknown:
+        raise ValueError(f"links not found in URDF: {', '.join(sorted(unknown))}")
+    for link, ignored in self_collision_ignore.items():
+        unknown_ignore = ({link} | set(ignored)).difference(urdf_links)
+        if unknown_ignore:
+            raise ValueError(
+                "self-collision ignore contains links not found in URDF: "
+                + ", ".join(sorted(unknown_ignore))
+            )
+
+    common = {
+        "urdf_path": resolved_urdf,
+        "asset_root_path": str(Path(resolved_urdf).parent),
+        "base_link": base_link,
+        "collision_link_names": list(spheres),
+        "collision_spheres": spheres,
+        "collision_sphere_buffer": 0.0,
+        "self_collision_ignore": self_collision_ignore,
+        "self_collision_buffer": {},
+    }
+    result: dict[str, object] = {}
     for link in ee_links:
-        cfg = deepcopy(loader)
-        cfg.tool_frames = [link]
-        kin = KinematicsCfg.from_config(cfg)
-        result[link] = RobotCfg(kinematics=kin, device_cfg=kin.device_cfg)
+        data = {"robot_cfg": {"kinematics": {**deepcopy(common), "tool_frames": [link]}}}
+        result[link] = RobotCfg.create(data, load_collision_spheres=True)
     return result
 
 
@@ -149,9 +131,7 @@ def compute_dexterous_workspace(
 
     if robot is None:
         if self_collision:
-            robot = build_collision_robots_from_urdf(
-                urdf_path, base_link, (ee_link,)
-            )[ee_link]
+            raise ValueError("a prebuilt collision robot is required for self-collision checking")
         else:
             kin = KinematicsCfg.from_basic_urdf(urdf_path, base_link, [ee_link])
             robot = RobotCfg(kinematics=kin, device_cfg=kin.device_cfg)

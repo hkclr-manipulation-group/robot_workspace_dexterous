@@ -9,10 +9,11 @@ from .sampling import generate_uniform_quaternions
 
 @dataclass(frozen=True)
 class Config:
-    urdf_path: Path | None
-    curobo_config_path: Path | None
+    urdf_path: Path
+    collision_spheres_path: Path
     base_link: str
     ee_links: tuple[str, ...]
+    self_collision_ignore: dict[str, list[str]]
     x_range: tuple[float, float]
     y_range: tuple[float, float]
     heights: np.ndarray
@@ -23,9 +24,6 @@ class Config:
     position_tolerance: float
     orientation_tolerance: float
     self_collision: bool
-    sphere_density: float
-    collision_matrix_samples: int
-    prune_collision_matrix: bool
     minimum_dexterity: float
 
 
@@ -48,10 +46,10 @@ def load_config(path: str | Path) -> Config:
     with config_path.open("r", encoding="utf-8") as stream:
         raw = yaml.safe_load(stream)
     robot, grid = raw["robot"], raw["grid"]
-    if (robot.get("urdf") is None) == (robot.get("curobo_config") is None):
-        raise ValueError("robot must define exactly one of urdf or curobo_config")
     urdf_path = _local_path(config_path, robot.get("urdf"))
-    curobo_path = _local_path(config_path, robot.get("curobo_config"))
+    collision_spheres_path = _local_path(config_path, robot.get("collision_spheres"))
+    if urdf_path is None or collision_spheres_path is None:
+        raise ValueError("robot.urdf and robot.collision_spheres are required")
     x_range = tuple(float(v) for v in grid["x_range"])
     y_range = tuple(float(v) for v in grid["y_range"])
     if len(x_range) != 2 or x_range[0] >= x_range[1]:
@@ -77,19 +75,24 @@ def load_config(path: str | Path) -> Config:
     if resolution <= 0 or z_step <= 0 or z_max < z_min or not 0 <= minimum <= 1:
         raise ValueError("grid steps must be positive and minimum_dexterity in [0, 1]")
     solver = raw.get("solver", {})
-    density = float(solver.get("sphere_density", 1.0))
-    collision_samples = int(solver.get("collision_matrix_samples", 1000))
     ee_links = tuple(str(link) for link in robot["ee_links"])
-    if density <= 0 or collision_samples < 1 or not ee_links:
-        raise ValueError("collision settings must be positive and ee_links non-empty")
+    ignore_raw = robot.get("self_collision_ignore", {})
+    if not isinstance(ignore_raw, dict):
+        raise ValueError("robot.self_collision_ignore must be a mapping")
+    self_collision_ignore = {
+        str(link): [str(other) for other in ignored]
+        for link, ignored in ignore_raw.items()
+    }
+    if not ee_links:
+        raise ValueError("robot.ee_links must be non-empty")
     return Config(
-        urdf_path, curobo_path, str(robot["base_link"]), ee_links,
+        urdf_path, collision_spheres_path, str(robot["base_link"]), ee_links,
+        self_collision_ignore,
         x_range, y_range,
         np.arange(z_min, z_max + 0.5 * z_step, z_step, dtype=np.float32),
         resolution, orientations,
         int(solver.get("ik_seeds", 8)), int(solver.get("batch_size", 256)),
         float(solver.get("position_tolerance", 0.005)),
         float(solver.get("orientation_tolerance", 0.08)),
-        bool(solver.get("self_collision", True)), density, collision_samples,
-        bool(solver.get("prune_collision_matrix", True)), minimum,
+        bool(solver.get("self_collision", True)), minimum,
     )

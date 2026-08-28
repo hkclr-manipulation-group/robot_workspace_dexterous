@@ -1,7 +1,15 @@
 robot:
   urdf: ../cuarm_configuration/spark2_v2/share/no_gripper/arm_v2_stl.urdf
-  base_link: base_link
+  collision_spheres: ../collision_shpere_generation/examples/spark2_v2/collision_spheres.yaml
+  base_link: arm_base_link
   ee_links: [arm_end_effector]
+  self_collision_ignore:
+    arm_base_link: [arm_L1]
+    arm_L1: [arm_L2]
+    arm_L2: [arm_L3]
+    arm_L3: [arm_L4]
+    arm_L4: [arm_L5]
+    arm_L5: [arm_L6]
 
 grid:
   x_range: [-1.0, 1.0]
@@ -20,9 +28,6 @@ solver:
   position_tolerance: 0.005
   orientation_tolerance: 0.08
   self_collision: true
-  sphere_density: 1.0
-  collision_matrix_samples: 1000
-  prune_collision_matrix: true
 
 output:
   minimum_dexterity: 1.0

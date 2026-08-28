@@ -8,8 +8,7 @@ import numpy as np
 
 from .config import load_config
 from .curobo_solver import (
-    build_collision_robots_from_config,
-    build_collision_robots_from_urdf,
+    build_collision_robots,
     compute_dexterous_workspace,
 )
 from .sampling import DexterousWorkspace
@@ -34,19 +33,15 @@ def main(argv: list[str] | None = None) -> None:
     output_dir.mkdir(parents=True, exist_ok=True)
     collision_robots = None
     if config.self_collision:
-        if config.curobo_config_path is not None:
-            print(f"loading existing collision model: {config.curobo_config_path}")
-            collision_robots = build_collision_robots_from_config(
-                str(config.curobo_config_path), config.base_link, config.ee_links
-            )
-        else:
-            print("building cuRobo collision spheres and self-collision matrix from URDF...")
-            collision_robots = build_collision_robots_from_urdf(
-                str(config.urdf_path), config.base_link, config.ee_links,
-                config.sphere_density, config.collision_matrix_samples,
-                config.prune_collision_matrix,
-                str(output_dir / "generated_collision_robot.yml"),
-            )
+        print(f"loading collision spheres: {config.collision_spheres_path}")
+        collision_robots = build_collision_robots(
+            str(config.urdf_path),
+            str(config.collision_spheres_path),
+            config.base_link,
+            config.ee_links,
+            config.self_collision_ignore,
+            str(output_dir / "normalized_robot.urdf"),
+        )
     workspaces: dict[str, DexterousWorkspace] = {}
     for link in config.ee_links:
         print(f"computing {link}: {len(config.orientations)} orientations per XYZ cell")
