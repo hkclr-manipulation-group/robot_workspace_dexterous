@@ -12,7 +12,7 @@ from .curobo_solver import (
     compute_dexterous_workspace,
 )
 from .sampling import DexterousWorkspace
-from .visualize import save_dexterity_center_views, save_metric_top_view
+from .visualize import save_dexterity_center_views, save_metric_center_views
 
 
 def _progress(done: int, total: int, elapsed: float) -> None:
@@ -29,8 +29,8 @@ def main(argv: list[str] | None = None) -> None:
     parser.add_argument(
         "--plot-height",
         type=float,
-        default=None,
-        help="Z coordinate for the XY dexterity section; defaults to the center layer",
+        default=0.0,
+        help="Z coordinate for the XY dexterity section (default: 0.0)",
     )
     args = parser.parse_args(argv)
     config = load_config(args.config)
@@ -82,15 +82,18 @@ def main(argv: list[str] | None = None) -> None:
             link,
             args.plot_height,
         )
-        save_metric_top_view(
+        save_metric_center_views(
             workspace, workspace.manipulability_mean,
             output_dir / f"{link}_manipulability.png", f"{link} manipulability",
             "mean sqrt(det(J J^T))", args.plot_height,
         )
-        save_metric_top_view(
+        save_metric_center_views(
             workspace, workspace.condition_number_max,
             output_dir / f"{link}_condition_number.png", f"{link} worst condition number",
             "max sigma_max / sigma_min (95th percentile color cap)", args.plot_height,
+            cmap="RdYlGn_r",
+            vmin=1.0,
+            cap_positive_infinity=True,
         )
         z_step = (
             float(np.min(np.diff(np.unique(config.heights))))

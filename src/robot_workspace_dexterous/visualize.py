@@ -12,15 +12,15 @@ def save_dexterity_center_views(
     workspace: DexterousWorkspace,
     path: str | Path,
     title: str,
-    xy_height: float | None = None,
+    xy_height: float = 0.0,
 ) -> Path:
     """Save positive-dexterity XY, XZ, and YZ center sections."""
     points = workspace.positions
     scores = workspace.dexterity
     planes = (
         ("XY", 2, (0, 1), xy_height, "X (m)", "Y (m)"),
-        ("XZ", 1, (0, 2), None, "X (m)", "Z (m)"),
-        ("YZ", 0, (1, 2), None, "Y (m)", "Z (m)"),
+        ("XZ", 1, (0, 2), 0.0, "X (m)", "Z (m)"),
+        ("YZ", 0, (1, 2), 0.0, "Y (m)", "Z (m)"),
     )
     output = Path(path).expanduser().resolve()
     output.parent.mkdir(parents=True, exist_ok=True)
@@ -29,8 +29,7 @@ def save_dexterity_center_views(
 
     for axis, (name, normal, dimensions, requested, x_label, y_label) in zip(axes, planes):
         available = np.unique(points[:, normal])
-        center = float((available[0] + available[-1]) * 0.5) if requested is None else requested
-        selected = float(available[np.argmin(np.abs(available - center))])
+        selected = float(available[np.argmin(np.abs(available - requested))])
         in_plane = np.isclose(points[:, normal], selected, atol=1e-6)
         plane_points = points[in_plane]
         plane_scores = scores[in_plane]
@@ -44,10 +43,8 @@ def save_dexterity_center_views(
             vmin=0,
             vmax=1,
         )
-        horizontal = points[:, dimensions[0]]
-        vertical = points[:, dimensions[1]]
-        axis.set_xlim(float(horizontal.min()), float(horizontal.max()))
-        axis.set_ylim(float(vertical.min()), float(vertical.max()))
+        axis.set_xlim(-1.0, 1.0)
+        axis.set_ylim(-1.0, 1.0)
         axis.scatter([0], [0], marker="+", color="black", s=100, label="base")
         axis.set(
             xlabel=x_label,
@@ -60,6 +57,69 @@ def save_dexterity_center_views(
 
     figure.suptitle(f"{title} — dexterity center sections", fontsize=15)
     figure.colorbar(artist, ax=axes, label="orientation coverage / dexterity", shrink=0.88)
+    figure.savefig(output, dpi=180)
+    plt.close(figure)
+    return output
+
+
+def save_metric_center_views(
+    workspace: DexterousWorkspace,
+    values: np.ndarray,
+    path: str | Path,
+    title: str,
+    label: str,
+    xy_height: float = 0.0,
+    cmap: str = "viridis",
+    vmin: float = 0.0,
+    cap_positive_infinity: bool = False,
+) -> Path:
+    """Save reachable XY, XZ, and YZ center sections for one metric."""
+    points = workspace.positions
+    values = np.asarray(values).copy()
+    reachable = workspace.reachable_orientations > 0
+    finite_reachable = reachable & np.isfinite(values)
+    planes = (
+        ("XY", 2, (0, 1), xy_height, "X (m)", "Y (m)"),
+        ("XZ", 1, (0, 2), 0.0, "X (m)", "Z (m)"),
+        ("YZ", 0, (1, 2), 0.0, "Y (m)", "Z (m)"),
+    )
+    output = Path(path).expanduser().resolve()
+    output.parent.mkdir(parents=True, exist_ok=True)
+    figure, axes = plt.subplots(1, 3, figsize=(18, 5.8), constrained_layout=True)
+    vmax = float(np.percentile(values[finite_reachable], 95)) if np.any(finite_reachable) else vmin + 1.0
+    vmax = max(vmax, vmin + 1e-12)
+    if cap_positive_infinity:
+        values[reachable & np.isposinf(values)] = vmax
+    valid = reachable & np.isfinite(values)
+    artist = None
+
+    for axis, (name, normal, dimensions, requested, x_label, y_label) in zip(axes, planes):
+        available = np.unique(points[:, normal])
+        selected = float(available[np.argmin(np.abs(available - requested))])
+        visible = np.isclose(points[:, normal], selected, atol=1e-6) & valid
+        artist = axis.scatter(
+            points[visible, dimensions[0]],
+            points[visible, dimensions[1]],
+            c=values[visible],
+            s=22,
+            cmap=cmap,
+            vmin=vmin,
+            vmax=vmax,
+        )
+        axis.set_xlim(-1.0, 1.0)
+        axis.set_ylim(-1.0, 1.0)
+        axis.scatter([0], [0], marker="+", color="black", s=100, label="base")
+        axis.set(
+            xlabel=x_label,
+            ylabel=y_label,
+            title=f"{name} section at {'XYZ'[normal]}={selected:.3f} m",
+            aspect="equal",
+        )
+        axis.grid(alpha=0.25)
+        axis.legend(loc="upper right")
+
+    figure.suptitle(f"{title} — center sections", fontsize=15)
+    figure.colorbar(artist, ax=axes, label=label, shrink=0.88)
     figure.savefig(output, dpi=180)
     plt.close(figure)
     return output

@@ -54,7 +54,7 @@ python3 -m pip install -e .
 ## Run
 
 ```bash
-python3 run.py --config config.yaml --output-dir output --plot-height 0.30
+python3 run.py --config config.yaml --output-dir output --plot-height 0.0
 ```
 
 The program validates that every sphere link, end-effector link, base link, and
@@ -101,10 +101,12 @@ unreachable, and warns when only the selected DWS threshold is empty.
 
 The dexterity image contains three orthogonal sections through the workspace:
 
-- `XY` at the Z value selected by `--plot-height`, or the center Z layer when
-  the option is omitted
-- `XZ` at the center Y layer
-- `YZ` at the center X layer
+- `XY` at `Z=0` by default; override it with `--plot-height`
+- `XZ` at `Y=0`
+- `YZ` at `X=0`
+
+All horizontal and vertical plot axes use the same fixed `[-1, 1] m` range so
+the three sections can be compared at an identical scale.
 
 ## Outputs
 
@@ -112,6 +114,11 @@ The dexterity image contains three orthogonal sections through the workspace:
 - `<ee_link>_filtered.npz`: points meeting the dexterity threshold
 - `<ee_link>_summary.json`: RWS/DWS volumes and aggregate metrics
 - `<ee_link>_dexterity_views.png`: XY/XZ/YZ dexterity center sections
-- `<ee_link>_manipulability.png`: mean manipulability map
-- `<ee_link>_condition_number.png`: worst condition-number map
+- `<ee_link>_manipulability.png`: XY/XZ/YZ mean-manipulability sections
+- `<ee_link>_condition_number.png`: XY/XZ/YZ worst-condition-number sections
 - `normalized_robot.urdf`: URI-normalized temporary model used by cuRobo
+
+Condition number is `sigma_max / sigma_min`: `1` is ideal and larger values are
+worse. Its plots use green for values near `1` and red for large or infinite
+values. The upper color limit is the finite 95th percentile so isolated
+singularities do not compress the useful color range.
