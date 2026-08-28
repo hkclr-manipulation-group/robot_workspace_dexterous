@@ -53,8 +53,23 @@ def main(argv: list[str] | None = None) -> None:
             config.self_collision, _progress,
             None if collision_robots is None else collision_robots[link],
         )
+        reachable_cells = int(np.count_nonzero(workspace.reachable_orientations > 0))
+        if reachable_cells == 0:
+            raise RuntimeError(
+                f"{link}: no reachable grid cells were found; check workspace bounds, "
+                "base/tool link names, and self-collision ignores before plotting"
+            )
+        print(
+            f"{link}: {reachable_cells}/{len(workspace.positions)} grid cells reachable, "
+            f"maximum dexterity={float(np.max(workspace.dexterity)):.4f}"
+        )
         workspace.save(str(output_dir / f"{link}.npz"))
         filtered = workspace.threshold(config.minimum_dexterity)
+        if len(filtered.positions) == 0:
+            print(
+                f"warning: no cells meet minimum_dexterity="
+                f"{config.minimum_dexterity:.4f}; unfiltered RWS outputs are still saved"
+            )
         filtered.save(str(output_dir / f"{link}_filtered.npz"))
         plot = save_top_view(workspace, output_dir / f"{link}.png", link, args.plot_height)
         save_metric_top_view(
