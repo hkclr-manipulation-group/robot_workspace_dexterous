@@ -23,7 +23,7 @@ orientations:
   count: 32
 
 solver:
-  ik_seeds: 8
+  ik_seeds: 32
   batch_size: 256
   position_tolerance: 0.005
   orientation_tolerance: 0.08
