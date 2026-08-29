@@ -1,14 +1,58 @@
 from __future__ import annotations
 
 from pathlib import Path
+import xml.etree.ElementTree as ET
 
 import matplotlib.pyplot as plt
 import numpy as np
+import yaml
 
 from .sampling import DexterousWorkspace
 
 
 AxisRanges = tuple[tuple[float, float], tuple[float, float], tuple[float, float]]
+WorldSphere = tuple[np.ndarray, float]
+
+
+def load_zero_pose_collision_spheres(
+    urdf_path: str | Path, collision_spheres_path: str | Path,
+) -> list[WorldSphere]:
+    """Transform link-local collision spheres into the URDF world frame."""
+    root = ET.parse(urdf_path).getroot()
+    links = {link.get("name") for link in root.findall("link")}
+    children: dict[str, list[tuple[str, np.ndarray]]] = {}
+    child_names: set[str] = set()
+    for joint in root.findall("joint"):
+        parent, child = joint.find("parent"), joint.find("child")
+        if parent is None or child is None:
+            continue
+        p, c = parent.get("link"), child.get("link")
+        origin = joint.find("origin")
+        xyz = np.fromstring(origin.get("xyz", "0 0 0"), sep=" ") if origin is not None else np.zeros(3)
+        rpy = np.fromstring(origin.get("rpy", "0 0 0"), sep=" ") if origin is not None else np.zeros(3)
+        cr, cp, cy = np.cos(rpy); sr, sp, sy = np.sin(rpy)
+        rotation = np.array([
+            [cy * cp, cy * sp * sr - sy * cr, cy * sp * cr + sy * sr],
+            [sy * cp, sy * sp * sr + cy * cr, sy * sp * cr - cy * sr],
+            [-sp, cp * sr, cp * cr],
+        ])
+        transform = np.eye(4); transform[:3, :3] = rotation; transform[:3, 3] = xyz
+        children.setdefault(p, []).append((c, transform)); child_names.add(c)
+    poses = {name: np.eye(4) for name in links - child_names}
+    stack = list(poses)
+    while stack:
+        parent = stack.pop()
+        for child, transform in children.get(parent, []):
+            poses[child] = poses[parent] @ transform; stack.append(child)
+    with Path(collision_spheres_path).open("r", encoding="utf-8") as stream:
+        sphere_map = yaml.safe_load(stream)["collision_spheres"]
+    result: list[WorldSphere] = []
+    for link, spheres in sphere_map.items():
+        pose = poses[link]
+        for sphere in spheres:
+            center = (pose @ np.array([*sphere["center"], 1.0]))[:3]
+            result.append((center, float(sphere["radius"])))
+    return result
 
 
 def _center_planes(
@@ -227,6 +271,7 @@ def save_dual_workspace_overview(
     axis_ranges: AxisRanges,
     base_position: tuple[float, float, float] = (0.0, 0.0, 0.0),
     max_points_per_arm: int = 30000,
+    robot_spheres: list[WorldSphere] | None = None,
 ) -> Path:
     """Plot all arm reachable workspaces together in the world frame."""
     if len(workspaces) < 2:
@@ -276,6 +321,17 @@ def save_dual_workspace_overview(
         [base_position[0]], [base_position[1]], [base_position[2]],
         marker="+", color="black", s=140, linewidths=2.0, label="robot base",
     )
+    if robot_spheres:
+        u = np.linspace(0, 2 * np.pi, 14)
+        v = np.linspace(0, np.pi, 8)
+        ux, uy = np.outer(np.cos(u), np.sin(v)), np.outer(np.sin(u), np.sin(v))
+        uz = np.outer(np.ones_like(u), np.cos(v))
+        for center, radius in robot_spheres:
+            axis.plot_wireframe(
+                center[0] + radius * ux, center[1] + radius * uy,
+                center[2] + radius * uz, rstride=2, cstride=2,
+                color="#263238", linewidth=0.28, alpha=0.45,
+            )
     axis.set_xlim(*axis_ranges[0])
     axis.set_ylim(*axis_ranges[1])
     axis.set_zlim(*axis_ranges[2])

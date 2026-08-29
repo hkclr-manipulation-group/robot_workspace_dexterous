@@ -13,6 +13,7 @@ from .curobo_solver import (
 )
 from .sampling import DexterousWorkspace
 from .visualize import (
+    load_zero_pose_collision_spheres,
     save_dexterity_center_views,
     save_dual_workspace_overview,
     save_metric_center_views,
@@ -146,6 +147,9 @@ def main(argv: list[str] | None = None) -> None:
             output_dir / "dual_arm_workspace_overview.png",
             config.plot_ranges,
             config.base_position,
+            robot_spheres=load_zero_pose_collision_spheres(
+                config.urdf_path, config.collision_spheres_path
+            ),
         )
         print(f"dual-arm workspace overview: {overview}")
         ordered = [workspaces[link] for link in config.ee_links]
