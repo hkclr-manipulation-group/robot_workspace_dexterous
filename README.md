@@ -57,6 +57,17 @@ python3 -m pip install -e .
 python3 run.py --config config.yaml --output-dir output --plot-height 0.0
 ```
 
+Dual-arm presets are available under `configs/`. Select one by passing its
+path, for example:
+
+```bash
+python3 run.py --config configs/dual_v2_1_no_gripper.yaml \
+  --output-dir output/dual_v2_1_no_gripper
+```
+
+Each dual-arm preset uses `dummy_world` as the base and computes the left and
+right workspaces from `arm_end_effector_l` and `arm_end_effector_r`.
+
 The program validates that every sphere link, end-effector link, base link, and
 self-collision ignore link exists in the URDF before starting the GPU workload.
 
