@@ -119,8 +119,11 @@ The dexterity image contains three orthogonal sections through the workspace:
 - `XZ` at `Y=0`
 - `YZ` at `X=0`
 
-All horizontal and vertical plot axes use the same fixed `[-1, 1] m` range so
-the three sections can be compared at an identical scale.
+Plot axes default to the configured sampling bounds and can be overridden with
+`plot.x_range`, `plot.y_range`, and `plot.z_range`. `plot.sections_xyz` selects
+the YZ, XZ, and XY section coordinates respectively. Every view keeps an equal
+metre scale, so robot-specific base heights are shown without clipping or
+geometric distortion.
 
 ## Outputs
 

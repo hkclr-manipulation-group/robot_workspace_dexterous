@@ -28,6 +28,15 @@ orientations:
   # Deterministic approximately uniform samples over SO(3). Increase to 64 or
   # 128 for the final calculation after validating a coarse run.
   count: 32
+
+plot:
+  # Defaults to grid x/y/z bounds when omitted.
+  x_range: [-1.0, 1.0]
+  y_range: [-1.0, 1.0]
+  z_range: [-0.8, 0.8]
+  # X for YZ, Y for XZ, and Z for XY center sections.
+  sections_xyz: [0.0, 0.0, 0.0]
+  base_position: [0.0, 0.0, 0.0]
   # Alternatively replace count with an explicit wxyz list:
   # samples_wxyz: [[1, 0, 0, 0], [0, 1, 0, 0]]
 

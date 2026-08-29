@@ -29,11 +29,16 @@ def main(argv: list[str] | None = None) -> None:
     parser.add_argument(
         "--plot-height",
         type=float,
-        default=0.0,
-        help="Z coordinate for the XY dexterity section (default: 0.0)",
+        default=None,
+        help="Override the configured Z coordinate for the XY section",
     )
     args = parser.parse_args(argv)
     config = load_config(args.config)
+    plot_sections = (
+        config.plot_sections
+        if args.plot_height is None
+        else (config.plot_sections[0], config.plot_sections[1], args.plot_height)
+    )
     output_dir = Path(args.output_dir).expanduser().resolve()
     output_dir.mkdir(parents=True, exist_ok=True)
     collision_robots = None
@@ -80,17 +85,25 @@ def main(argv: list[str] | None = None) -> None:
             workspace,
             output_dir / f"{link}_dexterity_views.png",
             link,
-            args.plot_height,
+            sections_xyz=plot_sections,
+            axis_ranges=config.plot_ranges,
+            base_position=config.base_position,
         )
         save_metric_center_views(
             workspace, workspace.manipulability_mean,
             output_dir / f"{link}_manipulability.png", f"{link} manipulability",
-            "mean sqrt(det(J J^T))", args.plot_height,
+            "mean sqrt(det(J J^T))",
+            sections_xyz=plot_sections,
+            axis_ranges=config.plot_ranges,
+            base_position=config.base_position,
         )
         save_metric_center_views(
             workspace, workspace.condition_number_max,
             output_dir / f"{link}_condition_number.png", f"{link} worst condition number",
-            "max sigma_max / sigma_min (95th percentile color cap)", args.plot_height,
+            "max sigma_max / sigma_min (95th percentile color cap)",
+            sections_xyz=plot_sections,
+            axis_ranges=config.plot_ranges,
+            base_position=config.base_position,
             cmap="coolwarm",
             vmin=1.0,
             cap_positive_infinity=True,
@@ -136,7 +149,9 @@ def main(argv: list[str] | None = None) -> None:
             shared,
             output_dir / "shared_dexterity_views.png",
             "shared dexterous workspace",
-            args.plot_height,
+            sections_xyz=plot_sections,
+            axis_ranges=config.plot_ranges,
+            base_position=config.base_position,
         )
 
 
