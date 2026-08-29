@@ -2,6 +2,8 @@ robot:
   # Spark2 V2 without a gripper. Relative paths resolve from this file.
   urdf: ../cuarm_configuration/spark2_v2/share/no_gripper/arm_v2_stl.urdf
   collision_spheres: ../collision_shpere_generation/examples/spark2_v2/collision_spheres.yaml
+  # Optional generated mapping, merged with self_collision_ignore below.
+  # self_collision_ignore_file: ../collision_shpere_generation/examples/robot/self_collision_ignore.yaml
   base_link: arm_base_link
   ee_links: [arm_end_effector]
   # Directly connected meshes overlap at their physical joint interfaces.

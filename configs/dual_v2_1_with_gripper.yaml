@@ -3,6 +3,7 @@ robot:
   collision_spheres: ../../collision_shpere_generation/examples/dual_v2_1/with_gripper_collision_spheres.yaml
   base_link: dummy_world
   ee_links: [arm_end_effector_l, arm_end_effector_r]
+  self_collision_ignore_file: ../../collision_shpere_generation/examples/dual_v2_1/with_gripper_self_collision_ignore.yaml
   self_collision_ignore:
     DP: [s1]
     s1: [s2]

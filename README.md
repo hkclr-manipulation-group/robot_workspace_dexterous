@@ -67,6 +67,9 @@ python3 run.py --config configs/dual_v2_1_no_gripper.yaml \
 
 Each dual-arm preset uses `dummy_world` as the base and computes the left and
 right workspaces from `arm_end_effector_l` and `arm_end_effector_r`.
+The presets also load their generated `self_collision_ignore` YAML. External
+ignore pairs are merged with any small robot-specific mapping written directly
+in the dexterous config.
 
 The program validates that every sphere link, end-effector link, base link, and
 self-collision ignore link exists in the URDF before starting the GPU workload.

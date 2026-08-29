@@ -76,7 +76,26 @@ def load_config(path: str | Path) -> Config:
         raise ValueError("grid steps must be positive and minimum_dexterity in [0, 1]")
     solver = raw.get("solver", {})
     ee_links = tuple(str(link) for link in robot["ee_links"])
-    ignore_raw = robot.get("self_collision_ignore", {})
+    ignore_raw: dict[str, list[str]] = {}
+    ignore_file = _local_path(config_path, robot.get("self_collision_ignore_file"))
+    if ignore_file is not None:
+        with ignore_file.open("r", encoding="utf-8") as stream:
+            ignore_data = yaml.safe_load(stream)
+        external = (
+            ignore_data.get("self_collision_ignore")
+            if isinstance(ignore_data, dict) else None
+        )
+        if not isinstance(external, dict):
+            raise ValueError(
+                f"self-collision ignore file is invalid: {ignore_file}"
+            )
+        ignore_raw.update(external)
+    inline_ignore = robot.get("self_collision_ignore", {})
+    if not isinstance(inline_ignore, dict):
+        raise ValueError("robot.self_collision_ignore must be a mapping")
+    for link, ignored in inline_ignore.items():
+        ignore_raw.setdefault(link, [])
+        ignore_raw[link] = list(dict.fromkeys([*ignore_raw[link], *ignored]))
     if not isinstance(ignore_raw, dict):
         raise ValueError("robot.self_collision_ignore must be a mapping")
     self_collision_ignore = {
