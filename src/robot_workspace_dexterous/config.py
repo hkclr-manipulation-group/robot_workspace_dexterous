@@ -25,6 +25,9 @@ class Config:
     orientation_tolerance: float
     self_collision: bool
     minimum_dexterity: float
+    plot_ranges: tuple[tuple[float, float], tuple[float, float], tuple[float, float]]
+    plot_sections: tuple[float, float, float]
+    base_position: tuple[float, float, float]
 
 
 def _local_path(config_path: Path, value: str | None) -> Path | None:
@@ -75,6 +78,21 @@ def load_config(path: str | Path) -> Config:
     if resolution <= 0 or z_step <= 0 or z_max < z_min or not 0 <= minimum <= 1:
         raise ValueError("grid steps must be positive and minimum_dexterity in [0, 1]")
     solver = raw.get("solver", {})
+    plot = raw.get("plot", {})
+    plot_x_range = tuple(float(v) for v in plot.get("x_range", x_range))
+    plot_y_range = tuple(float(v) for v in plot.get("y_range", y_range))
+    plot_z_range = tuple(float(v) for v in plot.get("z_range", (z_min, z_max)))
+    plot_sections = tuple(float(v) for v in plot.get("sections_xyz", (0.0, 0.0, 0.0)))
+    base_position = tuple(float(v) for v in plot.get("base_position", (0.0, 0.0, 0.0)))
+    for name, limits in (
+        ("plot.x_range", plot_x_range),
+        ("plot.y_range", plot_y_range),
+        ("plot.z_range", plot_z_range),
+    ):
+        if len(limits) != 2 or limits[0] >= limits[1]:
+            raise ValueError(f"{name} must be [min, max]")
+    if len(plot_sections) != 3 or len(base_position) != 3:
+        raise ValueError("plot.sections_xyz and plot.base_position must contain three values")
     ee_links = tuple(str(link) for link in robot["ee_links"])
     ignore_raw: dict[str, list[str]] = {}
     ignore_file = _local_path(config_path, robot.get("self_collision_ignore_file"))
@@ -114,4 +132,6 @@ def load_config(path: str | Path) -> Config:
         float(solver.get("position_tolerance", 0.005)),
         float(solver.get("orientation_tolerance", 0.08)),
         bool(solver.get("self_collision", True)), minimum,
+        (plot_x_range, plot_y_range, plot_z_range),
+        plot_sections, base_position,
     )

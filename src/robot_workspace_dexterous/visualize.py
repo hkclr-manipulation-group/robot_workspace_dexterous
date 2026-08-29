@@ -8,20 +8,37 @@ import numpy as np
 from .sampling import DexterousWorkspace
 
 
+AxisRanges = tuple[tuple[float, float], tuple[float, float], tuple[float, float]]
+
+
+def _center_planes(
+    sections_xyz: tuple[float, float, float],
+) -> tuple[tuple[str, int, tuple[int, int], float, str, str], ...]:
+    section_x, section_y, section_z = sections_xyz
+    return (
+        ("XY", 2, (0, 1), section_z, "X (m)", "Y (m)"),
+        ("XZ", 1, (0, 2), section_y, "X (m)", "Z (m)"),
+        ("YZ", 0, (1, 2), section_x, "Y (m)", "Z (m)"),
+    )
+
+
 def save_dexterity_center_views(
     workspace: DexterousWorkspace,
     path: str | Path,
     title: str,
-    xy_height: float = 0.0,
+    sections_xyz: tuple[float, float, float] = (0.0, 0.0, 0.0),
+    axis_ranges: AxisRanges | None = None,
+    base_position: tuple[float, float, float] = (0.0, 0.0, 0.0),
 ) -> Path:
     """Save positive-dexterity XY, XZ, and YZ center sections."""
     points = workspace.positions
     scores = workspace.dexterity
-    planes = (
-        ("XY", 2, (0, 1), xy_height, "X (m)", "Y (m)"),
-        ("XZ", 1, (0, 2), 0.0, "X (m)", "Z (m)"),
-        ("YZ", 0, (1, 2), 0.0, "Y (m)", "Z (m)"),
-    )
+    planes = _center_planes(sections_xyz)
+    if axis_ranges is None:
+        axis_ranges = tuple(
+            (float(points[:, dimension].min()), float(points[:, dimension].max()))
+            for dimension in range(3)
+        )
     output = Path(path).expanduser().resolve()
     output.parent.mkdir(parents=True, exist_ok=True)
     figure, axes = plt.subplots(1, 3, figsize=(18, 5.8), constrained_layout=True)
@@ -43,9 +60,12 @@ def save_dexterity_center_views(
             vmin=0,
             vmax=1,
         )
-        axis.set_xlim(-1.0, 1.0)
-        axis.set_ylim(-1.0, 1.0)
-        axis.scatter([0], [0], marker="+", color="black", s=100, label="base")
+        axis.set_xlim(*axis_ranges[dimensions[0]])
+        axis.set_ylim(*axis_ranges[dimensions[1]])
+        axis.scatter(
+            [base_position[dimensions[0]]], [base_position[dimensions[1]]],
+            marker="+", color="black", s=100, label="base",
+        )
         axis.set(
             xlabel=x_label,
             ylabel=y_label,
@@ -68,7 +88,9 @@ def save_metric_center_views(
     path: str | Path,
     title: str,
     label: str,
-    xy_height: float = 0.0,
+    sections_xyz: tuple[float, float, float] = (0.0, 0.0, 0.0),
+    axis_ranges: AxisRanges | None = None,
+    base_position: tuple[float, float, float] = (0.0, 0.0, 0.0),
     cmap: str = "viridis",
     vmin: float = 0.0,
     cap_positive_infinity: bool = False,
@@ -78,11 +100,12 @@ def save_metric_center_views(
     values = np.asarray(values).copy()
     reachable = workspace.reachable_orientations > 0
     finite_reachable = reachable & np.isfinite(values)
-    planes = (
-        ("XY", 2, (0, 1), xy_height, "X (m)", "Y (m)"),
-        ("XZ", 1, (0, 2), 0.0, "X (m)", "Z (m)"),
-        ("YZ", 0, (1, 2), 0.0, "Y (m)", "Z (m)"),
-    )
+    planes = _center_planes(sections_xyz)
+    if axis_ranges is None:
+        axis_ranges = tuple(
+            (float(points[:, dimension].min()), float(points[:, dimension].max()))
+            for dimension in range(3)
+        )
     output = Path(path).expanduser().resolve()
     output.parent.mkdir(parents=True, exist_ok=True)
     figure, axes = plt.subplots(1, 3, figsize=(18, 5.8), constrained_layout=True)
@@ -106,9 +129,12 @@ def save_metric_center_views(
             vmin=vmin,
             vmax=vmax,
         )
-        axis.set_xlim(-1.0, 1.0)
-        axis.set_ylim(-1.0, 1.0)
-        axis.scatter([0], [0], marker="+", color="black", s=100, label="base")
+        axis.set_xlim(*axis_ranges[dimensions[0]])
+        axis.set_ylim(*axis_ranges[dimensions[1]])
+        axis.scatter(
+            [base_position[dimensions[0]]], [base_position[dimensions[1]]],
+            marker="+", color="black", s=100, label="base",
+        )
         axis.set(
             xlabel=x_label,
             ylabel=y_label,
