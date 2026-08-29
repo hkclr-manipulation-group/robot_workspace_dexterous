@@ -4,6 +4,7 @@ import yaml
 
 from robot_workspace_dexterous.config import load_config
 from robot_workspace_dexterous.curobo_solver import _load_collision_spheres
+from robot_workspace_dexterous.curobo_solver import _normalized_urdf_for_curobo
 
 
 def test_load_config_uses_precomputed_collision_spheres(tmp_path: Path) -> None:
@@ -46,3 +47,25 @@ def test_load_config_uses_precomputed_collision_spheres(tmp_path: Path) -> None:
     assert config.base_link == "base"
     assert not hasattr(config, "sphere_density")
     assert set(_load_collision_spheres(str(spheres))) == {"base"}
+
+
+def test_normalizes_legacy_dual_v2_2_base_mesh_without_changing_source(tmp_path: Path) -> None:
+    robot = tmp_path / "dual_v2_2"
+    urdf = robot / "share" / "no_gripper" / "dual_arm.urdf"
+    mesh = robot / "share" / "meshes" / "base" / "DZ.STL"
+    urdf.parent.mkdir(parents=True)
+    mesh.parent.mkdir(parents=True)
+    mesh.write_bytes(b"solid mesh\nendsolid mesh\n")
+    original = (
+        '<robot name="test"><link name="base"><visual><geometry>'
+        '<mesh filename="../base/DP.stl"/>'
+        '</geometry></visual></link></robot>'
+    )
+    urdf.write_text(original, encoding="utf-8")
+    output = tmp_path / "normalized.urdf"
+
+    result = _normalized_urdf_for_curobo(str(urdf), str(output))
+
+    assert Path(result) == output.resolve()
+    assert "DZ.STL" in output.read_text(encoding="utf-8")
+    assert urdf.read_text(encoding="utf-8") == original

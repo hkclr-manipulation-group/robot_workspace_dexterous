@@ -17,20 +17,48 @@ def _normalized_urdf_for_curobo(urdf_path: str, output_path: str | None) -> str:
     source = Path(urdf_path).expanduser().resolve()
     root = ET.parse(source).getroot()
     changed = False
+    legacy_v2_2_base_meshes = {
+        "dp.stl": "DZ.STL",
+        "s1.stl": "SJ1Z.STL",
+        "s2.stl": "SJ2Z.STL",
+        "s3.stl": "SJ3Z.STL",
+        "s4.stl": "SJ4Z.STL",
+    }
     for mesh in root.findall(".//mesh"):
         value = mesh.get("filename")
-        if not value or not value.startswith("package://"):
+        if not value:
             continue
-        package_relative = Path(value[len("package://") :])
-        # The first URI path component is a logical asset name. The remaining
-        # path is resolved directly from directories surrounding the URDF.
-        suffix = Path(*package_relative.parts[1:])
+        if value.startswith("package://"):
+            package_relative = Path(value[len("package://") :])
+            # The first URI component is a logical package name.
+            suffix = Path(*package_relative.parts[1:])
+            suffixes = [suffix]
+            if len(suffix.parts) > 1:
+                # Some exports include both a logical package and a robot
+                # version before the share-relative `meshes/...` path.
+                suffixes.append(Path(*suffix.parts[1:]))
+        else:
+            suffix = Path(value)
+            suffixes = [suffix]
         resolved = None
-        for parent in source.parents:
-            candidate = (parent / suffix).resolve()
+        candidates = []
+        for relative in suffixes:
+            candidates.append((source.parent / relative).resolve())
+            candidates.extend((parent / relative).resolve() for parent in source.parents)
+        for candidate in candidates:
             if candidate.is_file() and candidate.stat().st_size > 0:
                 resolved = candidate
                 break
+        # dual_v2_2/no_gripper was exported with the previous base filenames.
+        # Resolve those names against the v2.2 assets without editing the
+        # source configuration repository.
+        legacy_name = legacy_v2_2_base_meshes.get(suffix.name.lower())
+        if resolved is None and legacy_name and "dual_v2_2" in source.parts:
+            for parent in source.parents:
+                candidate = (parent / "meshes" / "base" / legacy_name).resolve()
+                if candidate.is_file() and candidate.stat().st_size > 0:
+                    resolved = candidate
+                    break
         if resolved is None:
             raise FileNotFoundError(
                 f"cannot resolve URDF mesh URI {value!r} from {source}"
