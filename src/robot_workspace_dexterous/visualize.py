@@ -219,3 +219,71 @@ def save_metric_top_view(
     figure.savefig(output, dpi=180)
     plt.close(figure)
     return output
+
+
+def save_dual_workspace_overview(
+    workspaces: dict[str, DexterousWorkspace],
+    path: str | Path,
+    axis_ranges: AxisRanges,
+    base_position: tuple[float, float, float] = (0.0, 0.0, 0.0),
+    max_points_per_arm: int = 30000,
+) -> Path:
+    """Plot all arm reachable workspaces together in the world frame."""
+    if len(workspaces) < 2:
+        raise ValueError("dual workspace overview requires at least two end effectors")
+    output = Path(path).expanduser().resolve()
+    output.parent.mkdir(parents=True, exist_ok=True)
+    figure = plt.figure(figsize=(11, 9), constrained_layout=True)
+    axis = figure.add_subplot(111, projection="3d")
+    colors = ("#1976d2", "#ef6c00", "#8e24aa", "#00897b")
+    ordered = list(workspaces.items())
+
+    reachable_masks = []
+    for index, (name, workspace) in enumerate(ordered):
+        reachable = workspace.reachable_orientations > 0
+        reachable_masks.append(reachable)
+        points = workspace.positions[reachable]
+        if len(points) > max_points_per_arm:
+            sample = np.linspace(0, len(points) - 1, max_points_per_arm, dtype=int)
+            points = points[sample]
+        axis.scatter(
+            points[:, 0], points[:, 1], points[:, 2],
+            s=2.0, alpha=0.16, color=colors[index % len(colors)],
+            depthshade=False, label=f"{name} RWS",
+        )
+
+    reference = ordered[0][1]
+    if all(
+        workspace.positions.shape == reference.positions.shape
+        and np.allclose(workspace.positions, reference.positions)
+        for _, workspace in ordered[1:]
+    ):
+        shared_mask = np.logical_and.reduce(reachable_masks)
+        shared_points = reference.positions[shared_mask]
+        if len(shared_points) > max_points_per_arm:
+            sample = np.linspace(
+                0, len(shared_points) - 1, max_points_per_arm, dtype=int
+            )
+            shared_points = shared_points[sample]
+        if len(shared_points):
+            axis.scatter(
+                shared_points[:, 0], shared_points[:, 1], shared_points[:, 2],
+                s=3.0, alpha=0.32, color="#2e7d32", depthshade=False,
+                label="shared RWS",
+            )
+
+    axis.scatter(
+        [base_position[0]], [base_position[1]], [base_position[2]],
+        marker="+", color="black", s=140, linewidths=2.0, label="robot base",
+    )
+    axis.set_xlim(*axis_ranges[0])
+    axis.set_ylim(*axis_ranges[1])
+    axis.set_zlim(*axis_ranges[2])
+    extents = [limits[1] - limits[0] for limits in axis_ranges]
+    axis.set_box_aspect(extents)
+    axis.set(xlabel="X [m]", ylabel="Y [m]", zlabel="Z [m]")
+    axis.set_title("Dual-arm reachable workspace overview")
+    axis.legend(loc="upper right")
+    figure.savefig(output, dpi=180)
+    plt.close(figure)
+    return output

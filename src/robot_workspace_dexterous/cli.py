@@ -12,7 +12,11 @@ from .curobo_solver import (
     compute_dexterous_workspace,
 )
 from .sampling import DexterousWorkspace
-from .visualize import save_dexterity_center_views, save_metric_center_views
+from .visualize import (
+    save_dexterity_center_views,
+    save_dual_workspace_overview,
+    save_metric_center_views,
+)
 
 
 def _progress(done: int, total: int, elapsed: float) -> None:
@@ -137,6 +141,13 @@ def main(argv: list[str] | None = None) -> None:
             f"DWS/RWS={summary['dws_rws_ratio']:.4f}; plot={plot}"
         )
     if len(workspaces) > 1:
+        overview = save_dual_workspace_overview(
+            workspaces,
+            output_dir / "dual_arm_workspace_overview.png",
+            config.plot_ranges,
+            config.base_position,
+        )
+        print(f"dual-arm workspace overview: {overview}")
         ordered = [workspaces[link] for link in config.ee_links]
         shared = DexterousWorkspace(
             ordered[0].positions,

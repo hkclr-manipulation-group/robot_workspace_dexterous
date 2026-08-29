@@ -134,6 +134,8 @@ geometric distortion.
 - `<ee_link>_manipulability.png`: XY/XZ/YZ mean-manipulability sections
 - `<ee_link>_condition_number.png`: XY/XZ/YZ worst-condition-number sections
 - `normalized_robot.urdf`: URI-normalized temporary model used by cuRobo
+- `dual_arm_workspace_overview.png`: left, right, and shared reachable
+  workspaces together in one world-frame 3D view (multi-EE configs only)
 
 Condition number is `sigma_max / sigma_min`: `1` is ideal and larger values are
 worse. Its colorblind-friendlier blue-to-red plots use blue for values near `1`
