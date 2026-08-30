@@ -37,8 +37,27 @@ def main(argv: list[str] | None = None) -> None:
         default=None,
         help="Override the configured Z coordinate for the XY section",
     )
+    parser.add_argument(
+        "--batch-size",
+        type=int,
+        default=None,
+        help="Override solver.batch_size (use 4096–8192 on ~120 GB GPUs)",
+    )
+    parser.add_argument(
+        "--ik-seeds",
+        type=int,
+        default=None,
+        help="Override solver.ik_seeds",
+    )
     args = parser.parse_args(argv)
     config = load_config(args.config)
+    if args.batch_size is not None or args.ik_seeds is not None:
+        from dataclasses import replace
+        config = replace(
+            config,
+            batch_size=args.batch_size if args.batch_size is not None else config.batch_size,
+            ik_seeds=args.ik_seeds if args.ik_seeds is not None else config.ik_seeds,
+        )
     plot_sections = (
         config.plot_sections
         if args.plot_height is None

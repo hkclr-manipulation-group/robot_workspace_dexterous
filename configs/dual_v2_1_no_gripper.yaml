@@ -38,7 +38,7 @@ plot:
   base_position: [0.0, 0.0, 0.0]
 solver: &solver
   ik_seeds: 8
-  batch_size: 256
+  batch_size: 4096
   position_tolerance: 0.005
   orientation_tolerance: 0.08
   self_collision: true

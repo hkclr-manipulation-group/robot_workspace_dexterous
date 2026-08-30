@@ -128,7 +128,7 @@ def load_config(path: str | Path) -> Config:
         x_range, y_range,
         np.arange(z_min, z_max + 0.5 * z_step, z_step, dtype=np.float32),
         resolution, orientations,
-        int(solver.get("ik_seeds", 8)), int(solver.get("batch_size", 256)),
+        int(solver.get("ik_seeds", 8)), int(solver.get("batch_size", 4096)),
         float(solver.get("position_tolerance", 0.005)),
         float(solver.get("orientation_tolerance", 0.08)),
         bool(solver.get("self_collision", True)), minimum,

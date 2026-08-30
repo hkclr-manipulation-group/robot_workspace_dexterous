@@ -42,8 +42,8 @@ plot:
 
 solver:
   ik_seeds: 8
-  # Maximum number of (position, orientation) goals solved together on GPU.
-  batch_size: 256
+  # Tune for GPU VRAM: 4096 for ~120 GB, 1024 for ~24 GB, 8192 if 4096 leaves headroom.
+  batch_size: 4096
   position_tolerance: 0.005
   orientation_tolerance: 0.08
   # Collision spheres are loaded from robot.collision_spheres; no fitting runs here.

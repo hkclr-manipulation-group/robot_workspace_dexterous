@@ -86,7 +86,7 @@ orientations:
   count: 16
 solver:
   ik_seeds: 4
-  batch_size: 512
+  batch_size: 4096
 ```
 
 After checking bounds, link names, reachability, and collision behavior, use a
@@ -100,8 +100,28 @@ orientations:
   count: 64
 solver:
   ik_seeds: 8
-  batch_size: 512
+  batch_size: 4096
 ```
+
+### 120 GB GPU tuning
+
+cuRobo already parallelizes IK on the GPU via `solver.batch_size`. With ~120 GB
+VRAM, start at `4096` and increase until you hit OOM:
+
+```yaml
+solver:
+  ik_seeds: 8
+  batch_size: 4096   # try 8192 if stable
+```
+
+Runtime override without editing YAML:
+
+```bash
+python3 run.py --config configs/spark2_v2.yaml --batch-size 8192
+```
+
+If CUDA OOM appears, halve `batch_size`. Do not run multiple cuRobo processes on
+the same GPU; one large batch is faster than several small ones.
 
 Strict DWS requires every sampled orientation to be reachable and uses
 `minimum_dexterity: 1.0`. Lower this threshold only when the task definition
