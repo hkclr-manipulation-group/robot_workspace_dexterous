@@ -1,12 +1,12 @@
 {
-  "rws_cells": 7151,
+  "rws_cells": 6667,
   "dws_cells": 0,
-  "rws_volume_m3": 0.8938741475343707,
+  "rws_volume_m3": 0.8333742052316668,
   "dws_volume_m3": 0.0,
   "dws_rws_ratio": 0.0,
   "dws_minimum_dexterity": 1.0,
   "ee_link": "arm_end_effector",
   "orientation_samples": 32,
-  "mean_manipulability_over_rws": 0.013410001061856747,
-  "maximum_finite_condition_number": 12536614.0
+  "mean_manipulability_over_rws": 0.013402496464550495,
+  "maximum_finite_condition_number": 10459550.0
 }
