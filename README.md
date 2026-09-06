@@ -56,6 +56,26 @@ CPU-only input validation:
 python run.py --config configs/D20260901B.yaml --validate-only
 ```
 
+For CPU joint-space collision diagnostics (2048 deterministic random poses):
+
+```bash
+python run.py --config configs/D20260901B.yaml --diagnose-only
+```
+
+This reports collision-free samples and per-link-pair collision frequencies; it
+does not run IK and is not a proof of reachability. The original D2026 sphere
+sets rejected every sampled pose for the first two designs. After tighter
+fitting, the Link04/Link06 (D20260901B) and L4/L6 (D20260902B60) wrist pairs
+still collide in every sampled pose. Inspect these pairs against the CAD model
+in the collision project's native Python viewer before changing exclusions.
+They have not been silently disabled to manufacture a reachable workspace.
+
+The D20260903B10 J5 axis is tilted (`0 0.0078204 0.99997`). Runtime normalization
+inserts an aligned joint frame and an inverse fixed transform for cuRobo's
+cardinal-axis parser, retaining all original link poses and sphere coordinates.
+Random-pose FK equivalence is regression-tested. This avoids the loader's
+`str`/`value` failure without snapping the design axis to a different direction.
+
 Generate or update collision spheres in the collision project, then use its
 `model_bundle export` command to copy the three compact files into the matching
 model folder here. Update the local config's base and EE names if necessary.

@@ -26,8 +26,9 @@ def test_design_normalization_supplies_strict_dynamic_bounds_without_changing_so
         for field in ("velocity", "effort"):
             value = float(joint.find("limit").get(field))
             assert -value < value
-        for element in ("origin", "axis", "parent", "child"):
-            assert ET.tostring(joint.find(element)) == ET.tostring(source.find(element))
+        if not joint.find("child").get("link").startswith("__axis_"):
+            for element in ("origin", "parent", "child"):
+                assert ET.tostring(joint.find(element)) == ET.tostring(source.find(element))
         for field in ("lower", "upper"):
             assert joint.find("limit").get(field) == source.find("limit").get(field)
     # The normalized result also passes without fallback defaults.
