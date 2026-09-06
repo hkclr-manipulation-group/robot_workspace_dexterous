@@ -3,44 +3,54 @@
 Compute reachable and dexterous workspace volumes, the DWS/RWS ratio, Jacobian
 manipulability, and condition numbers with cuRobo.
 
-## Model inputs
+## Standalone model inputs
 
-The project reads the robot model and precomputed collision spheres from sibling
-repositories:
+All supplied configurations use `models/<model>/` inside this project:
 
 ```text
-workspace/
-├── robot_workspace_dexterous/
-├── cuarm_configuration/
-│   └── spark2_v2/share/no_gripper/arm_v2_stl.urdf
-└── collision_shpere_generation/
-    └── examples/spark2_v2/collision_spheres.yaml
+robot_workspace_dexterous/
+  models/<model>/
+    robot.urdf
+    collision_spheres.yaml
+    self_collision_ignore.yaml
+  configs/<model>.yaml
+  output/<model>/
 ```
 
-The collision spheres are loaded directly. Workspace computation does not fit
-spheres, sample a collision matrix, or modify either source repository.
+No `cuarm_mesh`, `cuarm_configuration`, collision-generation repository, or STL
+files are required. Copy this project with `models/` and `configs/` to the CUDA
+machine. Python/cuRobo dependencies are still required.
 
-The default robot configuration is:
+The URDF contains link inertias, joints, origins, axes, limits and tool frames;
+visual/collision geometry is removed. Collision checks use the external sphere
+YAML. Runtime also strips visual/collision elements from user-supplied URDFs
+without resolving mesh paths, writing `normalized_robot.urdf` under the output
+directory. The source URDF is preserved. Plots use kinematics and collision
+spheres, so mesh-free operation includes the dual-arm overview.
 
-```yaml
-robot:
-  urdf: ../cuarm_configuration/spark2_v2/share/no_gripper/arm_v2_stl.urdf
-  collision_spheres: ../collision_shpere_generation/examples/spark2_v2/collision_spheres.yaml
-  base_link: arm_base_link
-  ee_links: [arm_end_effector]
-  self_collision_ignore:
-    arm_base_link: [arm_L1]
-    arm_L1: [arm_L2]
-    arm_L2: [arm_L3]
-    arm_L3: [arm_L4, arm_L5]
-    arm_L4: [arm_L5]
-    arm_L5: [arm_L6]
+Existing presets retain their original kinematics, sampling settings and effective
+self-collision ignore mappings. Spark2 v1 uses the actual URDF root
+`dummy_base_link`; its fixed transform to `arm_base_link` is identity, so the
+workspace coordinate frame does not change. The three design presets `D20260901B`,
+`D20260902B60`, `D20260903B10` start with a 0.10 m grid, 16 orientations, 4 IK
+seeds and adjacent-link collision exclusions. They retain exported joint ranges
+[-3.14, 3.14] and velocity=0; validate those values against the design before
+using results as hardware specifications. EE frames are Link06 / L6 / L6,
+respectively, not independently calibrated TCPs.
+
+CPU-only input validation:
+
+```bash
+python run.py --config configs/D20260901B.yaml --validate-only
 ```
 
-Connected links are ignored where their meshes overlap at physical joint
-interfaces. `arm_L3`/`arm_L5` is also ignored because the intervening wrist
-geometry overlaps at the zero pose. All other non-adjacent self-collisions
-remain enabled.
+Generate or update collision spheres in the collision project, then use its
+`model_bundle export` command to copy the three compact files into the matching
+model folder here. Update the local config's base and EE names if necessary.
+Export is an explicit update step, not a runtime project dependency. When
+updating existing models, preserve the intended joint limits and TCP transforms.
+Review any non-adjacent collision exclusions; the migrated exclusions are
+preserved settings, not newly validated physical collision rules.
 
 ## Installation
 
@@ -54,7 +64,7 @@ python3 -m pip install -e .
 ## Run
 
 ```bash
-python3 run.py --config config.yaml --output-dir output --plot-height 0.0
+python3 run.py --config configs/spark2_v2.yaml --output-dir output/spark2_v2 --plot-height 0.0
 ```
 
 Dual-arm presets are available under `configs/`. Select one by passing its
@@ -153,7 +163,7 @@ geometric distortion.
 - `<ee_link>_dexterity_views.png`: XY/XZ/YZ dexterity center sections
 - `<ee_link>_manipulability.png`: XY/XZ/YZ mean-manipulability sections
 - `<ee_link>_condition_number.png`: XY/XZ/YZ worst-condition-number sections
-- `normalized_robot.urdf`: URI-normalized temporary model used by cuRobo
+- `normalized_robot.urdf`: mesh-free kinematic model used by cuRobo
 - `dual_arm_workspace_overview.png`: left, right, and shared reachable
   workspaces together in one world-frame 3D view (multi-EE configs only)
 

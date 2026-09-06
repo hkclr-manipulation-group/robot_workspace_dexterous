@@ -1,0 +1,28 @@
+robot:
+  urdf: ../models/D20260903B10/robot.urdf
+  collision_spheres: ../models/D20260903B10/collision_spheres.yaml
+  self_collision_ignore_file: ../models/D20260903B10/self_collision_ignore.yaml
+  base_link: base_link
+  ee_links:
+  - L6
+grid:
+  x_range:
+  - -1.0
+  - 1.0
+  y_range:
+  - -1.0
+  - 1.0
+  z_min: -1.0
+  z_max: 1.0
+  resolution: 0.1
+  z_step: 0.1
+orientations:
+  count: 16
+solver:
+  ik_seeds: 4
+  batch_size: 4096
+  position_tolerance: 0.005
+  orientation_tolerance: 0.08
+  self_collision: true
+output:
+  minimum_dexterity: 1.0

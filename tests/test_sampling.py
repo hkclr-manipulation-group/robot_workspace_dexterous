@@ -19,7 +19,7 @@ def test_quaternions_are_deterministic_unit_wxyz() -> None:
 def test_regular_grid_has_all_layers() -> None:
     points = regular_grid((0, 0.1), (0, 0.1), np.array([0.2, 0.3]), 0.1)
     assert points.shape == (8, 3)
-    np.testing.assert_array_equal(np.unique(points[:, 2]), [0.2, 0.3])
+    np.testing.assert_allclose(np.unique(points[:, 2]), [0.2, 0.3], rtol=1e-7)
 
 
 def test_threshold_preserves_counts() -> None:

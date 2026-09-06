@@ -1,0 +1,12 @@
+self_collision_ignore:
+  L1:
+  - L2
+  - base_link
+  L2:
+  - L3
+  L3:
+  - L4
+  L4:
+  - L5
+  L5:
+  - L6

@@ -45,21 +45,27 @@ def test_load_config_uses_precomputed_collision_spheres(tmp_path: Path) -> None:
     config = load_config(config_path)
     assert config.collision_spheres_path == spheres
     assert config.base_link == "base"
+    assert len(config.heights) == 1
+    assert config.plot_ranges[2][0] < 0 < config.plot_ranges[2][1]
     assert not hasattr(config, "sphere_density")
     assert set(_load_collision_spheres(str(spheres))) == {"base"}
 
 
-def test_normalizes_legacy_dual_v2_2_base_mesh_without_changing_source(tmp_path: Path) -> None:
+def test_normalizes_without_mesh_files_and_preserves_kinematics(tmp_path: Path) -> None:
+    import xml.etree.ElementTree as ET
+
     robot = tmp_path / "dual_v2_2"
     urdf = robot / "share" / "no_gripper" / "dual_arm.urdf"
-    mesh = robot / "share" / "meshes" / "base" / "DZ.STL"
     urdf.parent.mkdir(parents=True)
-    mesh.parent.mkdir(parents=True)
-    mesh.write_bytes(b"solid mesh\nendsolid mesh\n")
     original = (
         '<robot name="test"><link name="base"><visual><geometry>'
-        '<mesh filename="../base/DP.stl"/>'
-        '</geometry></visual></link></robot>'
+        '<mesh filename="package://missing/mesh.stl"/>'
+        '</geometry></visual><collision><geometry><mesh filename="absent.stl"/>'
+        '</geometry></collision><inertial><mass value="2"/></inertial></link>'
+        '<link name="tip"/><joint name="j" type="revolute">'
+        '<parent link="base"/><child link="tip"/><origin xyz="0 0 0.1"/>'
+        '<axis xyz="0 1 0"/><limit lower="-1" upper="2" effort="3" velocity="4"/>'
+        '</joint></robot>'
     )
     urdf.write_text(original, encoding="utf-8")
     output = tmp_path / "normalized.urdf"
@@ -67,7 +73,12 @@ def test_normalizes_legacy_dual_v2_2_base_mesh_without_changing_source(tmp_path:
     result = _normalized_urdf_for_curobo(str(urdf), str(output))
 
     assert Path(result) == output.resolve()
-    assert "DZ.STL" in output.read_text(encoding="utf-8")
+    root = ET.parse(output).getroot()
+    assert root.findall(".//mesh") == []
+    assert root.findall("link/visual") == []
+    assert root.findall("link/collision") == []
+    assert ET.tostring(root.find("joint")) == ET.tostring(ET.fromstring(original).find("joint"))
+    assert root.find("link/inertial/mass").get("value") == "2"
     assert urdf.read_text(encoding="utf-8") == original
 
 

@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='utf-8'?>
+<robot name="D20260903B10">
+  <link name="base_link">
+    <inertial>
+      <origin xyz="-6.88797773088817E-18 -9.89480960967856E-18 0.0481978962883696" rpy="0 0 0" />
+      <mass value="0.73783596319358" />
+      <inertia ixx="0.00121705823738442" ixy="-2.69828901156994E-20" ixz="2.47217060909859E-19" iyy="0.00121705823738442" iyz="1.20802935496026E-19" izz="0.000868245579909104" />
+    </inertial>
+    </link>
+  <link name="L1">
+    <inertial>
+      <origin xyz="0.068153217942347 0.00655195778005441 0.0100224208071986" rpy="0 0 0" />
+      <mass value="0.462182387897066" />
+      <inertia ixx="0.000365138305385418" ixy="-5.53840628005195E-05" ixz="0.000233299155339158" iyy="0.00113651655497681" iyz="1.36934517531061E-05" izz="0.0010751121212141" />
+    </inertial>
+    </link>
+  <joint name="J1" type="revolute">
+    <origin xyz="0 0 0.0982" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="L1" />
+    <axis xyz="0 0 -1" />
+    <limit lower="-3.14" upper="3.14" effort="0" velocity="0" />
+  </joint>
+  <link name="L2">
+    <inertial>
+      <origin xyz="0.158273148053728 2.23432383705813E-15 0.0735571847027073" rpy="0 0 0" />
+      <mass value="1.00889434292674" />
+      <inertia ixx="0.000634534320151966" ixy="-1.1753283001598E-16" ixz="-0.000404984994530057" iyy="0.0170898884554714" iyz="-4.52170174003339E-18" izz="0.0174396322774092" />
+    </inertial>
+    </link>
+  <joint name="J2" type="revolute">
+    <origin xyz="0.096 0 0" rpy="-1.5708 -1.5708 0" />
+    <parent link="L1" />
+    <child link="L2" />
+    <axis xyz="0 0 1" />
+    <limit lower="-3.14" upper="3.14" effort="0" velocity="0" />
+  </joint>
+  <link name="L3">
+    <inertial>
+      <origin xyz="0.0546198772089579 1.26287869051112E-15 0.00166890609988391" rpy="0 0 0" />
+      <mass value="1.17517439509893" />
+      <inertia ixx="0.00139982828312411" ixy="-2.68820698911065E-17" ixz="0.000645719835724588" iyy="0.00470121926337193" iyz="2.20377015850049E-18" izz="0.00442020335192355" />
+    </inertial>
+    </link>
+  <joint name="J3" type="revolute">
+    <origin xyz="0.3465 0 0" rpy="0 0 0" />
+    <parent link="L2" />
+    <child link="L3" />
+    <axis xyz="0 0 -1" />
+    <limit lower="-3.14" upper="3.14" effort="0" velocity="0" />
+  </joint>
+  <link name="L4">
+    <inertial>
+      <origin xyz="8.81996875534696E-09 -0.0181493426331045 0.0409416460015009" rpy="0 0 0" />
+      <mass value="0.248049423583649" />
+      <inertia ixx="0.000200233187431776" ixy="-2.61922877270056E-11" ixz="5.40273027961929E-11" iyy="0.000118979936104047" iyz="4.86383383048958E-06" izz="0.000191738100307126" />
+    </inertial>
+    </link>
+  <joint name="J4" type="revolute">
+    <origin xyz="0.15 0 0" rpy="0 0 0" />
+    <parent link="L3" />
+    <child link="L4" />
+    <axis xyz="0 0 -1" />
+    <limit lower="-3.14" upper="3.14" effort="0" velocity="0" />
+  </joint>
+  <link name="L5">
+    <inertial>
+      <origin xyz="0.0482975897081217 -0.00107291019025557 0.00262545579325297" rpy="0 0 0" />
+      <mass value="0.846242749019273" />
+      <inertia ixx="0.000825132448742264" ixy="-4.38539568514545E-05" ixz="-0.000104940051346817" iyy="0.00199296389329864" iyz="-2.5458503055948E-06" izz="0.00191202026204826" />
+    </inertial>
+    </link>
+  <joint name="J5" type="revolute">
+    <origin xyz="0.00075 -0.0959 0.042" rpy="1.5708 1.5708 0" />
+    <parent link="L4" />
+    <child link="L5" />
+    <axis xyz="0 0.0078204 0.99997" />
+    <limit lower="-3.14" upper="3.14" effort="0" velocity="0" />
+  </joint>
+  <link name="L6">
+    <inertial>
+      <origin xyz="0 3.72694496791892E-18 -0.0252731092436976" rpy="0 0 0" />
+      <mass value="0.140193572166444" />
+      <inertia ixx="6.58672684736741E-05" ixy="3.26241317001241E-37" ixz="1.4545647272815E-37" iyy="6.58672684736741E-05" iyz="-1.03173778939563E-20" izz="6.71368167549181E-05" />
+    </inertial>
+    </link>
+  <joint name="J6" type="revolute">
+    <origin xyz="0 0.0985 0" rpy="-1.5708 0 0" />
+    <parent link="L5" />
+    <child link="L6" />
+    <axis xyz="0 0 1" />
+    <limit lower="-3.14" upper="3.14" effort="0" velocity="0" />
+  </joint>
+</robot>
