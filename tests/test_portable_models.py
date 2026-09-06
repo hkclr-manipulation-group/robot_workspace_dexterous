@@ -20,6 +20,7 @@ def test_all_presets_load_after_relocation_without_sibling_repositories(tmp_path
             assert asset.is_relative_to(relocated)
         assert not ET.parse(config.urdf_path).findall(".//mesh")
         spheres = validate_robot_inputs(str(config.urdf_path), str(config.collision_spheres_path),
-                                        config.base_link, config.ee_links, config.self_collision_ignore)
+                                        config.base_link, config.ee_links, config.self_collision_ignore,
+                                        config.joint_limit_defaults)
         world_spheres = load_zero_pose_collision_spheres(config.urdf_path, config.collision_spheres_path)
         assert len(world_spheres) == sum(map(len, spheres.values()))

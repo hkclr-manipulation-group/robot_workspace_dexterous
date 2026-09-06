@@ -55,7 +55,8 @@ def main(argv: list[str] | None = None) -> None:
     args = parser.parse_args(argv)
     config = load_config(args.config)
     validate_robot_inputs(str(config.urdf_path), str(config.collision_spheres_path),
-                          config.base_link, config.ee_links, config.self_collision_ignore)
+                          config.base_link, config.ee_links, config.self_collision_ignore,
+                          config.joint_limit_defaults)
     if args.validate_only:
         print(f"Validated {args.config}: {config.base_link} -> {', '.join(config.ee_links)}")
         return
@@ -74,18 +75,17 @@ def main(argv: list[str] | None = None) -> None:
     output_dir = Path(args.output_dir).expanduser().resolve()
     output_dir.mkdir(parents=True, exist_ok=True)
     normalized_urdf = _normalized_urdf_for_curobo(
-        str(config.urdf_path), str(output_dir / "normalized_robot.urdf")
+        str(config.urdf_path), str(output_dir / "normalized_robot.urdf"), config.joint_limit_defaults
     )
     collision_robots = None
     if config.self_collision:
         print(f"loading collision spheres: {config.collision_spheres_path}")
         collision_robots = build_collision_robots(
-            str(config.urdf_path),
+            normalized_urdf,
             str(config.collision_spheres_path),
             config.base_link,
             config.ee_links,
             config.self_collision_ignore,
-            str(output_dir / "normalized_robot.urdf"),
         )
     workspaces: dict[str, DexterousWorkspace] = {}
     for link in config.ee_links:

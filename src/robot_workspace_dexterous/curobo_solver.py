@@ -3,6 +3,7 @@ from __future__ import annotations
 from copy import deepcopy
 from pathlib import Path
 import time
+import warnings
 from typing import Callable
 import xml.etree.ElementTree as ET
 
@@ -12,11 +13,55 @@ import yaml
 from .sampling import DexterousWorkspace, regular_grid
 
 
-def _normalized_urdf_for_curobo(urdf_path: str, output_path: str | None) -> str:
+def _prepare_joint_limits(root: ET.Element, defaults: dict[str, float] | None = None) -> list[str]:
+    """Validate movable joints, filling only missing/zero dynamic limits explicitly."""
+    defaults = defaults or {}
+    if set(defaults) - {"velocity", "effort"}:
+        raise ValueError("joint_limit_defaults accepts only velocity and effort")
+    for name, value in defaults.items():
+        if not np.isfinite(float(value)) or float(value) <= 0:
+            raise ValueError(f"joint_limit_defaults.{name} must be finite and positive")
+    replacements = []
+    for joint in root.findall("joint"):
+        kind = joint.get("type")
+        if kind not in {"revolute", "continuous", "prismatic"}:
+            continue
+        name = joint.get("name", "<unnamed>")
+        limit = joint.find("limit")
+        if limit is None:
+            raise ValueError(f"joint {name}: missing limit element")
+        if kind != "continuous":
+            lower = float(limit.get("lower", "nan"))
+            upper = float(limit.get("upper", "nan"))
+            if not np.isfinite([lower, upper]).all() or lower >= upper:
+                raise ValueError(f"joint {name}: finite position lower < upper is required")
+        for field in ("velocity", "effort"):
+            raw = limit.get(field)
+            value = float(raw) if raw is not None else 0.0
+            if value == 0 and field in defaults:
+                value = float(defaults[field])
+                limit.set(field, str(value))
+                replacements.append(f"{name}.{field}={value:g}")
+            if not np.isfinite(value) or value <= 0:
+                raise ValueError(
+                    f"joint {name}: {field}={raw!r} must be finite and positive; "
+                    "set the actual URDF limit or explicitly configure "
+                    f"robot.joint_limit_defaults.{field} for workspace-only evaluation"
+                )
+    return replacements
+
+
+def _normalized_urdf_for_curobo(
+    urdf_path: str, output_path: str | None,
+    joint_limit_defaults: dict[str, float] | None = None,
+) -> str:
     """Create a mesh-free kinematic URDF; collision geometry comes from YAML."""
     source = Path(urdf_path).expanduser().resolve()
     tree = ET.parse(source)
-    changed = False
+    replacements = _prepare_joint_limits(tree.getroot(), joint_limit_defaults)
+    changed = bool(replacements)
+    if replacements:
+        warnings.warn("Workspace-only joint limit defaults applied: " + ", ".join(replacements), stacklevel=2)
     for element in list(tree.getroot()):
         if element.tag not in {"link", "joint"}:
             tree.getroot().remove(element)
@@ -71,9 +116,11 @@ def _load_collision_spheres(path: str) -> dict[str, list[dict[str, object]]]:
 def validate_robot_inputs(
     urdf_path: str, collision_spheres_path: str, base_link: str,
     ee_links: tuple[str, ...], self_collision_ignore: dict[str, list[str]],
+    joint_limit_defaults: dict[str, float] | None = None,
 ) -> dict[str, list[dict[str, object]]]:
     """Validate portable robot inputs without importing CUDA or cuRobo."""
     root = ET.parse(urdf_path).getroot()
+    _prepare_joint_limits(root, joint_limit_defaults)
     urdf_links = {link.get("name") for link in root.findall("link")}
     child_links = {
         child.get("link")
@@ -109,11 +156,12 @@ def build_collision_robots(
     ee_links: tuple[str, ...],
     self_collision_ignore: dict[str, list[str]],
     normalized_urdf_path: str | None = None,
+    joint_limit_defaults: dict[str, float] | None = None,
 ) -> dict[str, object]:
     """Build cuRobo models from precomputed spheres without collision fitting."""
     from curobo._src.types.robot import RobotCfg
 
-    resolved_urdf = _normalized_urdf_for_curobo(urdf_path, normalized_urdf_path)
+    resolved_urdf = _normalized_urdf_for_curobo(urdf_path, normalized_urdf_path, joint_limit_defaults)
     spheres = validate_robot_inputs(
         resolved_urdf, collision_spheres_path, base_link, ee_links, self_collision_ignore
     )

@@ -28,6 +28,7 @@ class Config:
     plot_ranges: tuple[tuple[float, float], tuple[float, float], tuple[float, float]]
     plot_sections: tuple[float, float, float]
     base_position: tuple[float, float, float]
+    joint_limit_defaults: dict[str, float] | None = None
 
 
 def _local_path(config_path: Path, value: str | None) -> Path | None:
@@ -124,6 +125,12 @@ def load_config(path: str | Path) -> Config:
     }
     if not ee_links:
         raise ValueError("robot.ee_links must be non-empty")
+    limit_defaults = robot.get("joint_limit_defaults", {})
+    if not isinstance(limit_defaults, dict) or set(limit_defaults) - {"velocity", "effort"}:
+        raise ValueError("robot.joint_limit_defaults must map velocity/effort to positive values")
+    limit_defaults = {name: float(value) for name, value in limit_defaults.items()}
+    if any(not np.isfinite(value) or value <= 0 for value in limit_defaults.values()):
+        raise ValueError("robot.joint_limit_defaults values must be finite and positive")
     return Config(
         urdf_path, collision_spheres_path, str(robot["base_link"]), ee_links,
         self_collision_ignore,
@@ -135,5 +142,5 @@ def load_config(path: str | Path) -> Config:
         float(solver.get("orientation_tolerance", 0.08)),
         bool(solver.get("self_collision", True)), minimum,
         (plot_x_range, plot_y_range, plot_z_range),
-        plot_sections, base_position,
+        plot_sections, base_position, limit_defaults,
     )

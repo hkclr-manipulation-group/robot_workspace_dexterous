@@ -38,6 +38,18 @@ seeds and adjacent-link collision exclusions. They retain exported joint ranges
 using results as hardware specifications. EE frames are Link06 / L6 / L6,
 respectively, not independently calibrated TCPs.
 
+The three design configs explicitly set
+`robot.joint_limit_defaults: {velocity: 1.0, effort: 1.0}` for static workspace
+evaluation. Missing or zero velocity/effort limits are replaced only in the
+runtime `normalized_robot.urdf`, with a warning; positive limits and position
+bounds are preserved. For these revolute joints the placeholders are 1 rad/s
+and 1 N m, not measured hardware ratings. Source URDFs and collision bundles
+retain the CAD values. Use actual limits for hardware or time-dependent work.
+Without explicit defaults, `--validate-only` rejects nonpositive or nonfinite
+dynamic limits and invalid position bounds before cuRobo initialization.
+This prevents `lower velocity limits must be less than upper velocity limits`
+(zero velocity gives [0, 0]) and the analogous zero-effort error.
+
 CPU-only input validation:
 
 ```bash

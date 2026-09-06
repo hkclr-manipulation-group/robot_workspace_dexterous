@@ -1,4 +1,6 @@
 robot:
+  # Workspace-only placeholders for missing/zero CAD dynamic limits, not hardware specifications.
+  joint_limit_defaults: {velocity: 1.0, effort: 1.0}
   urdf: ../models/D20260902B60/robot.urdf
   collision_spheres: ../models/D20260902B60/collision_spheres.yaml
   self_collision_ignore_file: ../models/D20260902B60/self_collision_ignore.yaml
