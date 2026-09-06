@@ -9,6 +9,8 @@ import numpy as np
 from .config import load_config
 from .curobo_solver import (
     build_collision_robots,
+    validate_robot_inputs,
+    _normalized_urdf_for_curobo,
     compute_dexterous_workspace,
 )
 from .sampling import DexterousWorkspace
@@ -29,7 +31,7 @@ def _progress(done: int, total: int, elapsed: float) -> None:
 
 def main(argv: list[str] | None = None) -> None:
     parser = argparse.ArgumentParser(description="Compute a cuRobo dexterous workspace")
-    parser.add_argument("--config", default="config.yaml")
+    parser.add_argument("--config", default=str(Path(__file__).resolve().parents[2] / "configs/spark2_v2.yaml"))
     parser.add_argument("--output-dir", default="output")
     parser.add_argument(
         "--plot-height",
@@ -49,8 +51,14 @@ def main(argv: list[str] | None = None) -> None:
         default=None,
         help="Override solver.ik_seeds",
     )
+    parser.add_argument("--validate-only", action="store_true", help="Validate URDF and collision YAML on CPU, without running IK")
     args = parser.parse_args(argv)
     config = load_config(args.config)
+    validate_robot_inputs(str(config.urdf_path), str(config.collision_spheres_path),
+                          config.base_link, config.ee_links, config.self_collision_ignore)
+    if args.validate_only:
+        print(f"Validated {args.config}: {config.base_link} -> {', '.join(config.ee_links)}")
+        return
     if args.batch_size is not None or args.ik_seeds is not None:
         from dataclasses import replace
         config = replace(
@@ -65,6 +73,9 @@ def main(argv: list[str] | None = None) -> None:
     )
     output_dir = Path(args.output_dir).expanduser().resolve()
     output_dir.mkdir(parents=True, exist_ok=True)
+    normalized_urdf = _normalized_urdf_for_curobo(
+        str(config.urdf_path), str(output_dir / "normalized_robot.urdf")
+    )
     collision_robots = None
     if config.self_collision:
         print(f"loading collision spheres: {config.collision_spheres_path}")
@@ -80,7 +91,7 @@ def main(argv: list[str] | None = None) -> None:
     for link in config.ee_links:
         print(f"computing {link}: {len(config.orientations)} orientations per XYZ cell")
         workspace = compute_dexterous_workspace(
-            str(config.urdf_path or ""), config.base_link, link,
+            normalized_urdf, config.base_link, link,
             config.x_range, config.y_range, config.heights, config.resolution,
             config.orientations, config.ik_seeds, config.batch_size,
             config.position_tolerance, config.orientation_tolerance,

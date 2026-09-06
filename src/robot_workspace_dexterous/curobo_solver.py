@@ -13,66 +13,29 @@ from .sampling import DexterousWorkspace, regular_grid
 
 
 def _normalized_urdf_for_curobo(urdf_path: str, output_path: str | None) -> str:
-    """Resolve URI-style mesh references for cuRobo's filesystem-only parser."""
+    """Create a mesh-free kinematic URDF; collision geometry comes from YAML."""
     source = Path(urdf_path).expanduser().resolve()
-    root = ET.parse(source).getroot()
+    tree = ET.parse(source)
     changed = False
-    legacy_v2_2_base_meshes = {
-        "dp.stl": "DZ.STL",
-        "s1.stl": "SJ1Z.STL",
-        "s2.stl": "SJ2Z.STL",
-        "s3.stl": "SJ3Z.STL",
-        "s4.stl": "SJ4Z.STL",
-    }
-    for mesh in root.findall(".//mesh"):
-        value = mesh.get("filename")
-        if not value:
-            continue
-        if value.startswith("package://"):
-            package_relative = Path(value[len("package://") :])
-            # The first URI component is a logical package name.
-            suffix = Path(*package_relative.parts[1:])
-            suffixes = [suffix]
-            if len(suffix.parts) > 1:
-                # Some exports include both a logical package and a robot
-                # version before the share-relative `meshes/...` path.
-                suffixes.append(Path(*suffix.parts[1:]))
-        else:
-            suffix = Path(value)
-            suffixes = [suffix]
-        resolved = None
-        candidates = []
-        for relative in suffixes:
-            candidates.append((source.parent / relative).resolve())
-            candidates.extend((parent / relative).resolve() for parent in source.parents)
-        for candidate in candidates:
-            if candidate.is_file() and candidate.stat().st_size > 0:
-                resolved = candidate
-                break
-        # dual_v2_2/no_gripper was exported with the previous base filenames.
-        # Resolve those names against the v2.2 assets without editing the
-        # source configuration repository.
-        legacy_name = legacy_v2_2_base_meshes.get(suffix.name.lower())
-        if resolved is None and legacy_name and "dual_v2_2" in source.parts:
-            for parent in source.parents:
-                candidate = (parent / "meshes" / "base" / legacy_name).resolve()
-                if candidate.is_file() and candidate.stat().st_size > 0:
-                    resolved = candidate
-                    break
-        if resolved is None:
-            raise FileNotFoundError(
-                f"cannot resolve URDF mesh URI {value!r} from {source}"
-            )
-        mesh.set("filename", resolved.as_posix())
-        changed = True
-    if not changed:
+    for element in list(tree.getroot()):
+        if element.tag not in {"link", "joint"}:
+            tree.getroot().remove(element)
+            changed = True
+    for link in tree.getroot().findall("link"):
+        for element in list(link):
+            if element.tag in {"visual", "collision"}:
+                link.remove(element)
+                changed = True
+    if not changed and output_path is None:
         return str(source)
     destination = (
         Path(output_path).expanduser().resolve()
         if output_path else source.with_name(source.stem + "_curobo.urdf")
     )
+    if destination == source:
+        raise ValueError("normalized URDF output must differ from the source")
     destination.parent.mkdir(parents=True, exist_ok=True)
-    ET.ElementTree(root).write(destination, encoding="utf-8", xml_declaration=True)
+    tree.write(destination, encoding="utf-8", xml_declaration=True)
     return str(destination)
 
 
@@ -105,19 +68,12 @@ def _load_collision_spheres(path: str) -> dict[str, list[dict[str, object]]]:
     return spheres
 
 
-def build_collision_robots(
-    urdf_path: str,
-    collision_spheres_path: str,
-    base_link: str,
-    ee_links: tuple[str, ...],
-    self_collision_ignore: dict[str, list[str]],
-    normalized_urdf_path: str | None = None,
-) -> dict[str, object]:
-    """Build cuRobo models from precomputed spheres without collision fitting."""
-    from curobo._src.types.robot import RobotCfg
-
-    resolved_urdf = _normalized_urdf_for_curobo(urdf_path, normalized_urdf_path)
-    root = ET.parse(resolved_urdf).getroot()
+def validate_robot_inputs(
+    urdf_path: str, collision_spheres_path: str, base_link: str,
+    ee_links: tuple[str, ...], self_collision_ignore: dict[str, list[str]],
+) -> dict[str, list[dict[str, object]]]:
+    """Validate portable robot inputs without importing CUDA or cuRobo."""
+    root = ET.parse(urdf_path).getroot()
     urdf_links = {link.get("name") for link in root.findall("link")}
     child_links = {
         child.get("link")
@@ -142,6 +98,25 @@ def build_collision_robots(
                 "self-collision ignore contains links not found in URDF: "
                 + ", ".join(sorted(unknown_ignore))
             )
+
+    return spheres
+
+
+def build_collision_robots(
+    urdf_path: str,
+    collision_spheres_path: str,
+    base_link: str,
+    ee_links: tuple[str, ...],
+    self_collision_ignore: dict[str, list[str]],
+    normalized_urdf_path: str | None = None,
+) -> dict[str, object]:
+    """Build cuRobo models from precomputed spheres without collision fitting."""
+    from curobo._src.types.robot import RobotCfg
+
+    resolved_urdf = _normalized_urdf_for_curobo(urdf_path, normalized_urdf_path)
+    spheres = validate_robot_inputs(
+        resolved_urdf, collision_spheres_path, base_link, ee_links, self_collision_ignore
+    )
 
     common = {
         "urdf_path": resolved_urdf,

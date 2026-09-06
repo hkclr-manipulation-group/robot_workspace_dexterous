@@ -81,7 +81,9 @@ def load_config(path: str | Path) -> Config:
     plot = raw.get("plot", {})
     plot_x_range = tuple(float(v) for v in plot.get("x_range", x_range))
     plot_y_range = tuple(float(v) for v in plot.get("y_range", y_range))
-    plot_z_range = tuple(float(v) for v in plot.get("z_range", (z_min, z_max)))
+    # A single sampled height is valid; give its plots a nonzero vertical span.
+    default_z_range = (z_min, z_max) if z_max > z_min else (z_min - z_step / 2, z_min + z_step / 2)
+    plot_z_range = tuple(float(v) for v in plot.get("z_range", default_z_range))
     plot_sections = tuple(float(v) for v in plot.get("sections_xyz", (0.0, 0.0, 0.0)))
     base_position = tuple(float(v) for v in plot.get("base_position", (0.0, 0.0, 0.0)))
     for name, limits in (
