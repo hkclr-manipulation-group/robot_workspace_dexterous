@@ -52,11 +52,17 @@ def main(argv: list[str] | None = None) -> None:
         help="Override solver.ik_seeds",
     )
     parser.add_argument("--validate-only", action="store_true", help="Validate URDF and collision YAML on CPU, without running IK")
+    parser.add_argument("--diagnose-only", action="store_true", help="Sample 2048 joint configurations and report sphere collisions on CPU")
     args = parser.parse_args(argv)
     config = load_config(args.config)
     validate_robot_inputs(str(config.urdf_path), str(config.collision_spheres_path),
                           config.base_link, config.ee_links, config.self_collision_ignore,
                           config.joint_limit_defaults)
+    if args.diagnose_only:
+        from .diagnostics import diagnose_collisions
+        print(json.dumps(diagnose_collisions(config.urdf_path, config.collision_spheres_path,
+                                            config.self_collision_ignore), indent=2))
+        return
     if args.validate_only:
         print(f"Validated {args.config}: {config.base_link} -> {', '.join(config.ee_links)}")
         return

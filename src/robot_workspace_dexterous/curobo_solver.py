@@ -11,6 +11,7 @@ import numpy as np
 import yaml
 
 from .sampling import DexterousWorkspace, regular_grid
+from .urdf_compat import align_joint_axes
 
 
 def _prepare_joint_limits(root: ET.Element, defaults: dict[str, float] | None = None) -> list[str]:
@@ -59,7 +60,8 @@ def _normalized_urdf_for_curobo(
     source = Path(urdf_path).expanduser().resolve()
     tree = ET.parse(source)
     replacements = _prepare_joint_limits(tree.getroot(), joint_limit_defaults)
-    changed = bool(replacements)
+    converted_axes = align_joint_axes(tree.getroot())
+    changed = bool(replacements or converted_axes)
     if replacements:
         warnings.warn("Workspace-only joint limit defaults applied: " + ", ".join(replacements), stacklevel=2)
     for element in list(tree.getroot()):
@@ -121,6 +123,7 @@ def validate_robot_inputs(
     """Validate portable robot inputs without importing CUDA or cuRobo."""
     root = ET.parse(urdf_path).getroot()
     _prepare_joint_limits(root, joint_limit_defaults)
+    align_joint_axes(root)
     urdf_links = {link.get("name") for link in root.findall("link")}
     child_links = {
         child.get("link")
