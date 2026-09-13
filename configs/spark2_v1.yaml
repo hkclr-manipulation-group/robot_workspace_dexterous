@@ -1,6 +1,6 @@
 robot:
   urdf: ../models/spark2_v1/robot.urdf
-  collision_spheres: ../models/spark2_v1/collision_spheres.yaml
+  collision_spheres: ../models/spark2_v1/collision_spheres_interior.yaml
   base_link: dummy_base_link
   ee_links:
   - arm_end_effector

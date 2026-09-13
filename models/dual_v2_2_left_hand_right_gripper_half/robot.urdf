@@ -2,7 +2,7 @@
 <robot name="dual_v2_2_half_left_hand_right_gripper">
   <link name="dummy_world" />
   <joint name="w0" type="fixed">
-    <origin rpy="0.0 0.0 3.14159" xyz="0.0 0.0 0.342" />
+    <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.342" />
     <parent link="dummy_world" />
     <child link="SJ4Z" />
   </joint>
@@ -87,13 +87,13 @@
   </joint>
   <link name="arm_L6_l">
     <inertial>
-      <origin rpy="0 0 0" xyz="0.010311 -2.4019E-05 -0.0088178" />
-      <mass value="0.83154" />
-      <inertia ixx="0.00034339" ixy="9.9447E-08" ixz="8.1064E-06" iyy="0.0006557" iyz="-1.134E-08" izz="0.00064615" />
+      <origin rpy="0 0 0" xyz="-2.40187764325855E-05 -0.0103113089150794 -0.00881784364749045" />
+      <mass value="0.831539795358367" />
+      <inertia ixx="0.000655700282508314" ixy="-9.94477485601248E-08" ixz="-1.13406853852821E-08" iyy="0.000343386952877992" iyz="-8.10638688560648E-06" izz="0.000646147233297348" />
     </inertial>
     </link>
   <joint name="arm_J6_l" type="revolute">
-    <origin rpy=" -1.57079632  -1.57079632  0.000000000" xyz=" 0.000000000  0.000000000  0.000000000" />
+    <origin rpy=" -1.57079632  0.000000000  0.000000000" xyz=" 0.000000000  0.000000000  0.000000000" />
     <parent link="arm_L5_l" />
     <child link="arm_L6_l" />
     <axis xyz="0 0 1" />
@@ -101,13 +101,13 @@
   </joint>
   <link name="arm_L7_l">
     <inertial>
-      <origin rpy="0 0 0" xyz="-6.769E-06 -3.623E-05 -0.02979" />
-      <mass value="0.48259" />
-      <inertia ixx="0.00012933" ixy="-1.0323E-08" ixz="4.6109E-09" iyy="0.00012911" iyz="-4.4149E-07" izz="0.0001647" />
+      <origin rpy="0 0 0" xyz="0.0014199 -8.3116E-05 -0.031317" />
+      <mass value="0.45531" />
+      <inertia ixx="0.00012081" ixy="-1.9587E-07" ixz="-4.0084E-09" iyy="0.00012092" iyz="-4.2026E-07" izz="0.00014782" />
     </inertial>
     </link>
   <joint name="arm_J7_l" type="revolute">
-    <origin rpy=" 1.57079632   0.000000000  1.57079632" xyz=" 0.113        0.000000000  0.000000000" />
+    <origin rpy=" 1.57079632   0.000000000  0.000000000" xyz=" 0.000000000  -0.11  0.000000000" />
     <parent link="arm_L6_l" />
     <child link="arm_L7_l" />
     <axis xyz="0 0 1" />
@@ -198,13 +198,13 @@
   </joint>
   <link name="arm_L6_r">
     <inertial>
-      <origin rpy="0 0 0" xyz="0.010311 -2.4019E-05 -0.0088178" />
+      <origin rpy="0 0 0" xyz="-2.4019E-05 -0.010311 -0.0088178" />
       <mass value="0.83154" />
-      <inertia ixx="0.00034339" ixy="9.9447E-08" ixz="8.1064E-06" iyy="0.0006557" iyz="-1.134E-08" izz="0.00064615" />
+      <inertia ixx="0.0006557" ixy="-9.9447E-08" ixz="-1.134E-08" iyy="0.00034339" iyz="-8.1064E-06" izz="0.00064615" />
     </inertial>
     </link>
   <joint name="arm_J6_r" type="revolute">
-    <origin rpy=" 1.57079632   1.57079632   0.000000000" xyz=" 0.000000000  0.000000000  0.000000000" />
+    <origin rpy=" 1.57079632   0.000000000  0.000000000" xyz=" 0.000000000  0.000000000  0.000000000" />
     <parent link="arm_L5_r" />
     <child link="arm_L6_r" />
     <axis xyz="0 0 1" />
@@ -212,13 +212,13 @@
   </joint>
   <link name="arm_L7_r">
     <inertial>
-      <origin rpy="0 0 0" xyz="-6.769E-06 3.623E-05 0.02979" />
-      <mass value="0.48259" />
-      <inertia ixx="0.00012933" ixy="1.0323E-08" ixz="-4.6109E-09" iyy="0.00012911" iyz="-4.4149E-07" izz="0.0001647" />
+      <origin rpy="0 0 0" xyz="0.0014199 8.3116E-05 0.031317" />
+      <mass value="0.45531" />
+      <inertia ixx="0.00012081" ixy="1.9587E-07" ixz="4.0084E-09" iyy="0.00012092" iyz="-4.2026E-07" izz="0.00014782" />
     </inertial>
     </link>
   <joint name="arm_J7_r" type="revolute">
-    <origin rpy=" -1.57079632  0.000000000  1.57079632" xyz=" 0.113        0.000000000  0.000000000" />
+    <origin rpy=" -1.57079632  0.000000000  0.000000000" xyz=" 0.000000000  -0.11  0.000000000" />
     <parent link="arm_L6_r" />
     <child link="arm_L7_r" />
     <axis xyz="0 0 1" />
@@ -235,6 +235,12 @@
     <origin rpy="0 0 0" xyz="0 0 0" />
     <parent link="SJ4Z" />
     <child link="arm_base_link_r" />
+  </joint>
+  
+  <joint name="hand_J0_l" type="fixed">
+    <origin rpy="0 3.14159 0" xyz="0 0 0" />
+    <parent link="arm_end_effector_l" />
+    <child link="hand_base_link_l" />
   </joint>
   <link name="hand_base_link_l">
     <inertial>
@@ -417,11 +423,6 @@
     <limit effort="50" lower="0" upper="1.6" velocity="1" />
     <mimic joint="hand_J6_l" multiplier="1" offset="0" />
   </joint>
-  <joint name="hand_J0_l" type="fixed">
-    <origin rpy="0 3.14159 0.01" xyz="0 0 0" />
-    <parent link="arm_end_effector_l" />
-    <child link="hand_base_link_l" />
-  </joint>
   <link name="gripper_base_link_r">
     <inertial>
       <origin rpy="0 0 0" xyz="-0.0095149 0.0024748 0.033808" />
@@ -430,7 +431,7 @@
     </inertial>
     </link>
   <joint name="gripper_base_joint_r" type="fixed">
-    <origin rpy="0 -3.14159 3.14159" xyz="0 0 -0.005" />
+    <origin rpy="0 -3.14159 3.14159" xyz="0 0 0" />
     <parent link="arm_end_effector_r" />
     <child link="gripper_base_link_r" />
   </joint>
@@ -442,7 +443,7 @@
     </inertial>
     </link>
   <joint name="gripper_J1_r" type="prismatic">
-    <origin rpy="1.5708 0 1.5708" xyz="-0.034261 0 0.11826" />
+    <origin rpy="1.5708 0 1.5708" xyz="-0.0042608 0 0.11826" />
     <parent link="gripper_base_link_r" />
     <child link="gripper_L1_r" />
     <axis xyz="0 0 -1" />
@@ -456,10 +457,10 @@
     </inertial>
     </link>
   <joint name="gripper_J1_r_1" type="prismatic">
-    <origin rpy="-1.5708 0 1.5708" xyz="0.025739 0 0.11826" />
+    <origin rpy="-1.5708 0 1.5708" xyz="-0.0042608 0 0.11826" />
     <parent link="gripper_base_link_r" />
     <child link="gripper_L2_r" />
-    <axis xyz="0 0 1" />
+    <axis xyz="0 0 -1" />
     <limit effort="1.0" lower="0" upper="0.0396" velocity="1.0" />
     <mimic joint="gripper_J1_r" multiplier="1" offset="0" />
   </joint>

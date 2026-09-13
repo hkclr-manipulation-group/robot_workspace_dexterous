@@ -1,0 +1,112 @@
+[
+  {
+    "model": "dual_v2_1_left_hand_right_gripper",
+    "source_urdf": "collision_shpere_generation\\models\\dual_v2_1_left_hand_right_gripper\\robot.urdf",
+    "legacy_config": "models/dual_v2_1_left_hand_right_gripper/legacy/config.yaml",
+    "old_base": "dummy_world",
+    "new_base": "dummy_world",
+    "removed_invalid_ignore_pairs": [],
+    "added_kinematic_neighbor_pairs": []
+  },
+  {
+    "model": "dual_v2_1_with_gripper",
+    "source_urdf": "collision_shpere_generation\\models\\dual_v2_1_with_gripper\\robot.urdf",
+    "legacy_config": "models/dual_v2_1_with_gripper/legacy/config.yaml",
+    "old_base": "dummy_world",
+    "new_base": "dummy_world",
+    "removed_invalid_ignore_pairs": [],
+    "added_kinematic_neighbor_pairs": []
+  },
+  {
+    "model": "dual_v2_2_left_hand_right_gripper_half",
+    "source_urdf": "collision_shpere_generation\\models\\dual_v2_2_left_hand_right_gripper_half\\robot.urdf",
+    "legacy_config": "models/dual_v2_2_left_hand_right_gripper_half/legacy/config.yaml",
+    "old_base": "dummy_world",
+    "new_base": "dummy_world",
+    "removed_invalid_ignore_pairs": [],
+    "added_kinematic_neighbor_pairs": []
+  },
+  {
+    "model": "dual_v2_2_no_gripper",
+    "source_urdf": "collision_shpere_generation\\models\\dual_v2_2_no_gripper\\robot.urdf",
+    "legacy_config": "models/dual_v2_2_no_gripper/legacy/config.yaml",
+    "old_base": "dummy_world",
+    "new_base": "dummy_world",
+    "removed_invalid_ignore_pairs": [
+      [
+        "DP",
+        "arm_L1_l"
+      ],
+      [
+        "DP",
+        "arm_L1_r"
+      ],
+      [
+        "DP",
+        "s1"
+      ],
+      [
+        "arm_L1_l",
+        "s4"
+      ],
+      [
+        "arm_L1_r",
+        "s4"
+      ],
+      [
+        "s1",
+        "s2"
+      ],
+      [
+        "s2",
+        "s3"
+      ],
+      [
+        "s3",
+        "s4"
+      ]
+    ],
+    "added_kinematic_neighbor_pairs": [
+      [
+        "H1",
+        "H2"
+      ],
+      [
+        "H1",
+        "S4"
+      ],
+      [
+        "S0",
+        "S1"
+      ],
+      [
+        "S1",
+        "S2"
+      ],
+      [
+        "S2",
+        "S3"
+      ],
+      [
+        "S3",
+        "S4"
+      ],
+      [
+        "S4",
+        "arm_L1_l"
+      ],
+      [
+        "S4",
+        "arm_L1_r"
+      ]
+    ],
+    "zero_range_joints_exported_as_fixed": [
+      "S1",
+      "S2",
+      "S3",
+      "S4",
+      "H1",
+      "H2"
+    ]
+  }
+]

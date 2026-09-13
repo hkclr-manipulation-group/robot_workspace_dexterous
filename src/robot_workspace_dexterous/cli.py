@@ -9,6 +9,7 @@ import numpy as np
 from .config import load_config
 from .curobo_solver import (
     build_collision_robots,
+    collision_sphere_metadata,
     validate_robot_inputs,
     _normalized_urdf_for_curobo,
     compute_dexterous_workspace,
@@ -53,18 +54,20 @@ def main(argv: list[str] | None = None) -> None:
     )
     parser.add_argument("--validate-only", action="store_true", help="Validate URDF and collision YAML on CPU, without running IK")
     parser.add_argument("--diagnose-only", action="store_true", help="Sample 2048 joint configurations and report sphere collisions on CPU")
+    parser.add_argument("--diagnostic-samples", type=int, default=2048, help="Joint configurations for --diagnose-only")
     args = parser.parse_args(argv)
     config = load_config(args.config)
     validate_robot_inputs(str(config.urdf_path), str(config.collision_spheres_path),
                           config.base_link, config.ee_links, config.self_collision_ignore,
                           config.joint_limit_defaults)
+    collision_model = collision_sphere_metadata(config.collision_spheres_path)
     if args.diagnose_only:
         from .diagnostics import diagnose_collisions
         print(json.dumps(diagnose_collisions(config.urdf_path, config.collision_spheres_path,
-                                            config.self_collision_ignore), indent=2))
+                                            config.self_collision_ignore, samples=args.diagnostic_samples), indent=2))
         return
     if args.validate_only:
-        print(f"Validated {args.config}: {config.base_link} -> {', '.join(config.ee_links)}")
+        print(f"Validated {args.config}: {config.base_link} -> {', '.join(config.ee_links)}; sphere mode={collision_model['mode']}, expansion=0 mm")
         return
     if args.batch_size is not None or args.ik_seeds is not None:
         from dataclasses import replace
@@ -160,6 +163,7 @@ def main(argv: list[str] | None = None) -> None:
             np.isfinite(workspace.condition_number_max)
         ]
         summary.update({
+            "collision_model": {**collision_model, "self_collision_enabled": config.self_collision},
             "ee_link": link,
             "orientation_samples": workspace.orientation_count,
             "mean_manipulability_over_rws": float(np.mean(

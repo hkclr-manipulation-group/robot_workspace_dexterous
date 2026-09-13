@@ -5,7 +5,7 @@ import xml.etree.ElementTree as ET
 
 import matplotlib.pyplot as plt
 import numpy as np
-import yaml
+from .curobo_solver import _load_collision_spheres
 
 from .sampling import DexterousWorkspace
 
@@ -44,8 +44,7 @@ def load_zero_pose_collision_spheres(
         parent = stack.pop()
         for child, transform in children.get(parent, []):
             poses[child] = poses[parent] @ transform; stack.append(child)
-    with Path(collision_spheres_path).open("r", encoding="utf-8") as stream:
-        sphere_map = yaml.safe_load(stream)["collision_spheres"]
+    sphere_map = _load_collision_spheres(str(collision_spheres_path))
     result: list[WorldSphere] = []
     for link, spheres in sphere_map.items():
         pose = poses[link]

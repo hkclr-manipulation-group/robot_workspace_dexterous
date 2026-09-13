@@ -1,0 +1,77 @@
+{
+  "model": "D20260901B",
+  "mode": "interior",
+  "radius_expansion_mm": 0,
+  "max_spheres_per_link": 256,
+  "samples": 100,
+  "links": {
+    "baselink": {
+      "count": 256,
+      "parts": [
+        {
+          "geometry": "closed",
+          "max_surface_vertex_gap_mm": 5.616444948761744
+        }
+      ]
+    },
+    "Link01": {
+      "count": 256,
+      "parts": [
+        {
+          "geometry": "closed",
+          "max_surface_vertex_gap_mm": 6.870454556115437
+        }
+      ]
+    },
+    "Link02": {
+      "count": 256,
+      "parts": [
+        {
+          "geometry": "closed",
+          "max_surface_vertex_gap_mm": 15.776326009257838
+        }
+      ]
+    },
+    "Link03": {
+      "count": 256,
+      "parts": [
+        {
+          "geometry": "closed",
+          "max_surface_vertex_gap_mm": 14.041875848465068
+        }
+      ]
+    },
+    "Link04": {
+      "count": 256,
+      "parts": [
+        {
+          "geometry": "closed",
+          "max_surface_vertex_gap_mm": 8.243395439472035
+        }
+      ]
+    },
+    "Link05": {
+      "count": 44,
+      "parts": [
+        {
+          "geometry": "closed",
+          "max_surface_vertex_gap_mm": 1.8644865678083833
+        }
+      ]
+    },
+    "Link06": {
+      "count": 256,
+      "parts": [
+        {
+          "geometry": "closed",
+          "max_surface_vertex_gap_mm": 3.583510409524084
+        }
+      ]
+    }
+  },
+  "failures": {},
+  "complete": true,
+  "total_spheres": 1580,
+  "estimated_links": [],
+  "sphere_sha256": "c84e859bc0a58948bb8a2c03ac0a87435e2463dd0e37331eec6c2718dc5cbeed"
+}

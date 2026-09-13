@@ -1,6 +1,6 @@
 robot:
   urdf: ../models/dual_v2_1_with_hand/robot.urdf
-  collision_spheres: ../models/dual_v2_1_with_hand/collision_spheres.yaml
+  collision_spheres: ../models/dual_v2_1_with_hand/collision_spheres_interior.yaml
   base_link: dummy_world
   ee_links:
   - arm_end_effector_l

@@ -2,6 +2,8 @@ from __future__ import annotations
 
 from copy import deepcopy
 from pathlib import Path
+import hashlib
+import json
 import time
 import warnings
 from typing import Callable
@@ -86,9 +88,30 @@ def _normalized_urdf_for_curobo(
     return str(destination)
 
 
+def collision_sphere_metadata(path: str | Path) -> dict:
+    """Identify the exact sphere set and validate its optional generation report."""
+    source = Path(path).expanduser().resolve()
+    digest = hashlib.sha256(source.read_bytes()).hexdigest()
+    metadata = {"file": str(source), "sha256": digest, "mode": "external",
+                "radius_expansion_mm": 0.0}
+    report_path = source.with_suffix('.json')
+    if report_path.exists():
+        report = json.loads(report_path.read_text('utf-8'))
+        if not isinstance(report, dict) or not report.get('complete') or report.get('sphere_sha256') != digest:
+            raise ValueError(f"Sphere generation report is incomplete or checksum mismatched: {report_path}")
+        metadata.update({key: report[key] for key in (
+            'model', 'mode', 'total_spheres', 'estimated_links') if key in report})
+        gaps = [part['max_surface_vertex_gap_mm'] for link in report.get('links', {}).values()
+                for part in link.get('parts', [])]
+        if gaps:
+            metadata['max_sampled_surface_gap_mm'] = max(gaps)
+    return metadata
+
+
 def _load_collision_spheres(path: str) -> dict[str, list[dict[str, object]]]:
     """Load and validate a collision sphere file generated for cuRobo."""
     source = Path(path).expanduser().resolve()
+    collision_sphere_metadata(source)
     with source.open("r", encoding="utf-8") as stream:
         data = yaml.safe_load(stream)
     spheres = data.get("collision_spheres") if isinstance(data, dict) else None

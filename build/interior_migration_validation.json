@@ -1,0 +1,440 @@
+[
+  {
+    "samples": 4,
+    "collision_free_samples": 4,
+    "collision_model": {
+      "file": "D:\\code_agent\\robot_workspace_dexterous\\models\\D20260901B\\collision_spheres_interior.yaml",
+      "sha256": "c84e859bc0a58948bb8a2c03ac0a87435e2463dd0e37331eec6c2718dc5cbeed",
+      "mode": "interior",
+      "radius_expansion_mm": 0.0,
+      "model": "D20260901B",
+      "total_spheres": 1580,
+      "estimated_links": [],
+      "max_sampled_surface_gap_mm": 15.776326009257838
+    },
+    "pairs": [],
+    "model": "D20260901B",
+    "source_fk_max_error": 0.0
+  },
+  {
+    "samples": 4,
+    "collision_free_samples": 3,
+    "collision_model": {
+      "file": "D:\\code_agent\\robot_workspace_dexterous\\models\\D20260902B60\\collision_spheres_interior.yaml",
+      "sha256": "c0593736bf8e68dd0bcc0394cd5bec2b3999db153a27be176b9369873d44c152",
+      "mode": "interior",
+      "radius_expansion_mm": 0.0,
+      "model": "D20260902B60",
+      "total_spheres": 1792,
+      "estimated_links": [],
+      "max_sampled_surface_gap_mm": 19.11961344407259
+    },
+    "pairs": [
+      {
+        "links": [
+          "L3",
+          "L5"
+        ],
+        "collision_fraction": 0.25,
+        "best_gap_m": 0.022148496864749345,
+        "worst_gap_m": -0.015910851760113046
+      }
+    ],
+    "model": "D20260902B60",
+    "source_fk_max_error": 0.0
+  },
+  {
+    "samples": 4,
+    "collision_free_samples": 2,
+    "collision_model": {
+      "file": "D:\\code_agent\\robot_workspace_dexterous\\models\\D20260903B10\\collision_spheres_interior.yaml",
+      "sha256": "0b8dc9460c41f4b077e701941dd960c91c2051ae0e0021f37e4ad34000f095ea",
+      "mode": "interior",
+      "radius_expansion_mm": 0.0,
+      "model": "D20260903B10",
+      "total_spheres": 1792,
+      "estimated_links": [],
+      "max_sampled_surface_gap_mm": 19.11961344407259
+    },
+    "pairs": [
+      {
+        "links": [
+          "L3",
+          "L5"
+        ],
+        "collision_fraction": 0.5,
+        "best_gap_m": 0.025514020418674677,
+        "worst_gap_m": -0.02687672608880152
+      }
+    ],
+    "model": "D20260903B10",
+    "source_fk_max_error": 0.0
+  },
+  {
+    "samples": 4,
+    "collision_free_samples": 3,
+    "collision_model": {
+      "file": "D:\\code_agent\\robot_workspace_dexterous\\models\\dual_v2_1_left_hand_right_gripper\\collision_spheres_interior.yaml",
+      "sha256": "d4c654ef46f365a4fa5dd6ce2ff0c8eb5b6b261e623561eb5dc21e5658e44794",
+      "mode": "interior",
+      "radius_expansion_mm": 0.0,
+      "model": "dual_v2_1_left_hand_right_gripper",
+      "total_spheres": 5976,
+      "estimated_links": [
+        "DP",
+        "arm_L1_l",
+        "arm_L2_l",
+        "arm_L3_l",
+        "arm_L4_l",
+        "arm_L5_l",
+        "arm_L6_l",
+        "arm_L7_l",
+        "arm_L1_r",
+        "arm_L2_r",
+        "arm_L3_r",
+        "arm_L4_r",
+        "arm_L5_r",
+        "arm_L6_r",
+        "arm_L7_r",
+        "hand_base_link_l",
+        "L_pinky_distal"
+      ],
+      "max_sampled_surface_gap_mm": 148.50631947472584
+    },
+    "pairs": [
+      {
+        "links": [
+          "L_thumb_proximal",
+          "L_index_distal"
+        ],
+        "collision_fraction": 0.25,
+        "best_gap_m": 0.055895870367664614,
+        "worst_gap_m": -3.423400083257984e-05
+      },
+      {
+        "links": [
+          "L_thumb_intermediate",
+          "L_index_distal"
+        ],
+        "collision_fraction": 0.25,
+        "best_gap_m": 0.0434171460842323,
+        "worst_gap_m": -0.0019199524669362613
+      }
+    ],
+    "model": "dual_v2_1_left_hand_right_gripper",
+    "source_fk_max_error": 0.0
+  },
+  {
+    "samples": 4,
+    "collision_free_samples": 4,
+    "collision_model": {
+      "file": "D:\\code_agent\\robot_workspace_dexterous\\models\\dual_v2_1_no_gripper\\collision_spheres_interior.yaml",
+      "sha256": "936d08aea2e12416861bd4a61a5913178ad9874a8bb9b13f9d688c4859eb1096",
+      "mode": "interior",
+      "radius_expansion_mm": 0.0,
+      "model": "dual_v2_1_no_gripper",
+      "total_spheres": 2762,
+      "estimated_links": [
+        "DP",
+        "arm_L1_l",
+        "arm_L2_l",
+        "arm_L3_l",
+        "arm_L4_l",
+        "arm_L5_l",
+        "arm_L6_l",
+        "arm_L7_l",
+        "arm_L1_r",
+        "arm_L2_r",
+        "arm_L3_r",
+        "arm_L4_r",
+        "arm_L5_r",
+        "arm_L6_r",
+        "arm_L7_r"
+      ],
+      "max_sampled_surface_gap_mm": 148.50631947472584
+    },
+    "pairs": [],
+    "model": "dual_v2_1_no_gripper",
+    "source_fk_max_error": 0.0
+  },
+  {
+    "samples": 4,
+    "collision_free_samples": 4,
+    "collision_model": {
+      "file": "D:\\code_agent\\robot_workspace_dexterous\\models\\dual_v2_1_with_gripper\\collision_spheres_interior.yaml",
+      "sha256": "49e4c0b5952831abd0fcdf61fbcb79d19472930cef4a9b43bc023e46365800c5",
+      "mode": "interior",
+      "radius_expansion_mm": 0.0,
+      "model": "dual_v2_1_with_gripper",
+      "total_spheres": 4298,
+      "estimated_links": [
+        "DP",
+        "arm_L1_l",
+        "arm_L2_l",
+        "arm_L3_l",
+        "arm_L4_l",
+        "arm_L5_l",
+        "arm_L6_l",
+        "arm_L7_l",
+        "arm_L1_r",
+        "arm_L2_r",
+        "arm_L3_r",
+        "arm_L4_r",
+        "arm_L5_r",
+        "arm_L6_r",
+        "arm_L7_r"
+      ],
+      "max_sampled_surface_gap_mm": 148.50631947472584
+    },
+    "pairs": [],
+    "model": "dual_v2_1_with_gripper",
+    "source_fk_max_error": 0.0
+  },
+  {
+    "samples": 4,
+    "collision_free_samples": 0,
+    "collision_model": {
+      "file": "D:\\code_agent\\robot_workspace_dexterous\\models\\dual_v2_1_with_hand\\collision_spheres_interior.yaml",
+      "sha256": "5bf7ce9c501bf0d0d89eaf36d0016b529d47c880ae3f2b86f6977cead12830b5",
+      "mode": "interior",
+      "radius_expansion_mm": 0.0,
+      "model": "dual_v2_1_with_hand",
+      "total_spheres": 7908,
+      "estimated_links": [
+        "DP",
+        "arm_L1_l",
+        "arm_L2_l",
+        "arm_L3_l",
+        "arm_L4_l",
+        "arm_L5_l",
+        "arm_L6_l",
+        "arm_L7_l",
+        "arm_L1_r",
+        "arm_L2_r",
+        "arm_L3_r",
+        "arm_L4_r",
+        "arm_L5_r",
+        "arm_L6_r",
+        "arm_L7_r",
+        "hand_base_link_l",
+        "L_pinky_distal",
+        "R_pinky_distal"
+      ],
+      "max_sampled_surface_gap_mm": 148.50631947472584
+    },
+    "pairs": [
+      {
+        "links": [
+          "arm_L7_l",
+          "L_thumb_proximal_base"
+        ],
+        "collision_fraction": 1.0,
+        "best_gap_m": -0.0015262548240124697,
+        "worst_gap_m": -0.0017069004263317719
+      },
+      {
+        "links": [
+          "arm_L6_l",
+          "hand_base_link_l"
+        ],
+        "collision_fraction": 0.75,
+        "best_gap_m": 0.005388034552687073,
+        "worst_gap_m": -0.0048182930576747525
+      },
+      {
+        "links": [
+          "arm_L5_l",
+          "hand_base_link_l"
+        ],
+        "collision_fraction": 0.5,
+        "best_gap_m": 0.005218887164881186,
+        "worst_gap_m": -0.0012625520633801493
+      },
+      {
+        "links": [
+          "arm_L6_l",
+          "L_thumb_proximal_base"
+        ],
+        "collision_fraction": 0.25,
+        "best_gap_m": 0.01740380863905533,
+        "worst_gap_m": -0.001298985908652997
+      },
+      {
+        "links": [
+          "L_thumb_proximal",
+          "L_index_distal"
+        ],
+        "collision_fraction": 0.25,
+        "best_gap_m": 0.055895870367664684,
+        "worst_gap_m": -3.423400083231616e-05
+      },
+      {
+        "links": [
+          "L_thumb_intermediate",
+          "L_index_distal"
+        ],
+        "collision_fraction": 0.25,
+        "best_gap_m": 0.04341714608423217,
+        "worst_gap_m": -0.001919952466936348
+      },
+      {
+        "links": [
+          "R_thumb_intermediate",
+          "R_index_distal"
+        ],
+        "collision_fraction": 0.25,
+        "best_gap_m": 0.05802741221656102,
+        "worst_gap_m": -0.0039262905572198924
+      },
+      {
+        "links": [
+          "R_thumb_distal",
+          "R_index_distal"
+        ],
+        "collision_fraction": 0.25,
+        "best_gap_m": 0.05234894387429608,
+        "worst_gap_m": -0.00868217657104489
+      }
+    ],
+    "model": "dual_v2_1_with_hand",
+    "source_fk_max_error": 0.0
+  },
+  {
+    "samples": 4,
+    "collision_free_samples": 3,
+    "collision_model": {
+      "file": "D:\\code_agent\\robot_workspace_dexterous\\models\\dual_v2_2_left_hand_right_gripper_half\\collision_spheres_interior.yaml",
+      "sha256": "97991b23b32880c2e264f1986347c89806b647fb9e47ac124b748478c063d606",
+      "mode": "interior",
+      "radius_expansion_mm": 0.0,
+      "model": "dual_v2_2_left_hand_right_gripper_half",
+      "total_spheres": 6080,
+      "estimated_links": [
+        "SJ4Z",
+        "arm_L1_l",
+        "arm_L2_l",
+        "arm_L3_l",
+        "arm_L4_l",
+        "arm_L5_l",
+        "arm_L6_l",
+        "arm_L7_l",
+        "arm_L1_r",
+        "arm_L2_r",
+        "arm_L3_r",
+        "arm_L4_r",
+        "arm_L5_r",
+        "arm_L6_r",
+        "arm_L7_r",
+        "hand_base_link_l",
+        "L_pinky_distal"
+      ],
+      "max_sampled_surface_gap_mm": 139.8349521677271
+    },
+    "pairs": [
+      {
+        "links": [
+          "L_thumb_proximal",
+          "L_index_distal"
+        ],
+        "collision_fraction": 0.25,
+        "best_gap_m": 0.05589587036766468,
+        "worst_gap_m": -3.4234000832422846e-05
+      },
+      {
+        "links": [
+          "L_thumb_intermediate",
+          "L_index_distal"
+        ],
+        "collision_fraction": 0.25,
+        "best_gap_m": 0.04341714608423241,
+        "worst_gap_m": -0.0019199524669363255
+      }
+    ],
+    "model": "dual_v2_2_left_hand_right_gripper_half",
+    "source_fk_max_error": 0.0
+  },
+  {
+    "samples": 4,
+    "collision_free_samples": 4,
+    "collision_model": {
+      "file": "D:\\code_agent\\robot_workspace_dexterous\\models\\dual_v2_2_no_gripper\\collision_spheres_interior.yaml",
+      "sha256": "e6f7f399e58e59ec25f7617134c13154a08dae4239ea941ca8d5b374683e8bdd",
+      "mode": "interior",
+      "radius_expansion_mm": 0.0,
+      "model": "dual_v2_2_no_gripper",
+      "total_spheres": 3807,
+      "estimated_links": [
+        "S0",
+        "S1",
+        "S3",
+        "S4",
+        "H1",
+        "H2",
+        "arm_L1_l",
+        "arm_L2_l",
+        "arm_L3_l",
+        "arm_L4_l",
+        "arm_L5_l",
+        "arm_L6_l",
+        "arm_L7_l",
+        "arm_L1_r",
+        "arm_L2_r",
+        "arm_L3_r",
+        "arm_L4_r",
+        "arm_L5_r",
+        "arm_L6_r",
+        "arm_L7_r"
+      ],
+      "max_sampled_surface_gap_mm": 162.39217874175665
+    },
+    "pairs": [],
+    "model": "dual_v2_2_no_gripper",
+    "source_fk_max_error": 0.0
+  },
+  {
+    "samples": 4,
+    "collision_free_samples": 4,
+    "collision_model": {
+      "file": "D:\\code_agent\\robot_workspace_dexterous\\models\\spark2_v1\\collision_spheres_interior.yaml",
+      "sha256": "6a0cf5112e799ef1688f6654512f8fc0f6300594acb1f415a8890d31de7fda28",
+      "mode": "interior",
+      "radius_expansion_mm": 0.0,
+      "model": "spark2_v1",
+      "total_spheres": 1581,
+      "estimated_links": [
+        "arm_base_link",
+        "arm_L1",
+        "arm_L3",
+        "arm_L4"
+      ],
+      "max_sampled_surface_gap_mm": 37.27576510284785
+    },
+    "pairs": [],
+    "model": "spark2_v1",
+    "source_fk_max_error": 0.0
+  },
+  {
+    "samples": 4,
+    "collision_free_samples": 4,
+    "collision_model": {
+      "file": "D:\\code_agent\\robot_workspace_dexterous\\models\\spark2_v2\\collision_spheres_interior.yaml",
+      "sha256": "df9b34ab9f726b38e32ac4ef600a0facf5828f862e07e61fac6d28fb44c72a7a",
+      "mode": "interior",
+      "radius_expansion_mm": 0.0,
+      "model": "spark2_v2",
+      "total_spheres": 1490,
+      "estimated_links": [
+        "arm_base_link",
+        "arm_L1",
+        "arm_L2",
+        "arm_L3",
+        "arm_L4",
+        "arm_L5"
+      ],
+      "max_sampled_surface_gap_mm": 57.2340019432187
+    },
+    "pairs": [],
+    "model": "spark2_v2",
+    "source_fk_max_error": 0.0
+  }
+]

@@ -1,0 +1,311 @@
+{
+  "model": "dual_v2_2_left_hand_right_gripper_half",
+  "mode": "interior",
+  "radius_expansion_mm": 0,
+  "max_spheres_per_link": 256,
+  "samples": 100,
+  "links": {
+    "SJ4Z": {
+      "count": 156,
+      "parts": [
+        {
+          "geometry": "open_mesh_ray_estimate",
+          "max_surface_vertex_gap_mm": 139.8349521677271
+        }
+      ]
+    },
+    "arm_L1_l": {
+      "count": 166,
+      "parts": [
+        {
+          "geometry": "open_mesh_ray_estimate",
+          "max_surface_vertex_gap_mm": 21.56228321282439
+        }
+      ]
+    },
+    "arm_L2_l": {
+      "count": 231,
+      "parts": [
+        {
+          "geometry": "open_mesh_ray_estimate",
+          "max_surface_vertex_gap_mm": 23.806281314663778
+        }
+      ]
+    },
+    "arm_L3_l": {
+      "count": 211,
+      "parts": [
+        {
+          "geometry": "open_mesh_ray_estimate",
+          "max_surface_vertex_gap_mm": 64.67168288891953
+        }
+      ]
+    },
+    "arm_L4_l": {
+      "count": 227,
+      "parts": [
+        {
+          "geometry": "open_mesh_ray_estimate",
+          "max_surface_vertex_gap_mm": 46.36225840225035
+        }
+      ]
+    },
+    "arm_L5_l": {
+      "count": 151,
+      "parts": [
+        {
+          "geometry": "open_mesh_ray_estimate",
+          "max_surface_vertex_gap_mm": 39.09626842867112
+        }
+      ]
+    },
+    "arm_L6_l": {
+      "count": 178,
+      "parts": [
+        {
+          "geometry": "open_mesh_ray_estimate",
+          "max_surface_vertex_gap_mm": 35.863748114236735
+        }
+      ]
+    },
+    "arm_L7_l": {
+      "count": 191,
+      "parts": [
+        {
+          "geometry": "open_mesh_ray_estimate",
+          "max_surface_vertex_gap_mm": 14.136223758580003
+        }
+      ]
+    },
+    "arm_L1_r": {
+      "count": 166,
+      "parts": [
+        {
+          "geometry": "open_mesh_ray_estimate",
+          "max_surface_vertex_gap_mm": 21.56228321282439
+        }
+      ]
+    },
+    "arm_L2_r": {
+      "count": 231,
+      "parts": [
+        {
+          "geometry": "open_mesh_ray_estimate",
+          "max_surface_vertex_gap_mm": 23.806281314663778
+        }
+      ]
+    },
+    "arm_L3_r": {
+      "count": 211,
+      "parts": [
+        {
+          "geometry": "open_mesh_ray_estimate",
+          "max_surface_vertex_gap_mm": 64.67168288891953
+        }
+      ]
+    },
+    "arm_L4_r": {
+      "count": 227,
+      "parts": [
+        {
+          "geometry": "open_mesh_ray_estimate",
+          "max_surface_vertex_gap_mm": 46.36225840225035
+        }
+      ]
+    },
+    "arm_L5_r": {
+      "count": 151,
+      "parts": [
+        {
+          "geometry": "open_mesh_ray_estimate",
+          "max_surface_vertex_gap_mm": 39.09626842867112
+        }
+      ]
+    },
+    "arm_L6_r": {
+      "count": 178,
+      "parts": [
+        {
+          "geometry": "open_mesh_ray_estimate",
+          "max_surface_vertex_gap_mm": 35.863748114236735
+        }
+      ]
+    },
+    "arm_L7_r": {
+      "count": 191,
+      "parts": [
+        {
+          "geometry": "open_mesh_ray_estimate",
+          "max_surface_vertex_gap_mm": 14.136223758580003
+        }
+      ]
+    },
+    "hand_base_link_l": {
+      "count": 205,
+      "parts": [
+        {
+          "geometry": "open_mesh_ray_estimate",
+          "max_surface_vertex_gap_mm": 22.463005578216286
+        }
+      ]
+    },
+    "L_thumb_proximal_base": {
+      "count": 44,
+      "parts": [
+        {
+          "geometry": "closed",
+          "max_surface_vertex_gap_mm": 1.8861831543333183
+        }
+      ]
+    },
+    "L_thumb_proximal": {
+      "count": 256,
+      "parts": [
+        {
+          "geometry": "closed",
+          "max_surface_vertex_gap_mm": 5.618988465893248
+        }
+      ]
+    },
+    "L_thumb_intermediate": {
+      "count": 256,
+      "parts": [
+        {
+          "geometry": "closed",
+          "max_surface_vertex_gap_mm": 4.760011157184628
+        }
+      ]
+    },
+    "L_thumb_distal": {
+      "count": 53,
+      "parts": [
+        {
+          "geometry": "closed",
+          "max_surface_vertex_gap_mm": 1.9837602951993265
+        }
+      ]
+    },
+    "L_index_proximal": {
+      "count": 256,
+      "parts": [
+        {
+          "geometry": "closed",
+          "max_surface_vertex_gap_mm": 4.94872519268909
+        }
+      ]
+    },
+    "L_index_distal": {
+      "count": 256,
+      "parts": [
+        {
+          "geometry": "closed",
+          "max_surface_vertex_gap_mm": 2.072260979500495
+        }
+      ]
+    },
+    "L_middle_proximal": {
+      "count": 256,
+      "parts": [
+        {
+          "geometry": "closed",
+          "max_surface_vertex_gap_mm": 4.94872519268909
+        }
+      ]
+    },
+    "L_middle_distal": {
+      "count": 38,
+      "parts": [
+        {
+          "geometry": "closed",
+          "max_surface_vertex_gap_mm": 1.9929032790055303
+        }
+      ]
+    },
+    "L_ring_proximal": {
+      "count": 256,
+      "parts": [
+        {
+          "geometry": "closed",
+          "max_surface_vertex_gap_mm": 4.948725182095883
+        }
+      ]
+    },
+    "L_ring_distal": {
+      "count": 256,
+      "parts": [
+        {
+          "geometry": "closed",
+          "max_surface_vertex_gap_mm": 2.0699349733410375
+        }
+      ]
+    },
+    "L_pinky_proximal": {
+      "count": 256,
+      "parts": [
+        {
+          "geometry": "closed",
+          "max_surface_vertex_gap_mm": 4.9451682291514345
+        }
+      ]
+    },
+    "L_pinky_distal": {
+      "count": 58,
+      "parts": [
+        {
+          "geometry": "open_mesh_ray_estimate",
+          "max_surface_vertex_gap_mm": 1.991158659265017
+        }
+      ]
+    },
+    "gripper_base_link_r": {
+      "count": 256,
+      "parts": [
+        {
+          "geometry": "closed",
+          "max_surface_vertex_gap_mm": 15.714236391235103
+        }
+      ]
+    },
+    "gripper_L1_r": {
+      "count": 256,
+      "parts": [
+        {
+          "geometry": "closed",
+          "max_surface_vertex_gap_mm": 10.321214631186242
+        }
+      ]
+    },
+    "gripper_L2_r": {
+      "count": 256,
+      "parts": [
+        {
+          "geometry": "closed",
+          "max_surface_vertex_gap_mm": 9.543854581625821
+        }
+      ]
+    }
+  },
+  "failures": {},
+  "complete": true,
+  "total_spheres": 6080,
+  "estimated_links": [
+    "SJ4Z",
+    "arm_L1_l",
+    "arm_L2_l",
+    "arm_L3_l",
+    "arm_L4_l",
+    "arm_L5_l",
+    "arm_L6_l",
+    "arm_L7_l",
+    "arm_L1_r",
+    "arm_L2_r",
+    "arm_L3_r",
+    "arm_L4_r",
+    "arm_L5_r",
+    "arm_L6_r",
+    "arm_L7_r",
+    "hand_base_link_l",
+    "L_pinky_distal"
+  ],
+  "sphere_sha256": "97991b23b32880c2e264f1986347c89806b647fb9e47ac124b748478c063d606"
+}

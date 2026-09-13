@@ -3,7 +3,7 @@ import shutil
 import xml.etree.ElementTree as ET
 
 from robot_workspace_dexterous.config import load_config
-from robot_workspace_dexterous.curobo_solver import validate_robot_inputs
+from robot_workspace_dexterous.curobo_solver import validate_robot_inputs, collision_sphere_metadata
 from robot_workspace_dexterous.visualize import load_zero_pose_collision_spheres
 
 
@@ -16,6 +16,10 @@ def test_all_presets_load_after_relocation_without_sibling_repositories(tmp_path
     assert len(configs) >= 11
     for path in configs:
         config = load_config(path)
+        metadata = collision_sphere_metadata(config.collision_spheres_path)
+        assert metadata['mode'] == 'interior'
+        assert metadata['model'] == path.stem
+        assert metadata['radius_expansion_mm'] == 0
         for asset in (config.urdf_path, config.collision_spheres_path):
             assert asset.is_relative_to(relocated)
         assert not ET.parse(config.urdf_path).findall(".//mesh")

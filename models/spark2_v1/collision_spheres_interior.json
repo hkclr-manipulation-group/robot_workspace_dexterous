@@ -1,0 +1,82 @@
+{
+  "model": "spark2_v1",
+  "mode": "interior",
+  "radius_expansion_mm": 0,
+  "max_spheres_per_link": 256,
+  "samples": 100,
+  "links": {
+    "arm_base_link": {
+      "count": 82,
+      "parts": [
+        {
+          "geometry": "open_mesh_ray_estimate",
+          "max_surface_vertex_gap_mm": 37.27576510284785
+        }
+      ]
+    },
+    "arm_L1": {
+      "count": 238,
+      "parts": [
+        {
+          "geometry": "open_mesh_ray_estimate",
+          "max_surface_vertex_gap_mm": 21.229478266748345
+        }
+      ]
+    },
+    "arm_L2": {
+      "count": 256,
+      "parts": [
+        {
+          "geometry": "closed",
+          "max_surface_vertex_gap_mm": 27.938590112812722
+        }
+      ]
+    },
+    "arm_L3": {
+      "count": 244,
+      "parts": [
+        {
+          "geometry": "open_mesh_ray_estimate",
+          "max_surface_vertex_gap_mm": 29.524266198309327
+        }
+      ]
+    },
+    "arm_L4": {
+      "count": 249,
+      "parts": [
+        {
+          "geometry": "open_mesh_ray_estimate",
+          "max_surface_vertex_gap_mm": 14.232982167651949
+        }
+      ]
+    },
+    "arm_L5": {
+      "count": 256,
+      "parts": [
+        {
+          "geometry": "closed",
+          "max_surface_vertex_gap_mm": 21.050473205974257
+        }
+      ]
+    },
+    "arm_L6": {
+      "count": 256,
+      "parts": [
+        {
+          "geometry": "closed",
+          "max_surface_vertex_gap_mm": 5.0231166943303025
+        }
+      ]
+    }
+  },
+  "failures": {},
+  "complete": true,
+  "total_spheres": 1581,
+  "estimated_links": [
+    "arm_base_link",
+    "arm_L1",
+    "arm_L3",
+    "arm_L4"
+  ],
+  "sphere_sha256": "6a0cf5112e799ef1688f6654512f8fc0f6300594acb1f415a8890d31de7fda28"
+}

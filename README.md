@@ -11,7 +11,8 @@ All supplied configurations use `models/<model>/` inside this project:
 robot_workspace_dexterous/
   models/<model>/
     robot.urdf
-    collision_spheres.yaml
+    collision_spheres_interior.yaml
+    collision_spheres_interior.json
     self_collision_ignore.yaml
   configs/<model>.yaml
   output/<model>/
@@ -21,6 +22,31 @@ No `cuarm_mesh`, `cuarm_configuration`, collision-generation repository, or STL
 files are required. Copy this project with `models/` and `configs/` to the CUDA
 machine. Python/cuRobo dependencies are still required.
 
+All 11 presets now use the complete interior sphere sets, with **0 mm radius
+expansion**. IK self-collision checks, CPU diagnostics and robot overview plots
+read the same configured YAML. The adjacent JSON records generation details
+and a checksum that is verified when loading. Original `collision_spheres.yaml`
+files remain available; comparisons must use their matching URDF version.
+
+Interior spheres can leave uncovered regions, especially on open CAD meshes.
+The reports label open-mesh estimates and measured surface gaps; collision-free
+results refer to this sphere approximation. New workspace summaries identify the sphere file,
+checksum, mode and whether self-collision checking was enabled. Existing files
+under `output/` predate this update and must be recomputed to use interior spheres.
+
+Four Dual presets previously used different kinematic revisions from the sphere
+library: `dual_v2_1_left_hand_right_gripper`, `dual_v2_1_with_gripper`,
+`dual_v2_2_left_hand_right_gripper_half`, and `dual_v2_2_no_gripper`. Their URDFs
+now match the source models used for fitting, including wrist, gripper and trunk
+frames. Their old standalone inputs and configuration are saved under each
+model's `legacy/` directory. The full Dual 2.2 retains valid ignore pairs, removes
+eight pairs referencing obsolete links, and adds eight kinematic-neighbor pairs
+for the new trunk structure. No zero-pose overlaps were added as exclusions.
+Its six zero-range trunk/head joints (S1–S4, H1, H2) are exported as fixed at
+their existing zero positions, preserving link poses and avoiding invalid
+zero-width joint limits in cuRobo.
+See [migration details](models/interior_sync_report.json).
+
 The URDF contains link inertias, joints, origins, axes, limits and tool frames;
 visual/collision geometry is removed. Collision checks use the external sphere
 YAML. Runtime also strips visual/collision elements from user-supplied URDFs
@@ -28,8 +54,8 @@ without resolving mesh paths, writing `normalized_robot.urdf` under the output
 directory. The source URDF is preserved. Plots use kinematics and collision
 spheres, so mesh-free operation includes the dual-arm overview.
 
-Existing presets retain their original kinematics, sampling settings and effective
-self-collision ignore mappings. Spark2 v1 uses the actual URDF root
+Sampling settings remain unchanged. Apart from the four revisions above, model
+kinematics and collision ignore mappings remain unchanged. Spark2 v1 uses the actual URDF root
 `dummy_base_link`; its fixed transform to `arm_base_link` is identity, so the
 workspace coordinate frame does not change. The three design presets `D20260901B`,
 `D20260902B60`, `D20260903B10` start with a 0.10 m grid, 16 orientations, 4 IK
@@ -60,15 +86,16 @@ For CPU joint-space collision diagnostics (2048 deterministic random poses):
 
 ```bash
 python run.py --config configs/D20260901B.yaml --diagnose-only
+# Short check before the default 2048-pose diagnostic:
+python run.py --config configs/spark2_v2.yaml --diagnose-only --diagnostic-samples 32
 ```
 
 This reports collision-free samples and per-link-pair collision frequencies; it
-does not run IK and is not a proof of reachability. The original D2026 sphere
-sets rejected every sampled pose for the first two designs. After tighter
-fitting, the Link04/Link06 (D20260901B) and L4/L6 (D20260902B60) wrist pairs
-still collide in every sampled pose. Inspect these pairs against the CAD model
-in the collision project's native Python viewer before changing exclusions.
-They have not been silently disabled to manufacture a reachable workspace.
+does not run IK and is not a proof of reachability. The CPU calculation blocks
+both poses and sphere pairs to limit temporary memory with detailed sphere sets.
+Old diagnostics from enclosing sphere sets do not describe the current interior
+sets; rerun them after changing collision inputs. Inspect contacts against the
+CAD model before changing collision exclusions.
 
 The D20260903B10 J5 axis is tilted (`0 0.0078204 0.99997`). Runtime normalization
 inserts an aligned joint frame and an inverse fixed transform for cuRobo's
@@ -76,10 +103,12 @@ cardinal-axis parser, retaining all original link poses and sphere coordinates.
 Random-pose FK equivalence is regression-tested. This avoids the loader's
 `str`/`value` failure without snapping the design axis to a different direction.
 
-Generate or update collision spheres in the collision project, then use its
-`model_bundle export` command to copy the three compact files into the matching
-model folder here. Update the local config's base and EE names if necessary.
-Export is an explicit update step, not a runtime project dependency. When
+Generate or update interior spheres in the collision project with
+`python -m collision_shpere_generation.interior_library`. Copy each model's
+`<prefix>collision_spheres_interior.yaml` and matching JSON into its model folder
+here, naming them `collision_spheres_interior.yaml` and `.json`. Keep YAML bytes
+unchanged so the report checksum remains valid, then run `--validate-only`.
+This is an explicit update step, not a runtime project dependency. When
 updating existing models, preserve the intended joint limits and TCP transforms.
 Review any non-adjacent collision exclusions; the migrated exclusions are
 preserved settings, not newly validated physical collision rules.

@@ -4,7 +4,8 @@ from __future__ import annotations
 from pathlib import Path
 import xml.etree.ElementTree as ET
 import numpy as np
-import yaml
+
+from .curobo_solver import _load_collision_spheres, collision_sphere_metadata
 
 from .urdf_compat import origin_matrix
 
@@ -45,8 +46,23 @@ def forward_kinematics(root: ET.Element, positions: dict[str, np.ndarray]) -> di
     return poses
 
 
+def minimum_sphere_gaps(a: np.ndarray, ra: np.ndarray, b: np.ndarray, rb: np.ndarray) -> np.ndarray:
+    """Exact minimum gap per pose with bounded pose and sphere blocks."""
+    gaps = np.full(len(a), np.inf)
+    for start in range(0, len(a), 8):
+        stop = start + 8
+        for i in range(0, len(ra), 64):
+            for j in range(0, len(rb), 64):
+                distance = np.linalg.norm(a[start:stop, i:i+64, None] - b[start:stop, None, j:j+64], axis=-1)
+                distance -= ra[None, i:i+64, None] + rb[None, None, j:j+64]
+                gaps[start:stop] = np.minimum(gaps[start:stop], distance.min(axis=(1, 2)))
+    return gaps
+
+
 def diagnose_collisions(urdf: str | Path, sphere_path: str | Path,
                         ignores: dict[str, list[str]], samples: int = 2048) -> dict:
+    if samples < 1:
+        raise ValueError('samples must be positive')
     root = ET.parse(urdf).getroot()
     rng = np.random.default_rng(42)
     positions = {}
@@ -56,7 +72,7 @@ def diagnose_collisions(urdf: str | Path, sphere_path: str | Path,
             low, high = (-np.pi, np.pi) if joint.get("type") == "continuous" else (float(limit.get("lower")), float(limit.get("upper")))
             positions[joint.get("name")] = rng.uniform(low, high, samples)
     poses = forward_kinematics(root, positions)
-    data = yaml.safe_load(Path(sphere_path).read_text(encoding="utf-8"))["collision_spheres"]
+    data = _load_collision_spheres(str(sphere_path))
     excluded = {tuple(sorted((a, b))) for a, others in ignores.items() for b in others}
     world = {}
     for link, spheres in data.items():
@@ -71,14 +87,17 @@ def diagnose_collisions(urdf: str | Path, sphere_path: str | Path,
             if tuple(sorted((first, second))) in excluded:
                 continue
             a, ra = world[first]; b, rb = world[second]
-            gaps = np.empty(samples)
-            for start in range(0, samples, 64):
-                distance = np.linalg.norm(a[start:start+64, :, None] - b[start:start+64, None, :], axis=-1)
-                gaps[start:start+64] = (distance - ra[None, :, None] - rb[None, None, :]).min(axis=(1, 2))
+            # Reject pairs whose sphere bounds are separate at every pose.
+            separated = np.any(((a-ra[None, :, None]).min(axis=1) > (b+rb[None, :, None]).max(axis=1)) |
+                               ((b-rb[None, :, None]).min(axis=1) > (a+ra[None, :, None]).max(axis=1)), axis=1)
+            if separated.all():
+                continue
+            gaps = minimum_sphere_gaps(a, ra, b, rb)
             colliding = gaps < 0
             valid &= ~colliding
             if colliding.any():
                 pairs.append({"links": [first, second], "collision_fraction": float(colliding.mean()),
                               "best_gap_m": float(gaps.max()), "worst_gap_m": float(gaps.min())})
     return {"samples": samples, "collision_free_samples": int(valid.sum()),
+            "collision_model": collision_sphere_metadata(sphere_path),
             "pairs": sorted(pairs, key=lambda pair: -pair["collision_fraction"])}

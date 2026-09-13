@@ -1,0 +1,42 @@
+self_collision_ignore:
+  DP:
+  - s1
+  - arm_L1_l
+  - arm_L1_r
+  s1:
+  - s2
+  s2:
+  - s3
+  s3:
+  - s4
+  s4:
+  - arm_L1_l
+  - arm_L1_r
+  arm_L1_l:
+  - arm_L2_l
+  - arm_L3_l
+  arm_L2_l:
+  - arm_L3_l
+  arm_L3_l:
+  - arm_L4_l
+  arm_L4_l:
+  - arm_L5_l
+  arm_L5_l:
+  - arm_L6_l
+  - arm_L7_l
+  arm_L6_l:
+  - arm_L7_l
+  arm_L1_r:
+  - arm_L2_r
+  - arm_L3_r
+  arm_L2_r:
+  - arm_L3_r
+  arm_L3_r:
+  - arm_L4_r
+  arm_L4_r:
+  - arm_L5_r
+  arm_L5_r:
+  - arm_L6_r
+  - arm_L7_r
+  arm_L6_r:
+  - arm_L7_r

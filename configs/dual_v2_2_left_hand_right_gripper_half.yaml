@@ -1,6 +1,6 @@
 robot:
   urdf: ../models/dual_v2_2_left_hand_right_gripper_half/robot.urdf
-  collision_spheres: ../models/dual_v2_2_left_hand_right_gripper_half/collision_spheres.yaml
+  collision_spheres: ../models/dual_v2_2_left_hand_right_gripper_half/collision_spheres_interior.yaml
   base_link: dummy_world
   ee_links:
   - arm_end_effector_l
