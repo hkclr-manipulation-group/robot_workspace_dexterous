@@ -5,6 +5,22 @@ manipulability, and condition numbers with cuRobo.
 
 ## Standalone model inputs
 
+For `c10::AcceleratorError` / `an illegal memory access was encountered`, exit
+the failed process and run a fresh diagnostic process (Linux):
+
+```bash
+CUDA_LAUNCH_BLOCKING=1 TORCH_SHOW_CPP_STACKTRACES=1 python -u run.py --config configs/spark2_v2.yaml --debug-cuda --batch-size 32 --output-dir output/cuda_debug > dexterous_cuda.log 2>&1
+```
+
+Use the configuration that actually failed. Share `dexterous_cuda.log` and
+`output/cuda_debug/cuda_debug.json`. Debug mode disables CUDA graphs, synchronizes
+each major GPU stage, and records PyTorch/CUDA versions, GPU, loaded cuRobo path,
+sphere set and batch settings. It preserves self-collision checks and all spheres.
+The smaller batch is a diagnostic setting, not a confirmed fix for illegal memory
+access. Normal execution retains CUDA graphs and the configured batch size.
+This error still requires the first failing stage/stack to identify its cause;
+an `unknown function` address by itself is insufficient.
+
 All supplied configurations use `models/<model>/` inside this project:
 
 ```text

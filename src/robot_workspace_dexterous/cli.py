@@ -7,6 +7,7 @@ from pathlib import Path
 import numpy as np
 
 from .config import load_config
+from .cuda_debug import enable_cuda_debug, cuda_environment, cuda_stage
 from .curobo_solver import (
     build_collision_robots,
     collision_sphere_metadata,
@@ -55,7 +56,17 @@ def main(argv: list[str] | None = None) -> None:
     parser.add_argument("--validate-only", action="store_true", help="Validate URDF and collision YAML on CPU, without running IK")
     parser.add_argument("--diagnose-only", action="store_true", help="Sample 2048 joint configurations and report sphere collisions on CPU")
     parser.add_argument("--diagnostic-samples", type=int, default=2048, help="Joint configurations for --diagnose-only")
+    parser.add_argument("--debug-cuda", action="store_true",
+                        help="Synchronize CUDA stages, disable CUDA graphs and save environment details; default batch size 32")
     args = parser.parse_args(argv)
+    if args.debug_cuda:
+        enable_cuda_debug()
+        if args.batch_size is None:
+            args.batch_size = 32
+    if args.batch_size is not None and args.batch_size < 1:
+        parser.error('--batch-size must be positive')
+    if args.ik_seeds is not None and args.ik_seeds < 1:
+        parser.error('--ik-seeds must be positive')
     config = load_config(args.config)
     validate_robot_inputs(str(config.urdf_path), str(config.collision_spheres_path),
                           config.base_link, config.ee_links, config.self_collision_ignore,
@@ -83,19 +94,27 @@ def main(argv: list[str] | None = None) -> None:
     )
     output_dir = Path(args.output_dir).expanduser().resolve()
     output_dir.mkdir(parents=True, exist_ok=True)
+    if args.debug_cuda:
+        details = {**cuda_environment(), 'config': str(Path(args.config).resolve()),
+                   'collision_model': collision_model, 'batch_size': config.batch_size,
+                   'ik_seeds': config.ik_seeds, 'self_collision': config.self_collision,
+                   'use_cuda_graph': False}
+        (output_dir / 'cuda_debug.json').write_text(json.dumps(details, indent=2), encoding='utf-8')
+        print(json.dumps(details, indent=2), flush=True)
     normalized_urdf = _normalized_urdf_for_curobo(
         str(config.urdf_path), str(output_dir / "normalized_robot.urdf"), config.joint_limit_defaults
     )
     collision_robots = None
     if config.self_collision:
         print(f"loading collision spheres: {config.collision_spheres_path}")
-        collision_robots = build_collision_robots(
-            normalized_urdf,
-            str(config.collision_spheres_path),
-            config.base_link,
-            config.ee_links,
-            config.self_collision_ignore,
-        )
+        with cuda_stage('build collision robots', args.debug_cuda):
+            collision_robots = build_collision_robots(
+                normalized_urdf,
+                str(config.collision_spheres_path),
+                config.base_link,
+                config.ee_links,
+                config.self_collision_ignore,
+            )
     workspaces: dict[str, DexterousWorkspace] = {}
     for link in config.ee_links:
         print(f"computing {link}: {len(config.orientations)} orientations per XYZ cell")
@@ -106,6 +125,7 @@ def main(argv: list[str] | None = None) -> None:
             config.position_tolerance, config.orientation_tolerance,
             config.self_collision, _progress,
             None if collision_robots is None else collision_robots[link],
+            debug_cuda=args.debug_cuda,
         )
         reachable_cells = int(np.count_nonzero(workspace.reachable_orientations > 0))
         if reachable_cells == 0:

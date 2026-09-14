@@ -15,6 +15,7 @@ import yaml
 from .sampling import DexterousWorkspace, regular_grid
 from .urdf_compat import align_joint_axes
 from .checksums import matches_text_sha256, text_sha256
+from .cuda_debug import cuda_stage
 
 
 def _prepare_joint_limits(root: ET.Element, defaults: dict[str, float] | None = None) -> list[str]:
@@ -222,6 +223,7 @@ def compute_dexterous_workspace(
     self_collision: bool = True,
     progress: Callable[[int, int, float], None] | None = None,
     robot: object | None = None,
+    debug_cuda: bool = False,
 ) -> DexterousWorkspace:
     import torch
     if not torch.cuda.is_available():
@@ -237,16 +239,20 @@ def compute_dexterous_workspace(
         else:
             kin = KinematicsCfg.from_basic_urdf(urdf_path, base_link, [ee_link])
             robot = RobotCfg(kinematics=kin, device_cfg=kin.device_cfg)
-    solver_cfg = InverseKinematicsCfg.create(
-        robot=robot, num_seeds=num_seeds, seed_solver_num_seeds=num_seeds,
-        max_batch_size=batch_size, position_tolerance=position_tolerance,
-        orientation_tolerance=orientation_tolerance,
-        self_collision_check=self_collision, load_collision_spheres=self_collision,
-    )
-    solver = InverseKinematics(solver_cfg)
-    jacobian_model = Kinematics(
-        robot.kinematics, compute_jacobian=True, compute_spheres=False
-    )
+    with cuda_stage(f'{ee_link}: configure IK', debug_cuda):
+        solver_cfg = InverseKinematicsCfg.create(
+            robot=robot, num_seeds=num_seeds, seed_solver_num_seeds=num_seeds,
+            max_batch_size=batch_size, position_tolerance=position_tolerance,
+            orientation_tolerance=orientation_tolerance,
+            self_collision_check=self_collision, load_collision_spheres=self_collision,
+            use_cuda_graph=not debug_cuda,
+        )
+    with cuda_stage(f'{ee_link}: initialize IK', debug_cuda):
+        solver = InverseKinematics(solver_cfg)
+    with cuda_stage(f'{ee_link}: initialize Jacobian model', debug_cuda):
+        jacobian_model = Kinematics(
+            robot.kinematics, compute_jacobian=True, compute_spheres=False
+        )
     device, dtype = solver_cfg.device_cfg.device, solver_cfg.device_cfg.dtype
     positions = regular_grid(x_range, y_range, np.asarray(heights), resolution)
     orientations = np.asarray(orientations_wxyz, dtype=np.float32)
@@ -270,15 +276,18 @@ def compute_dexterous_workspace(
             ),
         )
         goals = GoalToolPose.from_poses({ee_link: pose}, num_goalset=1)
-        solved = solver.solve_pose(goal_tool_poses=goals)
+        with cuda_stage(f'{ee_link}: IK goals {start}:{stop}', debug_cuda):
+            solved = solver.solve_pose(goal_tool_poses=goals)
         success = solved.success.reshape(-1)[: len(flat)].detach().cpu().numpy().astype(bool)
         np.add.at(counts, point_index[success], 1)
         if np.any(success):
-            state = jacobian_model.compute_kinematics(solved.js_solution)
+            with cuda_stage(f'{ee_link}: Jacobian goals {start}:{stop}', debug_cuda):
+                state = jacobian_model.compute_kinematics(solved.js_solution)
             jac = state.tool_jacobians.reshape(
                 len(flat), -1, 6, state.tool_jacobians.shape[-1]
             )[:, 0]
-            singular = torch.linalg.svdvals(jac)[success].detach().cpu().numpy()
+            with cuda_stage(f'{ee_link}: SVD goals {start}:{stop}', debug_cuda):
+                singular = torch.linalg.svdvals(jac)[success].detach().cpu().numpy()
             successful_points = point_index[success]
             w = np.prod(singular, axis=1).astype(np.float64)
             sigma_min = singular[:, -1].astype(np.float64)
