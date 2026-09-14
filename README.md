@@ -5,6 +5,29 @@ manipulability, and condition numbers with cuRobo.
 
 ## Standalone model inputs
 
+Runs save the first completed IK batch, then update partial results about every
+30 seconds at batch boundaries and at completion. Open
+`<output-dir>/progress/<ee_link>/index.html` in a browser for automatically
+refreshing progress and XY/XZ/YZ projections. The timestamp identifies the latest
+saved snapshot. Terminal progress, speed and ETA update about every 5 seconds
+at batch boundaries; initialization or a long GPU batch must finish first.
+
+Each progress folder contains `partial.npz`, `preview.png` and `status.json`.
+The NPZ includes `tested_orientations` per cell and a `complete` flag. Unprocessed
+cells are unknown; partial-cell dexterity is a lower bound until all orientations
+are tested. Projections show all reachable cells without the final DWS filter,
+using the maximum score across depth. Each file is replaced atomically. These
+snapshots survive subsequent process failure but do not support automatic resume.
+
+Preset grid spacing is now 25 mm for Spark2/Dual and 50 mm for D2026 models,
+half the previous spacing on each axis (roughly eight times the IK work).
+Sampling density is real; no interpolated points are added to reachability data.
+Override XY and Z spacing together, or change the snapshot interval:
+
+```bash
+python -u run.py --config configs/spark2_v2.yaml --resolution 0.025 --snapshot-seconds 30 --output-dir output/spark2_v2
+```
+
 For `c10::AcceleratorError` / `an illegal memory access was encountered`, exit
 the failed process and run a fresh diagnostic process (Linux):
 

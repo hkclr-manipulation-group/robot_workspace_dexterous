@@ -224,6 +224,8 @@ def compute_dexterous_workspace(
     progress: Callable[[int, int, float], None] | None = None,
     robot: object | None = None,
     debug_cuda: bool = False,
+    snapshot: Callable[[DexterousWorkspace, int, int, float], None] | None = None,
+    snapshot_seconds: float = 30.0,
 ) -> DexterousWorkspace:
     import torch
     if not torch.cuda.is_available():
@@ -264,6 +266,7 @@ def compute_dexterous_workspace(
     sigma_minimum = np.full(len(positions), np.nan, dtype=np.float64)
     total = len(positions) * orientation_count
     started = time.monotonic()
+    last_snapshot = None
     for start in range(0, total, batch_size):
         stop = min(start + batch_size, total)
         flat = np.arange(start, stop, dtype=np.int64)
@@ -301,6 +304,16 @@ def compute_dexterous_workspace(
             np.fmin.at(sigma_minimum, successful_points, sigma_min)
         if progress:
             progress(stop, total, time.monotonic() - started)
+        now = time.monotonic()
+        if snapshot and (last_snapshot is None or stop == total or now-last_snapshot >= snapshot_seconds):
+            denominator = np.maximum(counts, 1)
+            partial = DexterousWorkspace(
+                positions, counts.astype(np.float32) / orientation_count, counts.copy(),
+                orientation_count, (w_sum / denominator).astype(np.float32),
+                (w2_sum / denominator).astype(np.float32), condition_max.astype(np.float32),
+                sigma_minimum.astype(np.float32))
+            snapshot(partial, stop, total, now-started)
+            last_snapshot = time.monotonic()
     denominator = np.maximum(counts, 1)
     return DexterousWorkspace(
         positions, counts.astype(np.float32) / orientation_count, counts,

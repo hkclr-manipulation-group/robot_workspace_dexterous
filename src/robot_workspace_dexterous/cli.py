@@ -16,19 +16,13 @@ from .curobo_solver import (
     compute_dexterous_workspace,
 )
 from .sampling import DexterousWorkspace
+from .progress import WorkspaceProgress
 from .visualize import (
     load_zero_pose_collision_spheres,
     save_dexterity_center_views,
     save_dual_workspace_overview,
     save_metric_center_views,
 )
-
-
-def _progress(done: int, total: int, elapsed: float) -> None:
-    if done == total or done <= 256 or done % (256 * 25) == 0:
-        rate = done / elapsed if elapsed else 0.0
-        eta = (total - done) / rate if rate else float("inf")
-        print(f"IK {done}/{total} ({100 * done / total:.1f}%), elapsed={elapsed/60:.1f} min, ETA={eta/60:.1f} min")
 
 
 def main(argv: list[str] | None = None) -> None:
@@ -56,9 +50,15 @@ def main(argv: list[str] | None = None) -> None:
     parser.add_argument("--validate-only", action="store_true", help="Validate URDF and collision YAML on CPU, without running IK")
     parser.add_argument("--diagnose-only", action="store_true", help="Sample 2048 joint configurations and report sphere collisions on CPU")
     parser.add_argument("--diagnostic-samples", type=int, default=2048, help="Joint configurations for --diagnose-only")
+    parser.add_argument('--resolution', type=float, help='Override XY and Z grid spacing in metres')
+    parser.add_argument('--snapshot-seconds', type=float, default=30, help='Save partial results after this interval at batch boundaries (default 30 s)')
     parser.add_argument("--debug-cuda", action="store_true",
                         help="Synchronize CUDA stages, disable CUDA graphs and save environment details; default batch size 32")
     args = parser.parse_args(argv)
+    if args.resolution is not None and (not np.isfinite(args.resolution) or args.resolution <= 0):
+        parser.error('--resolution must be finite and positive')
+    if not np.isfinite(args.snapshot_seconds) or args.snapshot_seconds <= 0:
+        parser.error('--snapshot-seconds must be finite and positive')
     if args.debug_cuda:
         enable_cuda_debug()
         if args.batch_size is None:
@@ -68,6 +68,10 @@ def main(argv: list[str] | None = None) -> None:
     if args.ik_seeds is not None and args.ik_seeds < 1:
         parser.error('--ik-seeds must be positive')
     config = load_config(args.config)
+    if args.resolution is not None:
+        from dataclasses import replace
+        config = replace(config, resolution=args.resolution,
+                         heights=np.arange(float(config.heights[0]), float(config.heights[-1]) + args.resolution * .01, args.resolution))
     validate_robot_inputs(str(config.urdf_path), str(config.collision_spheres_path),
                           config.base_link, config.ee_links, config.self_collision_ignore,
                           config.joint_limit_defaults)
@@ -94,6 +98,11 @@ def main(argv: list[str] | None = None) -> None:
     )
     output_dir = Path(args.output_dir).expanduser().resolve()
     output_dir.mkdir(parents=True, exist_ok=True)
+    monitors = {link: WorkspaceProgress(output_dir / 'progress' / link, link,
+                {'collision_model': collision_model, 'resolution_m': config.resolution,
+                 'self_collision_enabled': config.self_collision}) for link in config.ee_links}
+    for monitor in monitors.values():
+        print(f'Live progress: {monitor.directory / "index.html"}', flush=True)
     if args.debug_cuda:
         details = {**cuda_environment(), 'config': str(Path(args.config).resolve()),
                    'collision_model': collision_model, 'batch_size': config.batch_size,
@@ -106,7 +115,7 @@ def main(argv: list[str] | None = None) -> None:
     )
     collision_robots = None
     if config.self_collision:
-        print(f"loading collision spheres: {config.collision_spheres_path}")
+        print(f"loading collision spheres: {config.collision_spheres_path}", flush=True)
         with cuda_stage('build collision robots', args.debug_cuda):
             collision_robots = build_collision_robots(
                 normalized_urdf,
@@ -117,15 +126,17 @@ def main(argv: list[str] | None = None) -> None:
             )
     workspaces: dict[str, DexterousWorkspace] = {}
     for link in config.ee_links:
-        print(f"computing {link}: {len(config.orientations)} orientations per XYZ cell")
+        print(f"computing {link}: {len(config.orientations)} orientations per XYZ cell; grid {config.resolution*1000:g} mm", flush=True)
         workspace = compute_dexterous_workspace(
             normalized_urdf, config.base_link, link,
             config.x_range, config.y_range, config.heights, config.resolution,
             config.orientations, config.ik_seeds, config.batch_size,
             config.position_tolerance, config.orientation_tolerance,
-            config.self_collision, _progress,
+            config.self_collision, monitors[link].progress,
             None if collision_robots is None else collision_robots[link],
             debug_cuda=args.debug_cuda,
+            snapshot=monitors[link].snapshot,
+            snapshot_seconds=args.snapshot_seconds,
         )
         reachable_cells = int(np.count_nonzero(workspace.reachable_orientations > 0))
         if reachable_cells == 0:

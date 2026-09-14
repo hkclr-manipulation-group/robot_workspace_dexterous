@@ -1,0 +1,11 @@
+{
+  "state": "running",
+  "done": 180000,
+  "total": 296352,
+  "elapsed_seconds": 12,
+  "tested_cells": 5625,
+  "completed_cells": 5625,
+  "reachable_cells_so_far": 3528,
+  "ee_link": "Synthetic preview test",
+  "updated_utc": "2026-09-14T06:05:34.085186+00:00"
+}

@@ -16,8 +16,8 @@ grid:
   - 1.0
   z_min: -1.0
   z_max: 1.0
-  resolution: 0.1
-  z_step: 0.1
+  resolution: 0.05
+  z_step: 0.05
 orientations:
   count: 16
 solver:
