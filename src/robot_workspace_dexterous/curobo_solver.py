@@ -14,6 +14,7 @@ import yaml
 
 from .sampling import DexterousWorkspace, regular_grid
 from .urdf_compat import align_joint_axes
+from .checksums import matches_text_sha256, text_sha256
 
 
 def _prepare_joint_limits(root: ET.Element, defaults: dict[str, float] | None = None) -> list[str]:
@@ -91,14 +92,17 @@ def _normalized_urdf_for_curobo(
 def collision_sphere_metadata(path: str | Path) -> dict:
     """Identify the exact sphere set and validate its optional generation report."""
     source = Path(path).expanduser().resolve()
-    digest = hashlib.sha256(source.read_bytes()).hexdigest()
+    raw = source.read_bytes()
+    digest = hashlib.sha256(raw).hexdigest()
     metadata = {"file": str(source), "sha256": digest, "mode": "external",
-                "radius_expansion_mm": 0.0}
+                "radius_expansion_mm": 0.0, "sha256_lf": text_sha256(raw)}
     report_path = source.with_suffix('.json')
     if report_path.exists():
         report = json.loads(report_path.read_text('utf-8'))
-        if not isinstance(report, dict) or not report.get('complete') or report.get('sphere_sha256') != digest:
-            raise ValueError(f"Sphere generation report is incomplete or checksum mismatched: {report_path}")
+        if not isinstance(report, dict) or not report.get('complete'):
+            raise ValueError(f"Sphere generation report is incomplete: {report_path}")
+        if not matches_text_sha256(raw, report.get('sphere_sha256')):
+            raise ValueError(f"Sphere generation report checksum mismatched: {report_path}")
         metadata.update({key: report[key] for key in (
             'model', 'mode', 'total_spheres', 'estimated_links') if key in report})
         gaps = [part['max_surface_vertex_gap_mm'] for link in report.get('links', {}).values()
