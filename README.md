@@ -107,7 +107,9 @@ Generate or update interior spheres in the collision project with
 `python -m collision_shpere_generation.interior_library`. Copy each model's
 `<prefix>collision_spheres_interior.yaml` and matching JSON into its model folder
 here, naming them `collision_spheres_interior.yaml` and `.json`. Keep YAML bytes
-unchanged so the report checksum remains valid, then run `--validate-only`.
+unchanged apart from LF/CRLF line-ending conversions, which are accepted by the
+checksum validator. Then run `--validate-only`. A changed radius or center still
+requires a matching generation report; an incomplete report is rejected separately.
 This is an explicit update step, not a runtime project dependency. When
 updating existing models, preserve the intended joint limits and TCP transforms.
 Review any non-adjacent collision exclusions; the migrated exclusions are

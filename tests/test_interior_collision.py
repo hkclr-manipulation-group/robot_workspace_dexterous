@@ -13,6 +13,25 @@ from robot_workspace_dexterous.diagnostics import minimum_sphere_gaps
 PROJECT = Path(__file__).resolve().parents[1]
 
 
+@pytest.mark.parametrize('original_newline', [b'\n', b'\r\n'], ids=['report-lf', 'report-crlf'])
+@pytest.mark.parametrize('current_newline', [b'\n', b'\r\n'], ids=['file-lf', 'file-crlf'])
+def test_checksum_accepts_newlines_but_rejects_changed_spheres(tmp_path, original_newline, current_newline):
+    import hashlib
+    import json
+    data=b'collision_spheres:\n  arm:\n    - center: [0, 0, 0]\n      radius: 0.01\n'
+    path=tmp_path/'collision_spheres_interior.yaml'
+    path.write_bytes(data.replace(b'\n',current_newline))
+    report={'mode':'interior','complete':True,'sphere_sha256':hashlib.sha256(data.replace(b'\n',original_newline)).hexdigest()}
+    path.with_suffix('.json').write_text(json.dumps(report))
+    assert _load_collision_spheres(str(path))['arm'][0]['radius']==.01
+    path.write_bytes(path.read_bytes().replace(b'0.01',b'0.02'))
+    with pytest.raises(ValueError,match='checksum'):_load_collision_spheres(str(path))
+    path.write_bytes(data.replace(b'\n',current_newline))
+    report['complete']=False
+    path.with_suffix('.json').write_text(json.dumps(report))
+    with pytest.raises(ValueError,match='incomplete'):_load_collision_spheres(str(path))
+
+
 def test_blocked_gaps_match_dense_reference():
     rng = np.random.default_rng(42)
     a, b = rng.normal(size=(11, 71, 3)), rng.normal(size=(11, 67, 3))
