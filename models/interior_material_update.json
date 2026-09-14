@@ -1,0 +1,79 @@
+[
+  {
+    "model": "D20260901B",
+    "sphere_count": 1580,
+    "coordinates_and_radii_unchanged": true,
+    "sha256_lf": "9b7b89d0ff838b8b2d930471337078c0fafe0b8f204d04a6d96e975f0541d85e",
+    "material_policy": "preserve_holes_and_cavities"
+  },
+  {
+    "model": "D20260902B60",
+    "sphere_count": 1792,
+    "coordinates_and_radii_unchanged": true,
+    "sha256_lf": "228932b49ff7333622f79845195313f9be09154d1afde18ccaff42f91f330229",
+    "material_policy": "preserve_holes_and_cavities"
+  },
+  {
+    "model": "D20260903B10",
+    "sphere_count": 1792,
+    "coordinates_and_radii_unchanged": true,
+    "sha256_lf": "e101b65c3e27dd2bbd297c1faf651a9390f297ba30b61b827a3cc32df6319445",
+    "material_policy": "preserve_holes_and_cavities"
+  },
+  {
+    "model": "dual_v2_1_left_hand_right_gripper",
+    "sphere_count": 5976,
+    "coordinates_and_radii_unchanged": true,
+    "sha256_lf": "39d8cf19b6c6f2f07f3c82f7d6d3f6e615393f61449271e069794a321d25cd08",
+    "material_policy": "preserve_holes_and_cavities"
+  },
+  {
+    "model": "dual_v2_1_no_gripper",
+    "sphere_count": 2762,
+    "coordinates_and_radii_unchanged": true,
+    "sha256_lf": "f5b67e7709a33c7c6e8ed254be4cf67ddf18d6e79b025e5e9d334c7183d0e25d",
+    "material_policy": "preserve_holes_and_cavities"
+  },
+  {
+    "model": "dual_v2_1_with_gripper",
+    "sphere_count": 4298,
+    "coordinates_and_radii_unchanged": true,
+    "sha256_lf": "2b587579cab082d3a5ddfbcf0e7055f9b50acdca71d8b8a7ef032be2f583a8c8",
+    "material_policy": "preserve_holes_and_cavities"
+  },
+  {
+    "model": "dual_v2_1_with_hand",
+    "sphere_count": 7908,
+    "coordinates_and_radii_unchanged": true,
+    "sha256_lf": "9385f6fdd04a097c2b14b8f46359cbd7e36cf88a68b6ed93e942dcd8d41725f5",
+    "material_policy": "preserve_holes_and_cavities"
+  },
+  {
+    "model": "dual_v2_2_left_hand_right_gripper_half",
+    "sphere_count": 6080,
+    "coordinates_and_radii_unchanged": true,
+    "sha256_lf": "3233051ed16fa17c22a5adca14c01d416a28bcd406f8affe09276b363badc46c",
+    "material_policy": "preserve_holes_and_cavities"
+  },
+  {
+    "model": "dual_v2_2_no_gripper",
+    "sphere_count": 3807,
+    "coordinates_and_radii_unchanged": true,
+    "sha256_lf": "81ca522317f7c737470a0d974fffb3bf00d5e99017469797067e5acabc8bbb40",
+    "material_policy": "preserve_holes_and_cavities"
+  },
+  {
+    "model": "spark2_v1",
+    "sphere_count": 1581,
+    "coordinates_and_radii_unchanged": true,
+    "sha256_lf": "860f81b11b05a58783ca2308388b95a583939860a96e9729b7ab51b22c3f4188",
+    "material_policy": "preserve_holes_and_cavities"
+  },
+  {
+    "model": "spark2_v2",
+    "sphere_count": 1490,
+    "coordinates_and_radii_unchanged": true,
+    "sha256_lf": "78d8ad49d6891c3362dff6f68f49100cc75af8d590c868a73fcd6a04a3f17166",
+    "material_policy": "preserve_holes_and_cavities"
+  }
+]

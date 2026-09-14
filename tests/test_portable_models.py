@@ -20,6 +20,9 @@ def test_all_presets_load_after_relocation_without_sibling_repositories(tmp_path
         assert metadata['mode'] == 'interior'
         assert metadata['model'] == path.stem
         assert metadata['radius_expansion_mm'] == 0
+        assert metadata['interior_domain'] == 'stl_material'
+        assert metadata['preserve_holes_and_cavities'] is True
+        assert metadata['complete_scope'] == 'configured_links_not_volume_coverage'
         for asset in (config.urdf_path, config.collision_spheres_path):
             assert asset.is_relative_to(relocated)
         assert not ET.parse(config.urdf_path).findall(".//mesh")

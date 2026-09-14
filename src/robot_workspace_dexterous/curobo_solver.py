@@ -105,7 +105,8 @@ def collision_sphere_metadata(path: str | Path) -> dict:
         if not matches_text_sha256(raw, report.get('sphere_sha256')):
             raise ValueError(f"Sphere generation report checksum mismatched: {report_path}")
         metadata.update({key: report[key] for key in (
-            'model', 'mode', 'total_spheres', 'estimated_links') if key in report})
+            'model', 'mode', 'total_spheres', 'estimated_links', 'interior_domain',
+            'preserve_holes_and_cavities', 'complete_scope') if key in report})
         gaps = [part['max_surface_vertex_gap_mm'] for link in report.get('links', {}).values()
                 for part in link.get('parts', [])]
         if gaps:

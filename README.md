@@ -5,6 +5,15 @@ manipulability, and condition numbers with cuRobo.
 
 ## Standalone model inputs
 
+Collision exclusions were reviewed across all 11 bundles. Only the user-confirmed
+`D20260901B` pair `Link04` / `Link05` remains ignored; other model lists are empty.
+Old adjacency/zero-pose exclusions, including Spark2 v1/v2 `arm_L3` / `arm_L5`,
+are archived in `models/ignore_rules_review.json` and are no longer active.
+The active files match the collision viewer. This rule correction does not fix
+gaps in the interior spheres: workspace IK remains a sphere approximation.
+Removing exclusions can reduce reachable results, including intended joint
+contacts; review actual geometry before approving further pair exceptions.
+
 Runs save the first completed IK batch, then update partial results about every
 30 seconds at batch boundaries and at completion. Open
 `<output-dir>/progress/<ee_link>/index.html` in a browser for automatically
@@ -66,6 +75,11 @@ expansion**. IK self-collision checks, CPU diagnostics and robot overview plots
 read the same configured YAML. The adjacent JSON records generation details
 and a checksum that is verified when loading. Original `collision_spheres.yaml`
 files remain available; comparisons must use their matching URDF version.
+The sphere domain is STL material only, preserving holes and cavities. Thin-wall
+spheres may be very small. A complete set means every configured link is present,
+not that its material volume or surface is completely covered. The reports and
+workspace metadata retain this policy and label open-mesh containment estimates.
+See [all interior files and previews](models/interior_gallery.html).
 
 Interior spheres can leave uncovered regions, especially on open CAD meshes.
 The reports label open-mesh estimates and measured surface gaps; collision-free
@@ -78,9 +92,9 @@ library: `dual_v2_1_left_hand_right_gripper`, `dual_v2_1_with_gripper`,
 `dual_v2_2_left_hand_right_gripper_half`, and `dual_v2_2_no_gripper`. Their URDFs
 now match the source models used for fitting, including wrist, gripper and trunk
 frames. Their old standalone inputs and configuration are saved under each
-model's `legacy/` directory. The full Dual 2.2 retains valid ignore pairs, removes
-eight pairs referencing obsolete links, and adds eight kinematic-neighbor pairs
-for the new trunk structure. No zero-pose overlaps were added as exclusions.
+model's `legacy/` directory. The migration originally retained and added some
+pair exclusions. The subsequent ignore-rule review above supersedes those
+exclusions; Dual 2.2 now has an empty active ignore list.
 Its six zero-range trunk/head joints (S1–S4, H1, H2) are exported as fixed at
 their existing zero positions, preserving link poses and avoiding invalid
 zero-width joint limits in cuRobo.
@@ -93,12 +107,12 @@ without resolving mesh paths, writing `normalized_robot.urdf` under the output
 directory. The source URDF is preserved. Plots use kinematics and collision
 spheres, so mesh-free operation includes the dual-arm overview.
 
-Sampling settings remain unchanged. Apart from the four revisions above, model
-kinematics and collision ignore mappings remain unchanged. Spark2 v1 uses the actual URDF root
+The sampling density and ignore-rule updates above apply to all bundled models.
+Apart from the four revisions above, model kinematics remain unchanged. Spark2 v1 uses the actual URDF root
 `dummy_base_link`; its fixed transform to `arm_base_link` is identity, so the
 workspace coordinate frame does not change. The three design presets `D20260901B`,
-`D20260902B60`, `D20260903B10` start with a 0.10 m grid, 16 orientations, 4 IK
-seeds and adjacent-link collision exclusions. They retain exported joint ranges
+`D20260902B60`, `D20260903B10` use a 0.05 m grid, 16 orientations and 4 IK
+seeds. Only D20260901B Link04/Link05 has an explicit exclusion. They retain exported joint ranges
 [-3.14, 3.14] and velocity=0; validate those values against the design before
 using results as hardware specifications. EE frames are Link06 / L6 / L6,
 respectively, not independently calibrated TCPs.
@@ -151,8 +165,8 @@ checksum validator. Then run `--validate-only`. A changed radius or center still
 requires a matching generation report; an incomplete report is rejected separately.
 This is an explicit update step, not a runtime project dependency. When
 updating existing models, preserve the intended joint limits and TCP transforms.
-Review any non-adjacent collision exclusions; the migrated exclusions are
-preserved settings, not newly validated physical collision rules.
+Review every proposed collision exclusion, including adjacent pairs. Historical
+exclusions are archived for reference and are not active rules.
 
 ## Installation
 

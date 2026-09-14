@@ -2,6 +2,9 @@
   "model": "dual_v2_1_with_gripper",
   "mode": "interior",
   "radius_expansion_mm": 0,
+  "interior_domain": "stl_material",
+  "preserve_holes_and_cavities": true,
+  "complete_scope": "configured_links_not_volume_coverage",
   "max_spheres_per_link": 256,
   "samples": 100,
   "links": {
@@ -215,5 +218,6 @@
     "arm_L6_r",
     "arm_L7_r"
   ],
-  "sphere_sha256": "49e4c0b5952831abd0fcdf61fbcb79d19472930cef4a9b43bc023e46365800c5"
+  "sphere_sha256": "2b587579cab082d3a5ddfbcf0e7055f9b50acdca71d8b8a7ef032be2f583a8c8",
+  "sphere_sha256_format": "lf-normalized"
 }

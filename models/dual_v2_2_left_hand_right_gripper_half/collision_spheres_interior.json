@@ -2,6 +2,9 @@
   "model": "dual_v2_2_left_hand_right_gripper_half",
   "mode": "interior",
   "radius_expansion_mm": 0,
+  "interior_domain": "stl_material",
+  "preserve_holes_and_cavities": true,
+  "complete_scope": "configured_links_not_volume_coverage",
   "max_spheres_per_link": 256,
   "samples": 100,
   "links": {
@@ -307,5 +310,6 @@
     "hand_base_link_l",
     "L_pinky_distal"
   ],
-  "sphere_sha256": "97991b23b32880c2e264f1986347c89806b647fb9e47ac124b748478c063d606"
+  "sphere_sha256": "3233051ed16fa17c22a5adca14c01d416a28bcd406f8affe09276b363badc46c",
+  "sphere_sha256_format": "lf-normalized"
 }

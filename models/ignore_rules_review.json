@@ -1,0 +1,1216 @@
+{
+  "reason": "Remove unreviewed legacy adjacency/zero-pose exclusions; user confirmed only D20260901B Link04-Link05. Previous rules are archived here, not active.",
+  "models": [
+    {
+      "model": "D20260901B",
+      "previous_viewer_rules": {
+        "Link04": [
+          "Link05"
+        ]
+      },
+      "previous_workspace_rules": {
+        "Link04": [
+          "Link05"
+        ]
+      },
+      "reviewed_rules": {
+        "Link04": [
+          "Link05"
+        ]
+      }
+    },
+    {
+      "model": "D20260902B60",
+      "previous_viewer_rules": {
+        "L1": [
+          "L2",
+          "base_link"
+        ],
+        "L2": [
+          "L3"
+        ],
+        "L3": [
+          "L4"
+        ],
+        "L4": [
+          "L5"
+        ],
+        "L5": [
+          "L6"
+        ]
+      },
+      "previous_workspace_rules": {
+        "L1": [
+          "L2",
+          "base_link"
+        ],
+        "L2": [
+          "L3"
+        ],
+        "L3": [
+          "L4"
+        ],
+        "L4": [
+          "L5"
+        ],
+        "L5": [
+          "L6"
+        ]
+      },
+      "reviewed_rules": {}
+    },
+    {
+      "model": "D20260903B10",
+      "previous_viewer_rules": {
+        "L1": [
+          "L2",
+          "base_link"
+        ],
+        "L2": [
+          "L3"
+        ],
+        "L3": [
+          "L4"
+        ],
+        "L4": [
+          "L5"
+        ],
+        "L5": [
+          "L6"
+        ]
+      },
+      "previous_workspace_rules": {
+        "L1": [
+          "L2",
+          "base_link"
+        ],
+        "L2": [
+          "L3"
+        ],
+        "L3": [
+          "L4"
+        ],
+        "L4": [
+          "L5"
+        ],
+        "L5": [
+          "L6"
+        ]
+      },
+      "reviewed_rules": {}
+    },
+    {
+      "model": "dual_v2_1_left_hand_right_gripper",
+      "previous_viewer_rules": {
+        "DP": [
+          "arm_L1_l",
+          "arm_L1_r",
+          "arm_L2_l",
+          "arm_L2_r"
+        ],
+        "L_index_distal": [
+          "L_index_proximal"
+        ],
+        "L_index_proximal": [
+          "L_middle_proximal",
+          "arm_L7_l"
+        ],
+        "L_middle_distal": [
+          "L_middle_proximal"
+        ],
+        "L_middle_proximal": [
+          "L_ring_proximal",
+          "arm_L7_l"
+        ],
+        "L_pinky_distal": [
+          "L_pinky_proximal"
+        ],
+        "L_pinky_proximal": [
+          "L_ring_proximal",
+          "arm_L7_l"
+        ],
+        "L_ring_distal": [
+          "L_ring_proximal"
+        ],
+        "L_ring_proximal": [
+          "arm_L7_l"
+        ],
+        "L_thumb_distal": [
+          "L_thumb_intermediate"
+        ],
+        "L_thumb_intermediate": [
+          "L_thumb_proximal"
+        ],
+        "L_thumb_proximal": [
+          "arm_L7_l"
+        ],
+        "arm_L1_l": [
+          "arm_L2_l",
+          "arm_L3_l"
+        ],
+        "arm_L1_r": [
+          "arm_L2_r",
+          "arm_L3_r"
+        ],
+        "arm_L2_l": [
+          "arm_L3_l"
+        ],
+        "arm_L2_r": [
+          "arm_L3_r"
+        ],
+        "arm_L3_l": [
+          "arm_L4_l"
+        ],
+        "arm_L3_r": [
+          "arm_L4_r"
+        ],
+        "arm_L4_l": [
+          "arm_L5_l"
+        ],
+        "arm_L4_r": [
+          "arm_L5_r"
+        ],
+        "arm_L5_l": [
+          "arm_L6_l",
+          "arm_L7_l"
+        ],
+        "arm_L5_r": [
+          "arm_L6_r",
+          "arm_L7_r"
+        ],
+        "arm_L6_l": [
+          "arm_L7_l"
+        ],
+        "arm_L6_r": [
+          "arm_L7_r"
+        ],
+        "arm_L7_r": [
+          "gripper_L1_r",
+          "gripper_L2_r"
+        ]
+      },
+      "previous_workspace_rules": {
+        "DP": [
+          "s1",
+          "arm_L1_l",
+          "arm_L1_r",
+          "arm_L2_l",
+          "arm_L2_r"
+        ],
+        "s1": [
+          "s2"
+        ],
+        "s2": [
+          "s3"
+        ],
+        "s3": [
+          "s4"
+        ],
+        "s4": [
+          "arm_L1_l",
+          "arm_L1_r"
+        ],
+        "arm_L1_l": [
+          "arm_L2_l",
+          "arm_L3_l"
+        ],
+        "arm_L2_l": [
+          "arm_L3_l"
+        ],
+        "arm_L3_l": [
+          "arm_L4_l"
+        ],
+        "arm_L4_l": [
+          "arm_L5_l"
+        ],
+        "arm_L5_l": [
+          "arm_L6_l",
+          "arm_L7_l"
+        ],
+        "arm_L6_l": [
+          "arm_L7_l"
+        ],
+        "arm_L7_l": [
+          "hand_base_link_l"
+        ],
+        "arm_L1_r": [
+          "arm_L2_r",
+          "arm_L3_r"
+        ],
+        "arm_L2_r": [
+          "arm_L3_r"
+        ],
+        "arm_L3_r": [
+          "arm_L4_r"
+        ],
+        "arm_L4_r": [
+          "arm_L5_r"
+        ],
+        "arm_L5_r": [
+          "arm_L6_r",
+          "arm_L7_r"
+        ],
+        "arm_L6_r": [
+          "arm_L7_r"
+        ],
+        "arm_L7_r": [
+          "gripper_base_link_r",
+          "gripper_L1_r",
+          "gripper_L2_r"
+        ],
+        "gripper_base_link_r": [
+          "gripper_L1_r",
+          "gripper_L2_r"
+        ],
+        "L_index_distal": [
+          "L_index_proximal"
+        ],
+        "L_index_proximal": [
+          "L_middle_proximal",
+          "arm_L7_l"
+        ],
+        "L_middle_distal": [
+          "L_middle_proximal"
+        ],
+        "L_middle_proximal": [
+          "L_ring_proximal",
+          "arm_L7_l"
+        ],
+        "L_pinky_distal": [
+          "L_pinky_proximal"
+        ],
+        "L_pinky_proximal": [
+          "L_ring_proximal",
+          "arm_L7_l"
+        ],
+        "L_ring_distal": [
+          "L_ring_proximal"
+        ],
+        "L_ring_proximal": [
+          "arm_L7_l"
+        ],
+        "L_thumb_distal": [
+          "L_thumb_intermediate"
+        ],
+        "L_thumb_intermediate": [
+          "L_thumb_proximal"
+        ],
+        "L_thumb_proximal": [
+          "arm_L7_l"
+        ]
+      },
+      "reviewed_rules": {}
+    },
+    {
+      "model": "dual_v2_1_no_gripper",
+      "previous_viewer_rules": {
+        "DP": [
+          "arm_L1_l",
+          "arm_L1_r",
+          "arm_L2_l",
+          "arm_L2_r"
+        ],
+        "arm_L1_l": [
+          "arm_L2_l",
+          "arm_L3_l"
+        ],
+        "arm_L1_r": [
+          "arm_L2_r",
+          "arm_L3_r"
+        ],
+        "arm_L2_l": [
+          "arm_L3_l"
+        ],
+        "arm_L2_r": [
+          "arm_L3_r"
+        ],
+        "arm_L3_l": [
+          "arm_L4_l"
+        ],
+        "arm_L3_r": [
+          "arm_L4_r"
+        ],
+        "arm_L4_l": [
+          "arm_L5_l"
+        ],
+        "arm_L4_r": [
+          "arm_L5_r"
+        ],
+        "arm_L5_l": [
+          "arm_L6_l"
+        ],
+        "arm_L5_r": [
+          "arm_L6_r",
+          "arm_L7_r"
+        ],
+        "arm_L6_l": [
+          "arm_L7_l"
+        ],
+        "arm_L6_r": [
+          "arm_L7_r"
+        ]
+      },
+      "previous_workspace_rules": {
+        "DP": [
+          "s1",
+          "arm_L1_l",
+          "arm_L1_r",
+          "arm_L2_l",
+          "arm_L2_r"
+        ],
+        "s1": [
+          "s2"
+        ],
+        "s2": [
+          "s3"
+        ],
+        "s3": [
+          "s4"
+        ],
+        "s4": [
+          "arm_L1_l",
+          "arm_L1_r"
+        ],
+        "arm_L1_l": [
+          "arm_L2_l",
+          "arm_L3_l"
+        ],
+        "arm_L2_l": [
+          "arm_L3_l"
+        ],
+        "arm_L3_l": [
+          "arm_L4_l"
+        ],
+        "arm_L4_l": [
+          "arm_L5_l"
+        ],
+        "arm_L5_l": [
+          "arm_L6_l"
+        ],
+        "arm_L6_l": [
+          "arm_L7_l"
+        ],
+        "arm_L1_r": [
+          "arm_L2_r",
+          "arm_L3_r"
+        ],
+        "arm_L2_r": [
+          "arm_L3_r"
+        ],
+        "arm_L3_r": [
+          "arm_L4_r"
+        ],
+        "arm_L4_r": [
+          "arm_L5_r"
+        ],
+        "arm_L5_r": [
+          "arm_L6_r",
+          "arm_L7_r"
+        ],
+        "arm_L6_r": [
+          "arm_L7_r"
+        ]
+      },
+      "reviewed_rules": {}
+    },
+    {
+      "model": "dual_v2_1_with_gripper",
+      "previous_viewer_rules": {
+        "DP": [
+          "arm_L1_l",
+          "arm_L1_r",
+          "arm_L2_l",
+          "arm_L2_r"
+        ],
+        "arm_L1_l": [
+          "arm_L2_l",
+          "arm_L3_l"
+        ],
+        "arm_L1_r": [
+          "arm_L2_r",
+          "arm_L3_r"
+        ],
+        "arm_L2_l": [
+          "arm_L3_l"
+        ],
+        "arm_L2_r": [
+          "arm_L3_r"
+        ],
+        "arm_L3_l": [
+          "arm_L4_l"
+        ],
+        "arm_L3_r": [
+          "arm_L4_r"
+        ],
+        "arm_L4_l": [
+          "arm_L5_l"
+        ],
+        "arm_L4_r": [
+          "arm_L5_r"
+        ],
+        "arm_L5_l": [
+          "arm_L6_l"
+        ],
+        "arm_L5_r": [
+          "arm_L6_r",
+          "arm_L7_r"
+        ],
+        "arm_L6_l": [
+          "arm_L7_l"
+        ],
+        "arm_L6_r": [
+          "arm_L7_r"
+        ],
+        "arm_L7_l": [
+          "gripper_L1_l",
+          "gripper_L2_l"
+        ],
+        "arm_L7_r": [
+          "gripper_L1_r",
+          "gripper_L2_r"
+        ]
+      },
+      "previous_workspace_rules": {
+        "DP": [
+          "s1",
+          "arm_L1_l",
+          "arm_L1_r",
+          "arm_L2_l",
+          "arm_L2_r"
+        ],
+        "s1": [
+          "s2"
+        ],
+        "s2": [
+          "s3"
+        ],
+        "s3": [
+          "s4"
+        ],
+        "s4": [
+          "arm_L1_l",
+          "arm_L1_r"
+        ],
+        "arm_L1_l": [
+          "arm_L2_l",
+          "arm_L3_l"
+        ],
+        "arm_L2_l": [
+          "arm_L3_l"
+        ],
+        "arm_L3_l": [
+          "arm_L4_l"
+        ],
+        "arm_L4_l": [
+          "arm_L5_l"
+        ],
+        "arm_L5_l": [
+          "arm_L6_l"
+        ],
+        "arm_L6_l": [
+          "arm_L7_l"
+        ],
+        "arm_L7_l": [
+          "gripper_base_link_l",
+          "gripper_L1_l",
+          "gripper_L2_l"
+        ],
+        "gripper_base_link_l": [
+          "gripper_L1_l",
+          "gripper_L2_l"
+        ],
+        "arm_L1_r": [
+          "arm_L2_r",
+          "arm_L3_r"
+        ],
+        "arm_L2_r": [
+          "arm_L3_r"
+        ],
+        "arm_L3_r": [
+          "arm_L4_r"
+        ],
+        "arm_L4_r": [
+          "arm_L5_r"
+        ],
+        "arm_L5_r": [
+          "arm_L6_r",
+          "arm_L7_r"
+        ],
+        "arm_L6_r": [
+          "arm_L7_r"
+        ],
+        "arm_L7_r": [
+          "gripper_base_link_r",
+          "gripper_L1_r",
+          "gripper_L2_r"
+        ],
+        "gripper_base_link_r": [
+          "gripper_L1_r",
+          "gripper_L2_r"
+        ]
+      },
+      "reviewed_rules": {}
+    },
+    {
+      "model": "dual_v2_1_with_hand",
+      "previous_viewer_rules": {
+        "DP": [
+          "arm_L1_l",
+          "arm_L1_r",
+          "arm_L2_l",
+          "arm_L2_r"
+        ],
+        "L_index_distal": [
+          "L_index_proximal",
+          "arm_L5_l"
+        ],
+        "L_index_proximal": [
+          "L_middle_proximal",
+          "arm_L5_l",
+          "arm_L6_l",
+          "arm_L7_l"
+        ],
+        "L_middle_distal": [
+          "L_middle_proximal",
+          "arm_L5_l"
+        ],
+        "L_middle_proximal": [
+          "L_ring_proximal",
+          "arm_L5_l",
+          "arm_L6_l",
+          "arm_L7_l"
+        ],
+        "L_pinky_distal": [
+          "L_pinky_proximal",
+          "arm_L5_l"
+        ],
+        "L_pinky_proximal": [
+          "L_ring_proximal",
+          "arm_L5_l",
+          "arm_L7_l"
+        ],
+        "L_ring_distal": [
+          "L_ring_proximal",
+          "arm_L5_l"
+        ],
+        "L_ring_proximal": [
+          "arm_L5_l",
+          "arm_L6_l",
+          "arm_L7_l"
+        ],
+        "L_thumb_distal": [
+          "L_thumb_intermediate"
+        ],
+        "L_thumb_intermediate": [
+          "L_thumb_proximal"
+        ],
+        "L_thumb_proximal": [
+          "arm_L5_l",
+          "arm_L6_l",
+          "arm_L7_l"
+        ],
+        "arm_L1_l": [
+          "arm_L2_l",
+          "arm_L3_l"
+        ],
+        "arm_L1_r": [
+          "arm_L2_r",
+          "arm_L3_r"
+        ],
+        "arm_L2_l": [
+          "arm_L3_l"
+        ],
+        "arm_L2_r": [
+          "arm_L3_r"
+        ],
+        "arm_L3_l": [
+          "arm_L4_l"
+        ],
+        "arm_L3_r": [
+          "arm_L4_r"
+        ],
+        "arm_L4_l": [
+          "arm_L5_l"
+        ],
+        "arm_L4_r": [
+          "arm_L5_r"
+        ],
+        "arm_L5_l": [
+          "arm_L6_l",
+          "arm_L7_l"
+        ],
+        "arm_L5_r": [
+          "arm_L6_r",
+          "arm_L7_r"
+        ],
+        "arm_L6_l": [
+          "arm_L7_l"
+        ],
+        "arm_L6_r": [
+          "arm_L7_r"
+        ]
+      },
+      "previous_workspace_rules": {
+        "DP": [
+          "s1",
+          "arm_L1_l",
+          "arm_L1_r",
+          "arm_L2_l",
+          "arm_L2_r"
+        ],
+        "s1": [
+          "s2"
+        ],
+        "s2": [
+          "s3"
+        ],
+        "s3": [
+          "s4"
+        ],
+        "s4": [
+          "arm_L1_l",
+          "arm_L1_r"
+        ],
+        "arm_L1_l": [
+          "arm_L2_l",
+          "arm_L3_l"
+        ],
+        "arm_L2_l": [
+          "arm_L3_l"
+        ],
+        "arm_L3_l": [
+          "arm_L4_l"
+        ],
+        "arm_L4_l": [
+          "arm_L5_l"
+        ],
+        "arm_L5_l": [
+          "arm_L6_l",
+          "arm_L7_l"
+        ],
+        "arm_L6_l": [
+          "arm_L7_l"
+        ],
+        "arm_L7_l": [
+          "hand_base_link_l"
+        ],
+        "arm_L1_r": [
+          "arm_L2_r",
+          "arm_L3_r"
+        ],
+        "arm_L2_r": [
+          "arm_L3_r"
+        ],
+        "arm_L3_r": [
+          "arm_L4_r"
+        ],
+        "arm_L4_r": [
+          "arm_L5_r"
+        ],
+        "arm_L5_r": [
+          "arm_L6_r",
+          "arm_L7_r"
+        ],
+        "arm_L6_r": [
+          "arm_L7_r"
+        ],
+        "arm_L7_r": [
+          "hand_base_link_r"
+        ],
+        "L_index_distal": [
+          "L_index_proximal",
+          "arm_L5_l"
+        ],
+        "L_index_proximal": [
+          "L_middle_proximal",
+          "arm_L5_l",
+          "arm_L6_l",
+          "arm_L7_l"
+        ],
+        "L_middle_distal": [
+          "L_middle_proximal",
+          "arm_L5_l"
+        ],
+        "L_middle_proximal": [
+          "L_ring_proximal",
+          "arm_L5_l",
+          "arm_L6_l",
+          "arm_L7_l"
+        ],
+        "L_pinky_distal": [
+          "L_pinky_proximal",
+          "arm_L5_l"
+        ],
+        "L_pinky_proximal": [
+          "L_ring_proximal",
+          "arm_L5_l",
+          "arm_L7_l"
+        ],
+        "L_ring_distal": [
+          "L_ring_proximal",
+          "arm_L5_l"
+        ],
+        "L_ring_proximal": [
+          "arm_L5_l",
+          "arm_L6_l",
+          "arm_L7_l"
+        ],
+        "L_thumb_distal": [
+          "L_thumb_intermediate"
+        ],
+        "L_thumb_intermediate": [
+          "L_thumb_proximal"
+        ],
+        "L_thumb_proximal": [
+          "arm_L5_l",
+          "arm_L6_l",
+          "arm_L7_l"
+        ]
+      },
+      "reviewed_rules": {}
+    },
+    {
+      "model": "dual_v2_2_left_hand_right_gripper_half",
+      "previous_viewer_rules": {
+        "L_index_distal": [
+          "L_index_proximal",
+          "L_middle_distal",
+          "L_middle_proximal",
+          "L_ring_distal"
+        ],
+        "L_index_proximal": [
+          "L_middle_distal",
+          "L_middle_proximal",
+          "L_ring_proximal",
+          "hand_base_link_l"
+        ],
+        "L_middle_distal": [
+          "L_middle_proximal",
+          "L_pinky_distal",
+          "L_ring_distal",
+          "L_ring_proximal"
+        ],
+        "L_middle_proximal": [
+          "L_pinky_proximal",
+          "L_ring_distal",
+          "L_ring_proximal",
+          "hand_base_link_l"
+        ],
+        "L_pinky_distal": [
+          "L_pinky_proximal",
+          "L_ring_distal",
+          "L_ring_proximal"
+        ],
+        "L_pinky_proximal": [
+          "L_ring_distal",
+          "L_ring_proximal",
+          "hand_base_link_l"
+        ],
+        "L_ring_distal": [
+          "L_ring_proximal"
+        ],
+        "L_ring_proximal": [
+          "hand_base_link_l"
+        ],
+        "L_thumb_distal": [
+          "L_thumb_intermediate"
+        ],
+        "L_thumb_intermediate": [
+          "L_thumb_proximal",
+          "hand_base_link_l"
+        ],
+        "L_thumb_proximal": [
+          "L_thumb_proximal_base",
+          "hand_base_link_l"
+        ],
+        "L_thumb_proximal_base": [
+          "hand_base_link_l"
+        ],
+        "SJ4Z": [
+          "arm_L1_l",
+          "arm_L1_r",
+          "arm_L2_l",
+          "arm_L2_r"
+        ],
+        "arm_L1_l": [
+          "arm_L2_l",
+          "arm_L3_l"
+        ],
+        "arm_L1_r": [
+          "arm_L2_r",
+          "arm_L3_r"
+        ],
+        "arm_L2_l": [
+          "arm_L3_l"
+        ],
+        "arm_L2_r": [
+          "arm_L3_r"
+        ],
+        "arm_L3_l": [
+          "arm_L4_l"
+        ],
+        "arm_L3_r": [
+          "arm_L4_r"
+        ],
+        "arm_L4_l": [
+          "arm_L5_l"
+        ],
+        "arm_L4_r": [
+          "arm_L5_r"
+        ],
+        "arm_L5_l": [
+          "arm_L6_l",
+          "arm_L7_l"
+        ],
+        "arm_L5_r": [
+          "arm_L6_r",
+          "arm_L7_r"
+        ],
+        "arm_L6_l": [
+          "arm_L7_l",
+          "hand_base_link_l"
+        ],
+        "arm_L6_r": [
+          "arm_L7_r",
+          "gripper_base_link_r"
+        ],
+        "arm_L7_l": [
+          "hand_base_link_l"
+        ],
+        "arm_L7_r": [
+          "gripper_base_link_r"
+        ],
+        "gripper_L1_r": [
+          "gripper_L2_r",
+          "gripper_base_link_r"
+        ],
+        "gripper_L2_r": [
+          "gripper_base_link_r"
+        ]
+      },
+      "previous_workspace_rules": {
+        "SJ4Z": [
+          "arm_L1_l",
+          "arm_L1_r",
+          "arm_L2_l",
+          "arm_L2_r"
+        ],
+        "arm_L1_l": [
+          "arm_L2_l",
+          "arm_L3_l"
+        ],
+        "arm_L2_l": [
+          "arm_L3_l"
+        ],
+        "arm_L3_l": [
+          "arm_L4_l"
+        ],
+        "arm_L4_l": [
+          "arm_L5_l"
+        ],
+        "arm_L5_l": [
+          "arm_L6_l",
+          "arm_L7_l"
+        ],
+        "arm_L6_l": [
+          "arm_L7_l",
+          "hand_base_link_l"
+        ],
+        "arm_L7_l": [
+          "hand_base_link_l"
+        ],
+        "arm_L1_r": [
+          "arm_L2_r",
+          "arm_L3_r"
+        ],
+        "arm_L2_r": [
+          "arm_L3_r"
+        ],
+        "arm_L3_r": [
+          "arm_L4_r"
+        ],
+        "arm_L4_r": [
+          "arm_L5_r"
+        ],
+        "arm_L5_r": [
+          "arm_L6_r",
+          "arm_L7_r"
+        ],
+        "arm_L6_r": [
+          "arm_L7_r",
+          "gripper_base_link_r"
+        ],
+        "arm_L7_r": [
+          "gripper_base_link_r"
+        ],
+        "gripper_base_link_r": [
+          "gripper_L1_r",
+          "gripper_L2_r"
+        ],
+        "L_index_distal": [
+          "L_index_proximal",
+          "L_middle_distal",
+          "L_middle_proximal",
+          "L_ring_distal"
+        ],
+        "L_index_proximal": [
+          "L_middle_distal",
+          "L_middle_proximal",
+          "L_ring_proximal",
+          "hand_base_link_l"
+        ],
+        "L_middle_distal": [
+          "L_middle_proximal",
+          "L_pinky_distal",
+          "L_ring_distal",
+          "L_ring_proximal"
+        ],
+        "L_middle_proximal": [
+          "L_pinky_proximal",
+          "L_ring_distal",
+          "L_ring_proximal",
+          "hand_base_link_l"
+        ],
+        "L_pinky_distal": [
+          "L_pinky_proximal",
+          "L_ring_distal",
+          "L_ring_proximal"
+        ],
+        "L_pinky_proximal": [
+          "L_ring_distal",
+          "L_ring_proximal",
+          "hand_base_link_l"
+        ],
+        "L_ring_distal": [
+          "L_ring_proximal"
+        ],
+        "L_ring_proximal": [
+          "hand_base_link_l"
+        ],
+        "L_thumb_distal": [
+          "L_thumb_intermediate"
+        ],
+        "L_thumb_intermediate": [
+          "L_thumb_proximal",
+          "hand_base_link_l"
+        ],
+        "L_thumb_proximal": [
+          "L_thumb_proximal_base",
+          "hand_base_link_l"
+        ],
+        "L_thumb_proximal_base": [
+          "hand_base_link_l"
+        ],
+        "gripper_L1_r": [
+          "gripper_L2_r",
+          "gripper_base_link_r"
+        ],
+        "gripper_L2_r": [
+          "gripper_base_link_r"
+        ]
+      },
+      "reviewed_rules": {}
+    },
+    {
+      "model": "dual_v2_2_no_gripper",
+      "previous_viewer_rules": {
+        "DP": [
+          "arm_L1_l",
+          "arm_L1_r"
+        ],
+        "arm_L1_l": [
+          "arm_L2_l",
+          "arm_L3_l"
+        ],
+        "arm_L1_r": [
+          "arm_L2_r",
+          "arm_L3_r"
+        ],
+        "arm_L2_l": [
+          "arm_L3_l"
+        ],
+        "arm_L2_r": [
+          "arm_L3_r"
+        ],
+        "arm_L3_l": [
+          "arm_L4_l"
+        ],
+        "arm_L3_r": [
+          "arm_L4_r"
+        ],
+        "arm_L4_l": [
+          "arm_L5_l"
+        ],
+        "arm_L4_r": [
+          "arm_L5_r"
+        ],
+        "arm_L5_l": [
+          "arm_L6_l",
+          "arm_L7_l"
+        ],
+        "arm_L5_r": [
+          "arm_L6_r",
+          "arm_L7_r"
+        ],
+        "arm_L6_l": [
+          "arm_L7_l"
+        ],
+        "arm_L6_r": [
+          "arm_L7_r"
+        ]
+      },
+      "previous_workspace_rules": {
+        "H1": [
+          "H2",
+          "S4"
+        ],
+        "S0": [
+          "S1"
+        ],
+        "S1": [
+          "S2"
+        ],
+        "S2": [
+          "S3"
+        ],
+        "S3": [
+          "S4"
+        ],
+        "S4": [
+          "arm_L1_l",
+          "arm_L1_r"
+        ],
+        "arm_L1_l": [
+          "arm_L2_l",
+          "arm_L3_l"
+        ],
+        "arm_L1_r": [
+          "arm_L2_r",
+          "arm_L3_r"
+        ],
+        "arm_L2_l": [
+          "arm_L3_l"
+        ],
+        "arm_L2_r": [
+          "arm_L3_r"
+        ],
+        "arm_L3_l": [
+          "arm_L4_l"
+        ],
+        "arm_L3_r": [
+          "arm_L4_r"
+        ],
+        "arm_L4_l": [
+          "arm_L5_l"
+        ],
+        "arm_L4_r": [
+          "arm_L5_r"
+        ],
+        "arm_L5_l": [
+          "arm_L6_l",
+          "arm_L7_l"
+        ],
+        "arm_L5_r": [
+          "arm_L6_r",
+          "arm_L7_r"
+        ],
+        "arm_L6_l": [
+          "arm_L7_l"
+        ],
+        "arm_L6_r": [
+          "arm_L7_r"
+        ]
+      },
+      "reviewed_rules": {}
+    },
+    {
+      "model": "spark2_v1",
+      "previous_viewer_rules": {
+        "arm_L1": [
+          "arm_L2",
+          "arm_base_link"
+        ],
+        "arm_L2": [
+          "arm_L3",
+          "arm_base_link"
+        ],
+        "arm_L3": [
+          "arm_L4",
+          "arm_L5"
+        ],
+        "arm_L4": [
+          "arm_L5"
+        ],
+        "arm_L5": [
+          "arm_L6"
+        ]
+      },
+      "previous_workspace_rules": {
+        "arm_base_link": [
+          "arm_L1"
+        ],
+        "arm_L1": [
+          "arm_L2"
+        ],
+        "arm_L2": [
+          "arm_L3"
+        ],
+        "arm_L3": [
+          "arm_L4",
+          "arm_L5"
+        ],
+        "arm_L4": [
+          "arm_L5"
+        ],
+        "arm_L5": [
+          "arm_L6"
+        ]
+      },
+      "reviewed_rules": {}
+    },
+    {
+      "model": "spark2_v2",
+      "previous_viewer_rules": {
+        "arm_L1": [
+          "arm_L2",
+          "arm_base_link"
+        ],
+        "arm_L2": [
+          "arm_L3"
+        ],
+        "arm_L3": [
+          "arm_L4",
+          "arm_L5"
+        ],
+        "arm_L4": [
+          "arm_L5"
+        ],
+        "arm_L5": [
+          "arm_L6"
+        ]
+      },
+      "previous_workspace_rules": {
+        "arm_base_link": [
+          "arm_L1"
+        ],
+        "arm_L1": [
+          "arm_L2"
+        ],
+        "arm_L2": [
+          "arm_L3"
+        ],
+        "arm_L3": [
+          "arm_L4",
+          "arm_L5"
+        ],
+        "arm_L4": [
+          "arm_L5"
+        ],
+        "arm_L5": [
+          "arm_L6"
+        ]
+      },
+      "reviewed_rules": {}
+    }
+  ]
+}

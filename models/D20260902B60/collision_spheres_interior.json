@@ -2,6 +2,9 @@
   "model": "D20260902B60",
   "mode": "interior",
   "radius_expansion_mm": 0,
+  "interior_domain": "stl_material",
+  "preserve_holes_and_cavities": true,
+  "complete_scope": "configured_links_not_volume_coverage",
   "max_spheres_per_link": 256,
   "samples": 100,
   "links": {
@@ -73,5 +76,6 @@
   "complete": true,
   "total_spheres": 1792,
   "estimated_links": [],
-  "sphere_sha256": "c0593736bf8e68dd0bcc0394cd5bec2b3999db153a27be176b9369873d44c152"
+  "sphere_sha256": "228932b49ff7333622f79845195313f9be09154d1afde18ccaff42f91f330229",
+  "sphere_sha256_format": "lf-normalized"
 }

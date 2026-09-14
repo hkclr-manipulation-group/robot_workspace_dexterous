@@ -2,6 +2,9 @@
   "model": "spark2_v2",
   "mode": "interior",
   "radius_expansion_mm": 0,
+  "interior_domain": "stl_material",
+  "preserve_holes_and_cavities": true,
+  "complete_scope": "configured_links_not_volume_coverage",
   "max_spheres_per_link": 256,
   "samples": 100,
   "links": {
@@ -80,5 +83,6 @@
     "arm_L4",
     "arm_L5"
   ],
-  "sphere_sha256": "df9b34ab9f726b38e32ac4ef600a0facf5828f862e07e61fac6d28fb44c72a7a"
+  "sphere_sha256": "78d8ad49d6891c3362dff6f68f49100cc75af8d590c868a73fcd6a04a3f17166",
+  "sphere_sha256_format": "lf-normalized"
 }

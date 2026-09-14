@@ -2,6 +2,9 @@
   "model": "dual_v2_1_with_hand",
   "mode": "interior",
   "radius_expansion_mm": 0,
+  "interior_domain": "stl_material",
+  "preserve_holes_and_cavities": true,
+  "complete_scope": "configured_links_not_volume_coverage",
   "max_spheres_per_link": 256,
   "samples": 100,
   "links": {
@@ -398,5 +401,6 @@
     "L_pinky_distal",
     "R_pinky_distal"
   ],
-  "sphere_sha256": "5bf7ce9c501bf0d0d89eaf36d0016b529d47c880ae3f2b86f6977cead12830b5"
+  "sphere_sha256": "9385f6fdd04a097c2b14b8f46359cbd7e36cf88a68b6ed93e942dcd8d41725f5",
+  "sphere_sha256_format": "lf-normalized"
 }
