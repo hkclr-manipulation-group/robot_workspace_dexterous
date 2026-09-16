@@ -39,7 +39,7 @@ def main(argv: list[str] | None = None) -> None:
         "--batch-size",
         type=int,
         default=None,
-        help="Override solver.batch_size (use 4096–8192 on ~120 GB GPUs)",
+        help="Override solver.batch_size (default configs: 32; try 16 or 8 if CUDA runs out of memory)",
     )
     parser.add_argument(
         "--ik-seeds",
@@ -114,6 +114,8 @@ def main(argv: list[str] | None = None) -> None:
         str(config.urdf_path), str(output_dir / "normalized_robot.urdf"), config.joint_limit_defaults
     )
     collision_robots = None
+    from .gpu_memory import configure_gpu_memory
+    configure_gpu_memory(config.gpu_memory_fraction)
     if config.self_collision:
         print(f"loading collision spheres: {config.collision_spheres_path}", flush=True)
         with cuda_stage('build collision robots', args.debug_cuda):

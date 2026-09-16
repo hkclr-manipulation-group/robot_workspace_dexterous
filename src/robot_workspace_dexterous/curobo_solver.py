@@ -219,7 +219,7 @@ def compute_dexterous_workspace(
     urdf_path: str, base_link: str, ee_link: str,
     x_range: tuple[float, float], y_range: tuple[float, float],
     heights: np.ndarray, resolution: float, orientations_wxyz: np.ndarray,
-    num_seeds: int = 8, batch_size: int = 256,
+    num_seeds: int = 8, batch_size: int = 32,
     position_tolerance: float = 0.005, orientation_tolerance: float = 0.08,
     self_collision: bool = True,
     progress: Callable[[int, int, float], None] | None = None,

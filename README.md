@@ -34,7 +34,7 @@ Sampling density is real; no interpolated points are added to reachability data.
 Override XY and Z spacing together, or change the snapshot interval:
 
 ```bash
-python -u run.py --config configs/spark2_v2.yaml --resolution 0.025 --snapshot-seconds 30 --output-dir output/spark2_v2
+python -u run.py --config configs/spark2_v2.yaml --resolution 0.05 --snapshot-seconds 30 --output-dir output/spark2_v2
 ```
 
 For `c10::AcceleratorError` / `an illegal memory access was encountered`, exit
@@ -212,7 +212,7 @@ orientations:
   count: 16
 solver:
   ik_seeds: 4
-  batch_size: 4096
+  batch_size: 32
 ```
 
 After checking bounds, link names, reachability, and collision behavior, use a
@@ -226,28 +226,30 @@ orientations:
   count: 64
 solver:
   ik_seeds: 8
-  batch_size: 4096
+  batch_size: 32
 ```
 
-### 120 GB GPU tuning
+### GPU memory budget and grid density
 
-cuRobo already parallelizes IK on the GPU via `solver.batch_size`. With ~120 GB
-VRAM, start at `4096` and increase until you hit OOM:
+Bundled configurations use a 50 mm XYZ grid, batches of 32 IK targets, and
+`solver.gpu_memory_fraction: 0.75`. On a 120 GB GPU the allocator budget is
+at most about 90 GB, targeting a 30 GB reserve. The budget is further reduced
+when other processes already occupy memory. This limits the PyTorch allocator;
+external CUDA allocations and other processes are not capped by it.
+The limit is applied before collision robots and IK solvers are constructed.
 
-```yaml
-solver:
-  ik_seeds: 8
-  batch_size: 4096   # try 8192 if stable
-```
-
-Runtime override without editing YAML:
+Spark and dual-arm grid spacing increased from 25 to 50 mm (about one eighth
+as many XYZ cells); the D-series already used 50 mm. Orientations, IK seeds,
+collision geometry and ignore rules remain unchanged. Coarser spacing reduces
+spatial detail and total work, but batching controls the main per-batch GPU load.
 
 ```bash
-python3 run.py --config configs/spark2_v2.yaml --batch-size 8192
+python run.py --config configs/spark2_v2.yaml --resolution 0.05 --batch-size 32
 ```
 
-If CUDA OOM appears, halve `batch_size`. Do not run multiple cuRobo processes on
-the same GPU; one large batch is faster than several small ones.
+Restart the process to apply these settings. An existing job keeps its old
+allocations. If a batch still exceeds the budget, retry with `--batch-size 16`
+or `8`; the allocator raises OOM rather than growing beyond its configured limit.
 
 Strict DWS requires every sampled orientation to be reachable and uses
 `minimum_dexterity: 1.0`. Lower this threshold only when the task definition

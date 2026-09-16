@@ -22,7 +22,8 @@ orientations:
   count: 16
 solver:
   ik_seeds: 4
-  batch_size: 4096
+  batch_size: 32
+  gpu_memory_fraction: 0.75
   position_tolerance: 0.005
   orientation_tolerance: 0.08
   self_collision: true

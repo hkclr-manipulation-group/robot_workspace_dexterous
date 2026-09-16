@@ -29,6 +29,7 @@ class Config:
     plot_sections: tuple[float, float, float]
     base_position: tuple[float, float, float]
     joint_limit_defaults: dict[str, float] | None = None
+    gpu_memory_fraction: float = 0.75
 
 
 def _local_path(config_path: Path, value: str | None) -> Path | None:
@@ -131,16 +132,19 @@ def load_config(path: str | Path) -> Config:
     limit_defaults = {name: float(value) for name, value in limit_defaults.items()}
     if any(not np.isfinite(value) or value <= 0 for value in limit_defaults.values()):
         raise ValueError("robot.joint_limit_defaults values must be finite and positive")
+    gpu_memory_fraction = float(solver.get('gpu_memory_fraction', 0.75))
+    if not np.isfinite(gpu_memory_fraction) or not 0 < gpu_memory_fraction <= 1:
+        raise ValueError('solver.gpu_memory_fraction must be in (0, 1]')
     return Config(
         urdf_path, collision_spheres_path, str(robot["base_link"]), ee_links,
         self_collision_ignore,
         x_range, y_range,
         np.arange(z_min, z_max + 0.5 * z_step, z_step, dtype=np.float32),
         resolution, orientations,
-        int(solver.get("ik_seeds", 8)), int(solver.get("batch_size", 4096)),
+        int(solver.get("ik_seeds", 8)), int(solver.get("batch_size", 32)),
         float(solver.get("position_tolerance", 0.005)),
         float(solver.get("orientation_tolerance", 0.08)),
         bool(solver.get("self_collision", True)), minimum,
         (plot_x_range, plot_y_range, plot_z_range),
-        plot_sections, base_position, limit_defaults,
+        plot_sections, base_position, limit_defaults, gpu_memory_fraction,
     )
