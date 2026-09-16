@@ -1,0 +1,108 @@
+version: 1
+urdf_sha256: 3ec04bb32344dca226da3896529b6d20a608018cf75b22ba1d2e022df55cc788
+links:
+  arm_base_link:
+  - file: ../meshes/6990219a1770a639179dd3b2b26faea995e279ec785ba42afa880d4fd03f9d8b.stl
+    sha256: 6990219a1770a639179dd3b2b26faea995e279ec785ba42afa880d4fd03f9d8b
+    scale:
+    - 1.0
+    - 1.0
+    - 1.0
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 0.0
+    - 0.0
+  arm_L1:
+  - file: ../meshes/7205aeefced033e6532f8203d12b770c00cbf3f79f193e3c50cea414e454b725.stl
+    sha256: 7205aeefced033e6532f8203d12b770c00cbf3f79f193e3c50cea414e454b725
+    scale:
+    - 1.0
+    - 1.0
+    - 1.0
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 0.0
+    - 3.1416
+  arm_L2:
+  - file: ../meshes/181078d57d50269f5767d32a66036afcaed3b681af537d226d1d340f258c51ef.stl
+    sha256: 181078d57d50269f5767d32a66036afcaed3b681af537d226d1d340f258c51ef
+    scale:
+    - 1.0
+    - 1.0
+    - 1.0
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 0.0
+    - 0.0
+  arm_L3:
+  - file: ../meshes/254727679bf4c3ea9c7f07290c5bbae8327c5aa72dbd477e97746cd10b88fa0f.stl
+    sha256: 254727679bf4c3ea9c7f07290c5bbae8327c5aa72dbd477e97746cd10b88fa0f
+    scale:
+    - 1.0
+    - 1.0
+    - 1.0
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 0.0
+    - 0.0
+  arm_L4:
+  - file: ../meshes/a1388d6ca8ba863f35a5762dce05e060d08099e8a73ff820f49fd7e126a148b0.stl
+    sha256: a1388d6ca8ba863f35a5762dce05e060d08099e8a73ff820f49fd7e126a148b0
+    scale:
+    - 1.0
+    - 1.0
+    - 1.0
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 0.0
+    - 3.14159265
+  arm_L5:
+  - file: ../meshes/f5dce189dbfba2f44a83e5f73ab59890b1fd7ea9cf1490c8f42f4edbf1bd59d4.stl
+    sha256: f5dce189dbfba2f44a83e5f73ab59890b1fd7ea9cf1490c8f42f4edbf1bd59d4
+    scale:
+    - 1.0
+    - 1.0
+    - 1.0
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 0.0
+    - 0.0
+  arm_L6:
+  - file: ../meshes/7cbdd2959d1adf7028377beabf251de69bedb709d8e778d2dc1556597cc5a0e3.stl
+    sha256: 7cbdd2959d1adf7028377beabf251de69bedb709d8e778d2dc1556597cc5a0e3
+    scale:
+    - 1.0
+    - 1.0
+    - 1.0
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 0.0
+    - 0.0

@@ -1,0 +1,108 @@
+version: 1
+urdf_sha256: c57e5c53de73d293ba72a74a8504585a17411fd066ccffcedb090fffaabf9ee5
+links:
+  arm_base_link:
+  - file: ../meshes/bc6f16239fa86a46aa81dad52ad4cdc66a7373622e0c138d04e7c9f21721e562.stl
+    sha256: bc6f16239fa86a46aa81dad52ad4cdc66a7373622e0c138d04e7c9f21721e562
+    scale:
+    - 0.001
+    - 0.001
+    - 0.001
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - -0.0
+    - 0.0
+  arm_L1:
+  - file: ../meshes/8a93b4b18962ec003b4f31225c6b7712f329fa56e69f5f0003cc9cbdffb373e9.stl
+    sha256: 8a93b4b18962ec003b4f31225c6b7712f329fa56e69f5f0003cc9cbdffb373e9
+    scale:
+    - 0.001
+    - 0.001
+    - 0.001
+    xyz:
+    - 0.0
+    - 0.0
+    - -0.084
+    rpy:
+    - 0.0
+    - -0.0
+    - 0.0
+  arm_L2:
+  - file: ../meshes/56b6c9bd9509e96e4c3774014741ae5906dbf59dc38a841e158f923d975f94c5.stl
+    sha256: 56b6c9bd9509e96e4c3774014741ae5906dbf59dc38a841e158f923d975f94c5
+    scale:
+    - 0.001
+    - 0.001
+    - 0.001
+    xyz:
+    - -0.084
+    - -0.096
+    - 0.0
+    rpy:
+    - 1.5707963267948966
+    - -0.0
+    - 1.5707963267948966
+  arm_L3:
+  - file: ../meshes/4ca6bd686f83cf6ae343c535ef3d44a43c37496b0e20c3d94ccb13e1dbd52966.stl
+    sha256: 4ca6bd686f83cf6ae343c535ef3d44a43c37496b0e20c3d94ccb13e1dbd52966
+    scale:
+    - 0.001
+    - 0.001
+    - 0.001
+    xyz:
+    - -0.4305
+    - -0.096
+    - 0.0
+    rpy:
+    - 1.5707963267948966
+    - -0.0
+    - 1.5707963267948966
+  arm_L4:
+  - file: ../meshes/15fe012fe0e8d06c4c6e6813a1c27e2e6837883b6c189170cfbda34e1518896c.stl
+    sha256: 15fe012fe0e8d06c4c6e6813a1c27e2e6837883b6c189170cfbda34e1518896c
+    scale:
+    - 0.001
+    - 0.001
+    - 0.001
+    xyz:
+    - -0.5805
+    - -0.096
+    - 0.0
+    rpy:
+    - 1.5707963267948966
+    - -0.0
+    - 1.5707963267948966
+  arm_L5:
+  - file: ../meshes/eaadefacc2bb80a0a21af29924ebd66c5db030b18a540e53d3da5b992492fdc4.stl
+    sha256: eaadefacc2bb80a0a21af29924ebd66c5db030b18a540e53d3da5b992492fdc4
+    scale:
+    - 0.001
+    - 0.001
+    - 0.001
+    xyz:
+    - 0.0
+    - 0.5805
+    - 0.0
+    rpy:
+    - 1.5707963267948966
+    - 1.5707963267948966
+    - 0.0
+  arm_L6:
+  - file: ../meshes/9c6e1987bbbcd59d3321fdbcfc8b909ef739c02608acd8c6b173b57ee361d8e6.stl
+    sha256: 9c6e1987bbbcd59d3321fdbcfc8b909ef739c02608acd8c6b173b57ee361d8e6
+    scale:
+    - 0.001
+    - 0.001
+    - 0.001
+    xyz:
+    - 0.0
+    - 0.0
+    - -0.7805
+    rpy:
+    - 0.0
+    - -0.0
+    - -1.5707963267948966

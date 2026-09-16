@@ -1,0 +1,108 @@
+version: 1
+urdf_sha256: ccbf27016fe99f6e25d462fe0ba2439635b361ba16bb7c43992e1a425150a686
+links:
+  base_link:
+  - file: ../meshes/6b0e5d77bab97403d0150d006e96dcd468518307a352a3d1bbda262c77e218c6.stl
+    sha256: 6b0e5d77bab97403d0150d006e96dcd468518307a352a3d1bbda262c77e218c6
+    scale:
+    - 1.0
+    - 1.0
+    - 1.0
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 0.0
+    - 0.0
+  L1:
+  - file: ../meshes/219c9f54cc8b863d352e6345f17bdeedeed88033bab4e192dddabaa3217ed5ee.stl
+    sha256: 219c9f54cc8b863d352e6345f17bdeedeed88033bab4e192dddabaa3217ed5ee
+    scale:
+    - 1.0
+    - 1.0
+    - 1.0
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 0.0
+    - 0.0
+  L2:
+  - file: ../meshes/b70040f752162f87a5a20abb42a310d517c75faab604b716df76b4367a02e2f1.stl
+    sha256: b70040f752162f87a5a20abb42a310d517c75faab604b716df76b4367a02e2f1
+    scale:
+    - 1.0
+    - 1.0
+    - 1.0
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 0.0
+    - 0.0
+  L3:
+  - file: ../meshes/f6c3939fe8fba8e7b2e69bb31dabaf0050a50215d503017a887517382b65cd73.stl
+    sha256: f6c3939fe8fba8e7b2e69bb31dabaf0050a50215d503017a887517382b65cd73
+    scale:
+    - 1.0
+    - 1.0
+    - 1.0
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 0.0
+    - 0.0
+  L4:
+  - file: ../meshes/ec4e3a3134030faaab117be3232f66f84f226bbb1e77627ff5cf39da7f94691a.stl
+    sha256: ec4e3a3134030faaab117be3232f66f84f226bbb1e77627ff5cf39da7f94691a
+    scale:
+    - 1.0
+    - 1.0
+    - 1.0
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 0.0
+    - 0.0
+  L5:
+  - file: ../meshes/31765fa87cea5123f67dddb3590adfb00c3c9927cfe29bec00f2798dca2c4faf.stl
+    sha256: 31765fa87cea5123f67dddb3590adfb00c3c9927cfe29bec00f2798dca2c4faf
+    scale:
+    - 1.0
+    - 1.0
+    - 1.0
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 0.0
+    - 0.0
+  L6:
+  - file: ../meshes/54016e3425192f72b71ace8d8febe92ada344453dd6fb0f8c03b39be31e3932d.stl
+    sha256: 54016e3425192f72b71ace8d8febe92ada344453dd6fb0f8c03b39be31e3932d
+    scale:
+    - 1.0
+    - 1.0
+    - 1.0
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 0.0
+    - 0.0

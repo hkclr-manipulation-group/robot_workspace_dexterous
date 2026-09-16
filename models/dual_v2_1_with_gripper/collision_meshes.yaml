@@ -1,0 +1,378 @@
+version: 1
+urdf_sha256: d88cefb19ac2ed19bd8930c9a52f9568c3bb186c0057bfcc9f2c64bf76988c8b
+links:
+  DP:
+  - file: ../meshes/bf124abfb91cd3a4320d51e907e7916df7274894cd6eb0af90cde7bed5ce2294.stl
+    sha256: bf124abfb91cd3a4320d51e907e7916df7274894cd6eb0af90cde7bed5ce2294
+    scale:
+    - 1.0
+    - 1.0
+    - 1.0
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 0.0
+    - 0.0
+  s1:
+  - file: ../meshes/fae367145c7d26ad6c199becc3f34967ccc22e7e426cf7d4a5021371662d59bd.stl
+    sha256: fae367145c7d26ad6c199becc3f34967ccc22e7e426cf7d4a5021371662d59bd
+    scale:
+    - 1.0
+    - 1.0
+    - 1.0
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 0.0
+    - 0.0
+  s2:
+  - file: ../meshes/3bc0ec95e32382376e42daced16c8ee7ad68b15e116b29b0c4d4e7774c5f36f5.stl
+    sha256: 3bc0ec95e32382376e42daced16c8ee7ad68b15e116b29b0c4d4e7774c5f36f5
+    scale:
+    - 1.0
+    - 1.0
+    - 1.0
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 0.0
+    - 0.0
+  s3:
+  - file: ../meshes/514a8b4798bc498a247ffb1bb59045b6c3674329e9d7fa686151b0cdb83c7a24.stl
+    sha256: 514a8b4798bc498a247ffb1bb59045b6c3674329e9d7fa686151b0cdb83c7a24
+    scale:
+    - 1.0
+    - 1.0
+    - 1.0
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 0.0
+    - 0.0
+  s4:
+  - file: ../meshes/2086c6a667fd3435182a653007aeacbad1ff9dce7bde1694e62a6a24f2593b9e.stl
+    sha256: 2086c6a667fd3435182a653007aeacbad1ff9dce7bde1694e62a6a24f2593b9e
+    scale:
+    - 1.0
+    - 1.0
+    - 1.0
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 0.0
+    - 0.0
+  arm_L1_l:
+  - file: ../meshes/aef96c3eae5c9902fc08c6ac71a1e0d6e48ca53054e357a50a237cf321345bcf.stl
+    sha256: aef96c3eae5c9902fc08c6ac71a1e0d6e48ca53054e357a50a237cf321345bcf
+    scale:
+    - 1.0
+    - 1.0
+    - 1.0
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 0.0
+    - 0.0
+  arm_L2_l:
+  - file: ../meshes/48d4a8ca0ebd30aaee9116bf661aa2c1a156027c891ceceddd57ae25f7268bbd.stl
+    sha256: 48d4a8ca0ebd30aaee9116bf661aa2c1a156027c891ceceddd57ae25f7268bbd
+    scale:
+    - 1.0
+    - 1.0
+    - 1.0
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 0.0
+    - 0.0
+  arm_L3_l:
+  - file: ../meshes/b863fc2d318eb1b50cdbce8a7285b6e29441bac158322b3eaa11abab8266c0ec.stl
+    sha256: b863fc2d318eb1b50cdbce8a7285b6e29441bac158322b3eaa11abab8266c0ec
+    scale:
+    - 1.0
+    - 1.0
+    - 1.0
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 0.0
+    - 0.0
+  arm_L4_l:
+  - file: ../meshes/ae045772107e3c5096e761605d8a483addcb23e206abf89dc2aead4c27a98952.stl
+    sha256: ae045772107e3c5096e761605d8a483addcb23e206abf89dc2aead4c27a98952
+    scale:
+    - 1.0
+    - 1.0
+    - 1.0
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 0.0
+    - 0.0
+  arm_L5_l:
+  - file: ../meshes/244b60c12b2d1749135d2f14b82fab62dad86c65153ae6c58864637742427d8b.stl
+    sha256: 244b60c12b2d1749135d2f14b82fab62dad86c65153ae6c58864637742427d8b
+    scale:
+    - 1.0
+    - 1.0
+    - 1.0
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 0.0
+    - 0.0
+  arm_L6_l:
+  - file: ../meshes/2b717be4628a0aaff81a61b002ef9eac83420ab1c4a31b68df97757b0d05035c.stl
+    sha256: 2b717be4628a0aaff81a61b002ef9eac83420ab1c4a31b68df97757b0d05035c
+    scale:
+    - 1.0
+    - 1.0
+    - 1.0
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 0.0
+    - 0.0
+  arm_L7_l:
+  - file: ../meshes/3f608afe4084f67e16056596d124f9c6a1991821501540037da149047137517e.stl
+    sha256: 3f608afe4084f67e16056596d124f9c6a1991821501540037da149047137517e
+    scale:
+    - 1.0
+    - 1.0
+    - 1.0
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 0.0
+    - 0.0
+  gripper_base_link_l:
+  - file: ../meshes/792aea480ef88046d17d531980819a89ba670bbf700edbbb539024cafdcc522f.stl
+    sha256: 792aea480ef88046d17d531980819a89ba670bbf700edbbb539024cafdcc522f
+    scale:
+    - 1.0
+    - 1.0
+    - 1.0
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 0.0
+    - 0.0
+  gripper_L1_l:
+  - file: ../meshes/6eb9d62acf07e25e1a07437dea503b88157c656c0b309b1945f624fff3ef5798.stl
+    sha256: 6eb9d62acf07e25e1a07437dea503b88157c656c0b309b1945f624fff3ef5798
+    scale:
+    - 1.0
+    - 1.0
+    - 1.0
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 0.0
+    - 0.0
+  gripper_L2_l:
+  - file: ../meshes/80bf15fa86382579c3e4e5479408485a17c283945b0081e43ce665165faa8756.stl
+    sha256: 80bf15fa86382579c3e4e5479408485a17c283945b0081e43ce665165faa8756
+    scale:
+    - 1.0
+    - 1.0
+    - 1.0
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 0.0
+    - 0.0
+  arm_L1_r:
+  - file: ../meshes/aef96c3eae5c9902fc08c6ac71a1e0d6e48ca53054e357a50a237cf321345bcf.stl
+    sha256: aef96c3eae5c9902fc08c6ac71a1e0d6e48ca53054e357a50a237cf321345bcf
+    scale:
+    - 1.0
+    - 1.0
+    - 1.0
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 3.14159
+    - 0.0
+  arm_L2_r:
+  - file: ../meshes/48d4a8ca0ebd30aaee9116bf661aa2c1a156027c891ceceddd57ae25f7268bbd.stl
+    sha256: 48d4a8ca0ebd30aaee9116bf661aa2c1a156027c891ceceddd57ae25f7268bbd
+    scale:
+    - 1.0
+    - 1.0
+    - 1.0
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 0.0
+    - 0.0
+  arm_L3_r:
+  - file: ../meshes/b863fc2d318eb1b50cdbce8a7285b6e29441bac158322b3eaa11abab8266c0ec.stl
+    sha256: b863fc2d318eb1b50cdbce8a7285b6e29441bac158322b3eaa11abab8266c0ec
+    scale:
+    - 1.0
+    - 1.0
+    - 1.0
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 3.14159
+    - 3.14159
+  arm_L4_r:
+  - file: ../meshes/ae045772107e3c5096e761605d8a483addcb23e206abf89dc2aead4c27a98952.stl
+    sha256: ae045772107e3c5096e761605d8a483addcb23e206abf89dc2aead4c27a98952
+    scale:
+    - 1.0
+    - 1.0
+    - 1.0
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 0.0
+    - 0.0
+  arm_L5_r:
+  - file: ../meshes/244b60c12b2d1749135d2f14b82fab62dad86c65153ae6c58864637742427d8b.stl
+    sha256: 244b60c12b2d1749135d2f14b82fab62dad86c65153ae6c58864637742427d8b
+    scale:
+    - 1.0
+    - 1.0
+    - 1.0
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 3.14159
+    - 0.0
+  arm_L6_r:
+  - file: ../meshes/2b717be4628a0aaff81a61b002ef9eac83420ab1c4a31b68df97757b0d05035c.stl
+    sha256: 2b717be4628a0aaff81a61b002ef9eac83420ab1c4a31b68df97757b0d05035c
+    scale:
+    - 1.0
+    - 1.0
+    - 1.0
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 0.0
+    - 0.0
+  arm_L7_r:
+  - file: ../meshes/3f608afe4084f67e16056596d124f9c6a1991821501540037da149047137517e.stl
+    sha256: 3f608afe4084f67e16056596d124f9c6a1991821501540037da149047137517e
+    scale:
+    - 1.0
+    - 1.0
+    - 1.0
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 0.0
+    - 0.0
+  gripper_base_link_r:
+  - file: ../meshes/792aea480ef88046d17d531980819a89ba670bbf700edbbb539024cafdcc522f.stl
+    sha256: 792aea480ef88046d17d531980819a89ba670bbf700edbbb539024cafdcc522f
+    scale:
+    - 1.0
+    - 1.0
+    - 1.0
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 0.0
+    - 0.0
+  gripper_L1_r:
+  - file: ../meshes/6eb9d62acf07e25e1a07437dea503b88157c656c0b309b1945f624fff3ef5798.stl
+    sha256: 6eb9d62acf07e25e1a07437dea503b88157c656c0b309b1945f624fff3ef5798
+    scale:
+    - 1.0
+    - 1.0
+    - 1.0
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 0.0
+    - 0.0
+  gripper_L2_r:
+  - file: ../meshes/80bf15fa86382579c3e4e5479408485a17c283945b0081e43ce665165faa8756.stl
+    sha256: 80bf15fa86382579c3e4e5479408485a17c283945b0081e43ce665165faa8756
+    scale:
+    - 1.0
+    - 1.0
+    - 1.0
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 0.0
+    - 0.0

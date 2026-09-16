@@ -1,0 +1,108 @@
+version: 1
+urdf_sha256: 4b2fd43a766fc6f0fa8cabf28a6c0f9761debd9477d11b6ca120799dd1d328e0
+links:
+  baselink:
+  - file: ../meshes/4e19894921c9c72ea951870b83ebab697d1d6410727f2a0763da806677eb39ae.stl
+    sha256: 4e19894921c9c72ea951870b83ebab697d1d6410727f2a0763da806677eb39ae
+    scale:
+    - 1.0
+    - 1.0
+    - 1.0
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 0.0
+    - 0.0
+  Link01:
+  - file: ../meshes/9637f000f281e743b7c960c0dd2051b5dc4314d9cff52c38892ee2bf7e807133.stl
+    sha256: 9637f000f281e743b7c960c0dd2051b5dc4314d9cff52c38892ee2bf7e807133
+    scale:
+    - 1.0
+    - 1.0
+    - 1.0
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 0.0
+    - 0.0
+  Link02:
+  - file: ../meshes/2dae3d435dcf8fae68698e02c7423b5ade28712e5851b46c5baa4c556958119a.stl
+    sha256: 2dae3d435dcf8fae68698e02c7423b5ade28712e5851b46c5baa4c556958119a
+    scale:
+    - 1.0
+    - 1.0
+    - 1.0
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 0.0
+    - 0.0
+  Link03:
+  - file: ../meshes/1163a6e3a78c401c52c046b54ca031b0bb54755e4781c4f3fbe863378a508257.stl
+    sha256: 1163a6e3a78c401c52c046b54ca031b0bb54755e4781c4f3fbe863378a508257
+    scale:
+    - 1.0
+    - 1.0
+    - 1.0
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 0.0
+    - 0.0
+  Link04:
+  - file: ../meshes/2dbec4c12505cf534f75a807b376f28546a8585b4e08da675f1be6c9094a7544.stl
+    sha256: 2dbec4c12505cf534f75a807b376f28546a8585b4e08da675f1be6c9094a7544
+    scale:
+    - 1.0
+    - 1.0
+    - 1.0
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 0.0
+    - 0.0
+  Link05:
+  - file: ../meshes/15ec29a5599553affd3fae5cef93709479f3ca1af4d15d047b573966362502f1.stl
+    sha256: 15ec29a5599553affd3fae5cef93709479f3ca1af4d15d047b573966362502f1
+    scale:
+    - 1.0
+    - 1.0
+    - 1.0
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 0.0
+    - 0.0
+  Link06:
+  - file: ../meshes/514c2ac3cf5cc5a2a38f9de5ca23e0ddda0490b922554056948450c05be8168d.stl
+    sha256: 514c2ac3cf5cc5a2a38f9de5ca23e0ddda0490b922554056948450c05be8168d
+    scale:
+    - 1.0
+    - 1.0
+    - 1.0
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 0.0
+    - 0.0

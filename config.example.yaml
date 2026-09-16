@@ -2,18 +2,12 @@ robot:
   # Spark2 V2 without a gripper. Relative paths resolve from this file.
   urdf: models/spark2_v2/robot.urdf
   collision_spheres: models/spark2_v2/collision_spheres_interior.yaml
-  # Optional generated mapping, merged with self_collision_ignore below.
-  # self_collision_ignore_file: models/spark2_v2/self_collision_ignore.yaml
+  collision_meshes: models/spark2_v2/collision_meshes.yaml
+  self_collision_ignore_file: models/spark2_v2/self_collision_ignore.yaml
   base_link: arm_base_link
   ee_links: [arm_end_effector]
-  # Directly connected meshes overlap at their physical joint interfaces.
-  self_collision_ignore:
-    arm_base_link: [arm_L1]
-    arm_L1: [arm_L2]
-    arm_L2: [arm_L3]
-    arm_L3: [arm_L4, arm_L5]
-    arm_L4: [arm_L5]
-    arm_L5: [arm_L6]
+  # Add exceptions only after reviewing STL contacts; no automatic adjacency exclusions.
+  self_collision_ignore: {}
 
 grid:
   x_range: [-1.0, 1.0]
@@ -21,8 +15,8 @@ grid:
   # Include workspace below the base plane.
   z_min: -0.80
   z_max: 0.80
-  resolution: 0.025
-  z_step: 0.025
+  resolution: 0.05
+  z_step: 0.05
 
 orientations:
   # Deterministic approximately uniform samples over SO(3). Increase to 64 or
@@ -42,11 +36,12 @@ plot:
 
 solver:
   ik_seeds: 8
-  # Tune for GPU VRAM: 4096 for ~120 GB, 1024 for ~24 GB, 8192 if 4096 leaves headroom.
-  batch_size: 4096
+  batch_size: 32
+  gpu_memory_fraction: 0.75
   position_tolerance: 0.005
   orientation_tolerance: 0.08
-  # Collision spheres are loaded from robot.collision_spheres; no fitting runs here.
+  # All pose-valid IK seeds are checked against original STL triangles.
+  collision_backend: stl
   self_collision: true
 
 output:

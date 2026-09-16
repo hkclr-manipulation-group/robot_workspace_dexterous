@@ -1,0 +1,108 @@
+version: 1
+urdf_sha256: e5929c3473ee529b0398bbfacc0f82de26b8450f4be4beabe92f86be8dad30b8
+links:
+  base_link:
+  - file: ../meshes/c022d2430020118a0e4142d130c727b0c1ab665c66d1b3991fad0c08549c9ad9.stl
+    sha256: c022d2430020118a0e4142d130c727b0c1ab665c66d1b3991fad0c08549c9ad9
+    scale:
+    - 1.0
+    - 1.0
+    - 1.0
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 0.0
+    - 0.0
+  L1:
+  - file: ../meshes/3430ec4bceab0a4ee3c63a6d072db3d0745d6ab0d804febc36fd54fcb40310c7.stl
+    sha256: 3430ec4bceab0a4ee3c63a6d072db3d0745d6ab0d804febc36fd54fcb40310c7
+    scale:
+    - 1.0
+    - 1.0
+    - 1.0
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 0.0
+    - 0.0
+  L2:
+  - file: ../meshes/b70040f752162f87a5a20abb42a310d517c75faab604b716df76b4367a02e2f1.stl
+    sha256: b70040f752162f87a5a20abb42a310d517c75faab604b716df76b4367a02e2f1
+    scale:
+    - 1.0
+    - 1.0
+    - 1.0
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 0.0
+    - 0.0
+  L3:
+  - file: ../meshes/d982443373cd86cdd185f585f3df9daf7a277d2e15f32a74d807fe42dd667c62.stl
+    sha256: d982443373cd86cdd185f585f3df9daf7a277d2e15f32a74d807fe42dd667c62
+    scale:
+    - 1.0
+    - 1.0
+    - 1.0
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 0.0
+    - 0.0
+  L4:
+  - file: ../meshes/04a65f3054552c19d6d87068e3c378f93c0d2e479f8137768900607f0f0fee3d.stl
+    sha256: 04a65f3054552c19d6d87068e3c378f93c0d2e479f8137768900607f0f0fee3d
+    scale:
+    - 1.0
+    - 1.0
+    - 1.0
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 0.0
+    - 0.0
+  L5:
+  - file: ../meshes/a9f2d3fea076c44b709f4f663020e27e12bab392fa42a1bfc6fe16480d8981f2.stl
+    sha256: a9f2d3fea076c44b709f4f663020e27e12bab392fa42a1bfc6fe16480d8981f2
+    scale:
+    - 1.0
+    - 1.0
+    - 1.0
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 0.0
+    - 0.0
+  L6:
+  - file: ../meshes/99a1a2dbb1f3d3cffdae1e20cb76f1c00cd82837c03f3bc8832edb50f92fa72e.stl
+    sha256: 99a1a2dbb1f3d3cffdae1e20cb76f1c00cd82837c03f3bc8832edb50f92fa72e
+    scale:
+    - 1.0
+    - 1.0
+    - 1.0
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 0.0
+    - 0.0

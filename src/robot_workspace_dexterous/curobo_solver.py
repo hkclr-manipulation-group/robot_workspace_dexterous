@@ -238,6 +238,7 @@ def compute_dexterous_workspace(
     debug_cuda: bool = False,
     snapshot: Callable[[DexterousWorkspace, int, int, float], None] | None = None,
     snapshot_seconds: float = 30.0,
+    mesh_checker: object | None = None,
 ) -> DexterousWorkspace:
     import torch
     if not torch.cuda.is_available():
@@ -247,9 +248,20 @@ def compute_dexterous_workspace(
     from curobo.kinematics import Kinematics, KinematicsCfg
     from curobo.types import GoalToolPose, Pose
 
+    ik_self_collision = self_collision and mesh_checker is None
     if robot is None:
-        if self_collision:
+        if ik_self_collision:
             raise ValueError("a prebuilt collision robot is required for self-collision checking")
+        elif mesh_checker is not None:
+            try:
+                robot = RobotCfg.create({"robot_cfg": {"kinematics": {
+                    "urdf_path": urdf_path, "base_link": base_link,
+                    "tool_frames": [ee_link], "kinematic_link_names": mesh_checker.links,
+                }}}, load_collision_spheres=False)
+            except TypeError as exc:
+                if "kinematic_link_names" in str(exc):
+                    raise RuntimeError("STL checking requires the updated curobo source from this workspace") from exc
+                raise
         else:
             kin = KinematicsCfg.from_basic_urdf(urdf_path, base_link, [ee_link])
             robot = RobotCfg(kinematics=kin, device_cfg=kin.device_cfg)
@@ -258,7 +270,7 @@ def compute_dexterous_workspace(
             robot=robot, num_seeds=num_seeds, seed_solver_num_seeds=num_seeds,
             max_batch_size=batch_size, position_tolerance=position_tolerance,
             orientation_tolerance=orientation_tolerance,
-            self_collision_check=self_collision, load_collision_spheres=self_collision,
+            self_collision_check=ik_self_collision, load_collision_spheres=ik_self_collision,
             use_cuda_graph=not debug_cuda,
         )
     with cuda_stage(f'{ee_link}: initialize IK', debug_cuda):
@@ -292,12 +304,24 @@ def compute_dexterous_workspace(
         )
         goals = GoalToolPose.from_poses({ee_link: pose}, num_goalset=1)
         with cuda_stage(f'{ee_link}: IK goals {start}:{stop}', debug_cuda):
-            solved = solver.solve_pose(goal_tool_poses=goals)
-        success = solved.success.reshape(-1)[: len(flat)].detach().cpu().numpy().astype(bool)
+            if mesh_checker is None:
+                solved = solver.solve_pose(goal_tool_poses=goals)
+            else:
+                solved = solver.solve_pose(goal_tool_poses=goals, return_seeds=num_seeds)
+        selected_state = solved.js_solution
+        if mesh_checker is not None:
+            with cuda_stage(f'{ee_link}: STL collision goals {start}:{stop}', debug_cuda):
+                valid, chosen_positions = select_mesh_candidates(solved, mesh_checker)
+            from curobo.types import JointState
+            selected_state = JointState.from_position(
+                chosen_positions, joint_names=solved.js_solution.joint_names)
+            success = valid.detach().cpu().numpy().astype(bool)
+        else:
+            success = solved.success.reshape(-1)[: len(flat)].detach().cpu().numpy().astype(bool)
         np.add.at(counts, point_index[success], 1)
         if np.any(success):
             with cuda_stage(f'{ee_link}: Jacobian goals {start}:{stop}', debug_cuda):
-                state = jacobian_model.compute_kinematics(solved.js_solution)
+                state = jacobian_model.compute_kinematics(selected_state)
             jac = state.tool_jacobians.reshape(
                 len(flat), -1, 6, state.tool_jacobians.shape[-1]
             )[:, 0]
@@ -333,3 +357,17 @@ def compute_dexterous_workspace(
         (w2_sum / denominator).astype(np.float32), condition_max.astype(np.float32),
         sigma_minimum.astype(np.float32),
     )
+
+
+def select_mesh_candidates(solved: object, mesh_checker: object):
+    """Check every returned IK seed against STL, selecting one valid solution per goal."""
+    import torch
+    positions = solved.js_solution.position
+    if positions.ndim != 3:
+        raise ValueError("STL IK filtering expects joint positions [goals,seeds,dof]")
+    pose_success = solved.success.reshape(positions.shape[:2])
+    collision = mesh_checker.check_torch(positions, solved.js_solution.joint_names, pose_success)
+    valid = pose_success & ~collision
+    selected = valid.to(dtype=torch.int32).argmax(dim=1)
+    chosen = positions[torch.arange(len(positions), device=positions.device), selected]
+    return valid.any(dim=1), chosen

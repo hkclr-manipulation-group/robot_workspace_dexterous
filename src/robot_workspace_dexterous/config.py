@@ -10,7 +10,7 @@ from .sampling import generate_uniform_quaternions
 @dataclass(frozen=True)
 class Config:
     urdf_path: Path
-    collision_spheres_path: Path
+    collision_spheres_path: Path | None
     base_link: str
     ee_links: tuple[str, ...]
     self_collision_ignore: dict[str, list[str]]
@@ -30,6 +30,8 @@ class Config:
     base_position: tuple[float, float, float]
     joint_limit_defaults: dict[str, float] | None = None
     gpu_memory_fraction: float = 0.75
+    collision_meshes_path: Path | None = None
+    collision_backend: str = "spheres"
 
 
 def _local_path(config_path: Path, value: str | None) -> Path | None:
@@ -53,8 +55,17 @@ def load_config(path: str | Path) -> Config:
     robot, grid = raw["robot"], raw["grid"]
     urdf_path = _local_path(config_path, robot.get("urdf"))
     collision_spheres_path = _local_path(config_path, robot.get("collision_spheres"))
-    if urdf_path is None or collision_spheres_path is None:
-        raise ValueError("robot.urdf and robot.collision_spheres are required")
+    collision_meshes_path = _local_path(config_path, robot.get("collision_meshes"))
+    collision_backend = raw.get("solver", {}).get(
+        "collision_backend", "stl" if collision_meshes_path is not None else "spheres")
+    if collision_backend not in {"stl", "spheres"}:
+        raise ValueError("solver.collision_backend must be stl or spheres")
+    if urdf_path is None:
+        raise ValueError("robot.urdf is required")
+    if collision_backend == "stl" and collision_meshes_path is None:
+        raise ValueError("robot.collision_meshes is required for STL collision checking")
+    if collision_backend == "spheres" and collision_spheres_path is None:
+        raise ValueError("robot.collision_spheres is required for sphere collision checking")
     x_range = tuple(float(v) for v in grid["x_range"])
     y_range = tuple(float(v) for v in grid["y_range"])
     if len(x_range) != 2 or x_range[0] >= x_range[1]:
@@ -147,4 +158,5 @@ def load_config(path: str | Path) -> Config:
         bool(solver.get("self_collision", True)), minimum,
         (plot_x_range, plot_y_range, plot_z_range),
         plot_sections, base_position, limit_defaults, gpu_memory_fraction,
+        collision_meshes_path, collision_backend,
     )

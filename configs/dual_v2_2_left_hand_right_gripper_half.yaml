@@ -6,6 +6,7 @@ robot:
   - arm_end_effector_l
   - arm_end_effector_r
   self_collision_ignore_file: ../models/dual_v2_2_left_hand_right_gripper_half/self_collision_ignore.yaml
+  collision_meshes: ../models/dual_v2_2_left_hand_right_gripper_half/collision_meshes.yaml
 grid:
   x_range:
   - -1.2
@@ -44,5 +45,6 @@ solver:
   position_tolerance: 0.005
   orientation_tolerance: 0.08
   self_collision: true
+  collision_backend: stl
 output:
   minimum_dexterity: 1.0

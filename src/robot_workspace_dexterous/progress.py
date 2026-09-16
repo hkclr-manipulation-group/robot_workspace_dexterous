@@ -27,6 +27,10 @@ class WorkspaceProgress:
         total = status.get('total')
         percent = 100 * status['done'] / total if total else 0
         preview = '<img src="preview.png?t='+str(time.time_ns())+'" style="width:100%">' if has_preview else '<p>Initializing GPU model; waiting for the first completed batch.</p>'
+        collision_note = ('Collision results use STL triangle intersections and closed-mesh containment; '
+                          'open meshes are checked as surfaces.'
+                          if self.metadata.get('collision_model', {}).get('mode') == 'stl'
+                          else 'Collision results use the configured sphere approximation.')
         page = f'''<!doctype html><html lang="en"><meta charset="utf-8">
 <meta http-equiv="refresh" content="5"><title>Workspace progress</title>
 <body style="font:16px system-ui;background:#f3f6fa;color:#172b43;margin:32px">
@@ -36,7 +40,7 @@ class WorkspaceProgress:
 <p>Latest saved snapshot; this page refreshes every 5 seconds. An unchanged timestamp means no new snapshot has arrived.</p>
 {preview}<p>Projections of all reachable samples so far, not center slices.
 Unprocessed cells are unknown. Partial-cell dexterity is a lower bound until all orientations are tested.
-Collision results use the configured sphere approximation.</p></body></html>'''
+{collision_note}</p></body></html>'''
         temporary = self.directory / 'index.tmp'
         temporary.write_text(page, encoding='utf-8')
         temporary.replace(self.directory / 'index.html')
