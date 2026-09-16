@@ -2,80 +2,92 @@
   "model": "D20260903B10",
   "mode": "interior",
   "radius_expansion_mm": 0,
+  "algorithm_version": 6,
   "interior_domain": "stl_material",
   "preserve_holes_and_cavities": true,
   "complete_scope": "configured_links_not_volume_coverage",
-  "max_spheres_per_link": 256,
-  "samples": 100,
+  "max_spheres_per_link": 2048,
+  "samples": 600,
   "links": {
     "base_link": {
-      "count": 256,
+      "count": 531,
       "parts": [
         {
           "geometry": "closed",
-          "max_surface_vertex_gap_mm": 14.148205115310203
+          "max_surface_vertex_gap_mm": 6.1029324587349265
         }
       ]
     },
     "L1": {
-      "count": 256,
+      "count": 426,
       "parts": [
         {
           "geometry": "closed",
-          "max_surface_vertex_gap_mm": 9.92713053284385
+          "max_surface_vertex_gap_mm": 3.845646218308895
         }
       ]
     },
     "L2": {
-      "count": 256,
+      "count": 719,
       "parts": [
         {
           "geometry": "closed",
-          "max_surface_vertex_gap_mm": 19.11961344407259
+          "max_surface_vertex_gap_mm": 4.939111987536938
         }
       ]
     },
     "L3": {
-      "count": 256,
+      "count": 497,
       "parts": [
         {
           "geometry": "closed",
-          "max_surface_vertex_gap_mm": 10.538792479462398
+          "max_surface_vertex_gap_mm": 4.760292368656266
         }
       ]
     },
     "L4": {
-      "count": 256,
+      "count": 232,
       "parts": [
         {
           "geometry": "closed",
-          "max_surface_vertex_gap_mm": 4.926220119676482
+          "max_surface_vertex_gap_mm": 1.999752130596064
         }
       ]
     },
     "L5": {
-      "count": 256,
+      "count": 825,
       "parts": [
         {
           "geometry": "closed",
-          "max_surface_vertex_gap_mm": 10.768175826967
+          "max_surface_vertex_gap_mm": 2.723139538190736
         }
       ]
     },
     "L6": {
-      "count": 256,
+      "count": 317,
       "parts": [
         {
           "geometry": "closed",
-          "max_surface_vertex_gap_mm": 4.694085658336948
+          "max_surface_vertex_gap_mm": 2.289748085593178
         }
       ]
     }
   },
   "failures": {},
   "complete": true,
-  "total_spheres": 1792,
+  "total_spheres": 3547,
+  "surface_tolerance_mm": 2.0,
+  "surface_target_missed_links": [
+    "base_link",
+    "L1",
+    "L2",
+    "L3",
+    "L5",
+    "L6"
+  ],
+  "surface_target_met": false,
+  "volume_coverage_certified": false,
   "estimated_links": [],
-  "sphere_sha256": "e101b65c3e27dd2bbd297c1faf651a9390f297ba30b61b827a3cc32df6319445",
+  "sphere_sha256": "079045adfee8f5021f51ca86a241c1c986788a8f14641118cbbb79b31fb49b98",
   "sphere_sha256_format": "lf-normalized"
 }

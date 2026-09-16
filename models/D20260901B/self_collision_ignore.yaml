@@ -1,3 +1,5 @@
 self_collision_ignore:
   Link04:
   - Link05
+  Link05:
+  - Link06
