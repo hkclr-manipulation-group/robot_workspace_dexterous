@@ -75,4 +75,5 @@ def test_curobo_receives_complete_interior_set_without_expansion(monkeypatch, tm
         assert set(data['collision_link_names']) == set(expected)
         assert data['collision_sphere_buffer'] == 0
         assert data['self_collision_buffer'] == {}
+        assert data['self_collision_broad_phase'] is True
         assert data['self_collision_ignore'] == config.self_collision_ignore

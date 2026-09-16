@@ -54,6 +54,8 @@ def main(argv: list[str] | None = None) -> None:
     parser.add_argument('--snapshot-seconds', type=float, default=30, help='Save partial results after this interval at batch boundaries (default 30 s)')
     parser.add_argument("--debug-cuda", action="store_true",
                         help="Synchronize CUDA stages, disable CUDA graphs and save environment details; default batch size 32")
+    parser.add_argument("--no-collision-broad-phase", action="store_true",
+                        help="Use legacy exhaustive GPU self-collision for comparison (may exceed memory limits)")
     args = parser.parse_args(argv)
     if args.resolution is not None and (not np.isfinite(args.resolution) or args.resolution <= 0):
         parser.error('--resolution must be finite and positive')
@@ -100,7 +102,9 @@ def main(argv: list[str] | None = None) -> None:
     output_dir.mkdir(parents=True, exist_ok=True)
     monitors = {link: WorkspaceProgress(output_dir / 'progress' / link, link,
                 {'collision_model': collision_model, 'resolution_m': config.resolution,
-                 'self_collision_enabled': config.self_collision}) for link in config.ee_links}
+                 'self_collision_enabled': config.self_collision,
+                 'self_collision_broad_phase': config.self_collision and not args.no_collision_broad_phase})
+                for link in config.ee_links}
     for monitor in monitors.values():
         print(f'Live progress: {monitor.directory / "index.html"}', flush=True)
     if args.debug_cuda:
@@ -118,6 +122,8 @@ def main(argv: list[str] | None = None) -> None:
     configure_gpu_memory(config.gpu_memory_fraction)
     if config.self_collision:
         print(f"loading collision spheres: {config.collision_spheres_path}", flush=True)
+        print("Self-collision: " + ("legacy exhaustive sphere pairs" if args.no_collision_broad_phase
+                                  else "GPU link bounding spheres + internal sphere refinement"), flush=True)
         with cuda_stage('build collision robots', args.debug_cuda):
             collision_robots = build_collision_robots(
                 normalized_urdf,
@@ -125,6 +131,7 @@ def main(argv: list[str] | None = None) -> None:
                 config.base_link,
                 config.ee_links,
                 config.self_collision_ignore,
+                self_collision_broad_phase=not args.no_collision_broad_phase,
             )
     workspaces: dict[str, DexterousWorkspace] = {}
     for link in config.ee_links:

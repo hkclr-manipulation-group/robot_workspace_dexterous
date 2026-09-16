@@ -189,6 +189,7 @@ def build_collision_robots(
     self_collision_ignore: dict[str, list[str]],
     normalized_urdf_path: str | None = None,
     joint_limit_defaults: dict[str, float] | None = None,
+    self_collision_broad_phase: bool = True,
 ) -> dict[str, object]:
     """Build cuRobo models from precomputed spheres without collision fitting."""
     from curobo._src.types.robot import RobotCfg
@@ -208,10 +209,20 @@ def build_collision_robots(
         "self_collision_ignore": self_collision_ignore,
         "self_collision_buffer": {},
     }
+    if self_collision_broad_phase:
+        common["self_collision_broad_phase"] = True
     result: dict[str, object] = {}
     for link in ee_links:
         data = {"robot_cfg": {"kinematics": {**deepcopy(common), "tool_frames": [link]}}}
-        result[link] = RobotCfg.create(data, load_collision_spheres=True)
+        try:
+            result[link] = RobotCfg.create(data, load_collision_spheres=True)
+        except TypeError as exc:
+            if "self_collision_broad_phase" in str(exc):
+                raise RuntimeError(
+                    "This cuRobo installation does not support the link-sphere broad phase. "
+                    "Install the updated curobo source supplied with this workspace."
+                ) from exc
+            raise
     return result
 
 

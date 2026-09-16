@@ -3,6 +3,30 @@
 Compute reachable and dexterous workspace volumes, the DWS/RWS ratio, Jacobian
 manipulability, and condition numbers with cuRobo.
 
+GPU self-collision now defaults to a two-stage check: enclose each link's current
+internal spheres (including collision padding) in a bounding sphere, then check
+the original internal sphere pairs only for links whose bounds overlap. Bounds
+are recomputed on GPU for every configuration, including CUDA graph replays.
+All internal spheres, ignored link pairs, grid spacing and IK seeds are preserved.
+The final collision result still refers to the internal-sphere approximation.
+
+This requires the updated **cuRobo source from this workspace**, not just this
+project. On the CUDA machine, install the updated sibling checkout with
+`python -m pip install -e ../curobo --no-build-isolation` using the existing cuRobo
+environment. The added kernels use cuRobo's existing Warp dependency and compile
+on first use. Restart the process after updating. A normal `python -u run.py ...`
+run enables the new path and prints the selected collision mode.
+
+The grouped path avoids the quadratic sphere-pair table and uses 32-bit sphere
+indices. Scratch memory scales with batch size, sphere count and link-pair count.
+Use `--no-collision-broad-phase` for an exhaustive baseline on small models;
+the legacy path retains its shared-memory and 16-bit index limits. cuRobo's
+per-pair distance debug output requires the legacy path. At an exactly tied
+maximum, the grouped path chooses the lowest original sphere-index pair; either
+pair is a valid maximum, but its gradient can differ from the legacy tie choice.
+Measure steady-state goals/s after kernel compilation; gains depend on how many
+link pairs the outer bounds exclude.
+
 ## Standalone model inputs
 
 Collision exclusions were reviewed across all 11 bundles. Only the user-confirmed
