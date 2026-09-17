@@ -1,0 +1,2227 @@
+{
+  "scope": "Deterministic joint samples and STL collision only; no IK or workspace grid was run.",
+  "policy": "Existing ignores retained. Persistent sampled contact is not proof of unavoidable collision or permission to ignore a pair.",
+  "models": {
+    "D20260901B": {
+      "samples": 32,
+      "collision_free_samples": 0,
+      "pair_diagnostic_samples": 32,
+      "pair_frequencies": [
+        {
+          "links": [
+            "Link01",
+            "Link02"
+          ],
+          "colliding_samples": 32,
+          "fraction": 1.0,
+          "direct_joint": {
+            "name": "joint02",
+            "type": "revolute"
+          },
+          "all_pair_samples_collide": true
+        },
+        {
+          "links": [
+            "Link03",
+            "Link02"
+          ],
+          "colliding_samples": 32,
+          "fraction": 1.0,
+          "direct_joint": {
+            "name": "joint03",
+            "type": "revolute"
+          },
+          "all_pair_samples_collide": true
+        },
+        {
+          "links": [
+            "Link03",
+            "Link04"
+          ],
+          "colliding_samples": 10,
+          "fraction": 0.3125,
+          "direct_joint": {
+            "name": "joint04",
+            "type": "revolute"
+          },
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "baselink",
+            "Link04"
+          ],
+          "colliding_samples": 1,
+          "fraction": 0.03125,
+          "direct_joint": null,
+          "all_pair_samples_collide": false
+        }
+      ],
+      "collision_model": {
+        "mode": "stl",
+        "file": "D:\\code_agent\\robot_workspace_dexterous\\models\\D20260901B\\collision_meshes.yaml",
+        "manifest_sha256": "5c4f481ffaaf5202f0687126d034732997a426859cdb8b17738e5f6aa3e62198",
+        "assets": {
+          "../meshes/4e19894921c9c72ea951870b83ebab697d1d6410727f2a0763da806677eb39ae.stl": "4e19894921c9c72ea951870b83ebab697d1d6410727f2a0763da806677eb39ae",
+          "../meshes/9637f000f281e743b7c960c0dd2051b5dc4314d9cff52c38892ee2bf7e807133.stl": "9637f000f281e743b7c960c0dd2051b5dc4314d9cff52c38892ee2bf7e807133",
+          "../meshes/2dae3d435dcf8fae68698e02c7423b5ade28712e5851b46c5baa4c556958119a.stl": "2dae3d435dcf8fae68698e02c7423b5ade28712e5851b46c5baa4c556958119a",
+          "../meshes/1163a6e3a78c401c52c046b54ca031b0bb54755e4781c4f3fbe863378a508257.stl": "1163a6e3a78c401c52c046b54ca031b0bb54755e4781c4f3fbe863378a508257",
+          "../meshes/2dbec4c12505cf534f75a807b376f28546a8585b4e08da675f1be6c9094a7544.stl": "2dbec4c12505cf534f75a807b376f28546a8585b4e08da675f1be6c9094a7544",
+          "../meshes/15ec29a5599553affd3fae5cef93709479f3ca1af4d15d047b573966362502f1.stl": "15ec29a5599553affd3fae5cef93709479f3ca1af4d15d047b573966362502f1",
+          "../meshes/514c2ac3cf5cc5a2a38f9de5ca23e0ddda0490b922554056948450c05be8168d.stl": "514c2ac3cf5cc5a2a38f9de5ca23e0ddda0490b922554056948450c05be8168d"
+        },
+        "total_triangles": 1750,
+        "mesh_parts": 7,
+        "collision_pairs": 19,
+        "open_mesh_links": [
+          "Link06",
+          "baselink"
+        ],
+        "collision_method": "BVH triangle intersection + containment for closed meshes",
+        "open_mesh_policy": "surface intersection only; open STL has no defined solid interior",
+        "contact_tolerance_m": 1e-06,
+        "ik_collision_method": "all returned pose-IK seeds checked against STL; no sphere cost"
+      },
+      "initialization_seconds": 0.5314902999962214,
+      "collision_check_seconds": 0.003240000005462207,
+      "configurations_per_second": 9876.54319322601,
+      "timing_scope": "FK + STL collision + host copies; excludes IK",
+      "config": "D:\\code_agent\\robot_workspace_dexterous\\configs\\D20260901B.yaml",
+      "self_collision_ignore": {
+        "Link04": [
+          "Link05"
+        ],
+        "Link05": [
+          "Link06"
+        ]
+      }
+    },
+    "D20260902B60": {
+      "samples": 32,
+      "collision_free_samples": 28,
+      "pair_diagnostic_samples": 32,
+      "pair_frequencies": [
+        {
+          "links": [
+            "base_link",
+            "L2"
+          ],
+          "colliding_samples": 4,
+          "fraction": 0.125,
+          "direct_joint": null,
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "base_link",
+            "L4"
+          ],
+          "colliding_samples": 1,
+          "fraction": 0.03125,
+          "direct_joint": null,
+          "all_pair_samples_collide": false
+        }
+      ],
+      "collision_model": {
+        "mode": "stl",
+        "file": "D:\\code_agent\\robot_workspace_dexterous\\models\\D20260902B60\\collision_meshes.yaml",
+        "manifest_sha256": "dcd0c3311cc75e1e3f0d4d4a0535e68fa563861439c4e2b276d4e1bdac42edd7",
+        "assets": {
+          "../meshes/6b0e5d77bab97403d0150d006e96dcd468518307a352a3d1bbda262c77e218c6.stl": "6b0e5d77bab97403d0150d006e96dcd468518307a352a3d1bbda262c77e218c6",
+          "../meshes/219c9f54cc8b863d352e6345f17bdeedeed88033bab4e192dddabaa3217ed5ee.stl": "219c9f54cc8b863d352e6345f17bdeedeed88033bab4e192dddabaa3217ed5ee",
+          "../meshes/b70040f752162f87a5a20abb42a310d517c75faab604b716df76b4367a02e2f1.stl": "b70040f752162f87a5a20abb42a310d517c75faab604b716df76b4367a02e2f1",
+          "../meshes/f6c3939fe8fba8e7b2e69bb31dabaf0050a50215d503017a887517382b65cd73.stl": "f6c3939fe8fba8e7b2e69bb31dabaf0050a50215d503017a887517382b65cd73",
+          "../meshes/ec4e3a3134030faaab117be3232f66f84f226bbb1e77627ff5cf39da7f94691a.stl": "ec4e3a3134030faaab117be3232f66f84f226bbb1e77627ff5cf39da7f94691a",
+          "../meshes/31765fa87cea5123f67dddb3590adfb00c3c9927cfe29bec00f2798dca2c4faf.stl": "31765fa87cea5123f67dddb3590adfb00c3c9927cfe29bec00f2798dca2c4faf",
+          "../meshes/54016e3425192f72b71ace8d8febe92ada344453dd6fb0f8c03b39be31e3932d.stl": "54016e3425192f72b71ace8d8febe92ada344453dd6fb0f8c03b39be31e3932d"
+        },
+        "total_triangles": 2754,
+        "mesh_parts": 7,
+        "collision_pairs": 18,
+        "open_mesh_links": [
+          "L1",
+          "base_link"
+        ],
+        "collision_method": "BVH triangle intersection + containment for closed meshes",
+        "open_mesh_policy": "surface intersection only; open STL has no defined solid interior",
+        "contact_tolerance_m": 1e-06,
+        "ik_collision_method": "all returned pose-IK seeds checked against STL; no sphere cost"
+      },
+      "initialization_seconds": 0.04853749999892898,
+      "collision_check_seconds": 0.004854600003454834,
+      "configurations_per_second": 6591.6862310441265,
+      "timing_scope": "FK + STL collision + host copies; excludes IK",
+      "config": "D:\\code_agent\\robot_workspace_dexterous\\configs\\D20260902B60.yaml",
+      "self_collision_ignore": {
+        "L2": [
+          "L3"
+        ],
+        "L4": [
+          "L5"
+        ],
+        "L5": [
+          "L6"
+        ]
+      }
+    },
+    "D20260903B10": {
+      "samples": 32,
+      "collision_free_samples": 0,
+      "pair_diagnostic_samples": 32,
+      "pair_frequencies": [
+        {
+          "links": [
+            "L5",
+            "L4"
+          ],
+          "colliding_samples": 24,
+          "fraction": 0.75,
+          "direct_joint": {
+            "name": "J5",
+            "type": "revolute"
+          },
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "L6",
+            "L5"
+          ],
+          "colliding_samples": 24,
+          "fraction": 0.75,
+          "direct_joint": {
+            "name": "J6",
+            "type": "revolute"
+          },
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "L3",
+            "L2"
+          ],
+          "colliding_samples": 14,
+          "fraction": 0.4375,
+          "direct_joint": {
+            "name": "J3",
+            "type": "revolute"
+          },
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "L3",
+            "L5"
+          ],
+          "colliding_samples": 8,
+          "fraction": 0.25,
+          "direct_joint": null,
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "L3",
+            "L6"
+          ],
+          "colliding_samples": 8,
+          "fraction": 0.25,
+          "direct_joint": null,
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "L2",
+            "L5"
+          ],
+          "colliding_samples": 6,
+          "fraction": 0.1875,
+          "direct_joint": null,
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "base_link",
+            "L2"
+          ],
+          "colliding_samples": 4,
+          "fraction": 0.125,
+          "direct_joint": null,
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "L2",
+            "L6"
+          ],
+          "colliding_samples": 3,
+          "fraction": 0.09375,
+          "direct_joint": null,
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "L2",
+            "L4"
+          ],
+          "colliding_samples": 2,
+          "fraction": 0.0625,
+          "direct_joint": null,
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "L3",
+            "L4"
+          ],
+          "colliding_samples": 1,
+          "fraction": 0.03125,
+          "direct_joint": {
+            "name": "J4",
+            "type": "revolute"
+          },
+          "all_pair_samples_collide": false
+        }
+      ],
+      "collision_model": {
+        "mode": "stl",
+        "file": "D:\\code_agent\\robot_workspace_dexterous\\models\\D20260903B10\\collision_meshes.yaml",
+        "manifest_sha256": "10352ba67fbe7e667ee986055505fb27d4a3927acbae050d344ba7ad3e4eb2ce",
+        "assets": {
+          "../meshes/c022d2430020118a0e4142d130c727b0c1ab665c66d1b3991fad0c08549c9ad9.stl": "c022d2430020118a0e4142d130c727b0c1ab665c66d1b3991fad0c08549c9ad9",
+          "../meshes/3430ec4bceab0a4ee3c63a6d072db3d0745d6ab0d804febc36fd54fcb40310c7.stl": "3430ec4bceab0a4ee3c63a6d072db3d0745d6ab0d804febc36fd54fcb40310c7",
+          "../meshes/b70040f752162f87a5a20abb42a310d517c75faab604b716df76b4367a02e2f1.stl": "b70040f752162f87a5a20abb42a310d517c75faab604b716df76b4367a02e2f1",
+          "../meshes/d982443373cd86cdd185f585f3df9daf7a277d2e15f32a74d807fe42dd667c62.stl": "d982443373cd86cdd185f585f3df9daf7a277d2e15f32a74d807fe42dd667c62",
+          "../meshes/04a65f3054552c19d6d87068e3c378f93c0d2e479f8137768900607f0f0fee3d.stl": "04a65f3054552c19d6d87068e3c378f93c0d2e479f8137768900607f0f0fee3d",
+          "../meshes/a9f2d3fea076c44b709f4f663020e27e12bab392fa42a1bfc6fe16480d8981f2.stl": "a9f2d3fea076c44b709f4f663020e27e12bab392fa42a1bfc6fe16480d8981f2",
+          "../meshes/99a1a2dbb1f3d3cffdae1e20cb76f1c00cd82837c03f3bc8832edb50f92fa72e.stl": "99a1a2dbb1f3d3cffdae1e20cb76f1c00cd82837c03f3bc8832edb50f92fa72e"
+        },
+        "total_triangles": 2630,
+        "mesh_parts": 7,
+        "collision_pairs": 21,
+        "open_mesh_links": [
+          "L1",
+          "base_link"
+        ],
+        "collision_method": "BVH triangle intersection + containment for closed meshes",
+        "open_mesh_policy": "surface intersection only; open STL has no defined solid interior",
+        "contact_tolerance_m": 1e-06,
+        "ik_collision_method": "all returned pose-IK seeds checked against STL; no sphere cost"
+      },
+      "initialization_seconds": 0.014225699997041374,
+      "collision_check_seconds": 0.005849000008311123,
+      "configurations_per_second": 5471.02067952294,
+      "timing_scope": "FK + STL collision + host copies; excludes IK",
+      "config": "D:\\code_agent\\robot_workspace_dexterous\\configs\\D20260903B10.yaml",
+      "self_collision_ignore": {}
+    },
+    "dual_v2_1_left_hand_right_gripper": {
+      "samples": 32,
+      "collision_free_samples": 0,
+      "pair_diagnostic_samples": 32,
+      "pair_frequencies": [
+        {
+          "links": [
+            "s1",
+            "DP"
+          ],
+          "colliding_samples": 32,
+          "fraction": 1.0,
+          "direct_joint": {
+            "name": "s1j",
+            "type": "fixed"
+          },
+          "all_pair_samples_collide": true
+        },
+        {
+          "links": [
+            "s3",
+            "s4"
+          ],
+          "colliding_samples": 32,
+          "fraction": 1.0,
+          "direct_joint": {
+            "name": "s4j",
+            "type": "fixed"
+          },
+          "all_pair_samples_collide": true
+        },
+        {
+          "links": [
+            "arm_L2_l",
+            "arm_L1_l"
+          ],
+          "colliding_samples": 32,
+          "fraction": 1.0,
+          "direct_joint": {
+            "name": "arm_J2_l",
+            "type": "revolute"
+          },
+          "all_pair_samples_collide": true
+        },
+        {
+          "links": [
+            "arm_L2_l",
+            "arm_L3_l"
+          ],
+          "colliding_samples": 32,
+          "fraction": 1.0,
+          "direct_joint": {
+            "name": "arm_J3_l",
+            "type": "revolute"
+          },
+          "all_pair_samples_collide": true
+        },
+        {
+          "links": [
+            "arm_L5_l",
+            "arm_L6_l"
+          ],
+          "colliding_samples": 32,
+          "fraction": 1.0,
+          "direct_joint": {
+            "name": "arm_J6_l",
+            "type": "revolute"
+          },
+          "all_pair_samples_collide": true
+        },
+        {
+          "links": [
+            "arm_L7_l",
+            "arm_L6_l"
+          ],
+          "colliding_samples": 32,
+          "fraction": 1.0,
+          "direct_joint": {
+            "name": "arm_J7_l",
+            "type": "revolute"
+          },
+          "all_pair_samples_collide": true
+        },
+        {
+          "links": [
+            "hand_base_link_l",
+            "arm_L7_l"
+          ],
+          "colliding_samples": 32,
+          "fraction": 1.0,
+          "direct_joint": null,
+          "all_pair_samples_collide": true
+        },
+        {
+          "links": [
+            "arm_L2_r",
+            "arm_L1_r"
+          ],
+          "colliding_samples": 32,
+          "fraction": 1.0,
+          "direct_joint": {
+            "name": "arm_J2_r",
+            "type": "revolute"
+          },
+          "all_pair_samples_collide": true
+        },
+        {
+          "links": [
+            "arm_L2_r",
+            "arm_L3_r"
+          ],
+          "colliding_samples": 32,
+          "fraction": 1.0,
+          "direct_joint": {
+            "name": "arm_J3_r",
+            "type": "revolute"
+          },
+          "all_pair_samples_collide": true
+        },
+        {
+          "links": [
+            "arm_L7_r",
+            "arm_L6_r"
+          ],
+          "colliding_samples": 32,
+          "fraction": 1.0,
+          "direct_joint": {
+            "name": "arm_J7_r",
+            "type": "revolute"
+          },
+          "all_pair_samples_collide": true
+        },
+        {
+          "links": [
+            "L_middle_proximal",
+            "hand_base_link_l"
+          ],
+          "colliding_samples": 32,
+          "fraction": 1.0,
+          "direct_joint": {
+            "name": "hand_J4_l",
+            "type": "revolute"
+          },
+          "all_pair_samples_collide": true
+        },
+        {
+          "links": [
+            "L_thumb_proximal_base",
+            "L_thumb_proximal"
+          ],
+          "colliding_samples": 32,
+          "fraction": 1.0,
+          "direct_joint": {
+            "name": "hand_J2_l",
+            "type": "revolute"
+          },
+          "all_pair_samples_collide": true
+        },
+        {
+          "links": [
+            "L_thumb_intermediate",
+            "L_thumb_proximal"
+          ],
+          "colliding_samples": 32,
+          "fraction": 1.0,
+          "direct_joint": {
+            "name": "hand_J2_l_1",
+            "type": "revolute"
+          },
+          "all_pair_samples_collide": true
+        },
+        {
+          "links": [
+            "L_index_distal",
+            "L_index_proximal"
+          ],
+          "colliding_samples": 32,
+          "fraction": 1.0,
+          "direct_joint": {
+            "name": "hand_J3_l_1",
+            "type": "revolute"
+          },
+          "all_pair_samples_collide": true
+        },
+        {
+          "links": [
+            "L_middle_distal",
+            "L_middle_proximal"
+          ],
+          "colliding_samples": 32,
+          "fraction": 1.0,
+          "direct_joint": {
+            "name": "hand_J4_l_1",
+            "type": "revolute"
+          },
+          "all_pair_samples_collide": true
+        },
+        {
+          "links": [
+            "L_ring_distal",
+            "L_ring_proximal"
+          ],
+          "colliding_samples": 32,
+          "fraction": 1.0,
+          "direct_joint": {
+            "name": "hand_J5_l_1",
+            "type": "revolute"
+          },
+          "all_pair_samples_collide": true
+        },
+        {
+          "links": [
+            "L_pinky_proximal",
+            "L_pinky_distal"
+          ],
+          "colliding_samples": 32,
+          "fraction": 1.0,
+          "direct_joint": {
+            "name": "hand_J6_l_1",
+            "type": "revolute"
+          },
+          "all_pair_samples_collide": true
+        },
+        {
+          "links": [
+            "gripper_L1_r",
+            "gripper_base_link_r"
+          ],
+          "colliding_samples": 32,
+          "fraction": 1.0,
+          "direct_joint": {
+            "name": "gripper_J1_r",
+            "type": "prismatic"
+          },
+          "all_pair_samples_collide": true
+        },
+        {
+          "links": [
+            "gripper_L2_r",
+            "gripper_base_link_r"
+          ],
+          "colliding_samples": 32,
+          "fraction": 1.0,
+          "direct_joint": {
+            "name": "gripper_J1_r_1",
+            "type": "prismatic"
+          },
+          "all_pair_samples_collide": true
+        },
+        {
+          "links": [
+            "gripper_L1_r",
+            "gripper_L2_r"
+          ],
+          "colliding_samples": 30,
+          "fraction": 0.9375,
+          "direct_joint": null,
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "arm_L4_r",
+            "arm_L3_r"
+          ],
+          "colliding_samples": 23,
+          "fraction": 0.71875,
+          "direct_joint": {
+            "name": "arm_J4_r",
+            "type": "revolute"
+          },
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "arm_L1_l",
+            "s4"
+          ],
+          "colliding_samples": 13,
+          "fraction": 0.40625,
+          "direct_joint": null,
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "L_index_distal",
+            "L_thumb_intermediate"
+          ],
+          "colliding_samples": 5,
+          "fraction": 0.15625,
+          "direct_joint": null,
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "L_thumb_distal",
+            "L_index_distal"
+          ],
+          "colliding_samples": 4,
+          "fraction": 0.125,
+          "direct_joint": null,
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "arm_L5_r",
+            "arm_L6_r"
+          ],
+          "colliding_samples": 2,
+          "fraction": 0.0625,
+          "direct_joint": {
+            "name": "arm_J6_r",
+            "type": "revolute"
+          },
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "arm_L6_r",
+            "s3"
+          ],
+          "colliding_samples": 1,
+          "fraction": 0.03125,
+          "direct_joint": null,
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "arm_L7_r",
+            "s3"
+          ],
+          "colliding_samples": 1,
+          "fraction": 0.03125,
+          "direct_joint": null,
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "gripper_base_link_r",
+            "s3"
+          ],
+          "colliding_samples": 1,
+          "fraction": 0.03125,
+          "direct_joint": null,
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "gripper_L2_r",
+            "s3"
+          ],
+          "colliding_samples": 1,
+          "fraction": 0.03125,
+          "direct_joint": null,
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "arm_L6_r",
+            "s4"
+          ],
+          "colliding_samples": 1,
+          "fraction": 0.03125,
+          "direct_joint": null,
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "L_index_proximal",
+            "s4"
+          ],
+          "colliding_samples": 1,
+          "fraction": 0.03125,
+          "direct_joint": null,
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "L_middle_proximal",
+            "s4"
+          ],
+          "colliding_samples": 1,
+          "fraction": 0.03125,
+          "direct_joint": null,
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "L_ring_proximal",
+            "s4"
+          ],
+          "colliding_samples": 1,
+          "fraction": 0.03125,
+          "direct_joint": null,
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "L_pinky_proximal",
+            "s4"
+          ],
+          "colliding_samples": 1,
+          "fraction": 0.03125,
+          "direct_joint": null,
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "gripper_base_link_r",
+            "s4"
+          ],
+          "colliding_samples": 1,
+          "fraction": 0.03125,
+          "direct_joint": null,
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "gripper_L2_r",
+            "s4"
+          ],
+          "colliding_samples": 1,
+          "fraction": 0.03125,
+          "direct_joint": null,
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "arm_L7_l",
+            "arm_L5_l"
+          ],
+          "colliding_samples": 1,
+          "fraction": 0.03125,
+          "direct_joint": null,
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "L_index_distal",
+            "L_thumb_proximal"
+          ],
+          "colliding_samples": 1,
+          "fraction": 0.03125,
+          "direct_joint": null,
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "L_index_proximal",
+            "L_thumb_intermediate"
+          ],
+          "colliding_samples": 1,
+          "fraction": 0.03125,
+          "direct_joint": null,
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "L_thumb_distal",
+            "L_index_proximal"
+          ],
+          "colliding_samples": 1,
+          "fraction": 0.03125,
+          "direct_joint": null,
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "gripper_L1_r",
+            "L_ring_distal"
+          ],
+          "colliding_samples": 1,
+          "fraction": 0.03125,
+          "direct_joint": null,
+          "all_pair_samples_collide": false
+        }
+      ],
+      "collision_model": {
+        "mode": "stl",
+        "file": "D:\\code_agent\\robot_workspace_dexterous\\models\\dual_v2_1_left_hand_right_gripper\\collision_meshes.yaml",
+        "manifest_sha256": "96c5cd4d0076a335704fb6ba95b9ca35049861df703093c35da1c7db67b8d7ac",
+        "assets": {
+          "../meshes/bf124abfb91cd3a4320d51e907e7916df7274894cd6eb0af90cde7bed5ce2294.stl": "bf124abfb91cd3a4320d51e907e7916df7274894cd6eb0af90cde7bed5ce2294",
+          "../meshes/fae367145c7d26ad6c199becc3f34967ccc22e7e426cf7d4a5021371662d59bd.stl": "fae367145c7d26ad6c199becc3f34967ccc22e7e426cf7d4a5021371662d59bd",
+          "../meshes/3bc0ec95e32382376e42daced16c8ee7ad68b15e116b29b0c4d4e7774c5f36f5.stl": "3bc0ec95e32382376e42daced16c8ee7ad68b15e116b29b0c4d4e7774c5f36f5",
+          "../meshes/514a8b4798bc498a247ffb1bb59045b6c3674329e9d7fa686151b0cdb83c7a24.stl": "514a8b4798bc498a247ffb1bb59045b6c3674329e9d7fa686151b0cdb83c7a24",
+          "../meshes/2086c6a667fd3435182a653007aeacbad1ff9dce7bde1694e62a6a24f2593b9e.stl": "2086c6a667fd3435182a653007aeacbad1ff9dce7bde1694e62a6a24f2593b9e",
+          "../meshes/aef96c3eae5c9902fc08c6ac71a1e0d6e48ca53054e357a50a237cf321345bcf.stl": "aef96c3eae5c9902fc08c6ac71a1e0d6e48ca53054e357a50a237cf321345bcf",
+          "../meshes/48d4a8ca0ebd30aaee9116bf661aa2c1a156027c891ceceddd57ae25f7268bbd.stl": "48d4a8ca0ebd30aaee9116bf661aa2c1a156027c891ceceddd57ae25f7268bbd",
+          "../meshes/b863fc2d318eb1b50cdbce8a7285b6e29441bac158322b3eaa11abab8266c0ec.stl": "b863fc2d318eb1b50cdbce8a7285b6e29441bac158322b3eaa11abab8266c0ec",
+          "../meshes/ae045772107e3c5096e761605d8a483addcb23e206abf89dc2aead4c27a98952.stl": "ae045772107e3c5096e761605d8a483addcb23e206abf89dc2aead4c27a98952",
+          "../meshes/244b60c12b2d1749135d2f14b82fab62dad86c65153ae6c58864637742427d8b.stl": "244b60c12b2d1749135d2f14b82fab62dad86c65153ae6c58864637742427d8b",
+          "../meshes/2b717be4628a0aaff81a61b002ef9eac83420ab1c4a31b68df97757b0d05035c.stl": "2b717be4628a0aaff81a61b002ef9eac83420ab1c4a31b68df97757b0d05035c",
+          "../meshes/3f608afe4084f67e16056596d124f9c6a1991821501540037da149047137517e.stl": "3f608afe4084f67e16056596d124f9c6a1991821501540037da149047137517e",
+          "../meshes/2b42dcba1d13f21395f2d5a447266d1ba2bb8ce8e03f756656aaf2ffd4f5d930.stl": "2b42dcba1d13f21395f2d5a447266d1ba2bb8ce8e03f756656aaf2ffd4f5d930",
+          "../meshes/e53f33c52125b66e4ebb710f96d39677f64db0900afbecde536b8f44d35ff3d3.stl": "e53f33c52125b66e4ebb710f96d39677f64db0900afbecde536b8f44d35ff3d3",
+          "../meshes/f6aed86b67a70dbd31b22bd8e772ff34ca268054c4561f6424567454abf2a155.stl": "f6aed86b67a70dbd31b22bd8e772ff34ca268054c4561f6424567454abf2a155",
+          "../meshes/e656a965177c7aba7636a9cdc019da874f864d57bd59b6e199867c954f9e2040.stl": "e656a965177c7aba7636a9cdc019da874f864d57bd59b6e199867c954f9e2040",
+          "../meshes/8bb31d26baf3262cd9d7e4eef929a02019f853e5ae34990ccb7eedfa47b789eb.stl": "8bb31d26baf3262cd9d7e4eef929a02019f853e5ae34990ccb7eedfa47b789eb",
+          "../meshes/2b3ad5630643ba166a27455a95529388a6eb0f252d09c49b74c5d4b7012d0ee2.stl": "2b3ad5630643ba166a27455a95529388a6eb0f252d09c49b74c5d4b7012d0ee2",
+          "../meshes/4e04fd44cda85569af195b10469a8e94ae26da1ec4897f61452f772d81aa51e0.stl": "4e04fd44cda85569af195b10469a8e94ae26da1ec4897f61452f772d81aa51e0",
+          "../meshes/afd7e392ac9362b53e19c7ec2110ab4b7ad5f73a334a84801633273a90262460.stl": "afd7e392ac9362b53e19c7ec2110ab4b7ad5f73a334a84801633273a90262460",
+          "../meshes/dc35a88c1e07e286f6e584a89c699a7306c3016b85e84aa5202c469dafecd40f.stl": "dc35a88c1e07e286f6e584a89c699a7306c3016b85e84aa5202c469dafecd40f",
+          "../meshes/f57625f511cbf03ee24fd824a4aa11d51f6afb54c504de178cd0517d742fb305.stl": "f57625f511cbf03ee24fd824a4aa11d51f6afb54c504de178cd0517d742fb305",
+          "../meshes/85d3cbab725937e41fa90a43d2520e354ce3a7cbe41c9501b6ad1cb963e2dc09.stl": "85d3cbab725937e41fa90a43d2520e354ce3a7cbe41c9501b6ad1cb963e2dc09",
+          "../meshes/beb3c8c81b6a2865c9663ef80f0c0a8fd3ef6bfddf97dd93a8893617b3a301a5.stl": "beb3c8c81b6a2865c9663ef80f0c0a8fd3ef6bfddf97dd93a8893617b3a301a5",
+          "../meshes/101dace1b1690a88aa7d8ea27d97e364e2d8db3bc55af10421a5501c1784911c.stl": "101dace1b1690a88aa7d8ea27d97e364e2d8db3bc55af10421a5501c1784911c",
+          "../meshes/792aea480ef88046d17d531980819a89ba670bbf700edbbb539024cafdcc522f.stl": "792aea480ef88046d17d531980819a89ba670bbf700edbbb539024cafdcc522f",
+          "../meshes/6eb9d62acf07e25e1a07437dea503b88157c656c0b309b1945f624fff3ef5798.stl": "6eb9d62acf07e25e1a07437dea503b88157c656c0b309b1945f624fff3ef5798",
+          "../meshes/80bf15fa86382579c3e4e5479408485a17c283945b0081e43ce665165faa8756.stl": "80bf15fa86382579c3e4e5479408485a17c283945b0081e43ce665165faa8756"
+        },
+        "total_triangles": 1086986,
+        "mesh_parts": 35,
+        "collision_pairs": 595,
+        "open_mesh_links": [
+          "DP",
+          "L_pinky_distal",
+          "arm_L1_l",
+          "arm_L1_r",
+          "arm_L2_l",
+          "arm_L2_r",
+          "arm_L3_l",
+          "arm_L3_r",
+          "arm_L4_l",
+          "arm_L4_r",
+          "arm_L5_l",
+          "arm_L5_r",
+          "arm_L6_l",
+          "arm_L6_r",
+          "arm_L7_l",
+          "arm_L7_r",
+          "gripper_base_link_r",
+          "hand_base_link_l",
+          "s1",
+          "s3",
+          "s4"
+        ],
+        "collision_method": "BVH triangle intersection + containment for closed meshes",
+        "open_mesh_policy": "surface intersection only; open STL has no defined solid interior",
+        "contact_tolerance_m": 1e-06,
+        "ik_collision_method": "all returned pose-IK seeds checked against STL; no sphere cost"
+      },
+      "initialization_seconds": 1.228237799994531,
+      "collision_check_seconds": 0.713790699999663,
+      "configurations_per_second": 44.83106882733987,
+      "timing_scope": "FK + STL collision + host copies; excludes IK",
+      "config": "D:\\code_agent\\robot_workspace_dexterous\\configs\\dual_v2_1_left_hand_right_gripper.yaml",
+      "self_collision_ignore": {}
+    },
+    "dual_v2_1_no_gripper": {
+      "samples": 32,
+      "collision_free_samples": 0,
+      "pair_diagnostic_samples": 32,
+      "pair_frequencies": [
+        {
+          "links": [
+            "s1",
+            "DP"
+          ],
+          "colliding_samples": 32,
+          "fraction": 1.0,
+          "direct_joint": {
+            "name": "s1j",
+            "type": "fixed"
+          },
+          "all_pair_samples_collide": true
+        },
+        {
+          "links": [
+            "s3",
+            "s4"
+          ],
+          "colliding_samples": 32,
+          "fraction": 1.0,
+          "direct_joint": {
+            "name": "s4j",
+            "type": "fixed"
+          },
+          "all_pair_samples_collide": true
+        },
+        {
+          "links": [
+            "arm_L2_l",
+            "arm_L1_l"
+          ],
+          "colliding_samples": 32,
+          "fraction": 1.0,
+          "direct_joint": {
+            "name": "arm_J2_l",
+            "type": "revolute"
+          },
+          "all_pair_samples_collide": true
+        },
+        {
+          "links": [
+            "arm_L2_l",
+            "arm_L3_l"
+          ],
+          "colliding_samples": 32,
+          "fraction": 1.0,
+          "direct_joint": {
+            "name": "arm_J3_l",
+            "type": "revolute"
+          },
+          "all_pair_samples_collide": true
+        },
+        {
+          "links": [
+            "arm_L5_l",
+            "arm_L6_l"
+          ],
+          "colliding_samples": 32,
+          "fraction": 1.0,
+          "direct_joint": {
+            "name": "arm_J6_l",
+            "type": "revolute"
+          },
+          "all_pair_samples_collide": true
+        },
+        {
+          "links": [
+            "arm_L7_l",
+            "arm_L6_l"
+          ],
+          "colliding_samples": 32,
+          "fraction": 1.0,
+          "direct_joint": {
+            "name": "arm_J7_l",
+            "type": "revolute"
+          },
+          "all_pair_samples_collide": true
+        },
+        {
+          "links": [
+            "arm_L2_r",
+            "arm_L1_r"
+          ],
+          "colliding_samples": 32,
+          "fraction": 1.0,
+          "direct_joint": {
+            "name": "arm_J2_r",
+            "type": "revolute"
+          },
+          "all_pair_samples_collide": true
+        },
+        {
+          "links": [
+            "arm_L2_r",
+            "arm_L3_r"
+          ],
+          "colliding_samples": 32,
+          "fraction": 1.0,
+          "direct_joint": {
+            "name": "arm_J3_r",
+            "type": "revolute"
+          },
+          "all_pair_samples_collide": true
+        },
+        {
+          "links": [
+            "arm_L7_r",
+            "arm_L6_r"
+          ],
+          "colliding_samples": 32,
+          "fraction": 1.0,
+          "direct_joint": {
+            "name": "arm_J7_r",
+            "type": "revolute"
+          },
+          "all_pair_samples_collide": true
+        },
+        {
+          "links": [
+            "arm_L4_r",
+            "arm_L3_r"
+          ],
+          "colliding_samples": 23,
+          "fraction": 0.71875,
+          "direct_joint": {
+            "name": "arm_J4_r",
+            "type": "revolute"
+          },
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "arm_L1_l",
+            "s4"
+          ],
+          "colliding_samples": 13,
+          "fraction": 0.40625,
+          "direct_joint": null,
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "arm_L5_r",
+            "arm_L6_r"
+          ],
+          "colliding_samples": 2,
+          "fraction": 0.0625,
+          "direct_joint": {
+            "name": "arm_J6_r",
+            "type": "revolute"
+          },
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "arm_L6_r",
+            "s3"
+          ],
+          "colliding_samples": 1,
+          "fraction": 0.03125,
+          "direct_joint": null,
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "arm_L7_r",
+            "s3"
+          ],
+          "colliding_samples": 1,
+          "fraction": 0.03125,
+          "direct_joint": null,
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "arm_L6_r",
+            "s4"
+          ],
+          "colliding_samples": 1,
+          "fraction": 0.03125,
+          "direct_joint": null,
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "arm_L7_l",
+            "arm_L5_l"
+          ],
+          "colliding_samples": 1,
+          "fraction": 0.03125,
+          "direct_joint": null,
+          "all_pair_samples_collide": false
+        }
+      ],
+      "collision_model": {
+        "mode": "stl",
+        "file": "D:\\code_agent\\robot_workspace_dexterous\\models\\dual_v2_1_no_gripper\\collision_meshes.yaml",
+        "manifest_sha256": "1961d620c398f2b4e9fa8db266fb3d00bcc8f1de494d213611ff09d363546343",
+        "assets": {
+          "../meshes/bf124abfb91cd3a4320d51e907e7916df7274894cd6eb0af90cde7bed5ce2294.stl": "bf124abfb91cd3a4320d51e907e7916df7274894cd6eb0af90cde7bed5ce2294",
+          "../meshes/fae367145c7d26ad6c199becc3f34967ccc22e7e426cf7d4a5021371662d59bd.stl": "fae367145c7d26ad6c199becc3f34967ccc22e7e426cf7d4a5021371662d59bd",
+          "../meshes/3bc0ec95e32382376e42daced16c8ee7ad68b15e116b29b0c4d4e7774c5f36f5.stl": "3bc0ec95e32382376e42daced16c8ee7ad68b15e116b29b0c4d4e7774c5f36f5",
+          "../meshes/514a8b4798bc498a247ffb1bb59045b6c3674329e9d7fa686151b0cdb83c7a24.stl": "514a8b4798bc498a247ffb1bb59045b6c3674329e9d7fa686151b0cdb83c7a24",
+          "../meshes/2086c6a667fd3435182a653007aeacbad1ff9dce7bde1694e62a6a24f2593b9e.stl": "2086c6a667fd3435182a653007aeacbad1ff9dce7bde1694e62a6a24f2593b9e",
+          "../meshes/aef96c3eae5c9902fc08c6ac71a1e0d6e48ca53054e357a50a237cf321345bcf.stl": "aef96c3eae5c9902fc08c6ac71a1e0d6e48ca53054e357a50a237cf321345bcf",
+          "../meshes/48d4a8ca0ebd30aaee9116bf661aa2c1a156027c891ceceddd57ae25f7268bbd.stl": "48d4a8ca0ebd30aaee9116bf661aa2c1a156027c891ceceddd57ae25f7268bbd",
+          "../meshes/b863fc2d318eb1b50cdbce8a7285b6e29441bac158322b3eaa11abab8266c0ec.stl": "b863fc2d318eb1b50cdbce8a7285b6e29441bac158322b3eaa11abab8266c0ec",
+          "../meshes/ae045772107e3c5096e761605d8a483addcb23e206abf89dc2aead4c27a98952.stl": "ae045772107e3c5096e761605d8a483addcb23e206abf89dc2aead4c27a98952",
+          "../meshes/244b60c12b2d1749135d2f14b82fab62dad86c65153ae6c58864637742427d8b.stl": "244b60c12b2d1749135d2f14b82fab62dad86c65153ae6c58864637742427d8b",
+          "../meshes/2b717be4628a0aaff81a61b002ef9eac83420ab1c4a31b68df97757b0d05035c.stl": "2b717be4628a0aaff81a61b002ef9eac83420ab1c4a31b68df97757b0d05035c",
+          "../meshes/3f608afe4084f67e16056596d124f9c6a1991821501540037da149047137517e.stl": "3f608afe4084f67e16056596d124f9c6a1991821501540037da149047137517e"
+        },
+        "total_triangles": 952980,
+        "mesh_parts": 19,
+        "collision_pairs": 171,
+        "open_mesh_links": [
+          "DP",
+          "arm_L1_l",
+          "arm_L1_r",
+          "arm_L2_l",
+          "arm_L2_r",
+          "arm_L3_l",
+          "arm_L3_r",
+          "arm_L4_l",
+          "arm_L4_r",
+          "arm_L5_l",
+          "arm_L5_r",
+          "arm_L6_l",
+          "arm_L6_r",
+          "arm_L7_l",
+          "arm_L7_r",
+          "s1",
+          "s3",
+          "s4"
+        ],
+        "collision_method": "BVH triangle intersection + containment for closed meshes",
+        "open_mesh_policy": "surface intersection only; open STL has no defined solid interior",
+        "contact_tolerance_m": 1e-06,
+        "ik_collision_method": "all returned pose-IK seeds checked against STL; no sphere cost"
+      },
+      "initialization_seconds": 1.2738394000043627,
+      "collision_check_seconds": 0.8079352999920957,
+      "configurations_per_second": 39.60713190810337,
+      "timing_scope": "FK + STL collision + host copies; excludes IK",
+      "config": "D:\\code_agent\\robot_workspace_dexterous\\configs\\dual_v2_1_no_gripper.yaml",
+      "self_collision_ignore": {}
+    },
+    "dual_v2_1_with_gripper": {
+      "samples": 32,
+      "collision_free_samples": 0,
+      "pair_diagnostic_samples": 32,
+      "pair_frequencies": [
+        {
+          "links": [
+            "s1",
+            "DP"
+          ],
+          "colliding_samples": 32,
+          "fraction": 1.0,
+          "direct_joint": {
+            "name": "s1j",
+            "type": "fixed"
+          },
+          "all_pair_samples_collide": true
+        },
+        {
+          "links": [
+            "s3",
+            "s4"
+          ],
+          "colliding_samples": 32,
+          "fraction": 1.0,
+          "direct_joint": {
+            "name": "s4j",
+            "type": "fixed"
+          },
+          "all_pair_samples_collide": true
+        },
+        {
+          "links": [
+            "arm_L2_l",
+            "arm_L1_l"
+          ],
+          "colliding_samples": 32,
+          "fraction": 1.0,
+          "direct_joint": {
+            "name": "arm_J2_l",
+            "type": "revolute"
+          },
+          "all_pair_samples_collide": true
+        },
+        {
+          "links": [
+            "arm_L2_l",
+            "arm_L3_l"
+          ],
+          "colliding_samples": 32,
+          "fraction": 1.0,
+          "direct_joint": {
+            "name": "arm_J3_l",
+            "type": "revolute"
+          },
+          "all_pair_samples_collide": true
+        },
+        {
+          "links": [
+            "arm_L5_l",
+            "arm_L6_l"
+          ],
+          "colliding_samples": 32,
+          "fraction": 1.0,
+          "direct_joint": {
+            "name": "arm_J6_l",
+            "type": "revolute"
+          },
+          "all_pair_samples_collide": true
+        },
+        {
+          "links": [
+            "arm_L7_l",
+            "arm_L6_l"
+          ],
+          "colliding_samples": 32,
+          "fraction": 1.0,
+          "direct_joint": {
+            "name": "arm_J7_l",
+            "type": "revolute"
+          },
+          "all_pair_samples_collide": true
+        },
+        {
+          "links": [
+            "gripper_L1_l",
+            "gripper_base_link_l"
+          ],
+          "colliding_samples": 32,
+          "fraction": 1.0,
+          "direct_joint": {
+            "name": "gripper_J1_l",
+            "type": "prismatic"
+          },
+          "all_pair_samples_collide": true
+        },
+        {
+          "links": [
+            "gripper_L2_l",
+            "gripper_base_link_l"
+          ],
+          "colliding_samples": 32,
+          "fraction": 1.0,
+          "direct_joint": {
+            "name": "gripper_J1_l_1",
+            "type": "prismatic"
+          },
+          "all_pair_samples_collide": true
+        },
+        {
+          "links": [
+            "arm_L2_r",
+            "arm_L1_r"
+          ],
+          "colliding_samples": 32,
+          "fraction": 1.0,
+          "direct_joint": {
+            "name": "arm_J2_r",
+            "type": "revolute"
+          },
+          "all_pair_samples_collide": true
+        },
+        {
+          "links": [
+            "arm_L2_r",
+            "arm_L3_r"
+          ],
+          "colliding_samples": 32,
+          "fraction": 1.0,
+          "direct_joint": {
+            "name": "arm_J3_r",
+            "type": "revolute"
+          },
+          "all_pair_samples_collide": true
+        },
+        {
+          "links": [
+            "arm_L7_r",
+            "arm_L6_r"
+          ],
+          "colliding_samples": 32,
+          "fraction": 1.0,
+          "direct_joint": {
+            "name": "arm_J7_r",
+            "type": "revolute"
+          },
+          "all_pair_samples_collide": true
+        },
+        {
+          "links": [
+            "gripper_L1_r",
+            "gripper_base_link_r"
+          ],
+          "colliding_samples": 32,
+          "fraction": 1.0,
+          "direct_joint": {
+            "name": "gripper_J1_r",
+            "type": "prismatic"
+          },
+          "all_pair_samples_collide": true
+        },
+        {
+          "links": [
+            "gripper_L2_r",
+            "gripper_base_link_r"
+          ],
+          "colliding_samples": 32,
+          "fraction": 1.0,
+          "direct_joint": {
+            "name": "gripper_J1_r_1",
+            "type": "prismatic"
+          },
+          "all_pair_samples_collide": true
+        },
+        {
+          "links": [
+            "gripper_L1_l",
+            "gripper_L2_l"
+          ],
+          "colliding_samples": 30,
+          "fraction": 0.9375,
+          "direct_joint": null,
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "gripper_L1_r",
+            "gripper_L2_r"
+          ],
+          "colliding_samples": 28,
+          "fraction": 0.875,
+          "direct_joint": null,
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "arm_L4_r",
+            "arm_L3_r"
+          ],
+          "colliding_samples": 26,
+          "fraction": 0.8125,
+          "direct_joint": {
+            "name": "arm_J4_r",
+            "type": "revolute"
+          },
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "arm_L1_l",
+            "s4"
+          ],
+          "colliding_samples": 13,
+          "fraction": 0.40625,
+          "direct_joint": null,
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "arm_L5_r",
+            "arm_L6_r"
+          ],
+          "colliding_samples": 4,
+          "fraction": 0.125,
+          "direct_joint": {
+            "name": "arm_J6_r",
+            "type": "revolute"
+          },
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "gripper_base_link_l",
+            "s4"
+          ],
+          "colliding_samples": 1,
+          "fraction": 0.03125,
+          "direct_joint": null,
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "arm_L7_l",
+            "arm_L5_l"
+          ],
+          "colliding_samples": 1,
+          "fraction": 0.03125,
+          "direct_joint": null,
+          "all_pair_samples_collide": false
+        }
+      ],
+      "collision_model": {
+        "mode": "stl",
+        "file": "D:\\code_agent\\robot_workspace_dexterous\\models\\dual_v2_1_with_gripper\\collision_meshes.yaml",
+        "manifest_sha256": "2d21f7529cad6b8dc645a3390ada1801b2507428a7fd1d05dc94eef228bc5181",
+        "assets": {
+          "../meshes/bf124abfb91cd3a4320d51e907e7916df7274894cd6eb0af90cde7bed5ce2294.stl": "bf124abfb91cd3a4320d51e907e7916df7274894cd6eb0af90cde7bed5ce2294",
+          "../meshes/fae367145c7d26ad6c199becc3f34967ccc22e7e426cf7d4a5021371662d59bd.stl": "fae367145c7d26ad6c199becc3f34967ccc22e7e426cf7d4a5021371662d59bd",
+          "../meshes/3bc0ec95e32382376e42daced16c8ee7ad68b15e116b29b0c4d4e7774c5f36f5.stl": "3bc0ec95e32382376e42daced16c8ee7ad68b15e116b29b0c4d4e7774c5f36f5",
+          "../meshes/514a8b4798bc498a247ffb1bb59045b6c3674329e9d7fa686151b0cdb83c7a24.stl": "514a8b4798bc498a247ffb1bb59045b6c3674329e9d7fa686151b0cdb83c7a24",
+          "../meshes/2086c6a667fd3435182a653007aeacbad1ff9dce7bde1694e62a6a24f2593b9e.stl": "2086c6a667fd3435182a653007aeacbad1ff9dce7bde1694e62a6a24f2593b9e",
+          "../meshes/aef96c3eae5c9902fc08c6ac71a1e0d6e48ca53054e357a50a237cf321345bcf.stl": "aef96c3eae5c9902fc08c6ac71a1e0d6e48ca53054e357a50a237cf321345bcf",
+          "../meshes/48d4a8ca0ebd30aaee9116bf661aa2c1a156027c891ceceddd57ae25f7268bbd.stl": "48d4a8ca0ebd30aaee9116bf661aa2c1a156027c891ceceddd57ae25f7268bbd",
+          "../meshes/b863fc2d318eb1b50cdbce8a7285b6e29441bac158322b3eaa11abab8266c0ec.stl": "b863fc2d318eb1b50cdbce8a7285b6e29441bac158322b3eaa11abab8266c0ec",
+          "../meshes/ae045772107e3c5096e761605d8a483addcb23e206abf89dc2aead4c27a98952.stl": "ae045772107e3c5096e761605d8a483addcb23e206abf89dc2aead4c27a98952",
+          "../meshes/244b60c12b2d1749135d2f14b82fab62dad86c65153ae6c58864637742427d8b.stl": "244b60c12b2d1749135d2f14b82fab62dad86c65153ae6c58864637742427d8b",
+          "../meshes/2b717be4628a0aaff81a61b002ef9eac83420ab1c4a31b68df97757b0d05035c.stl": "2b717be4628a0aaff81a61b002ef9eac83420ab1c4a31b68df97757b0d05035c",
+          "../meshes/3f608afe4084f67e16056596d124f9c6a1991821501540037da149047137517e.stl": "3f608afe4084f67e16056596d124f9c6a1991821501540037da149047137517e",
+          "../meshes/792aea480ef88046d17d531980819a89ba670bbf700edbbb539024cafdcc522f.stl": "792aea480ef88046d17d531980819a89ba670bbf700edbbb539024cafdcc522f",
+          "../meshes/6eb9d62acf07e25e1a07437dea503b88157c656c0b309b1945f624fff3ef5798.stl": "6eb9d62acf07e25e1a07437dea503b88157c656c0b309b1945f624fff3ef5798",
+          "../meshes/80bf15fa86382579c3e4e5479408485a17c283945b0081e43ce665165faa8756.stl": "80bf15fa86382579c3e4e5479408485a17c283945b0081e43ce665165faa8756"
+        },
+        "total_triangles": 983460,
+        "mesh_parts": 25,
+        "collision_pairs": 300,
+        "open_mesh_links": [
+          "DP",
+          "arm_L1_l",
+          "arm_L1_r",
+          "arm_L2_l",
+          "arm_L2_r",
+          "arm_L3_l",
+          "arm_L3_r",
+          "arm_L4_l",
+          "arm_L4_r",
+          "arm_L5_l",
+          "arm_L5_r",
+          "arm_L6_l",
+          "arm_L6_r",
+          "arm_L7_l",
+          "arm_L7_r",
+          "gripper_base_link_l",
+          "gripper_base_link_r",
+          "s1",
+          "s3",
+          "s4"
+        ],
+        "collision_method": "BVH triangle intersection + containment for closed meshes",
+        "open_mesh_policy": "surface intersection only; open STL has no defined solid interior",
+        "contact_tolerance_m": 1e-06,
+        "ik_collision_method": "all returned pose-IK seeds checked against STL; no sphere cost"
+      },
+      "initialization_seconds": 1.661840899992967,
+      "collision_check_seconds": 0.8399946999998065,
+      "configurations_per_second": 38.09547845957525,
+      "timing_scope": "FK + STL collision + host copies; excludes IK",
+      "config": "D:\\code_agent\\robot_workspace_dexterous\\configs\\dual_v2_1_with_gripper.yaml",
+      "self_collision_ignore": {}
+    },
+    "dual_v2_1_with_hand": {
+      "samples": 32,
+      "collision_free_samples": 0,
+      "pair_diagnostic_samples": 32,
+      "pair_frequencies": [
+        {
+          "links": [
+            "s1",
+            "DP"
+          ],
+          "colliding_samples": 32,
+          "fraction": 1.0,
+          "direct_joint": {
+            "name": "s1j",
+            "type": "fixed"
+          },
+          "all_pair_samples_collide": true
+        },
+        {
+          "links": [
+            "s3",
+            "s4"
+          ],
+          "colliding_samples": 32,
+          "fraction": 1.0,
+          "direct_joint": {
+            "name": "s4j",
+            "type": "fixed"
+          },
+          "all_pair_samples_collide": true
+        },
+        {
+          "links": [
+            "arm_L2_l",
+            "arm_L1_l"
+          ],
+          "colliding_samples": 32,
+          "fraction": 1.0,
+          "direct_joint": {
+            "name": "arm_J2_l",
+            "type": "revolute"
+          },
+          "all_pair_samples_collide": true
+        },
+        {
+          "links": [
+            "arm_L2_l",
+            "arm_L3_l"
+          ],
+          "colliding_samples": 32,
+          "fraction": 1.0,
+          "direct_joint": {
+            "name": "arm_J3_l",
+            "type": "revolute"
+          },
+          "all_pair_samples_collide": true
+        },
+        {
+          "links": [
+            "arm_L5_l",
+            "arm_L6_l"
+          ],
+          "colliding_samples": 32,
+          "fraction": 1.0,
+          "direct_joint": {
+            "name": "arm_J6_l",
+            "type": "revolute"
+          },
+          "all_pair_samples_collide": true
+        },
+        {
+          "links": [
+            "arm_L7_l",
+            "arm_L6_l"
+          ],
+          "colliding_samples": 32,
+          "fraction": 1.0,
+          "direct_joint": {
+            "name": "arm_J7_l",
+            "type": "revolute"
+          },
+          "all_pair_samples_collide": true
+        },
+        {
+          "links": [
+            "hand_base_link_l",
+            "arm_L7_l"
+          ],
+          "colliding_samples": 32,
+          "fraction": 1.0,
+          "direct_joint": null,
+          "all_pair_samples_collide": true
+        },
+        {
+          "links": [
+            "arm_L2_r",
+            "arm_L1_r"
+          ],
+          "colliding_samples": 32,
+          "fraction": 1.0,
+          "direct_joint": {
+            "name": "arm_J2_r",
+            "type": "revolute"
+          },
+          "all_pair_samples_collide": true
+        },
+        {
+          "links": [
+            "arm_L2_r",
+            "arm_L3_r"
+          ],
+          "colliding_samples": 32,
+          "fraction": 1.0,
+          "direct_joint": {
+            "name": "arm_J3_r",
+            "type": "revolute"
+          },
+          "all_pair_samples_collide": true
+        },
+        {
+          "links": [
+            "arm_L4_r",
+            "arm_L3_r"
+          ],
+          "colliding_samples": 32,
+          "fraction": 1.0,
+          "direct_joint": {
+            "name": "arm_J4_r",
+            "type": "revolute"
+          },
+          "all_pair_samples_collide": true
+        },
+        {
+          "links": [
+            "arm_L7_r",
+            "arm_L6_r"
+          ],
+          "colliding_samples": 32,
+          "fraction": 1.0,
+          "direct_joint": {
+            "name": "arm_J7_r",
+            "type": "revolute"
+          },
+          "all_pair_samples_collide": true
+        },
+        {
+          "links": [
+            "hand_base_link_r",
+            "arm_L7_r"
+          ],
+          "colliding_samples": 32,
+          "fraction": 1.0,
+          "direct_joint": null,
+          "all_pair_samples_collide": true
+        },
+        {
+          "links": [
+            "L_middle_proximal",
+            "hand_base_link_l"
+          ],
+          "colliding_samples": 32,
+          "fraction": 1.0,
+          "direct_joint": {
+            "name": "hand_J4_l",
+            "type": "revolute"
+          },
+          "all_pair_samples_collide": true
+        },
+        {
+          "links": [
+            "L_thumb_proximal_base",
+            "L_thumb_proximal"
+          ],
+          "colliding_samples": 32,
+          "fraction": 1.0,
+          "direct_joint": {
+            "name": "hand_J2_l",
+            "type": "revolute"
+          },
+          "all_pair_samples_collide": true
+        },
+        {
+          "links": [
+            "L_thumb_intermediate",
+            "L_thumb_proximal"
+          ],
+          "colliding_samples": 32,
+          "fraction": 1.0,
+          "direct_joint": {
+            "name": "hand_J2_l_1",
+            "type": "revolute"
+          },
+          "all_pair_samples_collide": true
+        },
+        {
+          "links": [
+            "L_index_distal",
+            "L_index_proximal"
+          ],
+          "colliding_samples": 32,
+          "fraction": 1.0,
+          "direct_joint": {
+            "name": "hand_J3_l_1",
+            "type": "revolute"
+          },
+          "all_pair_samples_collide": true
+        },
+        {
+          "links": [
+            "L_middle_distal",
+            "L_middle_proximal"
+          ],
+          "colliding_samples": 32,
+          "fraction": 1.0,
+          "direct_joint": {
+            "name": "hand_J4_l_1",
+            "type": "revolute"
+          },
+          "all_pair_samples_collide": true
+        },
+        {
+          "links": [
+            "L_ring_distal",
+            "L_ring_proximal"
+          ],
+          "colliding_samples": 32,
+          "fraction": 1.0,
+          "direct_joint": {
+            "name": "hand_J5_l_1",
+            "type": "revolute"
+          },
+          "all_pair_samples_collide": true
+        },
+        {
+          "links": [
+            "L_pinky_proximal",
+            "L_pinky_distal"
+          ],
+          "colliding_samples": 32,
+          "fraction": 1.0,
+          "direct_joint": {
+            "name": "hand_J6_l_1",
+            "type": "revolute"
+          },
+          "all_pair_samples_collide": true
+        },
+        {
+          "links": [
+            "R_index_proximal",
+            "hand_base_link_r"
+          ],
+          "colliding_samples": 32,
+          "fraction": 1.0,
+          "direct_joint": {
+            "name": "hand_J3_r",
+            "type": "revolute"
+          },
+          "all_pair_samples_collide": true
+        },
+        {
+          "links": [
+            "R_middle_proximal",
+            "hand_base_link_r"
+          ],
+          "colliding_samples": 32,
+          "fraction": 1.0,
+          "direct_joint": {
+            "name": "hand_J4_r",
+            "type": "revolute"
+          },
+          "all_pair_samples_collide": true
+        },
+        {
+          "links": [
+            "R_thumb_intermediate",
+            "R_thumb_proximal"
+          ],
+          "colliding_samples": 32,
+          "fraction": 1.0,
+          "direct_joint": {
+            "name": "hand_J2_r_1",
+            "type": "revolute"
+          },
+          "all_pair_samples_collide": true
+        },
+        {
+          "links": [
+            "R_index_distal",
+            "R_index_proximal"
+          ],
+          "colliding_samples": 32,
+          "fraction": 1.0,
+          "direct_joint": {
+            "name": "hand_J3_r_1",
+            "type": "revolute"
+          },
+          "all_pair_samples_collide": true
+        },
+        {
+          "links": [
+            "R_middle_distal",
+            "R_middle_proximal"
+          ],
+          "colliding_samples": 32,
+          "fraction": 1.0,
+          "direct_joint": {
+            "name": "hand_J4_r_1",
+            "type": "revolute"
+          },
+          "all_pair_samples_collide": true
+        },
+        {
+          "links": [
+            "R_ring_distal",
+            "R_ring_proximal"
+          ],
+          "colliding_samples": 32,
+          "fraction": 1.0,
+          "direct_joint": {
+            "name": "hand_J5_r_1",
+            "type": "revolute"
+          },
+          "all_pair_samples_collide": true
+        },
+        {
+          "links": [
+            "R_thumb_proximal_base",
+            "hand_base_link_r"
+          ],
+          "colliding_samples": 31,
+          "fraction": 0.96875,
+          "direct_joint": {
+            "name": "hand_J1_r",
+            "type": "revolute"
+          },
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "R_ring_proximal",
+            "hand_base_link_r"
+          ],
+          "colliding_samples": 25,
+          "fraction": 0.78125,
+          "direct_joint": {
+            "name": "hand_J5_r",
+            "type": "revolute"
+          },
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "R_pinky_proximal",
+            "R_pinky_distal"
+          ],
+          "colliding_samples": 25,
+          "fraction": 0.78125,
+          "direct_joint": {
+            "name": "hand_J6_r_1",
+            "type": "revolute"
+          },
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "hand_base_link_l",
+            "arm_L6_l"
+          ],
+          "colliding_samples": 23,
+          "fraction": 0.71875,
+          "direct_joint": null,
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "L_thumb_proximal",
+            "arm_L6_l"
+          ],
+          "colliding_samples": 18,
+          "fraction": 0.5625,
+          "direct_joint": null,
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "L_thumb_proximal_base",
+            "arm_L6_l"
+          ],
+          "colliding_samples": 17,
+          "fraction": 0.53125,
+          "direct_joint": null,
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "arm_L5_r",
+            "arm_L6_r"
+          ],
+          "colliding_samples": 14,
+          "fraction": 0.4375,
+          "direct_joint": {
+            "name": "arm_J6_r",
+            "type": "revolute"
+          },
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "arm_L1_l",
+            "s4"
+          ],
+          "colliding_samples": 13,
+          "fraction": 0.40625,
+          "direct_joint": null,
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "L_thumb_proximal",
+            "arm_L5_l"
+          ],
+          "colliding_samples": 9,
+          "fraction": 0.28125,
+          "direct_joint": null,
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "L_thumb_intermediate",
+            "arm_L5_l"
+          ],
+          "colliding_samples": 9,
+          "fraction": 0.28125,
+          "direct_joint": null,
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "L_middle_proximal",
+            "arm_L5_l"
+          ],
+          "colliding_samples": 8,
+          "fraction": 0.25,
+          "direct_joint": null,
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "R_thumb_proximal",
+            "hand_base_link_r"
+          ],
+          "colliding_samples": 7,
+          "fraction": 0.21875,
+          "direct_joint": null,
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "L_ring_proximal",
+            "arm_L5_l"
+          ],
+          "colliding_samples": 6,
+          "fraction": 0.1875,
+          "direct_joint": null,
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "L_index_proximal",
+            "arm_L5_l"
+          ],
+          "colliding_samples": 5,
+          "fraction": 0.15625,
+          "direct_joint": null,
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "L_ring_proximal",
+            "arm_L6_l"
+          ],
+          "colliding_samples": 5,
+          "fraction": 0.15625,
+          "direct_joint": null,
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "L_index_distal",
+            "L_thumb_intermediate"
+          ],
+          "colliding_samples": 5,
+          "fraction": 0.15625,
+          "direct_joint": null,
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "L_pinky_proximal",
+            "arm_L5_l"
+          ],
+          "colliding_samples": 4,
+          "fraction": 0.125,
+          "direct_joint": null,
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "L_middle_proximal",
+            "arm_L6_l"
+          ],
+          "colliding_samples": 4,
+          "fraction": 0.125,
+          "direct_joint": null,
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "L_thumb_distal",
+            "L_index_distal"
+          ],
+          "colliding_samples": 4,
+          "fraction": 0.125,
+          "direct_joint": null,
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "L_middle_distal",
+            "arm_L5_l"
+          ],
+          "colliding_samples": 3,
+          "fraction": 0.09375,
+          "direct_joint": null,
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "L_thumb_distal",
+            "arm_L5_l"
+          ],
+          "colliding_samples": 2,
+          "fraction": 0.0625,
+          "direct_joint": null,
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "L_index_distal",
+            "arm_L5_l"
+          ],
+          "colliding_samples": 2,
+          "fraction": 0.0625,
+          "direct_joint": null,
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "L_pinky_distal",
+            "arm_L5_l"
+          ],
+          "colliding_samples": 2,
+          "fraction": 0.0625,
+          "direct_joint": null,
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "arm_L6_r",
+            "s3"
+          ],
+          "colliding_samples": 1,
+          "fraction": 0.03125,
+          "direct_joint": null,
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "arm_L7_r",
+            "s3"
+          ],
+          "colliding_samples": 1,
+          "fraction": 0.03125,
+          "direct_joint": null,
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "hand_base_link_r",
+            "s3"
+          ],
+          "colliding_samples": 1,
+          "fraction": 0.03125,
+          "direct_joint": null,
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "arm_L5_r",
+            "s4"
+          ],
+          "colliding_samples": 1,
+          "fraction": 0.03125,
+          "direct_joint": null,
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "arm_L6_r",
+            "s4"
+          ],
+          "colliding_samples": 1,
+          "fraction": 0.03125,
+          "direct_joint": null,
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "R_thumb_proximal_base",
+            "s4"
+          ],
+          "colliding_samples": 1,
+          "fraction": 0.03125,
+          "direct_joint": null,
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "L_ring_distal",
+            "arm_L5_l"
+          ],
+          "colliding_samples": 1,
+          "fraction": 0.03125,
+          "direct_joint": null,
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "L_thumb_intermediate",
+            "arm_L6_l"
+          ],
+          "colliding_samples": 1,
+          "fraction": 0.03125,
+          "direct_joint": null,
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "L_middle_distal",
+            "arm_L6_l"
+          ],
+          "colliding_samples": 1,
+          "fraction": 0.03125,
+          "direct_joint": null,
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "L_ring_distal",
+            "arm_L6_l"
+          ],
+          "colliding_samples": 1,
+          "fraction": 0.03125,
+          "direct_joint": null,
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "L_pinky_distal",
+            "arm_L6_l"
+          ],
+          "colliding_samples": 1,
+          "fraction": 0.03125,
+          "direct_joint": null,
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "L_index_distal",
+            "L_thumb_proximal"
+          ],
+          "colliding_samples": 1,
+          "fraction": 0.03125,
+          "direct_joint": null,
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "L_index_proximal",
+            "L_thumb_intermediate"
+          ],
+          "colliding_samples": 1,
+          "fraction": 0.03125,
+          "direct_joint": null,
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "L_thumb_distal",
+            "L_index_proximal"
+          ],
+          "colliding_samples": 1,
+          "fraction": 0.03125,
+          "direct_joint": null,
+          "all_pair_samples_collide": false
+        },
+        {
+          "links": [
+            "R_index_distal",
+            "R_thumb_intermediate"
+          ],
+          "colliding_samples": 1,
+          "fraction": 0.03125,
+          "direct_joint": null,
+          "all_pair_samples_collide": false
+        }
+      ],
+      "collision_model": {
+        "mode": "stl",
+        "file": "D:\\code_agent\\robot_workspace_dexterous\\models\\dual_v2_1_with_hand\\collision_meshes.yaml",
+        "manifest_sha256": "72bb57d69d4796d8cb0abae43900a5e8aeeb6776a6c8372caacd7566b0b5c461",
+        "assets": {
+          "../meshes/bf124abfb91cd3a4320d51e907e7916df7274894cd6eb0af90cde7bed5ce2294.stl": "bf124abfb91cd3a4320d51e907e7916df7274894cd6eb0af90cde7bed5ce2294",
+          "../meshes/fae367145c7d26ad6c199becc3f34967ccc22e7e426cf7d4a5021371662d59bd.stl": "fae367145c7d26ad6c199becc3f34967ccc22e7e426cf7d4a5021371662d59bd",
+          "../meshes/3bc0ec95e32382376e42daced16c8ee7ad68b15e116b29b0c4d4e7774c5f36f5.stl": "3bc0ec95e32382376e42daced16c8ee7ad68b15e116b29b0c4d4e7774c5f36f5",
+          "../meshes/514a8b4798bc498a247ffb1bb59045b6c3674329e9d7fa686151b0cdb83c7a24.stl": "514a8b4798bc498a247ffb1bb59045b6c3674329e9d7fa686151b0cdb83c7a24",
+          "../meshes/2086c6a667fd3435182a653007aeacbad1ff9dce7bde1694e62a6a24f2593b9e.stl": "2086c6a667fd3435182a653007aeacbad1ff9dce7bde1694e62a6a24f2593b9e",
+          "../meshes/aef96c3eae5c9902fc08c6ac71a1e0d6e48ca53054e357a50a237cf321345bcf.stl": "aef96c3eae5c9902fc08c6ac71a1e0d6e48ca53054e357a50a237cf321345bcf",
+          "../meshes/48d4a8ca0ebd30aaee9116bf661aa2c1a156027c891ceceddd57ae25f7268bbd.stl": "48d4a8ca0ebd30aaee9116bf661aa2c1a156027c891ceceddd57ae25f7268bbd",
+          "../meshes/b863fc2d318eb1b50cdbce8a7285b6e29441bac158322b3eaa11abab8266c0ec.stl": "b863fc2d318eb1b50cdbce8a7285b6e29441bac158322b3eaa11abab8266c0ec",
+          "../meshes/ae045772107e3c5096e761605d8a483addcb23e206abf89dc2aead4c27a98952.stl": "ae045772107e3c5096e761605d8a483addcb23e206abf89dc2aead4c27a98952",
+          "../meshes/244b60c12b2d1749135d2f14b82fab62dad86c65153ae6c58864637742427d8b.stl": "244b60c12b2d1749135d2f14b82fab62dad86c65153ae6c58864637742427d8b",
+          "../meshes/2b717be4628a0aaff81a61b002ef9eac83420ab1c4a31b68df97757b0d05035c.stl": "2b717be4628a0aaff81a61b002ef9eac83420ab1c4a31b68df97757b0d05035c",
+          "../meshes/3f608afe4084f67e16056596d124f9c6a1991821501540037da149047137517e.stl": "3f608afe4084f67e16056596d124f9c6a1991821501540037da149047137517e",
+          "../meshes/2b42dcba1d13f21395f2d5a447266d1ba2bb8ce8e03f756656aaf2ffd4f5d930.stl": "2b42dcba1d13f21395f2d5a447266d1ba2bb8ce8e03f756656aaf2ffd4f5d930",
+          "../meshes/e53f33c52125b66e4ebb710f96d39677f64db0900afbecde536b8f44d35ff3d3.stl": "e53f33c52125b66e4ebb710f96d39677f64db0900afbecde536b8f44d35ff3d3",
+          "../meshes/f6aed86b67a70dbd31b22bd8e772ff34ca268054c4561f6424567454abf2a155.stl": "f6aed86b67a70dbd31b22bd8e772ff34ca268054c4561f6424567454abf2a155",
+          "../meshes/e656a965177c7aba7636a9cdc019da874f864d57bd59b6e199867c954f9e2040.stl": "e656a965177c7aba7636a9cdc019da874f864d57bd59b6e199867c954f9e2040",
+          "../meshes/8bb31d26baf3262cd9d7e4eef929a02019f853e5ae34990ccb7eedfa47b789eb.stl": "8bb31d26baf3262cd9d7e4eef929a02019f853e5ae34990ccb7eedfa47b789eb",
+          "../meshes/2b3ad5630643ba166a27455a95529388a6eb0f252d09c49b74c5d4b7012d0ee2.stl": "2b3ad5630643ba166a27455a95529388a6eb0f252d09c49b74c5d4b7012d0ee2",
+          "../meshes/4e04fd44cda85569af195b10469a8e94ae26da1ec4897f61452f772d81aa51e0.stl": "4e04fd44cda85569af195b10469a8e94ae26da1ec4897f61452f772d81aa51e0",
+          "../meshes/afd7e392ac9362b53e19c7ec2110ab4b7ad5f73a334a84801633273a90262460.stl": "afd7e392ac9362b53e19c7ec2110ab4b7ad5f73a334a84801633273a90262460",
+          "../meshes/dc35a88c1e07e286f6e584a89c699a7306c3016b85e84aa5202c469dafecd40f.stl": "dc35a88c1e07e286f6e584a89c699a7306c3016b85e84aa5202c469dafecd40f",
+          "../meshes/f57625f511cbf03ee24fd824a4aa11d51f6afb54c504de178cd0517d742fb305.stl": "f57625f511cbf03ee24fd824a4aa11d51f6afb54c504de178cd0517d742fb305",
+          "../meshes/85d3cbab725937e41fa90a43d2520e354ce3a7cbe41c9501b6ad1cb963e2dc09.stl": "85d3cbab725937e41fa90a43d2520e354ce3a7cbe41c9501b6ad1cb963e2dc09",
+          "../meshes/beb3c8c81b6a2865c9663ef80f0c0a8fd3ef6bfddf97dd93a8893617b3a301a5.stl": "beb3c8c81b6a2865c9663ef80f0c0a8fd3ef6bfddf97dd93a8893617b3a301a5",
+          "../meshes/101dace1b1690a88aa7d8ea27d97e364e2d8db3bc55af10421a5501c1784911c.stl": "101dace1b1690a88aa7d8ea27d97e364e2d8db3bc55af10421a5501c1784911c",
+          "../meshes/6a8fafef58049663865cee098a3c9b0c618e41bb9860a32fb11432907f927070.stl": "6a8fafef58049663865cee098a3c9b0c618e41bb9860a32fb11432907f927070",
+          "../meshes/bbc0fe7774a9ca8c81fb2a1edb881b3c5913f13bb87251ee5e9cab0a2f55db65.stl": "bbc0fe7774a9ca8c81fb2a1edb881b3c5913f13bb87251ee5e9cab0a2f55db65",
+          "../meshes/ce7a7bed72252974e7319eb71e62e6575e0d1a2b5989c9cadd61ac138aa615a3.stl": "ce7a7bed72252974e7319eb71e62e6575e0d1a2b5989c9cadd61ac138aa615a3",
+          "../meshes/98d988e859b9cfdfa2368eff9fe0806120d0d278aac894ce24e3e2bbeda065e0.stl": "98d988e859b9cfdfa2368eff9fe0806120d0d278aac894ce24e3e2bbeda065e0",
+          "../meshes/1c0628c7ba4795d9df64b38adc6fbe0e379296de7b517d35bdf7e180588e43ad.stl": "1c0628c7ba4795d9df64b38adc6fbe0e379296de7b517d35bdf7e180588e43ad",
+          "../meshes/20850b0947414508e69b65c2e387e2de1551ce4c848fd559709303070f91bbd4.stl": "20850b0947414508e69b65c2e387e2de1551ce4c848fd559709303070f91bbd4",
+          "../meshes/d1a6c5054bdec62990b9c8f2b2877238257cd0e13707787f50acefe2997a05bd.stl": "d1a6c5054bdec62990b9c8f2b2877238257cd0e13707787f50acefe2997a05bd",
+          "../meshes/00077e39a7cdf0b825f9ef681a7f576162ea298dab1405e040c0d32e83e262cf.stl": "00077e39a7cdf0b825f9ef681a7f576162ea298dab1405e040c0d32e83e262cf",
+          "../meshes/650fc405784957380f01f25412d510afab08f2b9da7b8858dc9fcfe70190cd7f.stl": "650fc405784957380f01f25412d510afab08f2b9da7b8858dc9fcfe70190cd7f",
+          "../meshes/bb7c2de0d2b54a12e6262b8cab6a4231eb6a4c9019d34e8a4058cca4796db3a7.stl": "bb7c2de0d2b54a12e6262b8cab6a4231eb6a4c9019d34e8a4058cca4796db3a7",
+          "../meshes/8df01ccaf65ff3e8626764a72df07cfdc630536dc95958b61d6bc39489ac8b89.stl": "8df01ccaf65ff3e8626764a72df07cfdc630536dc95958b61d6bc39489ac8b89",
+          "../meshes/efb4f38337fc9c645e0d77aa3fc4a7817bedae8027a83a18334d972872c159d1.stl": "efb4f38337fc9c645e0d77aa3fc4a7817bedae8027a83a18334d972872c159d1",
+          "../meshes/93cd532ae486f823faf2ba7d41d937a386068697c2687bd18acccb0c2d95b9d8.stl": "93cd532ae486f823faf2ba7d41d937a386068697c2687bd18acccb0c2d95b9d8"
+        },
+        "total_triangles": 1191671,
+        "mesh_parts": 45,
+        "collision_pairs": 990,
+        "open_mesh_links": [
+          "DP",
+          "L_pinky_distal",
+          "R_pinky_distal",
+          "arm_L1_l",
+          "arm_L1_r",
+          "arm_L2_l",
+          "arm_L2_r",
+          "arm_L3_l",
+          "arm_L3_r",
+          "arm_L4_l",
+          "arm_L4_r",
+          "arm_L5_l",
+          "arm_L5_r",
+          "arm_L6_l",
+          "arm_L6_r",
+          "arm_L7_l",
+          "arm_L7_r",
+          "hand_base_link_l",
+          "hand_base_link_r",
+          "s1",
+          "s3",
+          "s4"
+        ],
+        "collision_method": "BVH triangle intersection + containment for closed meshes",
+        "open_mesh_policy": "surface intersection only; open STL has no defined solid interior",
+        "contact_tolerance_m": 1e-06,
+        "ik_collision_method": "all returned pose-IK seeds checked against STL; no sphere cost"
+      },
+      "initialization_seconds": 1.7215621000068495,
+      "collision_check_seconds": 0.7293925999983912,
+      "configurations_per_second": 43.872120446616236,
+      "timing_scope": "FK + STL collision + host copies; excludes IK",
+      "config": "D:\\code_agent\\robot_workspace_dexterous\\configs\\dual_v2_1_with_hand.yaml",
+      "self_collision_ignore": {}
+    }
+  }
+}

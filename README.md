@@ -91,6 +91,21 @@ samples. The separately timed throughput excludes the per-pair diagnostic.
 These runs do not solve IK. STL validation loads geometry but needs neither
 PyTorch nor a GPU.
 
+To check the same collision failure across all bundled models before running
+their workspace grids:
+
+```bash
+python tools/diagnose_models.py --samples 32
+```
+
+The audit writes `output/stl_collision_audit/summary.json` and `summary.md`,
+updating them after each model. It reports collision-free sample counts, pair
+frequencies, and the URDF joint connecting each directly adjacent pair. Use
+`--configs configs/spark2_v1.yaml configs/spark2_v2.yaml` to select models and
+`--output-dir PATH` to keep a separate report. Existing collision exclusions
+are preserved. All-sample contact identifies a pair to review, not an automatic
+exclusion; zero collision-free random samples do not prove an empty workspace.
+
 For a fresh CUDA error diagnostic (Linux):
 
 ```bash
