@@ -260,7 +260,18 @@ def compute_dexterous_workspace(
                 }}}, load_collision_spheres=False)
             except TypeError as exc:
                 if "kinematic_link_names" in str(exc):
-                    raise RuntimeError("STL checking requires the updated curobo source from this workspace") from exc
+                    import sys
+                    loaded = getattr(sys.modules.get("curobo._src.types.robot"), "__file__", "unknown")
+                    raise RuntimeError(
+                        "STL checking requires the updated curobo source from this workspace.\n"
+                        f"Python: {sys.executable}\nLoaded cuRobo robot module: {loaded}\n"
+                        "This installation does not accept kinematic_link_names. Copy the updated "
+                        "sibling curobo checkout as well as robot_workspace_dexterous, then run "
+                        "`python -m pip install -e ../curobo --no-build-isolation` from "
+                        "robot_workspace_dexterous using the same Python environment. "
+                        "Restart the process after installation. The upstream release alone "
+                        "does not include this workspace's STL integration changes."
+                    ) from exc
                 raise
         else:
             kin = KinematicsCfg.from_basic_urdf(urdf_path, base_link, [ee_link])

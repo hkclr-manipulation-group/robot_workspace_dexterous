@@ -24,7 +24,8 @@ def test_all_seeds_checked_and_failed_pose_not_accepted():
     torch.testing.assert_close(chosen[0], positions[0, 1])
 
 
-def test_workspace_uses_pose_only_ik_then_mesh_checked_seed(monkeypatch):
+@pytest.mark.parametrize("legacy_curobo", [False, True])
+def test_workspace_uses_pose_only_ik_then_mesh_checked_seed(monkeypatch, legacy_curobo):
     calls = {}
     class Checker:
         links = ["base", "tool", "other_arm"]
@@ -34,6 +35,8 @@ def test_workspace_uses_pose_only_ik_then_mesh_checked_seed(monkeypatch):
     class RobotCfg:
         @staticmethod
         def create(data, load_collision_spheres):
+            if legacy_curobo:
+                raise TypeError("unexpected keyword argument 'kinematic_link_names'")
             calls["robot"] = data
             assert load_collision_spheres is False
             return SimpleNamespace(kinematics=SimpleNamespace())
@@ -68,6 +71,14 @@ def test_workspace_uses_pose_only_ik_then_mesh_checked_seed(monkeypatch):
         GoalToolPose=SimpleNamespace(from_poses=lambda poses, num_goalset: poses),
         JointState=SimpleNamespace(from_position=lambda position, joint_names:
                                    SimpleNamespace(position=position, joint_names=joint_names))))
+    if legacy_curobo:
+        with pytest.raises(RuntimeError) as error:
+            compute_dexterous_workspace("unused.urdf", "base", "tool", (0, 0), (0, 0),
+                np.array([0]), .1, np.array([[1, 0, 0, 0]]), num_seeds=2, mesh_checker=Checker())
+        assert sys.executable in str(error.value)
+        assert "Loaded cuRobo robot module:" in str(error.value)
+        assert "python -m pip install -e ../curobo --no-build-isolation" in str(error.value)
+        return
     result = compute_dexterous_workspace("unused.urdf", "base", "tool", (0, 0), (0, 0),
         np.array([0]), .1, np.array([[1, 0, 0, 0]]), num_seeds=2, mesh_checker=Checker())
     assert result.reachable_orientations.tolist() == [1]
