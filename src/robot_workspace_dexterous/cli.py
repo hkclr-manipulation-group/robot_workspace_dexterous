@@ -60,6 +60,8 @@ def main(argv: list[str] | None = None) -> None:
                         help="Use legacy exhaustive GPU self-collision for comparison (may exceed memory limits)")
     parser.add_argument("--collision-backend", choices=["stl", "spheres"],
                         help="Override the configured collision representation (bundled models: stl)")
+    parser.add_argument("--allow-joint-contacts", action="store_true",
+                        help="STL only: exclude whole link pairs within rigid assemblies or across one moving joint; all other pairs remain checked")
     args = parser.parse_args(argv)
     if args.resolution is not None and (not np.isfinite(args.resolution) or args.resolution <= 0):
         parser.error('--resolution must be finite and positive')
@@ -77,6 +79,8 @@ def main(argv: list[str] | None = None) -> None:
     if args.collision_backend is not None:
         from dataclasses import replace
         config = replace(config, collision_backend=args.collision_backend)
+    if args.allow_joint_contacts and config.collision_backend != "stl":
+        parser.error("--allow-joint-contacts requires the STL collision backend")
     if args.resolution is not None:
         from dataclasses import replace
         config = replace(config, resolution=args.resolution,
@@ -94,6 +98,11 @@ def main(argv: list[str] | None = None) -> None:
             raise ValueError("Invalid URDF root or end-effector for STL checking")
         mesh_model = load_mesh_model(config.collision_meshes_path, config.urdf_path,
                                      config.self_collision_ignore)
+        if args.allow_joint_contacts:
+            from .joint_contacts import allow_joint_contacts
+            mesh_model = allow_joint_contacts(mesh_model, config.urdf_path)
+            print("Joint-contact policy enabled; excluded whole link pairs: " +
+                  json.dumps(mesh_model.metadata["joint_contact_excluded_pairs"]), flush=True)
         collision_model = mesh_model.metadata
     else:
         if config.collision_spheres_path is None:
@@ -200,6 +209,7 @@ def main(argv: list[str] | None = None) -> None:
                 "This means zero accepted IK targets, not just zero cells meeting minimum_dexterity. "
                 "To inspect collision rejection, run: "
                 f'python run.py --config "{args.config}" --collision-backend {config.collision_backend} '
+                + ("--allow-joint-contacts " if args.allow_joint_contacts else "") +
                 "--diagnose-only --diagnostic-samples 32. "
                 "Persistent contacts between joint housings may require model-specific review; "
                 "collision pairs are not ignored automatically."

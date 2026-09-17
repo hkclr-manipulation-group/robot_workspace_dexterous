@@ -78,6 +78,19 @@ def test_ignore_pair_is_bidirectional(tmp_path, device):
     assert not check(tmp_path, [-2], ignores={"tool": ["base"]}, device=device).any()
 
 
+def test_joint_contact_policy_is_explicit_and_handles_no_remaining_pairs(tmp_path, device):
+    from robot_workspace_dexterous.joint_contacts import allow_joint_contacts
+    from robot_workspace_dexterous.mesh_collision import MeshCollisionChecker
+    urdf, manifest = model_files(tmp_path)
+    strict = load_mesh_model(manifest, urdf, {})
+    q = np.array([[-2.]], dtype=np.float32)
+    assert MeshCollisionChecker(strict, urdf, device=device).check_numpy(q, ['slide']).tolist() == [True]
+    permitted = allow_joint_contacts(strict, urdf)
+    assert MeshCollisionChecker(permitted, urdf, device=device).check_numpy(q, ['slide']).tolist() == [False]
+    assert strict.metadata['joint_contact_policy'] == 'strict'
+    assert permitted.metadata['joint_contact_excluded_pairs'] == [['base', 'tool']]
+
+
 def test_stl_scale_and_checksum(tmp_path):
     urdf, manifest = model_files(tmp_path, scale=.001)
     model = load_mesh_model(manifest, urdf, {})
@@ -192,4 +205,10 @@ def test_stl_config_and_cpu_validation_require_no_sphere_file(tmp_path, capsys):
     assert config.collision_spheres_path is None
     assert config.collision_backend == "stl"
     main(["--config", str(path), "--validate-only"])
-    assert "collision mode=stl" in capsys.readouterr().out
+    output = capsys.readouterr().out
+    assert "collision mode=stl" in output
+    assert '"joint_contact_policy": "strict"' in output
+    main(["--config", str(path), "--validate-only", "--allow-joint-contacts"])
+    output = capsys.readouterr().out
+    assert '"joint_contact_policy": "allow_rigid_and_joint_neighbors"' in output
+    assert '"collision_pairs": 0' in output

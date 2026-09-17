@@ -20,6 +20,8 @@ adjacent links are not automatically ignored. Only the existing D20260901B
 Link04/Link05 exception is present in the bundled presets. Designed joint
 contacts can therefore make all sampled configurations collide. Inspect the
 reported pair frequencies before deciding whether an exception is appropriate.
+The explicit `--allow-joint-contacts` option below selects a different policy;
+it does not edit the preset files.
 
 cuRobo generates pose-IK candidates without sphere collision costs. **Every
 returned seed** is checked against STL, and a goal counts as reachable if at
@@ -170,6 +172,38 @@ pairs to `models/spark2_v2/self_collision_ignore.yaml`; otherwise correct the
 collision geometry. Keep all other pairs checked. Then rerun the diagnostic
 before the full grid. A collision-free joint sample is not proof of target IK
 reachability. The default configuration does not add exclusions automatically.
+
+### Allowing joint-assembly contacts explicitly
+
+When your collision model permits contact within rigid assemblies and between
+bodies connected by one moving joint, use `--allow-joint-contacts`:
+
+```bash
+python run.py --config configs/spark2_v2.yaml --allow-joint-contacts --diagnose-only --diagnostic-samples 32
+python -u run.py --config configs/spark2_v2.yaml --allow-joint-contacts --output-dir output/spark2_v2_joint_contacts
+```
+
+The same option works with each bundled STL model. Fixed and non-mimic zero-range
+joints form rigid bodies; geometry-free tool adapters remain part of that
+graph. Pairs within a rigid body or across one moving joint are excluded.
+Pairs separated by two or more moving joints, including separate moving arms,
+remain checked. Existing explicit exclusions still apply.
+
+This excludes **whole link pairs**, including possible collisions away from
+their joint interfaces. Use strict checking or narrowly reviewed ignore rules
+when those collisions must be detected. It is a modeling policy, not automatic
+contact classification or a guarantee of reachable IK targets. The flag is
+STL-only and does not change source geometry, joint limits, preset YAML files,
+or the strict default.
+
+The terminal prints the additional exclusions. Validation, diagnostics,
+progress, and final collision metadata record `joint_contact_policy` and
+`joint_contact_excluded_pairs`, so results identify their collision assumptions.
+Compare all models under this policy in a separate output directory:
+
+```bash
+python tools/diagnose_models.py --allow-joint-contacts --output-dir output/stl_joint_contact_audit
+```
 
 ## Outputs
 

@@ -31,13 +31,16 @@ def write_report(output: Path, results: dict) -> None:
     output.mkdir(parents=True, exist_ok=True)
     report = {
         "scope": "Deterministic joint samples and STL collision only; no IK or workspace grid was run.",
-        "policy": "Existing ignores retained. Persistent sampled contact is not proof of unavoidable collision or permission to ignore a pair.",
+        "policy": "Existing ignores retained; each model records the selected joint-contact policy. Persistent sampled contact is not proof of unavoidable collision or permission to ignore a pair.",
         "models": results,
     }
     temporary = output / "summary.json.tmp"
     temporary.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     temporary.replace(output / "summary.json")
+    policies = sorted({r.get("collision_model", {}).get("joint_contact_policy", "strict")
+                       for r in results.values() if "error" not in r})
     lines = ["# STL collision audit", "", report["scope"], "", report["policy"], "",
+             "Joint-contact policy: " + ", ".join(policies), "",
              "| Model | Collision-free samples | Pairs colliding in every pair sample |",
              "| --- | ---: | --- |"]
     for name, result in results.items():
@@ -59,6 +62,8 @@ def main() -> int:
                         help="Explicit config files; defaults to all bundled configs")
     parser.add_argument("--samples", type=int, default=32,
                         help="Joint samples per model; pair frequencies use at most 32")
+    parser.add_argument("--allow-joint-contacts", action="store_true",
+                        help="Exclude rigid-assembly and neighboring joint-body pairs from STL checking")
     parser.add_argument("--output-dir", type=Path, default=PROJECT / "output/stl_collision_audit")
     args = parser.parse_args()
     if args.samples < 1:
@@ -77,6 +82,9 @@ def main() -> int:
                 raise ValueError("This audit requires an STL mesh manifest")
             model = load_mesh_model(config.collision_meshes_path, config.urdf_path,
                                     config.self_collision_ignore)
+            if args.allow_joint_contacts:
+                from robot_workspace_dexterous.joint_contacts import allow_joint_contacts
+                model = allow_joint_contacts(model, config.urdf_path)
             result = diagnose_mesh_collisions(model, config.urdf_path, args.samples)
             classify_pairs(result, config.urdf_path)
             result["config"] = str(config_path.resolve())

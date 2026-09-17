@@ -107,5 +107,7 @@ def load_mesh_model(manifest_path: str | Path, urdf_path: str | Path,
         "open_mesh_policy": "surface intersection only; open STL has no defined solid interior",
         "contact_tolerance_m": 1e-6,
         "ik_collision_method": "all returned pose-IK seeds checked against STL; no sphere cost",
+        "joint_contact_policy": "strict",
+        "joint_contact_excluded_pairs": [],
     }
     return MeshModel(parts, np.asarray(pairs, dtype=np.int32).reshape(-1, 2), metadata)

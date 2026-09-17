@@ -1,51 +1,12 @@
 {
   "scope": "Deterministic joint samples and STL collision only; no IK or workspace grid was run.",
-  "policy": "Existing ignores retained. Persistent sampled contact is not proof of unavoidable collision or permission to ignore a pair.",
+  "policy": "Existing ignores retained; each model records the selected joint-contact policy. Persistent sampled contact is not proof of unavoidable collision or permission to ignore a pair.",
   "models": {
     "D20260901B": {
       "samples": 32,
-      "collision_free_samples": 0,
+      "collision_free_samples": 31,
       "pair_diagnostic_samples": 32,
       "pair_frequencies": [
-        {
-          "links": [
-            "Link01",
-            "Link02"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "joint02",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "Link03",
-            "Link02"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "joint03",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "Link03",
-            "Link04"
-          ],
-          "colliding_samples": 10,
-          "fraction": 0.3125,
-          "direct_joint": {
-            "name": "joint04",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": false
-        },
         {
           "links": [
             "baselink",
@@ -72,7 +33,7 @@
         },
         "total_triangles": 1750,
         "mesh_parts": 7,
-        "collision_pairs": 19,
+        "collision_pairs": 15,
         "open_mesh_links": [
           "Link06",
           "baselink"
@@ -80,11 +41,31 @@
         "collision_method": "BVH triangle intersection + containment for closed meshes",
         "open_mesh_policy": "surface intersection only; open STL has no defined solid interior",
         "contact_tolerance_m": 1e-06,
-        "ik_collision_method": "all returned pose-IK seeds checked against STL; no sphere cost"
+        "ik_collision_method": "all returned pose-IK seeds checked against STL; no sphere cost",
+        "joint_contact_policy": "allow_rigid_and_joint_neighbors",
+        "joint_contact_excluded_pairs": [
+          [
+            "Link01",
+            "Link02"
+          ],
+          [
+            "Link01",
+            "baselink"
+          ],
+          [
+            "Link02",
+            "Link03"
+          ],
+          [
+            "Link03",
+            "Link04"
+          ]
+        ],
+        "joint_contact_limitation": "Whole listed link pairs are excluded, including collisions away from their joint interfaces."
       },
-      "initialization_seconds": 0.5314902999962214,
-      "collision_check_seconds": 0.003240000005462207,
-      "configurations_per_second": 9876.54319322601,
+      "initialization_seconds": 0.5304098999913549,
+      "collision_check_seconds": 0.0035226999898441136,
+      "configurations_per_second": 9083.941321218235,
       "timing_scope": "FK + STL collision + host copies; excludes IK",
       "config": "D:\\code_agent\\robot_workspace_dexterous\\configs\\D20260901B.yaml",
       "self_collision_ignore": {
@@ -137,7 +118,7 @@
         },
         "total_triangles": 2754,
         "mesh_parts": 7,
-        "collision_pairs": 18,
+        "collision_pairs": 15,
         "open_mesh_links": [
           "L1",
           "base_link"
@@ -145,11 +126,27 @@
         "collision_method": "BVH triangle intersection + containment for closed meshes",
         "open_mesh_policy": "surface intersection only; open STL has no defined solid interior",
         "contact_tolerance_m": 1e-06,
-        "ik_collision_method": "all returned pose-IK seeds checked against STL; no sphere cost"
+        "ik_collision_method": "all returned pose-IK seeds checked against STL; no sphere cost",
+        "joint_contact_policy": "allow_rigid_and_joint_neighbors",
+        "joint_contact_excluded_pairs": [
+          [
+            "L1",
+            "L2"
+          ],
+          [
+            "L1",
+            "base_link"
+          ],
+          [
+            "L3",
+            "L4"
+          ]
+        ],
+        "joint_contact_limitation": "Whole listed link pairs are excluded, including collisions away from their joint interfaces."
       },
-      "initialization_seconds": 0.04853749999892898,
-      "collision_check_seconds": 0.004854600003454834,
-      "configurations_per_second": 6591.6862310441265,
+      "initialization_seconds": 0.014586000004783273,
+      "collision_check_seconds": 0.0035245000035502017,
+      "configurations_per_second": 9079.302019511037,
       "timing_scope": "FK + STL collision + host copies; excludes IK",
       "config": "D:\\code_agent\\robot_workspace_dexterous\\configs\\D20260902B60.yaml",
       "self_collision_ignore": {
@@ -166,48 +163,9 @@
     },
     "D20260903B10": {
       "samples": 32,
-      "collision_free_samples": 0,
+      "collision_free_samples": 18,
       "pair_diagnostic_samples": 32,
       "pair_frequencies": [
-        {
-          "links": [
-            "L5",
-            "L4"
-          ],
-          "colliding_samples": 24,
-          "fraction": 0.75,
-          "direct_joint": {
-            "name": "J5",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": false
-        },
-        {
-          "links": [
-            "L6",
-            "L5"
-          ],
-          "colliding_samples": 24,
-          "fraction": 0.75,
-          "direct_joint": {
-            "name": "J6",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": false
-        },
-        {
-          "links": [
-            "L3",
-            "L2"
-          ],
-          "colliding_samples": 14,
-          "fraction": 0.4375,
-          "direct_joint": {
-            "name": "J3",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": false
-        },
         {
           "links": [
             "L3",
@@ -267,19 +225,6 @@
           "fraction": 0.0625,
           "direct_joint": null,
           "all_pair_samples_collide": false
-        },
-        {
-          "links": [
-            "L3",
-            "L4"
-          ],
-          "colliding_samples": 1,
-          "fraction": 0.03125,
-          "direct_joint": {
-            "name": "J4",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": false
         }
       ],
       "collision_model": {
@@ -297,7 +242,7 @@
         },
         "total_triangles": 2630,
         "mesh_parts": 7,
-        "collision_pairs": 21,
+        "collision_pairs": 15,
         "open_mesh_links": [
           "L1",
           "base_link"
@@ -305,264 +250,48 @@
         "collision_method": "BVH triangle intersection + containment for closed meshes",
         "open_mesh_policy": "surface intersection only; open STL has no defined solid interior",
         "contact_tolerance_m": 1e-06,
-        "ik_collision_method": "all returned pose-IK seeds checked against STL; no sphere cost"
+        "ik_collision_method": "all returned pose-IK seeds checked against STL; no sphere cost",
+        "joint_contact_policy": "allow_rigid_and_joint_neighbors",
+        "joint_contact_excluded_pairs": [
+          [
+            "L1",
+            "L2"
+          ],
+          [
+            "L1",
+            "base_link"
+          ],
+          [
+            "L2",
+            "L3"
+          ],
+          [
+            "L3",
+            "L4"
+          ],
+          [
+            "L4",
+            "L5"
+          ],
+          [
+            "L5",
+            "L6"
+          ]
+        ],
+        "joint_contact_limitation": "Whole listed link pairs are excluded, including collisions away from their joint interfaces."
       },
-      "initialization_seconds": 0.014225699997041374,
-      "collision_check_seconds": 0.005849000008311123,
-      "configurations_per_second": 5471.02067952294,
+      "initialization_seconds": 0.014894300009473227,
+      "collision_check_seconds": 0.005760400003055111,
+      "configurations_per_second": 5555.169776930134,
       "timing_scope": "FK + STL collision + host copies; excludes IK",
       "config": "D:\\code_agent\\robot_workspace_dexterous\\configs\\D20260903B10.yaml",
       "self_collision_ignore": {}
     },
     "dual_v2_1_left_hand_right_gripper": {
       "samples": 32,
-      "collision_free_samples": 0,
+      "collision_free_samples": 1,
       "pair_diagnostic_samples": 32,
       "pair_frequencies": [
-        {
-          "links": [
-            "s1",
-            "DP"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "s1j",
-            "type": "fixed"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "s3",
-            "s4"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "s4j",
-            "type": "fixed"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "arm_L2_l",
-            "arm_L1_l"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "arm_J2_l",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "arm_L2_l",
-            "arm_L3_l"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "arm_J3_l",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "arm_L5_l",
-            "arm_L6_l"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "arm_J6_l",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "arm_L7_l",
-            "arm_L6_l"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "arm_J7_l",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "hand_base_link_l",
-            "arm_L7_l"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": null,
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "arm_L2_r",
-            "arm_L1_r"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "arm_J2_r",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "arm_L2_r",
-            "arm_L3_r"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "arm_J3_r",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "arm_L7_r",
-            "arm_L6_r"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "arm_J7_r",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "L_middle_proximal",
-            "hand_base_link_l"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "hand_J4_l",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "L_thumb_proximal_base",
-            "L_thumb_proximal"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "hand_J2_l",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "L_thumb_intermediate",
-            "L_thumb_proximal"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "hand_J2_l_1",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "L_index_distal",
-            "L_index_proximal"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "hand_J3_l_1",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "L_middle_distal",
-            "L_middle_proximal"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "hand_J4_l_1",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "L_ring_distal",
-            "L_ring_proximal"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "hand_J5_l_1",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "L_pinky_proximal",
-            "L_pinky_distal"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "hand_J6_l_1",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "gripper_L1_r",
-            "gripper_base_link_r"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "gripper_J1_r",
-            "type": "prismatic"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "gripper_L2_r",
-            "gripper_base_link_r"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "gripper_J1_r_1",
-            "type": "prismatic"
-          },
-          "all_pair_samples_collide": true
-        },
         {
           "links": [
             "gripper_L1_r",
@@ -570,29 +299,6 @@
           ],
           "colliding_samples": 30,
           "fraction": 0.9375,
-          "direct_joint": null,
-          "all_pair_samples_collide": false
-        },
-        {
-          "links": [
-            "arm_L4_r",
-            "arm_L3_r"
-          ],
-          "colliding_samples": 23,
-          "fraction": 0.71875,
-          "direct_joint": {
-            "name": "arm_J4_r",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": false
-        },
-        {
-          "links": [
-            "arm_L1_l",
-            "s4"
-          ],
-          "colliding_samples": 13,
-          "fraction": 0.40625,
           "direct_joint": null,
           "all_pair_samples_collide": false
         },
@@ -614,19 +320,6 @@
           "colliding_samples": 4,
           "fraction": 0.125,
           "direct_joint": null,
-          "all_pair_samples_collide": false
-        },
-        {
-          "links": [
-            "arm_L5_r",
-            "arm_L6_r"
-          ],
-          "colliding_samples": 2,
-          "fraction": 0.0625,
-          "direct_joint": {
-            "name": "arm_J6_r",
-            "type": "revolute"
-          },
           "all_pair_samples_collide": false
         },
         {
@@ -826,7 +519,7 @@
         },
         "total_triangles": 1086986,
         "mesh_parts": 35,
-        "collision_pairs": 595,
+        "collision_pairs": 538,
         "open_mesh_links": [
           "DP",
           "L_pinky_distal",
@@ -853,173 +546,252 @@
         "collision_method": "BVH triangle intersection + containment for closed meshes",
         "open_mesh_policy": "surface intersection only; open STL has no defined solid interior",
         "contact_tolerance_m": 1e-06,
-        "ik_collision_method": "all returned pose-IK seeds checked against STL; no sphere cost"
+        "ik_collision_method": "all returned pose-IK seeds checked against STL; no sphere cost",
+        "joint_contact_policy": "allow_rigid_and_joint_neighbors",
+        "joint_contact_excluded_pairs": [
+          [
+            "DP",
+            "arm_L1_l"
+          ],
+          [
+            "DP",
+            "arm_L1_r"
+          ],
+          [
+            "DP",
+            "s1"
+          ],
+          [
+            "DP",
+            "s2"
+          ],
+          [
+            "DP",
+            "s3"
+          ],
+          [
+            "DP",
+            "s4"
+          ],
+          [
+            "L_index_distal",
+            "L_index_proximal"
+          ],
+          [
+            "L_index_proximal",
+            "arm_L7_l"
+          ],
+          [
+            "L_index_proximal",
+            "hand_base_link_l"
+          ],
+          [
+            "L_middle_distal",
+            "L_middle_proximal"
+          ],
+          [
+            "L_middle_proximal",
+            "arm_L7_l"
+          ],
+          [
+            "L_middle_proximal",
+            "hand_base_link_l"
+          ],
+          [
+            "L_pinky_distal",
+            "L_pinky_proximal"
+          ],
+          [
+            "L_pinky_proximal",
+            "arm_L7_l"
+          ],
+          [
+            "L_pinky_proximal",
+            "hand_base_link_l"
+          ],
+          [
+            "L_ring_distal",
+            "L_ring_proximal"
+          ],
+          [
+            "L_ring_proximal",
+            "arm_L7_l"
+          ],
+          [
+            "L_ring_proximal",
+            "hand_base_link_l"
+          ],
+          [
+            "L_thumb_distal",
+            "L_thumb_intermediate"
+          ],
+          [
+            "L_thumb_intermediate",
+            "L_thumb_proximal"
+          ],
+          [
+            "L_thumb_proximal",
+            "L_thumb_proximal_base"
+          ],
+          [
+            "L_thumb_proximal_base",
+            "arm_L7_l"
+          ],
+          [
+            "L_thumb_proximal_base",
+            "hand_base_link_l"
+          ],
+          [
+            "arm_L1_l",
+            "arm_L2_l"
+          ],
+          [
+            "arm_L1_l",
+            "s1"
+          ],
+          [
+            "arm_L1_l",
+            "s2"
+          ],
+          [
+            "arm_L1_l",
+            "s3"
+          ],
+          [
+            "arm_L1_l",
+            "s4"
+          ],
+          [
+            "arm_L1_r",
+            "arm_L2_r"
+          ],
+          [
+            "arm_L1_r",
+            "s1"
+          ],
+          [
+            "arm_L1_r",
+            "s2"
+          ],
+          [
+            "arm_L1_r",
+            "s3"
+          ],
+          [
+            "arm_L1_r",
+            "s4"
+          ],
+          [
+            "arm_L2_l",
+            "arm_L3_l"
+          ],
+          [
+            "arm_L2_r",
+            "arm_L3_r"
+          ],
+          [
+            "arm_L3_l",
+            "arm_L4_l"
+          ],
+          [
+            "arm_L3_r",
+            "arm_L4_r"
+          ],
+          [
+            "arm_L4_l",
+            "arm_L5_l"
+          ],
+          [
+            "arm_L4_r",
+            "arm_L5_r"
+          ],
+          [
+            "arm_L5_l",
+            "arm_L6_l"
+          ],
+          [
+            "arm_L5_r",
+            "arm_L6_r"
+          ],
+          [
+            "arm_L6_l",
+            "arm_L7_l"
+          ],
+          [
+            "arm_L6_l",
+            "hand_base_link_l"
+          ],
+          [
+            "arm_L6_r",
+            "arm_L7_r"
+          ],
+          [
+            "arm_L6_r",
+            "gripper_base_link_r"
+          ],
+          [
+            "arm_L7_l",
+            "hand_base_link_l"
+          ],
+          [
+            "arm_L7_r",
+            "gripper_L1_r"
+          ],
+          [
+            "arm_L7_r",
+            "gripper_L2_r"
+          ],
+          [
+            "arm_L7_r",
+            "gripper_base_link_r"
+          ],
+          [
+            "gripper_L1_r",
+            "gripper_base_link_r"
+          ],
+          [
+            "gripper_L2_r",
+            "gripper_base_link_r"
+          ],
+          [
+            "s1",
+            "s2"
+          ],
+          [
+            "s1",
+            "s3"
+          ],
+          [
+            "s1",
+            "s4"
+          ],
+          [
+            "s2",
+            "s3"
+          ],
+          [
+            "s2",
+            "s4"
+          ],
+          [
+            "s3",
+            "s4"
+          ]
+        ],
+        "joint_contact_limitation": "Whole listed link pairs are excluded, including collisions away from their joint interfaces."
       },
-      "initialization_seconds": 1.228237799994531,
-      "collision_check_seconds": 0.713790699999663,
-      "configurations_per_second": 44.83106882733987,
+      "initialization_seconds": 1.0825864999933401,
+      "collision_check_seconds": 0.27532860000792425,
+      "configurations_per_second": 116.22475833995817,
       "timing_scope": "FK + STL collision + host copies; excludes IK",
       "config": "D:\\code_agent\\robot_workspace_dexterous\\configs\\dual_v2_1_left_hand_right_gripper.yaml",
       "self_collision_ignore": {}
     },
     "dual_v2_1_no_gripper": {
       "samples": 32,
-      "collision_free_samples": 0,
+      "collision_free_samples": 30,
       "pair_diagnostic_samples": 32,
       "pair_frequencies": [
-        {
-          "links": [
-            "s1",
-            "DP"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "s1j",
-            "type": "fixed"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "s3",
-            "s4"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "s4j",
-            "type": "fixed"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "arm_L2_l",
-            "arm_L1_l"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "arm_J2_l",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "arm_L2_l",
-            "arm_L3_l"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "arm_J3_l",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "arm_L5_l",
-            "arm_L6_l"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "arm_J6_l",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "arm_L7_l",
-            "arm_L6_l"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "arm_J7_l",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "arm_L2_r",
-            "arm_L1_r"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "arm_J2_r",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "arm_L2_r",
-            "arm_L3_r"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "arm_J3_r",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "arm_L7_r",
-            "arm_L6_r"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "arm_J7_r",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "arm_L4_r",
-            "arm_L3_r"
-          ],
-          "colliding_samples": 23,
-          "fraction": 0.71875,
-          "direct_joint": {
-            "name": "arm_J4_r",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": false
-        },
-        {
-          "links": [
-            "arm_L1_l",
-            "s4"
-          ],
-          "colliding_samples": 13,
-          "fraction": 0.40625,
-          "direct_joint": null,
-          "all_pair_samples_collide": false
-        },
-        {
-          "links": [
-            "arm_L5_r",
-            "arm_L6_r"
-          ],
-          "colliding_samples": 2,
-          "fraction": 0.0625,
-          "direct_joint": {
-            "name": "arm_J6_r",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": false
-        },
         {
           "links": [
             "arm_L6_r",
@@ -1081,7 +853,7 @@
         },
         "total_triangles": 952980,
         "mesh_parts": 19,
-        "collision_pairs": 171,
+        "collision_pairs": 139,
         "open_mesh_links": [
           "DP",
           "arm_L1_l",
@@ -1105,11 +877,143 @@
         "collision_method": "BVH triangle intersection + containment for closed meshes",
         "open_mesh_policy": "surface intersection only; open STL has no defined solid interior",
         "contact_tolerance_m": 1e-06,
-        "ik_collision_method": "all returned pose-IK seeds checked against STL; no sphere cost"
+        "ik_collision_method": "all returned pose-IK seeds checked against STL; no sphere cost",
+        "joint_contact_policy": "allow_rigid_and_joint_neighbors",
+        "joint_contact_excluded_pairs": [
+          [
+            "DP",
+            "arm_L1_l"
+          ],
+          [
+            "DP",
+            "arm_L1_r"
+          ],
+          [
+            "DP",
+            "s1"
+          ],
+          [
+            "DP",
+            "s2"
+          ],
+          [
+            "DP",
+            "s3"
+          ],
+          [
+            "DP",
+            "s4"
+          ],
+          [
+            "arm_L1_l",
+            "arm_L2_l"
+          ],
+          [
+            "arm_L1_l",
+            "s1"
+          ],
+          [
+            "arm_L1_l",
+            "s2"
+          ],
+          [
+            "arm_L1_l",
+            "s3"
+          ],
+          [
+            "arm_L1_l",
+            "s4"
+          ],
+          [
+            "arm_L1_r",
+            "arm_L2_r"
+          ],
+          [
+            "arm_L1_r",
+            "s1"
+          ],
+          [
+            "arm_L1_r",
+            "s2"
+          ],
+          [
+            "arm_L1_r",
+            "s3"
+          ],
+          [
+            "arm_L1_r",
+            "s4"
+          ],
+          [
+            "arm_L2_l",
+            "arm_L3_l"
+          ],
+          [
+            "arm_L2_r",
+            "arm_L3_r"
+          ],
+          [
+            "arm_L3_l",
+            "arm_L4_l"
+          ],
+          [
+            "arm_L3_r",
+            "arm_L4_r"
+          ],
+          [
+            "arm_L4_l",
+            "arm_L5_l"
+          ],
+          [
+            "arm_L4_r",
+            "arm_L5_r"
+          ],
+          [
+            "arm_L5_l",
+            "arm_L6_l"
+          ],
+          [
+            "arm_L5_r",
+            "arm_L6_r"
+          ],
+          [
+            "arm_L6_l",
+            "arm_L7_l"
+          ],
+          [
+            "arm_L6_r",
+            "arm_L7_r"
+          ],
+          [
+            "s1",
+            "s2"
+          ],
+          [
+            "s1",
+            "s3"
+          ],
+          [
+            "s1",
+            "s4"
+          ],
+          [
+            "s2",
+            "s3"
+          ],
+          [
+            "s2",
+            "s4"
+          ],
+          [
+            "s3",
+            "s4"
+          ]
+        ],
+        "joint_contact_limitation": "Whole listed link pairs are excluded, including collisions away from their joint interfaces."
       },
-      "initialization_seconds": 1.2738394000043627,
-      "collision_check_seconds": 0.8079352999920957,
-      "configurations_per_second": 39.60713190810337,
+      "initialization_seconds": 0.536955699993996,
+      "collision_check_seconds": 0.10339360000216402,
+      "configurations_per_second": 309.4969127618174,
       "timing_scope": "FK + STL collision + host copies; excludes IK",
       "config": "D:\\code_agent\\robot_workspace_dexterous\\configs\\dual_v2_1_no_gripper.yaml",
       "self_collision_ignore": {}
@@ -1119,175 +1023,6 @@
       "collision_free_samples": 0,
       "pair_diagnostic_samples": 32,
       "pair_frequencies": [
-        {
-          "links": [
-            "s1",
-            "DP"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "s1j",
-            "type": "fixed"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "s3",
-            "s4"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "s4j",
-            "type": "fixed"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "arm_L2_l",
-            "arm_L1_l"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "arm_J2_l",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "arm_L2_l",
-            "arm_L3_l"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "arm_J3_l",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "arm_L5_l",
-            "arm_L6_l"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "arm_J6_l",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "arm_L7_l",
-            "arm_L6_l"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "arm_J7_l",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "gripper_L1_l",
-            "gripper_base_link_l"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "gripper_J1_l",
-            "type": "prismatic"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "gripper_L2_l",
-            "gripper_base_link_l"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "gripper_J1_l_1",
-            "type": "prismatic"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "arm_L2_r",
-            "arm_L1_r"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "arm_J2_r",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "arm_L2_r",
-            "arm_L3_r"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "arm_J3_r",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "arm_L7_r",
-            "arm_L6_r"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "arm_J7_r",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "gripper_L1_r",
-            "gripper_base_link_r"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "gripper_J1_r",
-            "type": "prismatic"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "gripper_L2_r",
-            "gripper_base_link_r"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "gripper_J1_r_1",
-            "type": "prismatic"
-          },
-          "all_pair_samples_collide": true
-        },
         {
           "links": [
             "gripper_L1_l",
@@ -1306,42 +1041,6 @@
           "colliding_samples": 28,
           "fraction": 0.875,
           "direct_joint": null,
-          "all_pair_samples_collide": false
-        },
-        {
-          "links": [
-            "arm_L4_r",
-            "arm_L3_r"
-          ],
-          "colliding_samples": 26,
-          "fraction": 0.8125,
-          "direct_joint": {
-            "name": "arm_J4_r",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": false
-        },
-        {
-          "links": [
-            "arm_L1_l",
-            "s4"
-          ],
-          "colliding_samples": 13,
-          "fraction": 0.40625,
-          "direct_joint": null,
-          "all_pair_samples_collide": false
-        },
-        {
-          "links": [
-            "arm_L5_r",
-            "arm_L6_r"
-          ],
-          "colliding_samples": 4,
-          "fraction": 0.125,
-          "direct_joint": {
-            "name": "arm_J6_r",
-            "type": "revolute"
-          },
           "all_pair_samples_collide": false
         },
         {
@@ -1388,7 +1087,7 @@
         },
         "total_triangles": 983460,
         "mesh_parts": 25,
-        "collision_pairs": 300,
+        "collision_pairs": 256,
         "open_mesh_links": [
           "DP",
           "arm_L1_l",
@@ -1414,388 +1113,200 @@
         "collision_method": "BVH triangle intersection + containment for closed meshes",
         "open_mesh_policy": "surface intersection only; open STL has no defined solid interior",
         "contact_tolerance_m": 1e-06,
-        "ik_collision_method": "all returned pose-IK seeds checked against STL; no sphere cost"
+        "ik_collision_method": "all returned pose-IK seeds checked against STL; no sphere cost",
+        "joint_contact_policy": "allow_rigid_and_joint_neighbors",
+        "joint_contact_excluded_pairs": [
+          [
+            "DP",
+            "arm_L1_l"
+          ],
+          [
+            "DP",
+            "arm_L1_r"
+          ],
+          [
+            "DP",
+            "s1"
+          ],
+          [
+            "DP",
+            "s2"
+          ],
+          [
+            "DP",
+            "s3"
+          ],
+          [
+            "DP",
+            "s4"
+          ],
+          [
+            "arm_L1_l",
+            "arm_L2_l"
+          ],
+          [
+            "arm_L1_l",
+            "s1"
+          ],
+          [
+            "arm_L1_l",
+            "s2"
+          ],
+          [
+            "arm_L1_l",
+            "s3"
+          ],
+          [
+            "arm_L1_l",
+            "s4"
+          ],
+          [
+            "arm_L1_r",
+            "arm_L2_r"
+          ],
+          [
+            "arm_L1_r",
+            "s1"
+          ],
+          [
+            "arm_L1_r",
+            "s2"
+          ],
+          [
+            "arm_L1_r",
+            "s3"
+          ],
+          [
+            "arm_L1_r",
+            "s4"
+          ],
+          [
+            "arm_L2_l",
+            "arm_L3_l"
+          ],
+          [
+            "arm_L2_r",
+            "arm_L3_r"
+          ],
+          [
+            "arm_L3_l",
+            "arm_L4_l"
+          ],
+          [
+            "arm_L3_r",
+            "arm_L4_r"
+          ],
+          [
+            "arm_L4_l",
+            "arm_L5_l"
+          ],
+          [
+            "arm_L4_r",
+            "arm_L5_r"
+          ],
+          [
+            "arm_L5_l",
+            "arm_L6_l"
+          ],
+          [
+            "arm_L5_r",
+            "arm_L6_r"
+          ],
+          [
+            "arm_L6_l",
+            "arm_L7_l"
+          ],
+          [
+            "arm_L6_l",
+            "gripper_base_link_l"
+          ],
+          [
+            "arm_L6_r",
+            "arm_L7_r"
+          ],
+          [
+            "arm_L6_r",
+            "gripper_base_link_r"
+          ],
+          [
+            "arm_L7_l",
+            "gripper_L1_l"
+          ],
+          [
+            "arm_L7_l",
+            "gripper_L2_l"
+          ],
+          [
+            "arm_L7_l",
+            "gripper_base_link_l"
+          ],
+          [
+            "arm_L7_r",
+            "gripper_L1_r"
+          ],
+          [
+            "arm_L7_r",
+            "gripper_L2_r"
+          ],
+          [
+            "arm_L7_r",
+            "gripper_base_link_r"
+          ],
+          [
+            "gripper_L1_l",
+            "gripper_base_link_l"
+          ],
+          [
+            "gripper_L1_r",
+            "gripper_base_link_r"
+          ],
+          [
+            "gripper_L2_l",
+            "gripper_base_link_l"
+          ],
+          [
+            "gripper_L2_r",
+            "gripper_base_link_r"
+          ],
+          [
+            "s1",
+            "s2"
+          ],
+          [
+            "s1",
+            "s3"
+          ],
+          [
+            "s1",
+            "s4"
+          ],
+          [
+            "s2",
+            "s3"
+          ],
+          [
+            "s2",
+            "s4"
+          ],
+          [
+            "s3",
+            "s4"
+          ]
+        ],
+        "joint_contact_limitation": "Whole listed link pairs are excluded, including collisions away from their joint interfaces."
       },
-      "initialization_seconds": 1.661840899992967,
-      "collision_check_seconds": 0.8399946999998065,
-      "configurations_per_second": 38.09547845957525,
+      "initialization_seconds": 0.7871679999952903,
+      "collision_check_seconds": 0.15313880000030622,
+      "configurations_per_second": 208.96075978090474,
       "timing_scope": "FK + STL collision + host copies; excludes IK",
       "config": "D:\\code_agent\\robot_workspace_dexterous\\configs\\dual_v2_1_with_gripper.yaml",
       "self_collision_ignore": {}
     },
     "dual_v2_1_with_hand": {
       "samples": 32,
-      "collision_free_samples": 0,
+      "collision_free_samples": 6,
       "pair_diagnostic_samples": 32,
       "pair_frequencies": [
-        {
-          "links": [
-            "s1",
-            "DP"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "s1j",
-            "type": "fixed"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "s3",
-            "s4"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "s4j",
-            "type": "fixed"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "arm_L2_l",
-            "arm_L1_l"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "arm_J2_l",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "arm_L2_l",
-            "arm_L3_l"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "arm_J3_l",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "arm_L5_l",
-            "arm_L6_l"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "arm_J6_l",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "arm_L7_l",
-            "arm_L6_l"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "arm_J7_l",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "hand_base_link_l",
-            "arm_L7_l"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": null,
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "arm_L2_r",
-            "arm_L1_r"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "arm_J2_r",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "arm_L2_r",
-            "arm_L3_r"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "arm_J3_r",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "arm_L4_r",
-            "arm_L3_r"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "arm_J4_r",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "arm_L7_r",
-            "arm_L6_r"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "arm_J7_r",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "hand_base_link_r",
-            "arm_L7_r"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": null,
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "L_middle_proximal",
-            "hand_base_link_l"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "hand_J4_l",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "L_thumb_proximal_base",
-            "L_thumb_proximal"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "hand_J2_l",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "L_thumb_intermediate",
-            "L_thumb_proximal"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "hand_J2_l_1",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "L_index_distal",
-            "L_index_proximal"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "hand_J3_l_1",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "L_middle_distal",
-            "L_middle_proximal"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "hand_J4_l_1",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "L_ring_distal",
-            "L_ring_proximal"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "hand_J5_l_1",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "L_pinky_proximal",
-            "L_pinky_distal"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "hand_J6_l_1",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "R_index_proximal",
-            "hand_base_link_r"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "hand_J3_r",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "R_middle_proximal",
-            "hand_base_link_r"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "hand_J4_r",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "R_thumb_intermediate",
-            "R_thumb_proximal"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "hand_J2_r_1",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "R_index_distal",
-            "R_index_proximal"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "hand_J3_r_1",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "R_middle_distal",
-            "R_middle_proximal"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "hand_J4_r_1",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "R_ring_distal",
-            "R_ring_proximal"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "hand_J5_r_1",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "R_thumb_proximal_base",
-            "hand_base_link_r"
-          ],
-          "colliding_samples": 31,
-          "fraction": 0.96875,
-          "direct_joint": {
-            "name": "hand_J1_r",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": false
-        },
-        {
-          "links": [
-            "R_ring_proximal",
-            "hand_base_link_r"
-          ],
-          "colliding_samples": 25,
-          "fraction": 0.78125,
-          "direct_joint": {
-            "name": "hand_J5_r",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": false
-        },
-        {
-          "links": [
-            "R_pinky_proximal",
-            "R_pinky_distal"
-          ],
-          "colliding_samples": 25,
-          "fraction": 0.78125,
-          "direct_joint": {
-            "name": "hand_J6_r_1",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": false
-        },
-        {
-          "links": [
-            "hand_base_link_l",
-            "arm_L6_l"
-          ],
-          "colliding_samples": 23,
-          "fraction": 0.71875,
-          "direct_joint": null,
-          "all_pair_samples_collide": false
-        },
         {
           "links": [
             "L_thumb_proximal",
@@ -1813,29 +1324,6 @@
           ],
           "colliding_samples": 17,
           "fraction": 0.53125,
-          "direct_joint": null,
-          "all_pair_samples_collide": false
-        },
-        {
-          "links": [
-            "arm_L5_r",
-            "arm_L6_r"
-          ],
-          "colliding_samples": 14,
-          "fraction": 0.4375,
-          "direct_joint": {
-            "name": "arm_J6_r",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": false
-        },
-        {
-          "links": [
-            "arm_L1_l",
-            "s4"
-          ],
-          "colliding_samples": 13,
-          "fraction": 0.40625,
           "direct_joint": null,
           "all_pair_samples_collide": false
         },
@@ -2186,7 +1674,7 @@
         },
         "total_triangles": 1191671,
         "mesh_parts": 45,
-        "collision_pairs": 990,
+        "collision_pairs": 920,
         "open_mesh_links": [
           "DP",
           "L_pinky_distal",
@@ -2214,189 +1702,304 @@
         "collision_method": "BVH triangle intersection + containment for closed meshes",
         "open_mesh_policy": "surface intersection only; open STL has no defined solid interior",
         "contact_tolerance_m": 1e-06,
-        "ik_collision_method": "all returned pose-IK seeds checked against STL; no sphere cost"
+        "ik_collision_method": "all returned pose-IK seeds checked against STL; no sphere cost",
+        "joint_contact_policy": "allow_rigid_and_joint_neighbors",
+        "joint_contact_excluded_pairs": [
+          [
+            "DP",
+            "arm_L1_l"
+          ],
+          [
+            "DP",
+            "arm_L1_r"
+          ],
+          [
+            "DP",
+            "s1"
+          ],
+          [
+            "DP",
+            "s2"
+          ],
+          [
+            "DP",
+            "s3"
+          ],
+          [
+            "DP",
+            "s4"
+          ],
+          [
+            "L_index_distal",
+            "L_index_proximal"
+          ],
+          [
+            "L_index_proximal",
+            "arm_L7_l"
+          ],
+          [
+            "L_index_proximal",
+            "hand_base_link_l"
+          ],
+          [
+            "L_middle_distal",
+            "L_middle_proximal"
+          ],
+          [
+            "L_middle_proximal",
+            "arm_L7_l"
+          ],
+          [
+            "L_middle_proximal",
+            "hand_base_link_l"
+          ],
+          [
+            "L_pinky_distal",
+            "L_pinky_proximal"
+          ],
+          [
+            "L_pinky_proximal",
+            "arm_L7_l"
+          ],
+          [
+            "L_pinky_proximal",
+            "hand_base_link_l"
+          ],
+          [
+            "L_ring_distal",
+            "L_ring_proximal"
+          ],
+          [
+            "L_ring_proximal",
+            "arm_L7_l"
+          ],
+          [
+            "L_ring_proximal",
+            "hand_base_link_l"
+          ],
+          [
+            "L_thumb_distal",
+            "L_thumb_intermediate"
+          ],
+          [
+            "L_thumb_intermediate",
+            "L_thumb_proximal"
+          ],
+          [
+            "L_thumb_proximal",
+            "L_thumb_proximal_base"
+          ],
+          [
+            "L_thumb_proximal_base",
+            "arm_L7_l"
+          ],
+          [
+            "L_thumb_proximal_base",
+            "hand_base_link_l"
+          ],
+          [
+            "R_index_distal",
+            "R_index_proximal"
+          ],
+          [
+            "R_index_proximal",
+            "arm_L7_r"
+          ],
+          [
+            "R_index_proximal",
+            "hand_base_link_r"
+          ],
+          [
+            "R_middle_distal",
+            "R_middle_proximal"
+          ],
+          [
+            "R_middle_proximal",
+            "arm_L7_r"
+          ],
+          [
+            "R_middle_proximal",
+            "hand_base_link_r"
+          ],
+          [
+            "R_pinky_distal",
+            "R_pinky_proximal"
+          ],
+          [
+            "R_pinky_proximal",
+            "arm_L7_r"
+          ],
+          [
+            "R_pinky_proximal",
+            "hand_base_link_r"
+          ],
+          [
+            "R_ring_distal",
+            "R_ring_proximal"
+          ],
+          [
+            "R_ring_proximal",
+            "arm_L7_r"
+          ],
+          [
+            "R_ring_proximal",
+            "hand_base_link_r"
+          ],
+          [
+            "R_thumb_distal",
+            "R_thumb_intermediate"
+          ],
+          [
+            "R_thumb_intermediate",
+            "R_thumb_proximal"
+          ],
+          [
+            "R_thumb_proximal",
+            "R_thumb_proximal_base"
+          ],
+          [
+            "R_thumb_proximal_base",
+            "arm_L7_r"
+          ],
+          [
+            "R_thumb_proximal_base",
+            "hand_base_link_r"
+          ],
+          [
+            "arm_L1_l",
+            "arm_L2_l"
+          ],
+          [
+            "arm_L1_l",
+            "s1"
+          ],
+          [
+            "arm_L1_l",
+            "s2"
+          ],
+          [
+            "arm_L1_l",
+            "s3"
+          ],
+          [
+            "arm_L1_l",
+            "s4"
+          ],
+          [
+            "arm_L1_r",
+            "arm_L2_r"
+          ],
+          [
+            "arm_L1_r",
+            "s1"
+          ],
+          [
+            "arm_L1_r",
+            "s2"
+          ],
+          [
+            "arm_L1_r",
+            "s3"
+          ],
+          [
+            "arm_L1_r",
+            "s4"
+          ],
+          [
+            "arm_L2_l",
+            "arm_L3_l"
+          ],
+          [
+            "arm_L2_r",
+            "arm_L3_r"
+          ],
+          [
+            "arm_L3_l",
+            "arm_L4_l"
+          ],
+          [
+            "arm_L3_r",
+            "arm_L4_r"
+          ],
+          [
+            "arm_L4_l",
+            "arm_L5_l"
+          ],
+          [
+            "arm_L4_r",
+            "arm_L5_r"
+          ],
+          [
+            "arm_L5_l",
+            "arm_L6_l"
+          ],
+          [
+            "arm_L5_r",
+            "arm_L6_r"
+          ],
+          [
+            "arm_L6_l",
+            "arm_L7_l"
+          ],
+          [
+            "arm_L6_l",
+            "hand_base_link_l"
+          ],
+          [
+            "arm_L6_r",
+            "arm_L7_r"
+          ],
+          [
+            "arm_L6_r",
+            "hand_base_link_r"
+          ],
+          [
+            "arm_L7_l",
+            "hand_base_link_l"
+          ],
+          [
+            "arm_L7_r",
+            "hand_base_link_r"
+          ],
+          [
+            "s1",
+            "s2"
+          ],
+          [
+            "s1",
+            "s3"
+          ],
+          [
+            "s1",
+            "s4"
+          ],
+          [
+            "s2",
+            "s3"
+          ],
+          [
+            "s2",
+            "s4"
+          ],
+          [
+            "s3",
+            "s4"
+          ]
+        ],
+        "joint_contact_limitation": "Whole listed link pairs are excluded, including collisions away from their joint interfaces."
       },
-      "initialization_seconds": 1.7215621000068495,
-      "collision_check_seconds": 0.7293925999983912,
-      "configurations_per_second": 43.872120446616236,
+      "initialization_seconds": 1.5118858000059845,
+      "collision_check_seconds": 0.3899176999984775,
+      "configurations_per_second": 82.06860063065861,
       "timing_scope": "FK + STL collision + host copies; excludes IK",
       "config": "D:\\code_agent\\robot_workspace_dexterous\\configs\\dual_v2_1_with_hand.yaml",
       "self_collision_ignore": {}
     },
     "dual_v2_2_left_hand_right_gripper_half": {
       "samples": 32,
-      "collision_free_samples": 0,
+      "collision_free_samples": 2,
       "pair_diagnostic_samples": 32,
       "pair_frequencies": [
-        {
-          "links": [
-            "arm_L2_l",
-            "arm_L1_l"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "arm_J2_l",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "arm_L6_l",
-            "arm_L5_l"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "arm_J6_l",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "arm_L2_r",
-            "arm_L1_r"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "arm_J2_r",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "arm_L6_r",
-            "arm_L5_r"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "arm_J6_r",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "L_middle_proximal",
-            "hand_base_link_l"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "hand_J4_l",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "L_thumb_proximal_base",
-            "L_thumb_proximal"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "hand_J2_l",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "L_thumb_intermediate",
-            "L_thumb_proximal"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "hand_J2_l_1",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "L_index_distal",
-            "L_index_proximal"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "hand_J3_l_1",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "L_middle_distal",
-            "L_middle_proximal"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "hand_J4_l_1",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "L_ring_distal",
-            "L_ring_proximal"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "hand_J5_l_1",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "L_pinky_proximal",
-            "L_pinky_distal"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "hand_J6_l_1",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "gripper_L1_r",
-            "gripper_base_link_r"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "gripper_J1_r",
-            "type": "prismatic"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "gripper_L2_r",
-            "gripper_base_link_r"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "gripper_J1_r_1",
-            "type": "prismatic"
-          },
-          "all_pair_samples_collide": true
-        },
         {
           "links": [
             "gripper_L1_r",
@@ -2405,84 +2008,6 @@
           "colliding_samples": 30,
           "fraction": 0.9375,
           "direct_joint": null,
-          "all_pair_samples_collide": false
-        },
-        {
-          "links": [
-            "arm_L7_r",
-            "arm_L6_r"
-          ],
-          "colliding_samples": 29,
-          "fraction": 0.90625,
-          "direct_joint": {
-            "name": "arm_J7_r",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": false
-        },
-        {
-          "links": [
-            "arm_L7_l",
-            "arm_L6_l"
-          ],
-          "colliding_samples": 28,
-          "fraction": 0.875,
-          "direct_joint": {
-            "name": "arm_J7_l",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": false
-        },
-        {
-          "links": [
-            "arm_L4_l",
-            "arm_L5_l"
-          ],
-          "colliding_samples": 25,
-          "fraction": 0.78125,
-          "direct_joint": {
-            "name": "arm_J5_l",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": false
-        },
-        {
-          "links": [
-            "arm_L4_r",
-            "arm_L3_r"
-          ],
-          "colliding_samples": 22,
-          "fraction": 0.6875,
-          "direct_joint": {
-            "name": "arm_J4_r",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": false
-        },
-        {
-          "links": [
-            "arm_L4_r",
-            "arm_L5_r"
-          ],
-          "colliding_samples": 18,
-          "fraction": 0.5625,
-          "direct_joint": {
-            "name": "arm_J5_r",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": false
-        },
-        {
-          "links": [
-            "arm_L4_l",
-            "arm_L3_l"
-          ],
-          "colliding_samples": 7,
-          "fraction": 0.21875,
-          "direct_joint": {
-            "name": "arm_J4_l",
-            "type": "revolute"
-          },
           "all_pair_samples_collide": false
         },
         {
@@ -2503,19 +2028,6 @@
           "colliding_samples": 4,
           "fraction": 0.125,
           "direct_joint": null,
-          "all_pair_samples_collide": false
-        },
-        {
-          "links": [
-            "arm_L2_r",
-            "arm_L3_r"
-          ],
-          "colliding_samples": 1,
-          "fraction": 0.03125,
-          "direct_joint": {
-            "name": "arm_J3_r",
-            "type": "revolute"
-          },
           "all_pair_samples_collide": false
         },
         {
@@ -2581,7 +2093,7 @@
         },
         "total_triangles": 642433,
         "mesh_parts": 31,
-        "collision_pairs": 465,
+        "collision_pairs": 426,
         "open_mesh_links": [
           "L_pinky_distal",
           "SJ4Z",
@@ -2605,239 +2117,180 @@
         "collision_method": "BVH triangle intersection + containment for closed meshes",
         "open_mesh_policy": "surface intersection only; open STL has no defined solid interior",
         "contact_tolerance_m": 1e-06,
-        "ik_collision_method": "all returned pose-IK seeds checked against STL; no sphere cost"
+        "ik_collision_method": "all returned pose-IK seeds checked against STL; no sphere cost",
+        "joint_contact_policy": "allow_rigid_and_joint_neighbors",
+        "joint_contact_excluded_pairs": [
+          [
+            "L_index_distal",
+            "L_index_proximal"
+          ],
+          [
+            "L_index_proximal",
+            "arm_L7_l"
+          ],
+          [
+            "L_index_proximal",
+            "hand_base_link_l"
+          ],
+          [
+            "L_middle_distal",
+            "L_middle_proximal"
+          ],
+          [
+            "L_middle_proximal",
+            "arm_L7_l"
+          ],
+          [
+            "L_middle_proximal",
+            "hand_base_link_l"
+          ],
+          [
+            "L_pinky_distal",
+            "L_pinky_proximal"
+          ],
+          [
+            "L_pinky_proximal",
+            "arm_L7_l"
+          ],
+          [
+            "L_pinky_proximal",
+            "hand_base_link_l"
+          ],
+          [
+            "L_ring_distal",
+            "L_ring_proximal"
+          ],
+          [
+            "L_ring_proximal",
+            "arm_L7_l"
+          ],
+          [
+            "L_ring_proximal",
+            "hand_base_link_l"
+          ],
+          [
+            "L_thumb_distal",
+            "L_thumb_intermediate"
+          ],
+          [
+            "L_thumb_intermediate",
+            "L_thumb_proximal"
+          ],
+          [
+            "L_thumb_proximal",
+            "L_thumb_proximal_base"
+          ],
+          [
+            "L_thumb_proximal_base",
+            "arm_L7_l"
+          ],
+          [
+            "L_thumb_proximal_base",
+            "hand_base_link_l"
+          ],
+          [
+            "SJ4Z",
+            "arm_L1_l"
+          ],
+          [
+            "SJ4Z",
+            "arm_L1_r"
+          ],
+          [
+            "arm_L1_l",
+            "arm_L2_l"
+          ],
+          [
+            "arm_L1_r",
+            "arm_L2_r"
+          ],
+          [
+            "arm_L2_l",
+            "arm_L3_l"
+          ],
+          [
+            "arm_L2_r",
+            "arm_L3_r"
+          ],
+          [
+            "arm_L3_l",
+            "arm_L4_l"
+          ],
+          [
+            "arm_L3_r",
+            "arm_L4_r"
+          ],
+          [
+            "arm_L4_l",
+            "arm_L5_l"
+          ],
+          [
+            "arm_L4_r",
+            "arm_L5_r"
+          ],
+          [
+            "arm_L5_l",
+            "arm_L6_l"
+          ],
+          [
+            "arm_L5_r",
+            "arm_L6_r"
+          ],
+          [
+            "arm_L6_l",
+            "arm_L7_l"
+          ],
+          [
+            "arm_L6_l",
+            "hand_base_link_l"
+          ],
+          [
+            "arm_L6_r",
+            "arm_L7_r"
+          ],
+          [
+            "arm_L6_r",
+            "gripper_base_link_r"
+          ],
+          [
+            "arm_L7_l",
+            "hand_base_link_l"
+          ],
+          [
+            "arm_L7_r",
+            "gripper_L1_r"
+          ],
+          [
+            "arm_L7_r",
+            "gripper_L2_r"
+          ],
+          [
+            "arm_L7_r",
+            "gripper_base_link_r"
+          ],
+          [
+            "gripper_L1_r",
+            "gripper_base_link_r"
+          ],
+          [
+            "gripper_L2_r",
+            "gripper_base_link_r"
+          ]
+        ],
+        "joint_contact_limitation": "Whole listed link pairs are excluded, including collisions away from their joint interfaces."
       },
-      "initialization_seconds": 1.078319799999008,
-      "collision_check_seconds": 0.2704520999977831,
-      "configurations_per_second": 118.32039758708588,
+      "initialization_seconds": 1.1069425999885425,
+      "collision_check_seconds": 0.23577069999009836,
+      "configurations_per_second": 135.7250922245381,
       "timing_scope": "FK + STL collision + host copies; excludes IK",
       "config": "D:\\code_agent\\robot_workspace_dexterous\\configs\\dual_v2_2_left_hand_right_gripper_half.yaml",
       "self_collision_ignore": {}
     },
     "dual_v2_2_no_gripper": {
       "samples": 32,
-      "collision_free_samples": 0,
+      "collision_free_samples": 32,
       "pair_diagnostic_samples": 32,
-      "pair_frequencies": [
-        {
-          "links": [
-            "S1",
-            "S0"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "S1",
-            "type": "fixed"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "S1",
-            "S2"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "S2",
-            "type": "fixed"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "S3",
-            "S2"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "S3",
-            "type": "fixed"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "H1",
-            "S4"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "H1",
-            "type": "fixed"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "H1",
-            "H2"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "H2",
-            "type": "fixed"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "arm_L2_l",
-            "arm_L1_l"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "arm_J2_l",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "arm_L6_l",
-            "arm_L5_l"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "arm_J6_l",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "arm_L2_r",
-            "arm_L1_r"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "arm_J2_r",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "arm_L6_r",
-            "arm_L5_r"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "arm_J6_r",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "arm_L7_r",
-            "arm_L6_r"
-          ],
-          "colliding_samples": 29,
-          "fraction": 0.90625,
-          "direct_joint": {
-            "name": "arm_J7_r",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": false
-        },
-        {
-          "links": [
-            "arm_L7_l",
-            "arm_L6_l"
-          ],
-          "colliding_samples": 28,
-          "fraction": 0.875,
-          "direct_joint": {
-            "name": "arm_J7_l",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": false
-        },
-        {
-          "links": [
-            "arm_L4_l",
-            "arm_L5_l"
-          ],
-          "colliding_samples": 25,
-          "fraction": 0.78125,
-          "direct_joint": {
-            "name": "arm_J5_l",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": false
-        },
-        {
-          "links": [
-            "arm_L4_r",
-            "arm_L3_r"
-          ],
-          "colliding_samples": 22,
-          "fraction": 0.6875,
-          "direct_joint": {
-            "name": "arm_J4_r",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": false
-        },
-        {
-          "links": [
-            "arm_L1_r",
-            "S4"
-          ],
-          "colliding_samples": 19,
-          "fraction": 0.59375,
-          "direct_joint": null,
-          "all_pair_samples_collide": false
-        },
-        {
-          "links": [
-            "arm_L4_r",
-            "arm_L5_r"
-          ],
-          "colliding_samples": 18,
-          "fraction": 0.5625,
-          "direct_joint": {
-            "name": "arm_J5_r",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": false
-        },
-        {
-          "links": [
-            "arm_L4_l",
-            "arm_L3_l"
-          ],
-          "colliding_samples": 7,
-          "fraction": 0.21875,
-          "direct_joint": {
-            "name": "arm_J4_l",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": false
-        },
-        {
-          "links": [
-            "arm_L2_r",
-            "arm_L3_r"
-          ],
-          "colliding_samples": 1,
-          "fraction": 0.03125,
-          "direct_joint": {
-            "name": "arm_J3_r",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": false
-        }
-      ],
+      "pair_frequencies": [],
       "collision_model": {
         "mode": "stl",
         "file": "D:\\code_agent\\robot_workspace_dexterous\\models\\dual_v2_2_no_gripper\\collision_meshes.yaml",
@@ -2860,7 +2313,7 @@
         },
         "total_triangles": 1187858,
         "mesh_parts": 21,
-        "collision_pairs": 210,
+        "collision_pairs": 163,
         "open_mesh_links": [
           "H1",
           "H2",
@@ -2887,46 +2340,212 @@
         "collision_method": "BVH triangle intersection + containment for closed meshes",
         "open_mesh_policy": "surface intersection only; open STL has no defined solid interior",
         "contact_tolerance_m": 1e-06,
-        "ik_collision_method": "all returned pose-IK seeds checked against STL; no sphere cost"
+        "ik_collision_method": "all returned pose-IK seeds checked against STL; no sphere cost",
+        "joint_contact_policy": "allow_rigid_and_joint_neighbors",
+        "joint_contact_excluded_pairs": [
+          [
+            "H1",
+            "H2"
+          ],
+          [
+            "H1",
+            "S0"
+          ],
+          [
+            "H1",
+            "S1"
+          ],
+          [
+            "H1",
+            "S2"
+          ],
+          [
+            "H1",
+            "S3"
+          ],
+          [
+            "H1",
+            "S4"
+          ],
+          [
+            "H1",
+            "arm_L1_l"
+          ],
+          [
+            "H1",
+            "arm_L1_r"
+          ],
+          [
+            "H2",
+            "S0"
+          ],
+          [
+            "H2",
+            "S1"
+          ],
+          [
+            "H2",
+            "S2"
+          ],
+          [
+            "H2",
+            "S3"
+          ],
+          [
+            "H2",
+            "S4"
+          ],
+          [
+            "H2",
+            "arm_L1_l"
+          ],
+          [
+            "H2",
+            "arm_L1_r"
+          ],
+          [
+            "S0",
+            "S1"
+          ],
+          [
+            "S0",
+            "S2"
+          ],
+          [
+            "S0",
+            "S3"
+          ],
+          [
+            "S0",
+            "S4"
+          ],
+          [
+            "S0",
+            "arm_L1_l"
+          ],
+          [
+            "S0",
+            "arm_L1_r"
+          ],
+          [
+            "S1",
+            "S2"
+          ],
+          [
+            "S1",
+            "S3"
+          ],
+          [
+            "S1",
+            "S4"
+          ],
+          [
+            "S1",
+            "arm_L1_l"
+          ],
+          [
+            "S1",
+            "arm_L1_r"
+          ],
+          [
+            "S2",
+            "S3"
+          ],
+          [
+            "S2",
+            "S4"
+          ],
+          [
+            "S2",
+            "arm_L1_l"
+          ],
+          [
+            "S2",
+            "arm_L1_r"
+          ],
+          [
+            "S3",
+            "S4"
+          ],
+          [
+            "S3",
+            "arm_L1_l"
+          ],
+          [
+            "S3",
+            "arm_L1_r"
+          ],
+          [
+            "S4",
+            "arm_L1_l"
+          ],
+          [
+            "S4",
+            "arm_L1_r"
+          ],
+          [
+            "arm_L1_l",
+            "arm_L2_l"
+          ],
+          [
+            "arm_L1_r",
+            "arm_L2_r"
+          ],
+          [
+            "arm_L2_l",
+            "arm_L3_l"
+          ],
+          [
+            "arm_L2_r",
+            "arm_L3_r"
+          ],
+          [
+            "arm_L3_l",
+            "arm_L4_l"
+          ],
+          [
+            "arm_L3_r",
+            "arm_L4_r"
+          ],
+          [
+            "arm_L4_l",
+            "arm_L5_l"
+          ],
+          [
+            "arm_L4_r",
+            "arm_L5_r"
+          ],
+          [
+            "arm_L5_l",
+            "arm_L6_l"
+          ],
+          [
+            "arm_L5_r",
+            "arm_L6_r"
+          ],
+          [
+            "arm_L6_l",
+            "arm_L7_l"
+          ],
+          [
+            "arm_L6_r",
+            "arm_L7_r"
+          ]
+        ],
+        "joint_contact_limitation": "Whole listed link pairs are excluded, including collisions away from their joint interfaces."
       },
-      "initialization_seconds": 1.2087669000029564,
-      "collision_check_seconds": 0.2366788999934215,
-      "configurations_per_second": 135.20427888117376,
+      "initialization_seconds": 1.0925410000054399,
+      "collision_check_seconds": 0.6268177000019932,
+      "configurations_per_second": 51.0515258262462,
       "timing_scope": "FK + STL collision + host copies; excludes IK",
       "config": "D:\\code_agent\\robot_workspace_dexterous\\configs\\dual_v2_2_no_gripper.yaml",
       "self_collision_ignore": {}
     },
     "spark2_v1": {
       "samples": 32,
-      "collision_free_samples": 0,
+      "collision_free_samples": 20,
       "pair_diagnostic_samples": 32,
       "pair_frequencies": [
-        {
-          "links": [
-            "arm_L4",
-            "arm_L3"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "arm_J4",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "arm_L1",
-            "arm_base_link"
-          ],
-          "colliding_samples": 31,
-          "fraction": 0.96875,
-          "direct_joint": {
-            "name": "arm_J1",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": false
-        },
         {
           "links": [
             "arm_L3",
@@ -2973,7 +2592,7 @@
         },
         "total_triangles": 53980,
         "mesh_parts": 7,
-        "collision_pairs": 21,
+        "collision_pairs": 15,
         "open_mesh_links": [
           "arm_L1",
           "arm_L3",
@@ -2984,59 +2603,48 @@
         "collision_method": "BVH triangle intersection + containment for closed meshes",
         "open_mesh_policy": "surface intersection only; open STL has no defined solid interior",
         "contact_tolerance_m": 1e-06,
-        "ik_collision_method": "all returned pose-IK seeds checked against STL; no sphere cost"
+        "ik_collision_method": "all returned pose-IK seeds checked against STL; no sphere cost",
+        "joint_contact_policy": "allow_rigid_and_joint_neighbors",
+        "joint_contact_excluded_pairs": [
+          [
+            "arm_L1",
+            "arm_L2"
+          ],
+          [
+            "arm_L1",
+            "arm_base_link"
+          ],
+          [
+            "arm_L2",
+            "arm_L3"
+          ],
+          [
+            "arm_L3",
+            "arm_L4"
+          ],
+          [
+            "arm_L4",
+            "arm_L5"
+          ],
+          [
+            "arm_L5",
+            "arm_L6"
+          ]
+        ],
+        "joint_contact_limitation": "Whole listed link pairs are excluded, including collisions away from their joint interfaces."
       },
-      "initialization_seconds": 0.5288067000074079,
-      "collision_check_seconds": 0.1722237999929348,
-      "configurations_per_second": 185.80474940927297,
+      "initialization_seconds": 2.5492802999942796,
+      "collision_check_seconds": 2.551649400003953,
+      "configurations_per_second": 12.54090785354384,
       "timing_scope": "FK + STL collision + host copies; excludes IK",
       "config": "D:\\code_agent\\robot_workspace_dexterous\\configs\\spark2_v1.yaml",
       "self_collision_ignore": {}
     },
     "spark2_v2": {
       "samples": 32,
-      "collision_free_samples": 0,
+      "collision_free_samples": 21,
       "pair_diagnostic_samples": 32,
       "pair_frequencies": [
-        {
-          "links": [
-            "arm_L1",
-            "arm_L2"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "arm_J2",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "arm_L6",
-            "arm_L5"
-          ],
-          "colliding_samples": 32,
-          "fraction": 1.0,
-          "direct_joint": {
-            "name": "arm_J6",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": true
-        },
-        {
-          "links": [
-            "arm_L4",
-            "arm_L3"
-          ],
-          "colliding_samples": 22,
-          "fraction": 0.6875,
-          "direct_joint": {
-            "name": "arm_J4",
-            "type": "revolute"
-          },
-          "all_pair_samples_collide": false
-        },
         {
           "links": [
             "arm_L5",
@@ -3073,7 +2681,7 @@
         },
         "total_triangles": 371554,
         "mesh_parts": 7,
-        "collision_pairs": 21,
+        "collision_pairs": 15,
         "open_mesh_links": [
           "arm_L1",
           "arm_L2",
@@ -3085,11 +2693,39 @@
         "collision_method": "BVH triangle intersection + containment for closed meshes",
         "open_mesh_policy": "surface intersection only; open STL has no defined solid interior",
         "contact_tolerance_m": 1e-06,
-        "ik_collision_method": "all returned pose-IK seeds checked against STL; no sphere cost"
+        "ik_collision_method": "all returned pose-IK seeds checked against STL; no sphere cost",
+        "joint_contact_policy": "allow_rigid_and_joint_neighbors",
+        "joint_contact_excluded_pairs": [
+          [
+            "arm_L1",
+            "arm_L2"
+          ],
+          [
+            "arm_L1",
+            "arm_base_link"
+          ],
+          [
+            "arm_L2",
+            "arm_L3"
+          ],
+          [
+            "arm_L3",
+            "arm_L4"
+          ],
+          [
+            "arm_L4",
+            "arm_L5"
+          ],
+          [
+            "arm_L5",
+            "arm_L6"
+          ]
+        ],
+        "joint_contact_limitation": "Whole listed link pairs are excluded, including collisions away from their joint interfaces."
       },
-      "initialization_seconds": 1.212060100006056,
-      "collision_check_seconds": 0.8032820999942487,
-      "configurations_per_second": 39.83656551070802,
+      "initialization_seconds": 25.612950900002033,
+      "collision_check_seconds": 25.778778899999452,
+      "configurations_per_second": 1.2413311012183235,
       "timing_scope": "FK + STL collision + host copies; excludes IK",
       "config": "D:\\code_agent\\robot_workspace_dexterous\\configs\\spark2_v2.yaml",
       "self_collision_ignore": {}
