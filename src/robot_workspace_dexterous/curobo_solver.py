@@ -249,6 +249,7 @@ def compute_dexterous_workspace(
     from curobo.types import GoalToolPose, Pose
 
     ik_self_collision = self_collision and mesh_checker is None
+    legacy_mesh_loader = False
     if robot is None:
         if ik_self_collision:
             raise ValueError("a prebuilt collision robot is required for self-collision checking")
@@ -259,20 +260,18 @@ def compute_dexterous_workspace(
                     "tool_frames": [ee_link], "kinematic_link_names": mesh_checker.links,
                 }}}, load_collision_spheres=False)
             except TypeError as exc:
-                if "kinematic_link_names" in str(exc):
-                    import sys
-                    loaded = getattr(sys.modules.get("curobo._src.types.robot"), "__file__", "unknown")
-                    raise RuntimeError(
-                        "STL checking requires the updated curobo source from this workspace.\n"
-                        f"Python: {sys.executable}\nLoaded cuRobo robot module: {loaded}\n"
-                        "This installation does not accept kinematic_link_names. Copy the updated "
-                        "sibling curobo checkout as well as robot_workspace_dexterous, then run "
-                        "`python -m pip install -e ../curobo --no-build-isolation` from "
-                        "robot_workspace_dexterous using the same Python environment. "
-                        "Restart the process after installation. The upstream release alone "
-                        "does not include this workspace's STL integration changes."
-                    ) from exc
-                raise
+                if "kinematic_link_names" not in str(exc):
+                    raise
+                # Older v2 loaders retain extra chains through collision_link_names.
+                # Two disabled spheres on distinct links avoid both their empty
+                # result reshape and their zero-pair setup division by zero. These
+                # placeholders never decide feasibility: all sphere costs are off.
+                compatibility = legacy_mesh_kinematics(urdf_path, base_link, ee_link, mesh_checker.links)
+                robot = RobotCfg.create({"robot_cfg": {"kinematics": compatibility}},
+                                        load_collision_spheres=True)
+                legacy_mesh_loader = True
+                print("STL compatibility mode: legacy cuRobo loader; all robot chains retained; "
+                      "collision decisions use STL triangles", flush=True)
         else:
             kin = KinematicsCfg.from_basic_urdf(urdf_path, base_link, [ee_link])
             robot = RobotCfg(kinematics=kin, device_cfg=kin.device_cfg)
@@ -281,7 +280,8 @@ def compute_dexterous_workspace(
             robot=robot, num_seeds=num_seeds, seed_solver_num_seeds=num_seeds,
             max_batch_size=batch_size, position_tolerance=position_tolerance,
             orientation_tolerance=orientation_tolerance,
-            self_collision_check=ik_self_collision, load_collision_spheres=ik_self_collision,
+            self_collision_check=ik_self_collision,
+            load_collision_spheres=ik_self_collision or legacy_mesh_loader,
             use_cuda_graph=not debug_cuda,
         )
     with cuda_stage(f'{ee_link}: initialize IK', debug_cuda):
@@ -368,6 +368,21 @@ def compute_dexterous_workspace(
         (w2_sum / denominator).astype(np.float32), condition_max.astype(np.float32),
         sigma_minimum.astype(np.float32),
     )
+
+
+def legacy_mesh_kinematics(urdf_path: str, base_link: str, ee_link: str,
+                           links: list[str]) -> dict:
+    """Retain full FK with older cuRobo v2 APIs; placeholders are not collision geometry."""
+    names = list(dict.fromkeys(links))
+    if len(names) < 2:
+        raise ValueError("Legacy STL IK requires at least two robot links")
+    spheres = {name: [] for name in names}
+    for name in names[:2]:
+        spheres[name] = [{"center": [0., 0., 0.], "radius": -1.}]
+    return {"urdf_path": urdf_path, "base_link": base_link, "tool_frames": [ee_link],
+            "collision_link_names": names, "collision_spheres": spheres,
+            "collision_sphere_buffer": 0., "self_collision_buffer": {},
+            "self_collision_ignore": {}}
 
 
 def select_mesh_candidates(solved: object, mesh_checker: object):

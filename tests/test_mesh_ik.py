@@ -35,10 +35,10 @@ def test_workspace_uses_pose_only_ik_then_mesh_checked_seed(monkeypatch, legacy_
     class RobotCfg:
         @staticmethod
         def create(data, load_collision_spheres):
-            if legacy_curobo:
+            if legacy_curobo and "kinematic_link_names" in data["robot_cfg"]["kinematics"]:
                 raise TypeError("unexpected keyword argument 'kinematic_link_names'")
             calls["robot"] = data
-            assert load_collision_spheres is False
+            assert load_collision_spheres is legacy_curobo
             return SimpleNamespace(kinematics=SimpleNamespace())
     class IKCfg:
         @staticmethod
@@ -71,18 +71,18 @@ def test_workspace_uses_pose_only_ik_then_mesh_checked_seed(monkeypatch, legacy_
         GoalToolPose=SimpleNamespace(from_poses=lambda poses, num_goalset: poses),
         JointState=SimpleNamespace(from_position=lambda position, joint_names:
                                    SimpleNamespace(position=position, joint_names=joint_names))))
-    if legacy_curobo:
-        with pytest.raises(RuntimeError) as error:
-            compute_dexterous_workspace("unused.urdf", "base", "tool", (0, 0), (0, 0),
-                np.array([0]), .1, np.array([[1, 0, 0, 0]]), num_seeds=2, mesh_checker=Checker())
-        assert sys.executable in str(error.value)
-        assert "Loaded cuRobo robot module:" in str(error.value)
-        assert "python -m pip install -e ../curobo --no-build-isolation" in str(error.value)
-        return
     result = compute_dexterous_workspace("unused.urdf", "base", "tool", (0, 0), (0, 0),
         np.array([0]), .1, np.array([[1, 0, 0, 0]]), num_seeds=2, mesh_checker=Checker())
     assert result.reachable_orientations.tolist() == [1]
     assert calls["checked_seeds"] == 2
     assert calls["config"]["self_collision_check"] is False
-    assert calls["config"]["load_collision_spheres"] is False
-    assert calls["robot"]["robot_cfg"]["kinematics"]["kinematic_link_names"] == Checker.links
+    assert calls["config"]["load_collision_spheres"] is legacy_curobo
+    kinematics = calls["robot"]["robot_cfg"]["kinematics"]
+    if legacy_curobo:
+        assert kinematics["collision_link_names"] == Checker.links
+        assert kinematics["tool_frames"] == ["tool"]
+        assert "kinematic_link_names" not in kinematics
+        spheres = [sphere for rows in kinematics["collision_spheres"].values() for sphere in rows]
+        assert len(spheres) == 2 and all(sphere["radius"] < 0 for sphere in spheres)
+    else:
+        assert kinematics["kinematic_link_names"] == Checker.links
