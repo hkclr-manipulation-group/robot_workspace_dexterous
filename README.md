@@ -131,6 +131,31 @@ Final plots omit unreachable cells and show XY/XZ/YZ sections with equal metre
 scales. If every cell is unreachable, the run reports a diagnostic error.
 Previous sphere-based results in `output/` must be recomputed for STL semantics.
 
+### No reachable grid cells
+
+This error means no sampled cell has even one accepted IK orientation. Lowering
+`minimum_dexterity` cannot restore rejected targets; that threshold only filters
+the accepted results afterward.
+
+For Spark2 v2, inspect the STL collision pairs first:
+
+```bash
+python run.py --config configs/spark2_v2.yaml --diagnose-only --diagnostic-samples 32
+```
+
+In a local 32-pose diagnostic, `arm_L1`/`arm_L2` and `arm_L5`/`arm_L6`
+collided in every sample, with zero collision-free configurations. They are
+directly connected by `arm_J2` and `arm_J6`; the supplied ignore list is empty.
+This explains a collision rejection mechanism independently of workspace bounds.
+Random joint sampling does not prove that every IK solution collides.
+
+Review whether these contacts are intended joint interfaces or geometry/model
+errors. If the model owner confirms permitted contacts, add only the reviewed
+pairs to `models/spark2_v2/self_collision_ignore.yaml`; otherwise correct the
+collision geometry. Keep all other pairs checked. Then rerun the diagnostic
+before the full grid. A collision-free joint sample is not proof of target IK
+reachability. The default configuration does not add exclusions automatically.
+
 ## Outputs
 
 - `<ee_link>.npz`: sampled positions, reachability and Jacobian metrics.

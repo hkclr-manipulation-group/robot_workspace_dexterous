@@ -1,0 +1,167 @@
+{
+  "strict": {
+    "samples": 32,
+    "collision_free_samples": 0,
+    "pair_diagnostic_samples": 32,
+    "pair_frequencies": [
+      {
+        "links": [
+          "arm_L1",
+          "arm_L2"
+        ],
+        "colliding_samples": 32,
+        "fraction": 1.0
+      },
+      {
+        "links": [
+          "arm_L6",
+          "arm_L5"
+        ],
+        "colliding_samples": 32,
+        "fraction": 1.0
+      },
+      {
+        "links": [
+          "arm_L4",
+          "arm_L3"
+        ],
+        "colliding_samples": 22,
+        "fraction": 0.6875
+      },
+      {
+        "links": [
+          "arm_L5",
+          "arm_L3"
+        ],
+        "colliding_samples": 9,
+        "fraction": 0.28125
+      },
+      {
+        "links": [
+          "arm_L2",
+          "arm_L5"
+        ],
+        "colliding_samples": 3,
+        "fraction": 0.09375
+      }
+    ],
+    "collision_model": {
+      "mode": "stl",
+      "file": "D:\\code_agent\\robot_workspace_dexterous\\models\\spark2_v2\\collision_meshes.yaml",
+      "manifest_sha256": "751b295e5fe725546bef8ba91a5cecbbbda160bd5927ecd39b095bb7e1da5975",
+      "assets": {
+        "../meshes/bc6f16239fa86a46aa81dad52ad4cdc66a7373622e0c138d04e7c9f21721e562.stl": "bc6f16239fa86a46aa81dad52ad4cdc66a7373622e0c138d04e7c9f21721e562",
+        "../meshes/8a93b4b18962ec003b4f31225c6b7712f329fa56e69f5f0003cc9cbdffb373e9.stl": "8a93b4b18962ec003b4f31225c6b7712f329fa56e69f5f0003cc9cbdffb373e9",
+        "../meshes/56b6c9bd9509e96e4c3774014741ae5906dbf59dc38a841e158f923d975f94c5.stl": "56b6c9bd9509e96e4c3774014741ae5906dbf59dc38a841e158f923d975f94c5",
+        "../meshes/4ca6bd686f83cf6ae343c535ef3d44a43c37496b0e20c3d94ccb13e1dbd52966.stl": "4ca6bd686f83cf6ae343c535ef3d44a43c37496b0e20c3d94ccb13e1dbd52966",
+        "../meshes/15fe012fe0e8d06c4c6e6813a1c27e2e6837883b6c189170cfbda34e1518896c.stl": "15fe012fe0e8d06c4c6e6813a1c27e2e6837883b6c189170cfbda34e1518896c",
+        "../meshes/eaadefacc2bb80a0a21af29924ebd66c5db030b18a540e53d3da5b992492fdc4.stl": "eaadefacc2bb80a0a21af29924ebd66c5db030b18a540e53d3da5b992492fdc4",
+        "../meshes/9c6e1987bbbcd59d3321fdbcfc8b909ef739c02608acd8c6b173b57ee361d8e6.stl": "9c6e1987bbbcd59d3321fdbcfc8b909ef739c02608acd8c6b173b57ee361d8e6"
+      },
+      "total_triangles": 371554,
+      "mesh_parts": 7,
+      "collision_pairs": 21,
+      "open_mesh_links": [
+        "arm_L1",
+        "arm_L2",
+        "arm_L3",
+        "arm_L4",
+        "arm_L5",
+        "arm_base_link"
+      ],
+      "collision_method": "BVH triangle intersection + containment for closed meshes",
+      "open_mesh_policy": "surface intersection only; open STL has no defined solid interior",
+      "contact_tolerance_m": 1e-06,
+      "ik_collision_method": "all returned pose-IK seeds checked against STL; no sphere cost"
+    },
+    "initialization_seconds": 1.3223408999911044,
+    "collision_check_seconds": 0.7934822000097483,
+    "configurations_per_second": 40.32856691631755,
+    "timing_scope": "FK + STL collision + host copies; excludes IK"
+  },
+  "joint_sweeps": [
+    {
+      "links": [
+        "arm_L1",
+        "arm_L2"
+      ],
+      "joint": "arm_J2",
+      "samples": 65,
+      "fcl_colliding_samples": 65
+    },
+    {
+      "links": [
+        "arm_L5",
+        "arm_L6"
+      ],
+      "joint": "arm_J6",
+      "samples": 65,
+      "fcl_colliding_samples": 14
+    }
+  ],
+  "two_pair_exclusion_experiment": {
+    "samples": 32,
+    "collision_free_samples": 5,
+    "pair_diagnostic_samples": 32,
+    "pair_frequencies": [
+      {
+        "links": [
+          "arm_L4",
+          "arm_L3"
+        ],
+        "colliding_samples": 22,
+        "fraction": 0.6875
+      },
+      {
+        "links": [
+          "arm_L5",
+          "arm_L3"
+        ],
+        "colliding_samples": 9,
+        "fraction": 0.28125
+      },
+      {
+        "links": [
+          "arm_L2",
+          "arm_L5"
+        ],
+        "colliding_samples": 3,
+        "fraction": 0.09375
+      }
+    ],
+    "collision_model": {
+      "mode": "stl",
+      "file": "D:\\code_agent\\robot_workspace_dexterous\\models\\spark2_v2\\collision_meshes.yaml",
+      "manifest_sha256": "751b295e5fe725546bef8ba91a5cecbbbda160bd5927ecd39b095bb7e1da5975",
+      "assets": {
+        "../meshes/bc6f16239fa86a46aa81dad52ad4cdc66a7373622e0c138d04e7c9f21721e562.stl": "bc6f16239fa86a46aa81dad52ad4cdc66a7373622e0c138d04e7c9f21721e562",
+        "../meshes/8a93b4b18962ec003b4f31225c6b7712f329fa56e69f5f0003cc9cbdffb373e9.stl": "8a93b4b18962ec003b4f31225c6b7712f329fa56e69f5f0003cc9cbdffb373e9",
+        "../meshes/56b6c9bd9509e96e4c3774014741ae5906dbf59dc38a841e158f923d975f94c5.stl": "56b6c9bd9509e96e4c3774014741ae5906dbf59dc38a841e158f923d975f94c5",
+        "../meshes/4ca6bd686f83cf6ae343c535ef3d44a43c37496b0e20c3d94ccb13e1dbd52966.stl": "4ca6bd686f83cf6ae343c535ef3d44a43c37496b0e20c3d94ccb13e1dbd52966",
+        "../meshes/15fe012fe0e8d06c4c6e6813a1c27e2e6837883b6c189170cfbda34e1518896c.stl": "15fe012fe0e8d06c4c6e6813a1c27e2e6837883b6c189170cfbda34e1518896c",
+        "../meshes/eaadefacc2bb80a0a21af29924ebd66c5db030b18a540e53d3da5b992492fdc4.stl": "eaadefacc2bb80a0a21af29924ebd66c5db030b18a540e53d3da5b992492fdc4",
+        "../meshes/9c6e1987bbbcd59d3321fdbcfc8b909ef739c02608acd8c6b173b57ee361d8e6.stl": "9c6e1987bbbcd59d3321fdbcfc8b909ef739c02608acd8c6b173b57ee361d8e6"
+      },
+      "total_triangles": 371554,
+      "mesh_parts": 7,
+      "collision_pairs": 19,
+      "open_mesh_links": [
+        "arm_L1",
+        "arm_L2",
+        "arm_L3",
+        "arm_L4",
+        "arm_L5",
+        "arm_base_link"
+      ],
+      "collision_method": "BVH triangle intersection + containment for closed meshes",
+      "open_mesh_policy": "surface intersection only; open STL has no defined solid interior",
+      "contact_tolerance_m": 1e-06,
+      "ik_collision_method": "all returned pose-IK seeds checked against STL; no sphere cost"
+    },
+    "initialization_seconds": 6.236108599987347,
+    "collision_check_seconds": 5.533184400002938,
+    "configurations_per_second": 5.783288191151375,
+    "timing_scope": "FK + STL collision + host copies; excludes IK"
+  },
+  "note": "Diagnostic experiment only; default ignores and geometry were not modified. Collision-free joint samples do not establish IK grid reachability."
+}

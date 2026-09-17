@@ -196,7 +196,13 @@ def main(argv: list[str] | None = None) -> None:
         if reachable_cells == 0:
             raise RuntimeError(
                 f"{link}: no reachable grid cells were found; check workspace bounds, "
-                "base/tool link names, and self-collision ignores before plotting"
+                "base/tool link names, and self-collision ignores before plotting. "
+                "This means zero accepted IK targets, not just zero cells meeting minimum_dexterity. "
+                "To inspect collision rejection, run: "
+                f'python run.py --config "{args.config}" --collision-backend {config.collision_backend} '
+                "--diagnose-only --diagnostic-samples 32. "
+                "Persistent contacts between joint housings may require model-specific review; "
+                "collision pairs are not ignored automatically."
             )
         print(
             f"{link}: {reachable_cells}/{len(workspace.positions)} grid cells reachable, "
