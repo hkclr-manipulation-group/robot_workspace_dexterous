@@ -36,15 +36,23 @@ end-to-end workspace speed. First use includes Warp kernel compilation.
 
 ## Install and run
 
-Use the existing CUDA-enabled PyTorch/cuRobo environment. Install **both** this
-project and the updated sibling cuRobo source: STL mode needs its sphere-free IK
-result handling and full-robot kinematic-chain support.
+Use the existing CUDA-enabled PyTorch/cuRobo v2 environment and update this
+project. STL mode automatically supports v2 loaders that lack the workspace's
+`kinematic_link_names` extension; reinstalling cuRobo is not required for that
+specific compatibility error.
 
 ```bash
-python -m pip install -e ../curobo --no-build-isolation
 python -m pip install -e .
 python -u run.py --config configs/spark2_v2.yaml --output-dir output/spark2_v2_stl
 ```
+
+Older v2 loaders print `STL compatibility mode`. This path retains every robot
+chain through the existing collision-link loader and allocates two disabled
+placeholder spheres to avoid legacy empty-result handling. Sphere collision
+costs stay disabled, and all feasibility decisions still use the STL checker.
+The updated sibling cuRobo can instead use the sphere-free path; install it with
+`python -m pip install -e ../curobo --no-build-isolation` if desired. The optional
+sphere broad-phase backend still requires that updated checkout.
 
 Warp 1.6 or newer is required for GPU STL checking; cuRobo supplies Warp in its
 runtime environment. Restart existing processes after updating. Normal IK runs

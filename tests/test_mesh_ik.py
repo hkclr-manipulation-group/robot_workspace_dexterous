@@ -86,3 +86,25 @@ def test_workspace_uses_pose_only_ik_then_mesh_checked_seed(monkeypatch, legacy_
         assert len(spheres) == 2 and all(sphere["radius"] < 0 for sphere in spheres)
     else:
         assert kinematics["kinematic_link_names"] == Checker.links
+
+
+def test_legacy_mesh_placeholders_build_nonempty_curobo_pair_configuration():
+    from robot_workspace_dexterous.curobo_solver import legacy_mesh_kinematics
+    params = pytest.importorskip("curobo._src.robot.types.self_collision_params")
+    from curobo._src.types.device_cfg import DeviceCfg
+    names = ["base", "tool", "other_arm"]
+    data = legacy_mesh_kinematics("unused.urdf", "base", "tool", names)
+    spheres, sphere_links = [], []
+    for index, name in enumerate(names):
+        for sphere in data["collision_spheres"][name]:
+            spheres.append([*sphere["center"], sphere["radius"]])
+            sphere_links.append(index)
+    config = params.SelfCollisionKinematicsCfg.create_from_link_pairs(
+        collision_link_names=names,
+        link_name_to_sphere_index={name: i for i, name in enumerate(names)},
+        self_collision_link_pair_ignores={}, self_collision_link_padding={},
+        all_link_spheres=torch.tensor(spheres, dtype=torch.float32),
+        link_index_to_sphere_index=torch.tensor(sphere_links, dtype=torch.int16),
+        device_cfg=DeviceCfg(device="cpu"))
+    assert config.num_spheres == 2
+    assert config.collision_pairs.tolist() == [[0, 1]]
