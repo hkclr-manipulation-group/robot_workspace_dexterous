@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='utf-8'?>
+<robot name="spark2_v2_2">
+  <link name="dummy_base_link" />
+  <link name="arm_base_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.000103 0.000327 0.054780" />
+      <mass value="0.910" />
+      <inertia ixx="0.001009518" ixy="0.000001025" ixz="0.000003260" iyy="0.001032871" iyz="0.000007526" izz="0.000924707" />
+    </inertial>
+    </link>
+  <link name="arm_L1">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.069326 0.012167 0.005047" />
+      <mass value="1.081" />
+      <inertia ixx="0.000651189" ixy="-0.000351380" ixz="0.000245797" iyy="0.002446242" iyz="0.000065485" izz="0.002394302" />
+    </inertial>
+    </link>
+  <link name="arm_L2">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.222312 0.000016 0.061942" />
+      <mass value="1.617" />
+      <inertia ixx="0.001097267" ixy="-0.000011795" ixz="0.001566212" iyy="0.030967948" iyz="-0.000000405" izz="0.031159470" />
+    </inertial>
+    </link>
+  <link name="arm_L3">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.060799 0.000884 0.006141" />
+      <mass value="1.015" />
+      <inertia ixx="0.000858891" ixy="0.000044456" ixz="0.000310176" iyy="0.003092572" iyz="0.000017997" izz="0.002949491" />
+    </inertial>
+    </link>
+  <link name="arm_L4">
+    <inertial>
+      <origin rpy="0 0 0" xyz="-0.000176 -0.030256 0.007825" />
+      <mass value="0.074" />
+      <inertia ixx="0.000057718" ixy="0.000000007" ixz="0.000000044" iyy="0.000022816" iyz="-0.000006682" izz="0.000061864" />
+    </inertial>
+    </link>
+  <link name="arm_L5">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0.000150 -0.011911 0.004557" />
+      <mass value="1.271" />
+      <inertia ixx="0.006969390" ixy="-0.000006823" ixz="0.000000443" iyy="0.000895795" iyz="-0.000582250" izz="0.006760940" />
+    </inertial>
+    </link>
+  <link name="arm_L6">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0.008227" />
+      <mass value="0.061" />
+      <inertia ixx="0.000019181" ixy="0" ixz="0" iyy="0.000019181" iyz="0" izz="0.000036750" />
+    </inertial>
+    </link>
+  <joint name="arm_J1" type="revolute">
+    <origin rpy="0 0 0" xyz="0 0 0.0982000000000019" />
+    <parent link="arm_base_link" />
+    <child link="arm_L1" />
+    <axis xyz="0 0 1" />
+    <limit effort="0" lower="-3.141593" upper="3.141593" velocity="0" />
+  </joint>
+  <joint name="arm_J2" type="revolute">
+    <origin rpy="-1.5708 -1.5708 0" xyz="0.096 0 0" />
+    <parent link="arm_L1" />
+    <child link="arm_L2" />
+    <axis xyz="0 0 1" />
+    <limit effort="0" lower="-1.570796" upper="1.570796" velocity="0" />
+  </joint>
+  <joint name="arm_J3" type="revolute">
+    <origin rpy="0 0 0" xyz="0.3465 0 0" />
+    <parent link="arm_L2" />
+    <child link="arm_L3" />
+    <axis xyz="0 0 1" />
+    <limit effort="0" lower="-3.141593" upper="3.141593" velocity="0" />
+  </joint>
+  <joint name="arm_J4" type="revolute">
+    <origin rpy="0 0 0" xyz="0.15 0 0" />
+    <parent link="arm_L3" />
+    <child link="arm_L4" />
+    <axis xyz="0 0 1" />
+    <limit effort="0" lower="-0.1745" upper="3.141593" velocity="0" />
+  </joint>
+  <joint name="arm_J5" type="revolute">
+    <origin rpy="1.5708 -1.5708 0" xyz="0 -0.09572 0" />
+    <parent link="arm_L4" />
+    <child link="arm_L5" />
+    <axis xyz="0 0 1" />
+    <limit effort="0" lower="-3.141593" upper="3.141593" velocity="0" />
+  </joint>
+  <joint name="arm_J6" type="revolute">
+    <origin rpy="1.5708 0 0" xyz="0 -0.1189 0" />
+    <parent link="arm_L5" />
+    <child link="arm_L6" />
+    <axis xyz="0 0 1" />
+    <limit effort="0" lower="-6.2831853" upper="6.2831853" velocity="0" />
+  </joint>
+  <link name="arm_end_effector">
+        </link>
+  <joint name="arm_J7" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0" />
+    <parent link="arm_L6" />
+    <child link="arm_end_effector" />
+  </joint>
+  <joint name="arm_J0" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0" />
+    <parent link="dummy_base_link" />
+    <child link="arm_base_link" />
+  </joint>
+</robot>
