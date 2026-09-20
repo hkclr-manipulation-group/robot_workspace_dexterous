@@ -231,3 +231,28 @@ limits can prevent large models from running. The sphere-only microbenchmark
 sphere kernel with and without culling. It is not an STL benchmark or an
 end-to-end speed comparison. Existing interior-generation reports and historical
 ignore-rule reviews remain under `models/` for reference.
+
+## spark2_v2_2 quick start
+
+The generated collision package is included at `models/spark2_v2_2/`. It
+contains the URDF, seven STL collision links, `collision_meshes.yaml`, and the
+optional `collision_spheres.yaml`.
+
+After changing the source model, regenerate and validate it with:
+
+```bash
+python tools/import_stl_models.py
+python run.py --config configs/spark2_v2_2.yaml --validate-only
+```
+
+Sample the dexterous workspace with:
+
+```bash
+python -u run.py --config configs/spark2_v2_2.yaml --output-dir output/spark2_v2_2_stl
+```
+
+The default `stl` backend checks the original triangle meshes. Use
+`--diagnose-only --diagnostic-samples 32` for a quick diagnostic, or
+`--collision-backend spheres` for an approximate sphere comparison. The full
+workspace run requires CUDA/PyTorch/cuRobo; validation checks model, mesh, and
+configuration consistency without sampling the workspace.

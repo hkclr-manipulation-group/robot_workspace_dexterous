@@ -61,7 +61,9 @@ def main(argv: list[str] | None = None) -> None:
     parser.add_argument("--collision-backend", choices=["stl", "spheres"],
                         help="Override the configured collision representation (bundled models: stl)")
     parser.add_argument("--allow-joint-contacts", action="store_true",
-                        help="STL only: exclude whole link pairs within rigid assemblies or across one moving joint; all other pairs remain checked")
+                        help="Deprecated alias for the default adjacent-joint policy")
+    parser.add_argument("--strict-collision", action="store_true",
+                        help="Check adjacent joint-interface geometry too (audit mode; may reject all IK seeds)")
     args = parser.parse_args(argv)
     if args.resolution is not None and (not np.isfinite(args.resolution) or args.resolution <= 0):
         parser.error('--resolution must be finite and positive')
@@ -81,6 +83,10 @@ def main(argv: list[str] | None = None) -> None:
         config = replace(config, collision_backend=args.collision_backend)
     if args.allow_joint_contacts and config.collision_backend != "stl":
         parser.error("--allow-joint-contacts requires the STL collision backend")
+    contact_ignores = config.self_collision_ignore
+    if not args.strict_collision:
+        from .joint_contacts import merge_contact_ignores
+        contact_ignores = merge_contact_ignores(str(config.urdf_path), contact_ignores)
     if args.resolution is not None:
         from dataclasses import replace
         config = replace(config, resolution=args.resolution,
@@ -97,18 +103,18 @@ def main(argv: list[str] | None = None) -> None:
         if config.base_link not in links - children or set(config.ee_links) - links:
             raise ValueError("Invalid URDF root or end-effector for STL checking")
         mesh_model = load_mesh_model(config.collision_meshes_path, config.urdf_path,
-                                     config.self_collision_ignore)
-        if args.allow_joint_contacts:
+                                     contact_ignores)
+        if not args.strict_collision:
             from .joint_contacts import allow_joint_contacts
             mesh_model = allow_joint_contacts(mesh_model, config.urdf_path)
-            print("Joint-contact policy enabled; excluded whole link pairs: " +
+            print("Adjacent-joint contact policy enabled; excluded interface pairs: " +
                   json.dumps(mesh_model.metadata["joint_contact_excluded_pairs"]), flush=True)
         collision_model = mesh_model.metadata
     else:
         if config.collision_spheres_path is None:
             parser.error("Sphere checking requires robot.collision_spheres")
         validate_robot_inputs(str(config.urdf_path), str(config.collision_spheres_path),
-                              config.base_link, config.ee_links, config.self_collision_ignore,
+                              config.base_link, config.ee_links, contact_ignores,
                               config.joint_limit_defaults)
         collision_model = collision_sphere_metadata(config.collision_spheres_path)
     if args.diagnose_only:
@@ -118,7 +124,7 @@ def main(argv: list[str] | None = None) -> None:
         else:
             from .diagnostics import diagnose_collisions
             result = diagnose_collisions(config.urdf_path, config.collision_spheres_path,
-                                         config.self_collision_ignore, samples=args.diagnostic_samples)
+                                         contact_ignores, samples=args.diagnostic_samples)
         print(json.dumps(result, indent=2))
         return
     if args.validate_only:
@@ -183,7 +189,7 @@ def main(argv: list[str] | None = None) -> None:
                 str(config.collision_spheres_path),
                 config.base_link,
                 config.ee_links,
-                config.self_collision_ignore,
+                contact_ignores,
                 self_collision_broad_phase=not args.no_collision_broad_phase,
             )
     workspaces: dict[str, DexterousWorkspace] = {}
