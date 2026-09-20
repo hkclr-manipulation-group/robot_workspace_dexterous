@@ -16,7 +16,6 @@ class WorkspaceProgress:
         directory.mkdir(parents=True, exist_ok=True)
         self.link, self.metadata = link, metadata
         self.last_print = -float('inf')
-        self.layer_html = ''
         self._status({'state': 'initializing', 'done': 0, 'total': None}, False)
 
     def _status(self, status: dict, has_preview: bool):
@@ -27,9 +26,7 @@ class WorkspaceProgress:
         temporary.replace(self.directory / 'status.json')
         total = status.get('total')
         percent = 100 * status['done'] / total if total else 0
-        preview = (self.layer_html if has_preview and self.layer_html else
-                   '<img src="preview.png?t='+str(time.time_ns())+'" style="width:100%">'
-                   if has_preview else '<p>Initializing GPU model; waiting for the first completed batch.</p>')
+        preview = '<img src="preview.png?t='+str(time.time_ns())+'" style="width:100%">' if has_preview else '<p>Initializing GPU model; waiting for the first completed batch.</p>'
         collision_note = ('Collision results use STL triangle intersections and closed-mesh containment; '
                           'open meshes are checked as surfaces.'
                           if self.metadata.get('collision_model', {}).get('mode') == 'stl'
@@ -41,8 +38,7 @@ class WorkspaceProgress:
 <progress value="{percent}" max="100" style="width:100%"></progress>
 <p>Updated {status['updated_utc']} · {status['done']:,} / {total or '?'} IK goals</p>
 <p>Latest saved snapshot; this page refreshes every 5 seconds. An unchanged timestamp means no new snapshot has arrived.</p>
-{self.layer_html}
-{preview}<p>Centre XY, XZ and YZ sections at the labelled grid coordinates; no depth projection.
+{preview}<p>XY, XZ and YZ projections of all tested reachable samples.
 Unprocessed cells are unknown. Partial-cell dexterity is a lower bound until all orientations are tested.
 {collision_note}</p></body></html>'''
         temporary = self.directory / 'index.tmp'
@@ -71,8 +67,6 @@ Unprocessed cells are unknown. Partial-cell dexterity is a lower bound until all
                             complete=done == total, done=done, total=total)
         temporary.replace(self.directory / 'partial.npz')
         self._preview(workspace, tested)
-        from .layer_preview import xy_layers
-        self.layer_html = xy_layers(workspace, tested, self.metadata.get('plot_sections', (0., 0., 0.))[2])
         self._status({'state': 'complete' if done == total else 'running',
                       'done': done, 'total': total, 'elapsed_seconds': elapsed,
                       'tested_cells': int(np.count_nonzero(tested)),
@@ -87,22 +81,18 @@ Unprocessed cells are unknown. Partial-cell dexterity is a lower bound until all
         FigureCanvasAgg(figure)
         keep = (tested > 0) & (workspace.reachable_orientations > 0)
         axes = figure.subplots(1, 3)
-        from .visualize import section_mask
-        sections = self.metadata.get('plot_sections', (0., 0., 0.))
         for axis, (i, j, label) in zip(axes, [(0, 1, 'XY'), (0, 2, 'XZ'), (1, 2, 'YZ')]):
-            normal = 3 - i - j
-            mask, selected = section_mask(workspace.positions, normal, sections[normal])
-            visible = keep & mask
-            xy = workspace.positions[visible][:, [i, j]]
-            scores = workspace.dexterity[visible]
+            xy, inverse = np.unique(workspace.positions[keep][:, [i, j]], axis=0, return_inverse=True)
+            scores = np.zeros(len(xy))
+            np.maximum.at(scores, inverse, workspace.dexterity[keep])
             artist = axis.scatter(xy[:, 0], xy[:, 1], c=scores, s=9, marker='s',
                                   linewidths=0, cmap='turbo', vmin=0, vmax=1)
             for dimension, setter in ((i, axis.set_xlim), (j, axis.set_ylim)):
                 low, high = workspace.positions[:, dimension].min(), workspace.positions[:, dimension].max()
                 setter(float(low)-.01, float(high)+.01)
-            axis.set(title=f'{label} section at {"XYZ"[normal]}={selected:.3f} m', xlabel='XYZ'[i]+' (m)', ylabel='XYZ'[j]+' (m)', aspect='equal')
+            axis.set(title=label+' projection', xlabel='XYZ'[i]+' (m)', ylabel='XYZ'[j]+' (m)', aspect='equal')
             axis.grid(alpha=.15)
-        figure.colorbar(artist, ax=list(axes), label='Orientation coverage (lower bound while partial)', shrink=.8)
+        figure.colorbar(artist, ax=list(axes), label='Max observed dexterity (lower bound while partial)', shrink=.8)
         figure.suptitle(f'{self.link} · {int(np.count_nonzero(keep)):,} reachable cells so far')
         temporary = self.directory / 'preview.tmp.png'
         figure.savefig(temporary, dpi=130)

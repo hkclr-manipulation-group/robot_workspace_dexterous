@@ -141,9 +141,8 @@ every 30 seconds at batch boundaries. Open
 preview. Its `partial.npz`, `preview.png` and `status.json` survive a later failure
 but do not implement resume. Unprocessed cells are unknown, and partial-cell
 dexterity is a lower bound until every orientation is tested. Terminal speed
-and ETA update at batch boundaries. Live previews now use the same XY/XZ/YZ
-section coordinates as final plots; older previews projected all depths and
-could visually fill the base region with points from above or behind it.
+and ETA update at batch boundaries. Live previews use XY/XZ/YZ projections of
+tested samples; final exported images remain centre sections.
 
 STL runs also reject target grid centres on fixed-body surfaces or inside
 closed fixed-body material before accumulating reachability and metrics. This
