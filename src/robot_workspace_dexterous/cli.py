@@ -41,7 +41,7 @@ def main(argv: list[str] | None = None) -> None:
         "--batch-size",
         type=int,
         default=None,
-        help="Override solver.batch_size (default configs: 32; try 16 or 8 if CUDA runs out of memory)",
+        help="Override solver.batch_size (default auto-scales from 32 using available GPU memory)",
     )
     parser.add_argument(
         "--ik-seeds",
@@ -116,6 +116,9 @@ def main(argv: list[str] | None = None) -> None:
             print("Adjacent-joint contact policy enabled; excluded interface pairs: " +
                   json.dumps(mesh_model.metadata["joint_contact_excluded_pairs"]), flush=True)
         collision_model = mesh_model.metadata
+        if collision_model.get("open_mesh_links"):
+            print("WARNING: open STL links use surface-only collision; hollow-space occupancy is unknown: "
+                  + ", ".join(collision_model["open_mesh_links"]), flush=True)
     else:
         if config.collision_spheres_path is None:
             parser.error("Sphere checking requires robot.collision_spheres")
@@ -177,8 +180,14 @@ def main(argv: list[str] | None = None) -> None:
         str(config.urdf_path), str(output_dir / "normalized_robot.urdf"), config.joint_limit_defaults
     )
     collision_robots = None
-    from .gpu_memory import configure_gpu_memory
-    configure_gpu_memory(config.gpu_memory_fraction)
+    from .gpu_memory import configure_gpu_memory, recommend_batch_size
+    allocation_limit = configure_gpu_memory(config.gpu_memory_fraction)
+    if args.batch_size is None:
+        from dataclasses import replace
+        selected_batch = recommend_batch_size(config.batch_size, allocation_limit)
+        if selected_batch != config.batch_size:
+            config = replace(config, batch_size=selected_batch)
+            print(f'Auto batch size: {selected_batch} (allocation limit {allocation_limit/2**30:.1f} GiB)', flush=True)
     mesh_checker = None
     if config.self_collision and mesh_model is not None:
         from .mesh_collision import MeshCollisionChecker

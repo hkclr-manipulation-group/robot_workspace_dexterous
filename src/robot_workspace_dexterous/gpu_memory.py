@@ -2,6 +2,22 @@
 import math
 
 
+def recommend_batch_size(configured: int, allocation_limit: int) -> int:
+    """Scale the conservative default without overriding an explicit setting."""
+    if configured != 32:
+        return configured
+    gib = allocation_limit / 2**30
+    if gib >= 72:
+        return 1024
+    if gib >= 36:
+        return 512
+    if gib >= 18:
+        return 256
+    if gib >= 10:
+        return 128
+    return configured
+
+
 def configure_gpu_memory(fraction=0.75):
     if not math.isfinite(fraction) or not 0 < fraction <= 1:
         raise ValueError('GPU memory fraction must be in (0, 1]')
