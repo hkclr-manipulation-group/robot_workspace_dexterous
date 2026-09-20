@@ -1,0 +1,29 @@
+[
+  {
+    "model": "spark2_v1",
+    "grid_cells": 55473,
+    "blocked_target_cells": 0,
+    "unresolved_open_links": [
+      "arm_base_link"
+    ],
+    "scope": "CPU fixed-body target occupancy only; no IK validation"
+  },
+  {
+    "model": "spark2_v2",
+    "grid_cells": 55473,
+    "blocked_target_cells": 0,
+    "unresolved_open_links": [
+      "arm_base_link"
+    ],
+    "scope": "CPU fixed-body target occupancy only; no IK validation"
+  },
+  {
+    "model": "spark2_v2_2",
+    "grid_cells": 55473,
+    "blocked_target_cells": 4,
+    "unresolved_open_links": [
+      "arm_base_link"
+    ],
+    "scope": "CPU fixed-body target occupancy only; no IK validation"
+  }
+]

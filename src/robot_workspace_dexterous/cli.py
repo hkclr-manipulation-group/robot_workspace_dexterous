@@ -162,7 +162,7 @@ def main(argv: list[str] | None = None) -> None:
     output_dir = Path(args.output_dir).expanduser().resolve()
     output_dir.mkdir(parents=True, exist_ok=True)
     monitors = {link: WorkspaceProgress(output_dir / 'progress' / link, link,
-                {'collision_model': collision_model, 'resolution_m': config.resolution,
+                {'collision_model': collision_model, 'resolution_m': config.resolution, 'plot_sections': plot_sections,
                  'self_collision_enabled': config.self_collision,
                  'self_collision_broad_phase': config.self_collision and config.collision_backend == 'spheres' and not args.no_collision_broad_phase})
                 for link in config.ee_links}

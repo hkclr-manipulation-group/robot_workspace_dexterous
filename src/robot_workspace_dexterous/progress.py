@@ -38,7 +38,7 @@ class WorkspaceProgress:
 <progress value="{percent}" max="100" style="width:100%"></progress>
 <p>Updated {status['updated_utc']} · {status['done']:,} / {total or '?'} IK goals</p>
 <p>Latest saved snapshot; this page refreshes every 5 seconds. An unchanged timestamp means no new snapshot has arrived.</p>
-{preview}<p>Projections of all reachable samples so far, not center slices.
+{preview}<p>XY, XZ and YZ sections at the labelled grid coordinates; no depth projection.
 Unprocessed cells are unknown. Partial-cell dexterity is a lower bound until all orientations are tested.
 {collision_note}</p></body></html>'''
         temporary = self.directory / 'index.tmp'
@@ -81,19 +81,22 @@ Unprocessed cells are unknown. Partial-cell dexterity is a lower bound until all
         FigureCanvasAgg(figure)
         keep = (tested > 0) & (workspace.reachable_orientations > 0)
         axes = figure.subplots(1, 3)
+        from .visualize import section_mask
+        sections = self.metadata.get('plot_sections', (0., 0., 0.))
         for axis, (i, j, label) in zip(axes, [(0, 1, 'XY'), (0, 2, 'XZ'), (1, 2, 'YZ')]):
-            # Collapse depth by maximum observed score, not by sparse subsampling.
-            xy, inverse = np.unique(workspace.positions[keep][:, [i, j]], axis=0, return_inverse=True)
-            scores = np.zeros(len(xy))
-            np.maximum.at(scores, inverse, workspace.dexterity[keep])
+            normal = 3 - i - j
+            mask, selected = section_mask(workspace.positions, normal, sections[normal])
+            visible = keep & mask
+            xy = workspace.positions[visible][:, [i, j]]
+            scores = workspace.dexterity[visible]
             artist = axis.scatter(xy[:, 0], xy[:, 1], c=scores, s=9, marker='s',
                                   linewidths=0, cmap='turbo', vmin=0, vmax=1)
             for dimension, setter in ((i, axis.set_xlim), (j, axis.set_ylim)):
                 low, high = workspace.positions[:, dimension].min(), workspace.positions[:, dimension].max()
                 setter(float(low)-.01, float(high)+.01)
-            axis.set(title=label+' projection', xlabel='XYZ'[i]+' (m)', ylabel='XYZ'[j]+' (m)', aspect='equal')
+            axis.set(title=f'{label} section at {"XYZ"[normal]}={selected:.3f} m', xlabel='XYZ'[i]+' (m)', ylabel='XYZ'[j]+' (m)', aspect='equal')
             axis.grid(alpha=.15)
-        figure.colorbar(artist, ax=list(axes), label='Max observed dexterity (lower bound while partial)', shrink=.8)
+        figure.colorbar(artist, ax=list(axes), label='Orientation coverage (lower bound while partial)', shrink=.8)
         figure.suptitle(f'{self.link} · {int(np.count_nonzero(keep)):,} reachable cells so far')
         temporary = self.directory / 'preview.tmp.png'
         figure.savefig(temporary, dpi=130)

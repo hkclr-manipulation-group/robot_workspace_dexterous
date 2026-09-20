@@ -292,6 +292,15 @@ def compute_dexterous_workspace(
         )
     device, dtype = solver_cfg.device_cfg.device, solver_cfg.device_cfg.dtype
     positions = regular_grid(x_range, y_range, np.asarray(heights), resolution)
+    blocked_targets = np.zeros(len(positions), dtype=bool)
+    if self_collision and mesh_checker is not None and hasattr(mesh_checker, 'model'):
+        from .occupancy import fixed_occupancy
+        blocked_targets, unresolved = fixed_occupancy(mesh_checker.model, urdf_path, positions)
+        mesh_checker.model.metadata['fixed_target_occupancy'] = {
+            'blocked_cells': int(blocked_targets.sum()), 'unresolved_open_links': unresolved,
+            'policy': 'closed material and mesh surfaces; no convex-hull filling'}
+        print(f'Fixed-body target occupancy: {blocked_targets.sum()} blocked cells; '
+              f'open interiors unresolved: {unresolved}', flush=True)
     orientations = np.asarray(orientations_wxyz, dtype=np.float32)
     orientation_count = len(orientations)
     counts = np.zeros(len(positions), dtype=np.int32)
@@ -329,6 +338,7 @@ def compute_dexterous_workspace(
             success = valid.detach().cpu().numpy().astype(bool)
         else:
             success = solved.success.reshape(-1)[: len(flat)].detach().cpu().numpy().astype(bool)
+        success &= ~blocked_targets[point_index]
         np.add.at(counts, point_index[success], 1)
         if np.any(success):
             with cuda_stage(f'{ee_link}: Jacobian goals {start}:{stop}', debug_cuda):

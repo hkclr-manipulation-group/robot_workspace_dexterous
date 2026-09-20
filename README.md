@@ -141,11 +141,23 @@ every 30 seconds at batch boundaries. Open
 preview. Its `partial.npz`, `preview.png` and `status.json` survive a later failure
 but do not implement resume. Unprocessed cells are unknown, and partial-cell
 dexterity is a lower bound until every orientation is tested. Terminal speed
-and ETA update at batch boundaries.
+and ETA update at batch boundaries. Live previews now use the same XY/XZ/YZ
+section coordinates as final plots; older previews projected all depths and
+could visually fill the base region with points from above or behind it.
 
-The default STL policy excludes only link interfaces that are part of the same
-rigid assembly or are direct neighbours of one moving joint. Their CAD overlap
-is an installation interface, not a free-space obstacle. Pairs separated by
+STL runs also reject target grid centres on fixed-body surfaces or inside
+closed fixed-body material before accumulating reachability and metrics. This
+check is independent of link-pair exclusions. It preserves modelled cavities
+and does not remove the zero-pose volume of moving arms. The summary records
+`fixed_target_occupancy`, including open fixed links whose interior remains
+unresolved. Such results are not a certified collision-free workspace; review
+or replace the open collision geometry and rerun. Existing NPZ results are not
+retroactively corrected by the plotting change.
+
+The default STL policy excludes whole link pairs that are part of the same
+rigid assembly or are direct neighbours of one moving joint. This is an
+assembly-contact assumption, not a geometric classification of each contact;
+collisions elsewhere on those same link pairs are also excluded. Pairs separated by
 two or more moving joints remain checked. Use `--strict-collision` when auditing
 the raw CAD contacts; this can intentionally reject every IK seed for models
 whose exported housings overlap at their joint interfaces.

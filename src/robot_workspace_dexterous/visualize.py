@@ -14,6 +14,13 @@ AxisRanges = tuple[tuple[float, float], tuple[float, float], tuple[float, float]
 WorldSphere = tuple[np.ndarray, float]
 
 
+def section_mask(points, normal, requested):
+    """Select exactly one grid plane, never merge nearby depths."""
+    available = np.unique(points[:, normal])
+    selected = float(available[np.argmin(np.abs(available - requested))])
+    return points[:, normal] == selected, selected
+
+
 def load_zero_pose_collision_spheres(
     urdf_path: str | Path, collision_spheres_path: str | Path,
 ) -> list[WorldSphere]:
@@ -88,9 +95,7 @@ def save_dexterity_center_views(
     artist = None
 
     for axis, (name, normal, dimensions, requested, x_label, y_label) in zip(axes, planes):
-        available = np.unique(points[:, normal])
-        selected = float(available[np.argmin(np.abs(available - requested))])
-        in_plane = np.isclose(points[:, normal], selected, atol=1e-6)
+        in_plane, selected = section_mask(points, normal, requested)
         plane_points = points[in_plane]
         plane_scores = scores[in_plane]
         visible = plane_scores > 0
@@ -160,9 +165,8 @@ def save_metric_center_views(
     artist = None
 
     for axis, (name, normal, dimensions, requested, x_label, y_label) in zip(axes, planes):
-        available = np.unique(points[:, normal])
-        selected = float(available[np.argmin(np.abs(available - requested))])
-        visible = np.isclose(points[:, normal], selected, atol=1e-6) & valid
+        in_plane, selected = section_mask(points, normal, requested)
+        visible = in_plane & valid
         artist = axis.scatter(
             points[visible, dimensions[0]],
             points[visible, dimensions[1]],
