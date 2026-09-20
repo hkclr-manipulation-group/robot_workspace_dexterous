@@ -27,7 +27,9 @@ class WorkspaceProgress:
         temporary.replace(self.directory / 'status.json')
         total = status.get('total')
         percent = 100 * status['done'] / total if total else 0
-        preview = '<img src="preview.png?t='+str(time.time_ns())+'" style="width:100%">' if has_preview else '<p>Initializing GPU model; waiting for the first completed batch.</p>'
+        preview = (self.layer_html if has_preview and self.layer_html else
+                   '<img src="preview.png?t='+str(time.time_ns())+'" style="width:100%">'
+                   if has_preview else '<p>Initializing GPU model; waiting for the first completed batch.</p>')
         collision_note = ('Collision results use STL triangle intersections and closed-mesh containment; '
                           'open meshes are checked as surfaces.'
                           if self.metadata.get('collision_model', {}).get('mode') == 'stl'

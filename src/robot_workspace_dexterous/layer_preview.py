@@ -20,16 +20,15 @@ def xy_layers(workspace, tested, center_z=0.):
     return _HTML.replace('__DATA__', json.dumps(data, allow_nan=False))
 
 
-_HTML = '''<section style="background:white;padding:16px;border-radius:8px">
-<h2>Live XY layers</h2>
-<label>Z layer <select id="xy-layer"></select></label>
+_HTML = '''<div style="background:white;padding:8px;border-radius:6px">
+<label>XY section Z <select id="xy-layer"></select></label>
 <button id="xy-prev">Previous</button><button id="xy-next">Next</button>
 <p id="xy-status"></p>
-<canvas id="xy-canvas" width="680" height="680" style="max-width:100%;height:auto"></canvas>
-<p>Orientation coverage: 0 <span style="display:inline-block;width:180px;height:12px;background:linear-gradient(to right,#440154,#21918c,#fde725)"></span> 1</p>
-<p>Only accepted points in this Z layer are shown. Untested cells are unknown;
+<canvas id="xy-canvas" width="680" height="420" style="max-width:100%;height:auto"></canvas>
+<p style="margin:2px">Orientation coverage: 0 <span style="display:inline-block;width:140px;height:10px;background:linear-gradient(to right,#440154,#21918c,#fde725)"></span> 1</p>
+<p style="margin:2px">Only accepted points in this Z layer are shown. Untested cells are unknown;
 partial coverage is a lower bound. Final exported images remain centre sections.</p>
-</section>
+</div>
 <script id="xy-data" type="application/json">__DATA__</script>
 <script>
 (() => {
