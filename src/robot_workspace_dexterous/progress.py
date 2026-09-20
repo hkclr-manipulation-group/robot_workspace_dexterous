@@ -16,6 +16,7 @@ class WorkspaceProgress:
         directory.mkdir(parents=True, exist_ok=True)
         self.link, self.metadata = link, metadata
         self.last_print = -float('inf')
+        self.layer_html = ''
         self._status({'state': 'initializing', 'done': 0, 'total': None}, False)
 
     def _status(self, status: dict, has_preview: bool):
@@ -38,7 +39,8 @@ class WorkspaceProgress:
 <progress value="{percent}" max="100" style="width:100%"></progress>
 <p>Updated {status['updated_utc']} · {status['done']:,} / {total or '?'} IK goals</p>
 <p>Latest saved snapshot; this page refreshes every 5 seconds. An unchanged timestamp means no new snapshot has arrived.</p>
-{preview}<p>XY, XZ and YZ sections at the labelled grid coordinates; no depth projection.
+{self.layer_html}
+{preview}<p>Centre XY, XZ and YZ sections at the labelled grid coordinates; no depth projection.
 Unprocessed cells are unknown. Partial-cell dexterity is a lower bound until all orientations are tested.
 {collision_note}</p></body></html>'''
         temporary = self.directory / 'index.tmp'
@@ -67,6 +69,8 @@ Unprocessed cells are unknown. Partial-cell dexterity is a lower bound until all
                             complete=done == total, done=done, total=total)
         temporary.replace(self.directory / 'partial.npz')
         self._preview(workspace, tested)
+        from .layer_preview import xy_layers
+        self.layer_html = xy_layers(workspace, tested, self.metadata.get('plot_sections', (0., 0., 0.))[2])
         self._status({'state': 'complete' if done == total else 'running',
                       'done': done, 'total': total, 'elapsed_seconds': elapsed,
                       'tested_cells': int(np.count_nonzero(tested)),
