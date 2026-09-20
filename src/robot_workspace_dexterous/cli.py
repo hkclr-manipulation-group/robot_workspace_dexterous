@@ -107,6 +107,12 @@ def main(argv: list[str] | None = None) -> None:
         if not args.strict_collision:
             from .joint_contacts import allow_joint_contacts
             mesh_model = allow_joint_contacts(mesh_model, config.urdf_path)
+            mesh_model.metadata["joint_contact_excluded_pairs"] = [
+                list(pair) for pair in sorted({
+                    tuple(sorted((first, second)))
+                    for first, others in contact_ignores.items() for second in others
+                })
+            ]
             print("Adjacent-joint contact policy enabled; excluded interface pairs: " +
                   json.dumps(mesh_model.metadata["joint_contact_excluded_pairs"]), flush=True)
         collision_model = mesh_model.metadata
