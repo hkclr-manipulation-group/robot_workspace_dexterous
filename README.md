@@ -143,6 +143,13 @@ but do not implement resume. Unprocessed cells are unknown, and partial-cell
 dexterity is a lower bound until every orientation is tested. Terminal speed
 and ETA update at batch boundaries.
 
+The default STL policy excludes only link interfaces that are part of the same
+rigid assembly or are direct neighbours of one moving joint. Their CAD overlap
+is an installation interface, not a free-space obstacle. Pairs separated by
+two or more moving joints remain checked. Use `--strict-collision` when auditing
+the raw CAD contacts; this can intentionally reject every IK seed for models
+whose exported housings overlap at their joint interfaces.
+
 Strict DWS uses `minimum_dexterity: 1.0`: every sampled orientation must pass.
 Final plots omit unreachable cells and show XY/XZ/YZ sections with equal metre
 scales. If every cell is unreachable, the run reports a diagnostic error.
@@ -171,15 +178,17 @@ errors. If the model owner confirms permitted contacts, add only the reviewed
 pairs to `models/spark2_v2/self_collision_ignore.yaml`; otherwise correct the
 collision geometry. Keep all other pairs checked. Then rerun the diagnostic
 before the full grid. A collision-free joint sample is not proof of target IK
-reachability. The default configuration does not add exclusions automatically.
+reachability. The default configuration now applies the adjacent-joint policy
+automatically; `--strict-collision` restores the raw-contact audit behavior.
+The policy is applied consistently to STL and sphere diagnostics.
 
-### Allowing joint-assembly contacts explicitly
+### Auditing or overriding joint-interface contacts
 
-When your collision model permits contact within rigid assemblies and between
-bodies connected by one moving joint, use `--allow-joint-contacts`:
+The adjacent-joint policy is the normal workspace mode. Use `--strict-collision`
+to include raw interface geometry, or keep the deprecated explicit alias:
 
 ```bash
-python run.py --config configs/spark2_v2.yaml --allow-joint-contacts --diagnose-only --diagnostic-samples 32
+python run.py --config configs/spark2_v2.yaml --strict-collision --diagnose-only --diagnostic-samples 32
 python -u run.py --config configs/spark2_v2.yaml --allow-joint-contacts --output-dir output/spark2_v2_joint_contacts
 ```
 

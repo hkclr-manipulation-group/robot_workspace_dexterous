@@ -116,7 +116,13 @@ def main(argv: list[str] | None = None) -> None:
         validate_robot_inputs(str(config.urdf_path), str(config.collision_spheres_path),
                               config.base_link, config.ee_links, contact_ignores,
                               config.joint_limit_defaults)
-        collision_model = collision_sphere_metadata(config.collision_spheres_path)
+        collision_model = {
+            **collision_sphere_metadata(config.collision_spheres_path),
+            "joint_contact_policy": "strict" if args.strict_collision else "adjacent_joint_interfaces",
+            "joint_contact_excluded_pairs": [] if args.strict_collision else [list(pair) for pair in sorted(
+                {tuple(sorted((first, second))) for first, others in contact_ignores.items() for second in others}
+            )],
+        }
     if args.diagnose_only:
         if mesh_model is not None:
             from .mesh_collision import diagnose_mesh_collisions
