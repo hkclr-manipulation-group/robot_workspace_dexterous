@@ -237,6 +237,11 @@ python tools/diagnose_models.py --allow-joint-contacts --output-dir output/stl_j
 
 ## Optional sphere backend
 
+The normal configuration uses the STL backend, so `collision_spheres_interior.yaml`
+is not loaded during a normal workspace run. It is still a supported fallback for
+`--collision-backend spheres`, the CPU/GPU sphere diagnostics, and comparisons
+against older workspace results; deleting it would make those commands fail.
+
 The old sphere inputs remain available for explicit comparison:
 
 ```bash
