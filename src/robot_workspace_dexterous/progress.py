@@ -26,7 +26,14 @@ class WorkspaceProgress:
         temporary.replace(self.directory / 'status.json')
         total = status.get('total')
         percent = 100 * status['done'] / total if total else 0
-        preview = '<img src="preview.png?t='+str(time.time_ns())+'" style="width:100%">' if has_preview else '<p>Initializing GPU model; waiting for the first completed batch.</p>'
+        # Keep the three sections in one wide progress snapshot.  The image is
+        # allowed to scroll on narrow screens instead of stacking XY/XZ/YZ;
+        # this makes the live view match the final side-by-side plot layout.
+        preview = ('<div style="overflow-x:auto;background:#fff;padding:8px">'
+                   '<img src="preview.png?t='+str(time.time_ns())+'" '
+                   'alt="XY, XZ and YZ workspace sections" '
+                   'style="display:block;width:auto;min-width:900px;max-width:none">'
+                   '</div>' if has_preview else '<p>Initializing GPU model; waiting for the first completed batch.</p>')
         collision_note = ('Collision results use STL triangle intersections and closed-mesh containment; '
                           'open meshes are checked as surfaces.'
                           if self.metadata.get('collision_model', {}).get('mode') == 'stl'
@@ -77,7 +84,9 @@ Unprocessed cells are unknown. Partial-cell dexterity is a lower bound until all
     def _preview(self, workspace: DexterousWorkspace, tested: np.ndarray):
         from matplotlib.figure import Figure
         from matplotlib.backends.backend_agg import FigureCanvasAgg
-        figure = Figure(figsize=(12, 4), layout='constrained')
+        # One row is intentional: XY, XZ and YZ are compared at the same
+        # progress point, rather than rendered as separate section images.
+        figure = Figure(figsize=(15, 4.6), layout='constrained')
         FigureCanvasAgg(figure)
         keep = (tested > 0) & (workspace.reachable_orientations > 0)
         axes = figure.subplots(1, 3)
