@@ -10,7 +10,8 @@ from typing import Callable
 import xml.etree.ElementTree as ET
 
 import numpy as np
-import yaml
+
+from .yaml_io import load_yaml
 
 from .sampling import DexterousWorkspace, regular_grid
 from .urdf_compat import align_joint_axes
@@ -119,7 +120,7 @@ def _load_collision_spheres(path: str) -> dict[str, list[dict[str, object]]]:
     source = Path(path).expanduser().resolve()
     collision_sphere_metadata(source)
     with source.open("r", encoding="utf-8") as stream:
-        data = yaml.safe_load(stream)
+        data = load_yaml(stream)
     spheres = data.get("collision_spheres") if isinstance(data, dict) else None
     if not isinstance(spheres, dict) or not spheres:
         raise ValueError(f"collision sphere file is empty or invalid: {source}")
@@ -303,6 +304,7 @@ def compute_dexterous_workspace(
               f'open interiors unresolved: {unresolved}', flush=True)
     orientations = np.asarray(orientations_wxyz, dtype=np.float32)
     orientation_count = len(orientations)
+    orientation_success = np.zeros((len(positions), orientation_count), dtype=bool)
     counts = np.zeros(len(positions), dtype=np.int32)
     w_sum = np.zeros(len(positions), dtype=np.float64)
     w2_sum = np.zeros(len(positions), dtype=np.float64)
@@ -314,51 +316,55 @@ def compute_dexterous_workspace(
     for start in range(0, total, batch_size):
         stop = min(start + batch_size, total)
         flat = np.arange(start, stop, dtype=np.int64)
-        point_index = flat // orientation_count
-        orientation_index = flat % orientation_count
-        pose = Pose(
-            position=torch.as_tensor(positions[point_index], device=device, dtype=dtype),
-            quaternion=torch.as_tensor(
-                orientations[orientation_index], device=device, dtype=dtype
-            ),
-        )
-        goals = GoalToolPose.from_poses({ee_link: pose}, num_goalset=1)
-        with cuda_stage(f'{ee_link}: IK goals {start}:{stop}', debug_cuda):
-            if mesh_checker is None:
-                solved = solver.solve_pose(goal_tool_poses=goals)
-            else:
-                solved = solver.solve_pose(goal_tool_poses=goals, return_seeds=num_seeds)
-        selected_state = solved.js_solution
-        if mesh_checker is not None:
-            with cuda_stage(f'{ee_link}: STL collision goals {start}:{stop}', debug_cuda):
-                valid, chosen_positions = select_mesh_candidates(solved, mesh_checker)
-            from curobo.types import JointState
-            selected_state = JointState.from_position(
-                chosen_positions, joint_names=solved.js_solution.joint_names)
-            success = valid.detach().cpu().numpy().astype(bool)
-        else:
-            success = solved.success.reshape(-1)[: len(flat)].detach().cpu().numpy().astype(bool)
-        success &= ~blocked_targets[point_index]
-        np.add.at(counts, point_index[success], 1)
-        if np.any(success):
-            with cuda_stage(f'{ee_link}: Jacobian goals {start}:{stop}', debug_cuda):
-                state = jacobian_model.compute_kinematics(selected_state)
-            jac = state.tool_jacobians.reshape(
-                len(flat), -1, 6, state.tool_jacobians.shape[-1]
-            )[:, 0]
-            with cuda_stage(f'{ee_link}: SVD goals {start}:{stop}', debug_cuda):
-                singular = torch.linalg.svdvals(jac)[success].detach().cpu().numpy()
-            successful_points = point_index[success]
-            w = np.prod(singular, axis=1).astype(np.float64)
-            sigma_min = singular[:, -1].astype(np.float64)
-            condition = np.divide(
-                singular[:, 0], sigma_min,
-                out=np.full(len(sigma_min), np.inf), where=sigma_min > 1e-9,
+        flat = flat[~blocked_targets[flat // orientation_count]]
+        if len(flat):
+            point_index = flat // orientation_count
+            orientation_index = flat % orientation_count
+            pose = Pose(
+                position=torch.as_tensor(positions[point_index], device=device, dtype=dtype),
+                quaternion=torch.as_tensor(
+                    orientations[orientation_index], device=device, dtype=dtype
+                ),
             )
-            np.add.at(w_sum, successful_points, w)
-            np.add.at(w2_sum, successful_points, w * w)
-            np.fmax.at(condition_max, successful_points, condition)
-            np.fmin.at(sigma_minimum, successful_points, sigma_min)
+            goals = GoalToolPose.from_poses({ee_link: pose}, num_goalset=1)
+            with cuda_stage(f'{ee_link}: IK goals {start}:{stop}', debug_cuda):
+                if mesh_checker is None:
+                    solved = solver.solve_pose(goal_tool_poses=goals)
+                else:
+                    solved = solver.solve_pose(goal_tool_poses=goals, return_seeds=num_seeds)
+            selected_state = solved.js_solution
+            if mesh_checker is not None:
+                with cuda_stage(f'{ee_link}: STL collision goals {start}:{stop}', debug_cuda):
+                    valid, chosen_positions = select_mesh_candidates(solved, mesh_checker)
+                from curobo.types import JointState
+                selected_state = JointState.from_position(
+                    chosen_positions, joint_names=solved.js_solution.joint_names)
+                success = valid.detach().cpu().numpy().astype(bool)
+            else:
+                success = solved.success.reshape(-1)[: len(flat)].detach().cpu().numpy().astype(bool)
+            orientation_success[point_index[success], orientation_index[success]] = True
+            np.add.at(counts, point_index[success], 1)
+            if np.any(success):
+                with cuda_stage(f'{ee_link}: Jacobian goals {start}:{stop}', debug_cuda):
+                    state = jacobian_model.compute_kinematics(selected_state)
+                jac = state.tool_jacobians.reshape(
+                    len(flat), -1, 6, state.tool_jacobians.shape[-1]
+                )[:, 0]
+                with cuda_stage(f'{ee_link}: SVD goals {start}:{stop}', debug_cuda):
+                    singular = torch.linalg.svdvals(jac[torch.as_tensor(success, device=device)]).detach().cpu().numpy()
+                if singular.shape[1] < 6:
+                    singular = np.pad(singular, ((0,0),(0,6-singular.shape[1])))
+                successful_points = point_index[success]
+                w = np.prod(singular, axis=1).astype(np.float64)
+                sigma_min = singular[:, -1].astype(np.float64)
+                condition = np.divide(
+                    singular[:, 0], sigma_min,
+                    out=np.full(len(sigma_min), np.inf), where=sigma_min > 1e-9,
+                )
+                np.add.at(w_sum, successful_points, w)
+                np.add.at(w2_sum, successful_points, w * w)
+                np.fmax.at(condition_max, successful_points, condition)
+                np.fmin.at(sigma_minimum, successful_points, sigma_min)
         if progress:
             progress(stop, total, time.monotonic() - started)
         now = time.monotonic()
@@ -368,7 +374,7 @@ def compute_dexterous_workspace(
                 positions, counts.astype(np.float32) / orientation_count, counts.copy(),
                 orientation_count, (w_sum / denominator).astype(np.float32),
                 (w2_sum / denominator).astype(np.float32), condition_max.astype(np.float32),
-                sigma_minimum.astype(np.float32))
+                sigma_minimum.astype(np.float32), orientation_success.copy())
             snapshot(partial, stop, total, now-started)
             last_snapshot = time.monotonic()
     denominator = np.maximum(counts, 1)
@@ -376,7 +382,7 @@ def compute_dexterous_workspace(
         positions, counts.astype(np.float32) / orientation_count, counts,
         orientation_count, (w_sum / denominator).astype(np.float32),
         (w2_sum / denominator).astype(np.float32), condition_max.astype(np.float32),
-        sigma_minimum.astype(np.float32),
+        sigma_minimum.astype(np.float32), orientation_success,
     )
 
 

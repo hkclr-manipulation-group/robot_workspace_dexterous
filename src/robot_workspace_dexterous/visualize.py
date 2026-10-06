@@ -5,6 +5,8 @@ import xml.etree.ElementTree as ET
 
 import matplotlib.pyplot as plt
 import numpy as np
+
+from .yaml_io import load_yaml
 from .curobo_solver import _load_collision_spheres
 
 from .sampling import DexterousWorkspace

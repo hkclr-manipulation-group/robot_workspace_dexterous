@@ -1,0 +1,26 @@
+robot:
+  urdf: ../../models/spark2_v2/robot.urdf
+  collision_meshes: ../../models/spark2_v2/collision_meshes.yaml
+  base_link: arm_base_link
+  ee_links: [arm_end_effector]
+  self_collision_ignore_file: ../../models/spark2_v2/self_collision_ignore.yaml
+grid:
+  x_range: [-0.6, 0.6]
+  y_range: [-0.6, 0.6]
+  z_min: 0.3
+  z_max: 0.3
+  resolution: 0.3
+orientations:
+  samples_wxyz: [[1, 0, 0, 0]]
+solver:
+  backend: cpu
+  collision_backend: stl
+  self_collision: true
+  ik_seeds: 4
+  ik_iterations: 120
+  seed: 0
+  batch_size: 8
+  position_tolerance: 0.005
+  orientation_tolerance: 0.08
+output:
+  minimum_dexterity: 1.0

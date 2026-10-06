@@ -17,6 +17,7 @@ class DexterousWorkspace:
     manipulability_squared_mean: np.ndarray | None = None
     condition_number_max: np.ndarray | None = None
     minimum_singular_value: np.ndarray | None = None
+    orientation_success: np.ndarray | None = None
 
     def __post_init__(self) -> None:
         positions = np.asarray(self.positions)
@@ -28,6 +29,8 @@ class DexterousWorkspace:
             raise ValueError("dexterity and reachable_orientations must have shape (N,)")
         if self.orientation_count < 1:
             raise ValueError("orientation_count must be positive")
+        if self.orientation_success is not None and np.asarray(self.orientation_success).shape != (len(positions), self.orientation_count):
+            raise ValueError('orientation_success must have shape (N, orientation_count)')
         for name in (
             "manipulability_mean", "manipulability_squared_mean",
             "condition_number_max", "minimum_singular_value",
@@ -52,9 +55,10 @@ class DexterousWorkspace:
                     self.minimum_singular_value,
                 )
             ),
+            None if self.orientation_success is None else self.orientation_success[keep],
         )
 
-    def save(self, path: str) -> None:
+    def to_arrays(self) -> dict[str, np.ndarray]:
         arrays = {
             "positions": self.positions, "dexterity": self.dexterity,
             "reachable_orientations": self.reachable_orientations,
@@ -67,7 +71,12 @@ class DexterousWorkspace:
             value = getattr(self, name)
             if value is not None:
                 arrays[name] = value
-        np.savez_compressed(path, **arrays)
+        if self.orientation_success is not None:
+            arrays['orientation_success_bits'] = np.packbits(self.orientation_success, axis=1, bitorder='little')
+        return arrays
+
+    def save(self, path: str) -> None:
+        np.savez_compressed(path, **self.to_arrays())
 
     def volume_summary(self, minimum_dexterity: float, voxel_volume: float) -> dict[str, float | int]:
         """Return equal-grid RWS/DWS volumes and their ratio."""
@@ -85,6 +94,21 @@ class DexterousWorkspace:
             "dws_rws_ratio": dws_cells / rws_cells if rws_cells else 0.0,
             "dws_minimum_dexterity": minimum_dexterity,
         }
+
+
+def shared_orientation_workspace(workspaces) -> DexterousWorkspace:
+    """Intersect the same tested orientation IDs; separate arm solutions are used."""
+    items = list(workspaces)
+    if not items or any(item.orientation_success is None for item in items):
+        raise ValueError('Shared orientation results require per-orientation success masks')
+    first = items[0]
+    if any(item.orientation_count != first.orientation_count or
+           not np.array_equal(item.positions, first.positions) for item in items):
+        raise ValueError('Shared workspaces require identical grids and orientation ordering')
+    mask = np.logical_and.reduce([item.orientation_success for item in items])
+    counts = mask.sum(axis=1).astype(np.int32)
+    return DexterousWorkspace(first.positions, counts.astype(np.float32)/first.orientation_count,
+                             counts, first.orientation_count, orientation_success=mask)
 
 
 def generate_uniform_quaternions(count: int) -> np.ndarray:

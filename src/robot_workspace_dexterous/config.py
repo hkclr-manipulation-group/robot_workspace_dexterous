@@ -3,7 +3,8 @@ from __future__ import annotations
 from dataclasses import dataclass
 from pathlib import Path
 import numpy as np
-import yaml
+
+from .yaml_io import load_yaml
 from .sampling import generate_uniform_quaternions
 
 
@@ -32,6 +33,9 @@ class Config:
     gpu_memory_fraction: float = 0.75
     collision_meshes_path: Path | None = None
     collision_backend: str = "spheres"
+    backend: str = 'cuda'
+    ik_iterations: int = 120
+    random_seed: int = 0
 
 
 def _local_path(config_path: Path, value: str | None) -> Path | None:
@@ -51,7 +55,7 @@ def _local_path(config_path: Path, value: str | None) -> Path | None:
 def load_config(path: str | Path) -> Config:
     config_path = Path(path).expanduser().resolve()
     with config_path.open("r", encoding="utf-8") as stream:
-        raw = yaml.safe_load(stream)
+        raw = load_yaml(stream)
     robot, grid = raw["robot"], raw["grid"]
     urdf_path = _local_path(config_path, robot.get("urdf"))
     collision_spheres_path = _local_path(config_path, robot.get("collision_spheres"))
@@ -88,9 +92,19 @@ def load_config(path: str | Path) -> Config:
     z_max = float(grid.get("z_max", z_min))
     z_step = float(grid.get("z_step", resolution))
     minimum = float(raw.get("output", {}).get("minimum_dexterity", 1.0))
-    if resolution <= 0 or z_step <= 0 or z_max < z_min or not 0 <= minimum <= 1:
+    if not np.isfinite([resolution,z_step,z_min,z_max,minimum,*x_range,*y_range]).all() or resolution <= 0 or z_step <= 0 or z_max < z_min or not 0 <= minimum <= 1:
         raise ValueError("grid steps must be positive and minimum_dexterity in [0, 1]")
     solver = raw.get("solver", {})
+    backend = str(solver.get('backend', 'cuda')).lower()
+    if backend not in {'cpu','cuda'}:
+        raise ValueError('solver.backend must be cpu or cuda')
+    if int(solver.get('seed', 0)) < 0:
+        raise ValueError('solver.seed must be non-negative')
+    if min(int(solver.get('ik_seeds',8)),int(solver.get('batch_size',32)),int(solver.get('ik_iterations',120))) < 1:
+        raise ValueError('solver seeds, batch size and IK iterations must be positive')
+    tolerances = [float(solver.get('position_tolerance',.005)),float(solver.get('orientation_tolerance',.08))]
+    if not np.isfinite(tolerances).all() or min(tolerances)<=0:
+        raise ValueError('solver tolerances must be finite and positive')
     plot = raw.get("plot", {})
     plot_x_range = tuple(float(v) for v in plot.get("x_range", x_range))
     plot_y_range = tuple(float(v) for v in plot.get("y_range", y_range))
@@ -113,7 +127,7 @@ def load_config(path: str | Path) -> Config:
     ignore_file = _local_path(config_path, robot.get("self_collision_ignore_file"))
     if ignore_file is not None:
         with ignore_file.open("r", encoding="utf-8") as stream:
-            ignore_data = yaml.safe_load(stream)
+            ignore_data = load_yaml(stream)
         external = (
             ignore_data.get("self_collision_ignore")
             if isinstance(ignore_data, dict) else None
@@ -159,4 +173,5 @@ def load_config(path: str | Path) -> Config:
         (plot_x_range, plot_y_range, plot_z_range),
         plot_sections, base_position, limit_defaults, gpu_memory_fraction,
         collision_meshes_path, collision_backend,
+        backend, int(solver.get('ik_iterations',120)), int(solver.get('seed',0)),
     )

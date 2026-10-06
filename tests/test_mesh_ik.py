@@ -25,7 +25,8 @@ def test_all_seeds_checked_and_failed_pose_not_accepted():
 
 
 @pytest.mark.parametrize("legacy_curobo", [False, True])
-def test_workspace_uses_pose_only_ik_then_mesh_checked_seed(monkeypatch, legacy_curobo):
+@pytest.mark.parametrize('blocked', [False, True])
+def test_workspace_uses_pose_only_ik_then_mesh_checked_seed(monkeypatch, legacy_curobo, blocked):
     calls = {}
     class Checker:
         links = ["base", "tool", "other_arm"]
@@ -49,6 +50,7 @@ def test_workspace_uses_pose_only_ik_then_mesh_checked_seed(monkeypatch, legacy_
         def __init__(self, config):
             pass
         def solve_pose(self, goal_tool_poses, return_seeds):
+            assert not blocked, 'Fixed-body occupied cells must never enter IK'
             assert return_seeds == 2
             q = torch.zeros(1, 2, 6)
             q[:, 1] = 1
@@ -71,10 +73,20 @@ def test_workspace_uses_pose_only_ik_then_mesh_checked_seed(monkeypatch, legacy_
         GoalToolPose=SimpleNamespace(from_poses=lambda poses, num_goalset: poses),
         JointState=SimpleNamespace(from_position=lambda position, joint_names:
                                    SimpleNamespace(position=position, joint_names=joint_names))))
+    checker = Checker()
+    if blocked:
+        checker.model = SimpleNamespace(metadata={})
+        monkeypatch.setattr('robot_workspace_dexterous.occupancy.fixed_occupancy',
+                            lambda *args: (np.array([True]), []))
+    progress=[]
     result = compute_dexterous_workspace("unused.urdf", "base", "tool", (0, 0), (0, 0),
-        np.array([0]), .1, np.array([[1, 0, 0, 0]]), num_seeds=2, mesh_checker=Checker())
-    assert result.reachable_orientations.tolist() == [1]
-    assert calls["checked_seeds"] == 2
+        np.array([0]), .1, np.array([[1, 0, 0, 0]]), num_seeds=2, mesh_checker=checker,
+        progress=lambda done,total,elapsed: progress.append((done,total)))
+    assert result.reachable_orientations.tolist() == [0 if blocked else 1]
+    assert result.orientation_success.tolist() == [[not blocked]]
+    assert progress == [(1,1)]
+    if not blocked:
+        assert calls["checked_seeds"] == 2
     assert calls["config"]["self_collision_check"] is False
     assert calls["config"]["load_collision_spheres"] is legacy_curobo
     kinematics = calls["robot"]["robot_cfg"]["kinematics"]

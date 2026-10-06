@@ -1,8 +1,12 @@
 ﻿# Dexterous Workspace
 
 Compute reachable and dexterous workspace volumes, DWS/RWS, Jacobian
-manipulability and condition numbers with cuRobo. All 11 supplied configurations
+manipulability and condition numbers with CPU IK or cuRobo. All supplied robot configurations
 now use **STL self-collision detection** by default.
+
+Full CPU IK, collision checking and metrics are available with `--backend cpu`.
+See the concise [CPU guide and optimization review](docs/CPU_WORKSPACE.md),
+including UML diagrams, a state machine and a PDF.
 
 ## STL collision checking
 
@@ -16,12 +20,11 @@ replaced by spheres; scale and geometry origins come from the source URDF.
 Open CAD meshes have no unambiguous solid interior. They are checked for surface
 intersection and are listed in `open_mesh_links` in validation and results.
 Holes are not filled. Explicit `self_collision_ignore` rules still apply;
-adjacent links are not automatically ignored. Only the existing D20260901B
-Link04/Link05 exception is present in the bundled presets. Designed joint
-contacts can therefore make all sampled configurations collide. Inspect the
-reported pair frequencies before deciding whether an exception is appropriate.
-The explicit `--allow-joint-contacts` option below selects a different policy;
-it does not edit the preset files.
+the normal workspace policy also excludes adjacent joint interfaces. Use
+`--strict-collision` to include those pairs for an audit. Designed joint
+contacts can then make all sampled configurations collide. Inspect reported
+pair frequencies before changing the policy. `--allow-joint-contacts` is a
+deprecated alias for the default policy; it does not edit preset files.
 
 cuRobo generates pose-IK candidates without sphere collision costs. **Every
 returned seed** is checked against STL, and a goal counts as reachable if at
@@ -58,7 +61,8 @@ sphere broad-phase backend still requires that updated checkout.
 
 Warp 1.6 or newer is required for GPU STL checking; cuRobo supplies Warp in its
 runtime environment. Restart existing processes after updating. Normal IK runs
-retain CUDA graphs. A full workspace run requires CUDA-enabled PyTorch.
+retain CUDA graphs. CUDA runs require CUDA-enabled PyTorch; CPU runs use the
+local shared collision package and FCL instead.
 
 Portable input layout:
 
@@ -71,8 +75,8 @@ configs/<model>.yaml
 ```
 
 Copy the whole `models/` and `configs/` directories. STL assets are shared by
-content hash (90 unique files, approximately 130 MB). Runtime does not require
-the collision-generation repository. The manifest checks URDF and STL
+content hash (90 unique files, approximately 130 MB). CUDA runtime does not require
+the collision-generation package; CPU runtime uses it. The manifest checks URDF and STL
 checksums and supplies each mesh's scale and origin. The geometry-free URDF is
 used for kinematics; `normalized_robot.urdf` is generated for cuRobo without
 changing STL coordinates. To reimport assets after an intentional model
