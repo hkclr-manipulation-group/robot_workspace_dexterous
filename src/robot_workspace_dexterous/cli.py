@@ -64,7 +64,7 @@ def main(argv: list[str] | None = None) -> None:
                         help="Deprecated alias for the default adjacent-joint policy")
     parser.add_argument("--strict-collision", action="store_true",
                         help="Check adjacent joint-interface geometry too (audit mode; may reject all IK seeds)")
-    parser.add_argument('--backend', choices=['cpu', 'cuda'], help='Override solver.backend')
+    parser.add_argument('--backend', choices=['cpu', 'cuda', 'torch'], help='Override solver.backend')
     parser.add_argument('--ik-iterations', type=int, help='CPU IK evaluation limit per seed')
     parser.add_argument('--seed', type=int, help='CPU random seed (non-negative)')
     args = parser.parse_args(argv)
@@ -89,7 +89,7 @@ def main(argv: list[str] | None = None) -> None:
     config = replace(config, backend=args.backend or config.backend,
                      ik_iterations=args.ik_iterations or config.ik_iterations,
                      random_seed=config.random_seed if args.seed is None else args.seed)
-    if config.backend == 'cpu':
+    if config.backend in {'cpu', 'torch'}:
         from collision_shpere_generation.kinematics import RobotKinematics
         RobotKinematics(config.urdf_path, config.base_link)
         if args.debug_cuda:
@@ -100,6 +100,8 @@ def main(argv: list[str] | None = None) -> None:
     if args.allow_joint_contacts and config.collision_backend != "stl":
         parser.error("--allow-joint-contacts requires the STL collision backend")
     contact_ignores = config.self_collision_ignore
+    if config.backend == 'torch' and config.collision_backend != 'spheres':
+        parser.error('--backend torch requires --collision-backend spheres')
     if not args.strict_collision:
         from .joint_contacts import merge_contact_ignores
         contact_ignores = merge_contact_ignores(str(config.urdf_path), contact_ignores)
@@ -151,7 +153,7 @@ def main(argv: list[str] | None = None) -> None:
             )],
         }
     if args.diagnose_only:
-        if config.backend == 'cpu':
+        if config.backend in {'cpu', 'torch'}:
             from .cpu_solver import diagnose_cpu_collisions
             result = diagnose_cpu_collisions(config, mesh_model, contact_ignores, args.diagnostic_samples)
         elif mesh_model is not None:
@@ -238,7 +240,12 @@ def main(argv: list[str] | None = None) -> None:
     workspaces: dict[str, DexterousWorkspace] = {}
     for link in config.ee_links:
         print(f"computing {link}: {len(config.orientations)} orientations per XYZ cell; grid {config.resolution*1000:g} mm", flush=True)
-        if config.backend == 'cpu':
+        if config.backend == 'torch':
+            from .tensor_solver import compute_tensor_workspace
+            workspace = compute_tensor_workspace(config, link, contact_ignores=contact_ignores,
+                progress=monitors[link].progress, snapshot=monitors[link].snapshot,
+                snapshot_seconds=args.snapshot_seconds)
+        elif config.backend == 'cpu':
             from .cpu_solver import compute_cpu_workspace
             workspace = compute_cpu_workspace(config, link, mesh_model=mesh_model,
                 contact_ignores=contact_ignores, progress=monitors[link].progress,
@@ -258,17 +265,9 @@ def main(argv: list[str] | None = None) -> None:
             )
         reachable_cells = int(np.count_nonzero(workspace.reachable_orientations > 0))
         if reachable_cells == 0:
-            raise RuntimeError(
-                f"{link}: no reachable grid cells were found; check workspace bounds, "
-                "base/tool link names, and self-collision ignores before plotting. "
-                "This means zero accepted IK targets, not just zero cells meeting minimum_dexterity. "
-                "To inspect collision rejection, run: "
-                f'python run.py --config "{args.config}" --collision-backend {config.collision_backend} '
-                + ("--allow-joint-contacts " if args.allow_joint_contacts else "") +
-                "--diagnose-only --diagnostic-samples 32. "
-                "Persistent contacts between joint housings may require model-specific review; "
-                "collision pairs are not ignored automatically."
-            )
+            print(f'WARNING: {link}: no accepted IK targets. Saving the empty sampled workspace; '
+                  'this does not prove that the physical robot has no reachable poses. '
+                  'Inspect --diagnose-only and the conservative outer-sphere fit.',flush=True)
         print(
             f"{link}: {reachable_cells}/{len(workspace.positions)} grid cells reachable, "
             f"maximum dexterity={float(np.max(workspace.dexterity)):.4f}"
@@ -320,6 +319,14 @@ def main(argv: list[str] | None = None) -> None:
         ]
         summary.update({
             'backend': config.backend,
+            'status': 'no_accepted_ik_targets' if reachable_cells == 0 else 'complete',
+            'ik_iterations': config.ik_iterations,
+            'random_seed': config.random_seed,
+            'grid_resolution_m': config.resolution,
+            'grid_x_range': config.x_range,
+            'grid_y_range': config.y_range,
+            'grid_heights': config.heights.tolist(),
+            'orientation_samples_wxyz': config.orientations.tolist(),
             'ik_seeds': config.ik_seeds,
             'cpu_ik_iterations': config.ik_iterations if config.backend == 'cpu' else None,
             'cpu_seed': config.random_seed if config.backend == 'cpu' else None,

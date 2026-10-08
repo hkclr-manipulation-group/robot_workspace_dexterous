@@ -3,12 +3,11 @@ robot:
     velocity: 1.0
     effort: 1.0
   urdf: ../models/D20260902B60/robot.urdf
-  collision_spheres: ../models/D20260902B60/collision_spheres_interior.yaml
+  collision_spheres: ../models/D20260902B60/collision_spheres_outer.yaml
   self_collision_ignore_file: ../models/D20260902B60/self_collision_ignore.yaml
   base_link: base_link
   ee_links:
   - L6
-  collision_meshes: ../models/D20260902B60/collision_meshes.yaml
 grid:
   x_range:
   - -1.0
@@ -29,6 +28,7 @@ solver:
   position_tolerance: 0.005
   orientation_tolerance: 0.08
   self_collision: true
-  collision_backend: stl
+  collision_backend: spheres
+  backend: torch
 output:
   minimum_dexterity: 1.0

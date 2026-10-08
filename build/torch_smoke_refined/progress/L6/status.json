@@ -1,0 +1,61 @@
+{
+  "backend": "torch",
+  "collision_model": {
+    "file": "D:\\code_agent\\robot_workspace_dexterous\\models\\P2AB\\collision_spheres_outer.yaml",
+    "sha256": "922f5dd97325f9a21a6d1a2dfe980ed40ed573fd9bbababd76a80172bc3a06dd",
+    "mode": "external",
+    "radius_expansion_mm": 0.0,
+    "sha256_lf": "9b3e64a57e35d5d679a741979db2080c2d5dc07b483e426e7e8a62b305284aa5",
+    "model": "P2AB",
+    "total_spheres": 453,
+    "complete_scope": "all_geometry_links",
+    "fit_mode": "triangle_enclosing",
+    "padding_m": 0.002,
+    "triangle_surface_coverage_certified": true,
+    "solid_volume_coverage_certified": false,
+    "joint_contact_policy": "adjacent_joint_interfaces",
+    "joint_contact_excluded_pairs": [
+      [
+        "L1",
+        "L2"
+      ],
+      [
+        "L1",
+        "base_link"
+      ],
+      [
+        "L2",
+        "L3"
+      ],
+      [
+        "L3",
+        "L4"
+      ],
+      [
+        "L4",
+        "L5"
+      ],
+      [
+        "L5",
+        "L6"
+      ]
+    ]
+  },
+  "resolution_m": 0.2,
+  "plot_sections": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "self_collision_enabled": true,
+  "self_collision_broad_phase": true,
+  "state": "running",
+  "done": 512,
+  "total": 21296,
+  "elapsed_seconds": 0.0,
+  "tested_cells": 32,
+  "completed_cells": 32,
+  "reachable_cells_so_far": 0,
+  "ee_link": "L6",
+  "updated_utc": "2026-10-08T01:37:35.563500+00:00"
+}

@@ -1,0 +1,87 @@
+{
+  "model": "D20260901B",
+  "mode": "external",
+  "fit_mode": "triangle_enclosing",
+  "complete": true,
+  "complete_scope": "all_geometry_links",
+  "triangle_surface_coverage_certified": true,
+  "solid_volume_coverage_certified": false,
+  "padding_m": 0.002,
+  "urdf_sha256": "cb15f85dfd9131b73e850c8a5aab4e6470558566433491b7a0702c9001984049",
+  "links": {
+    "baselink": {
+      "triangles": 142,
+      "cover_triangles": 892,
+      "count": 58,
+      "max_radius_m": 0.029926137891851556,
+      "radius_target_met": true,
+      "max_assigned_vertex_gap_m": -0.0019999999999999983,
+      "triangle_surface_coverage_certified": true
+    },
+    "Link01": {
+      "triangles": 176,
+      "cover_triangles": 1106,
+      "count": 59,
+      "max_radius_m": 0.029992351600877716,
+      "radius_target_met": true,
+      "max_assigned_vertex_gap_m": -0.0019999999999999983,
+      "triangle_surface_coverage_certified": true
+    },
+    "Link02": {
+      "triangles": 184,
+      "cover_triangles": 1878,
+      "count": 120,
+      "max_radius_m": 0.029993569667783472,
+      "radius_target_met": true,
+      "max_assigned_vertex_gap_m": -0.0019999999999999983,
+      "triangle_surface_coverage_certified": true
+    },
+    "Link03": {
+      "triangles": 160,
+      "cover_triangles": 1312,
+      "count": 128,
+      "max_radius_m": 0.03253313940352645,
+      "radius_target_met": false,
+      "max_assigned_vertex_gap_m": -0.0019999999999999983,
+      "triangle_surface_coverage_certified": true
+    },
+    "Link04": {
+      "triangles": 422,
+      "cover_triangles": 1202,
+      "count": 72,
+      "max_radius_m": 0.029930717579883588,
+      "radius_target_met": true,
+      "max_assigned_vertex_gap_m": -0.0019999999999999983,
+      "triangle_surface_coverage_certified": true
+    },
+    "Link05": {
+      "triangles": 128,
+      "cover_triangles": 256,
+      "count": 1,
+      "max_radius_m": 0.028143735713812595,
+      "radius_target_met": true,
+      "max_assigned_vertex_gap_m": -0.0020000000000000018,
+      "triangle_surface_coverage_certified": true
+    },
+    "Link06": {
+      "triangles": 538,
+      "cover_triangles": 1040,
+      "count": 14,
+      "max_radius_m": 0.029932901602873915,
+      "radius_target_met": true,
+      "max_assigned_vertex_gap_m": -0.0019999999999999983,
+      "triangle_surface_coverage_certified": true
+    }
+  },
+  "total_spheres": 452,
+  "sphere_sha256": "f9fa7f11b79e7cc33c76b9c673244c53b590cdbb3570e98f22bb331e24913e02",
+  "mesh_sha256": {
+    "meshes/1163a6e3a78c401c52c046b54ca031b0bb54755e4781c4f3fbe863378a508257.stl": "1163a6e3a78c401c52c046b54ca031b0bb54755e4781c4f3fbe863378a508257",
+    "meshes/15ec29a5599553affd3fae5cef93709479f3ca1af4d15d047b573966362502f1.stl": "15ec29a5599553affd3fae5cef93709479f3ca1af4d15d047b573966362502f1",
+    "meshes/2dae3d435dcf8fae68698e02c7423b5ade28712e5851b46c5baa4c556958119a.stl": "2dae3d435dcf8fae68698e02c7423b5ade28712e5851b46c5baa4c556958119a",
+    "meshes/2dbec4c12505cf534f75a807b376f28546a8585b4e08da675f1be6c9094a7544.stl": "2dbec4c12505cf534f75a807b376f28546a8585b4e08da675f1be6c9094a7544",
+    "meshes/4e19894921c9c72ea951870b83ebab697d1d6410727f2a0763da806677eb39ae.stl": "4e19894921c9c72ea951870b83ebab697d1d6410727f2a0763da806677eb39ae",
+    "meshes/514c2ac3cf5cc5a2a38f9de5ca23e0ddda0490b922554056948450c05be8168d.stl": "514c2ac3cf5cc5a2a38f9de5ca23e0ddda0490b922554056948450c05be8168d",
+    "meshes/9637f000f281e743b7c960c0dd2051b5dc4314d9cff52c38892ee2bf7e807133.stl": "9637f000f281e743b7c960c0dd2051b5dc4314d9cff52c38892ee2bf7e807133"
+  }
+}

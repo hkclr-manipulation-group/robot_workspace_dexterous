@@ -1,0 +1,158 @@
+[
+  {
+    "model": "D20260901B",
+    "base_link": "baselink",
+    "ee_links": [
+      "Link06"
+    ],
+    "collision_mode": "external",
+    "resolution_m": 0.05,
+    "orientations": 16
+  },
+  {
+    "model": "D20260902B60",
+    "base_link": "base_link",
+    "ee_links": [
+      "L6"
+    ],
+    "collision_mode": "external",
+    "resolution_m": 0.05,
+    "orientations": 16
+  },
+  {
+    "model": "D20260903B10",
+    "base_link": "base_link",
+    "ee_links": [
+      "L6"
+    ],
+    "collision_mode": "external",
+    "resolution_m": 0.05,
+    "orientations": 16
+  },
+  {
+    "model": "dual_v2_1_left_hand_right_gripper",
+    "base_link": "dummy_world",
+    "ee_links": [
+      "arm_end_effector_l",
+      "arm_end_effector_r"
+    ],
+    "collision_mode": "external",
+    "resolution_m": 0.05,
+    "orientations": 32
+  },
+  {
+    "model": "dual_v2_1_no_gripper",
+    "base_link": "dummy_world",
+    "ee_links": [
+      "arm_end_effector_l",
+      "arm_end_effector_r"
+    ],
+    "collision_mode": "external",
+    "resolution_m": 0.05,
+    "orientations": 32
+  },
+  {
+    "model": "dual_v2_1_with_gripper",
+    "base_link": "dummy_world",
+    "ee_links": [
+      "arm_end_effector_l",
+      "arm_end_effector_r"
+    ],
+    "collision_mode": "external",
+    "resolution_m": 0.05,
+    "orientations": 32
+  },
+  {
+    "model": "dual_v2_1_with_hand",
+    "base_link": "dummy_world",
+    "ee_links": [
+      "arm_end_effector_l",
+      "arm_end_effector_r"
+    ],
+    "collision_mode": "external",
+    "resolution_m": 0.05,
+    "orientations": 32
+  },
+  {
+    "model": "dual_v2_2_left_hand_right_gripper_half",
+    "base_link": "dummy_world",
+    "ee_links": [
+      "arm_end_effector_l",
+      "arm_end_effector_r"
+    ],
+    "collision_mode": "external",
+    "resolution_m": 0.05,
+    "orientations": 32
+  },
+  {
+    "model": "dual_v2_2_no_gripper",
+    "base_link": "dummy_world",
+    "ee_links": [
+      "arm_end_effector_l",
+      "arm_end_effector_r"
+    ],
+    "collision_mode": "external",
+    "resolution_m": 0.05,
+    "orientations": 32
+  },
+  {
+    "model": "P2AB-2",
+    "base_link": "base_link",
+    "ee_links": [
+      "L66"
+    ],
+    "collision_mode": "external",
+    "resolution_m": 0.05,
+    "orientations": 16
+  },
+  {
+    "model": "P2AB-3",
+    "base_link": "base_link",
+    "ee_links": [
+      "L666"
+    ],
+    "collision_mode": "external",
+    "resolution_m": 0.05,
+    "orientations": 16
+  },
+  {
+    "model": "P2AB",
+    "base_link": "base_link",
+    "ee_links": [
+      "L6"
+    ],
+    "collision_mode": "external",
+    "resolution_m": 0.05,
+    "orientations": 16
+  },
+  {
+    "model": "spark2_v1",
+    "base_link": "dummy_base_link",
+    "ee_links": [
+      "arm_end_effector"
+    ],
+    "collision_mode": "external",
+    "resolution_m": 0.05,
+    "orientations": 32
+  },
+  {
+    "model": "spark2_v2",
+    "base_link": "arm_base_link",
+    "ee_links": [
+      "arm_end_effector"
+    ],
+    "collision_mode": "external",
+    "resolution_m": 0.05,
+    "orientations": 32
+  },
+  {
+    "model": "spark2_v2_2",
+    "base_link": "dummy_base_link",
+    "ee_links": [
+      "arm_end_effector"
+    ],
+    "collision_mode": "external",
+    "resolution_m": 0.05,
+    "orientations": 32
+  }
+]

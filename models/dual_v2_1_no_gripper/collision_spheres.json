@@ -1,0 +1,200 @@
+{
+  "model": "dual_v2_1_no_gripper",
+  "mode": "external",
+  "fit_mode": "triangle_enclosing",
+  "complete": true,
+  "complete_scope": "all_geometry_links",
+  "triangle_surface_coverage_certified": true,
+  "solid_volume_coverage_certified": false,
+  "padding_m": 0.002,
+  "urdf_sha256": "b93c71a434b0ba2b11c6e2547311616802933e2c17174be1ac64072756216306",
+  "links": {
+    "DP": {
+      "triangles": 182094,
+      "cover_triangles": 196342,
+      "count": 64,
+      "max_radius_m": 0.12140589802342289,
+      "radius_target_met": false,
+      "max_assigned_vertex_gap_m": -0.0020000000000000018,
+      "triangle_surface_coverage_certified": true
+    },
+    "s1": {
+      "triangles": 65023,
+      "cover_triangles": 68293,
+      "count": 64,
+      "max_radius_m": 0.0677705109739551,
+      "radius_target_met": false,
+      "max_assigned_vertex_gap_m": -0.001999999999999995,
+      "triangle_surface_coverage_certified": true
+    },
+    "s2": {
+      "triangles": 29912,
+      "cover_triangles": 32912,
+      "count": 64,
+      "max_radius_m": 0.07326802007371803,
+      "radius_target_met": false,
+      "max_assigned_vertex_gap_m": -0.001999999999999995,
+      "triangle_surface_coverage_certified": true
+    },
+    "s3": {
+      "triangles": 74017,
+      "cover_triangles": 77085,
+      "count": 64,
+      "max_radius_m": 0.06033123641377945,
+      "radius_target_met": false,
+      "max_assigned_vertex_gap_m": -0.0019999999999999983,
+      "triangle_surface_coverage_certified": true
+    },
+    "s4": {
+      "triangles": 146830,
+      "cover_triangles": 148370,
+      "count": 64,
+      "max_radius_m": 0.08823510137544689,
+      "radius_target_met": false,
+      "max_assigned_vertex_gap_m": -0.001999999999999995,
+      "triangle_surface_coverage_certified": true
+    },
+    "arm_L1_l": {
+      "triangles": 35424,
+      "cover_triangles": 35444,
+      "count": 14,
+      "max_radius_m": 0.0577275900609832,
+      "radius_target_met": true,
+      "max_assigned_vertex_gap_m": -0.0020000000000000018,
+      "triangle_surface_coverage_certified": true
+    },
+    "arm_L2_l": {
+      "triangles": 23792,
+      "cover_triangles": 23992,
+      "count": 8,
+      "max_radius_m": 0.059257459588231406,
+      "radius_target_met": true,
+      "max_assigned_vertex_gap_m": -0.0020000000000000018,
+      "triangle_surface_coverage_certified": true
+    },
+    "arm_L3_l": {
+      "triangles": 36148,
+      "cover_triangles": 37318,
+      "count": 29,
+      "max_radius_m": 0.058754711891550467,
+      "radius_target_met": true,
+      "max_assigned_vertex_gap_m": -0.0020000000000000018,
+      "triangle_surface_coverage_certified": true
+    },
+    "arm_L4_l": {
+      "triangles": 24634,
+      "cover_triangles": 27794,
+      "count": 19,
+      "max_radius_m": 0.05978080589046797,
+      "radius_target_met": true,
+      "max_assigned_vertex_gap_m": -0.0020000000000000018,
+      "triangle_surface_coverage_certified": true
+    },
+    "arm_L5_l": {
+      "triangles": 37544,
+      "cover_triangles": 38254,
+      "count": 11,
+      "max_radius_m": 0.05970171672542297,
+      "radius_target_met": true,
+      "max_assigned_vertex_gap_m": -0.0020000000000000018,
+      "triangle_surface_coverage_certified": true
+    },
+    "arm_L6_l": {
+      "triangles": 39160,
+      "cover_triangles": 39698,
+      "count": 9,
+      "max_radius_m": 0.0596938571615854,
+      "radius_target_met": true,
+      "max_assigned_vertex_gap_m": -0.0020000000000000018,
+      "triangle_surface_coverage_certified": true
+    },
+    "arm_L7_l": {
+      "triangles": 30858,
+      "cover_triangles": 31270,
+      "count": 2,
+      "max_radius_m": 0.05998294401493067,
+      "radius_target_met": true,
+      "max_assigned_vertex_gap_m": -0.0020000000000000018,
+      "triangle_surface_coverage_certified": true
+    },
+    "arm_L1_r": {
+      "triangles": 35424,
+      "cover_triangles": 35444,
+      "count": 14,
+      "max_radius_m": 0.057727619471811015,
+      "radius_target_met": true,
+      "max_assigned_vertex_gap_m": -0.0020000000000000018,
+      "triangle_surface_coverage_certified": true
+    },
+    "arm_L2_r": {
+      "triangles": 23792,
+      "cover_triangles": 23992,
+      "count": 8,
+      "max_radius_m": 0.059257459588231406,
+      "radius_target_met": true,
+      "max_assigned_vertex_gap_m": -0.0020000000000000018,
+      "triangle_surface_coverage_certified": true
+    },
+    "arm_L3_r": {
+      "triangles": 36148,
+      "cover_triangles": 37318,
+      "count": 29,
+      "max_radius_m": 0.058754645788362356,
+      "radius_target_met": true,
+      "max_assigned_vertex_gap_m": -0.0020000000000000018,
+      "triangle_surface_coverage_certified": true
+    },
+    "arm_L4_r": {
+      "triangles": 24634,
+      "cover_triangles": 27794,
+      "count": 19,
+      "max_radius_m": 0.05978080589046797,
+      "radius_target_met": true,
+      "max_assigned_vertex_gap_m": -0.0020000000000000018,
+      "triangle_surface_coverage_certified": true
+    },
+    "arm_L5_r": {
+      "triangles": 37544,
+      "cover_triangles": 38254,
+      "count": 11,
+      "max_radius_m": 0.0597017311913373,
+      "radius_target_met": true,
+      "max_assigned_vertex_gap_m": -0.0020000000000000018,
+      "triangle_surface_coverage_certified": true
+    },
+    "arm_L6_r": {
+      "triangles": 39160,
+      "cover_triangles": 39698,
+      "count": 9,
+      "max_radius_m": 0.0596938571615854,
+      "radius_target_met": true,
+      "max_assigned_vertex_gap_m": -0.0020000000000000018,
+      "triangle_surface_coverage_certified": true
+    },
+    "arm_L7_r": {
+      "triangles": 30858,
+      "cover_triangles": 31270,
+      "count": 2,
+      "max_radius_m": 0.05998294401493067,
+      "radius_target_met": true,
+      "max_assigned_vertex_gap_m": -0.0020000000000000018,
+      "triangle_surface_coverage_certified": true
+    }
+  },
+  "total_spheres": 504,
+  "sphere_sha256": "3276dc1afa4c7e521e660dd6d05c407fbdd3ae11121019c2a4162c90c19bc83a",
+  "mesh_sha256": {
+    "meshes/2086c6a667fd3435182a653007aeacbad1ff9dce7bde1694e62a6a24f2593b9e.stl": "2086c6a667fd3435182a653007aeacbad1ff9dce7bde1694e62a6a24f2593b9e",
+    "meshes/244b60c12b2d1749135d2f14b82fab62dad86c65153ae6c58864637742427d8b.stl": "244b60c12b2d1749135d2f14b82fab62dad86c65153ae6c58864637742427d8b",
+    "meshes/2b717be4628a0aaff81a61b002ef9eac83420ab1c4a31b68df97757b0d05035c.stl": "2b717be4628a0aaff81a61b002ef9eac83420ab1c4a31b68df97757b0d05035c",
+    "meshes/3bc0ec95e32382376e42daced16c8ee7ad68b15e116b29b0c4d4e7774c5f36f5.stl": "3bc0ec95e32382376e42daced16c8ee7ad68b15e116b29b0c4d4e7774c5f36f5",
+    "meshes/3f608afe4084f67e16056596d124f9c6a1991821501540037da149047137517e.stl": "3f608afe4084f67e16056596d124f9c6a1991821501540037da149047137517e",
+    "meshes/48d4a8ca0ebd30aaee9116bf661aa2c1a156027c891ceceddd57ae25f7268bbd.stl": "48d4a8ca0ebd30aaee9116bf661aa2c1a156027c891ceceddd57ae25f7268bbd",
+    "meshes/514a8b4798bc498a247ffb1bb59045b6c3674329e9d7fa686151b0cdb83c7a24.stl": "514a8b4798bc498a247ffb1bb59045b6c3674329e9d7fa686151b0cdb83c7a24",
+    "meshes/ae045772107e3c5096e761605d8a483addcb23e206abf89dc2aead4c27a98952.stl": "ae045772107e3c5096e761605d8a483addcb23e206abf89dc2aead4c27a98952",
+    "meshes/aef96c3eae5c9902fc08c6ac71a1e0d6e48ca53054e357a50a237cf321345bcf.stl": "aef96c3eae5c9902fc08c6ac71a1e0d6e48ca53054e357a50a237cf321345bcf",
+    "meshes/b863fc2d318eb1b50cdbce8a7285b6e29441bac158322b3eaa11abab8266c0ec.stl": "b863fc2d318eb1b50cdbce8a7285b6e29441bac158322b3eaa11abab8266c0ec",
+    "meshes/bf124abfb91cd3a4320d51e907e7916df7274894cd6eb0af90cde7bed5ce2294.stl": "bf124abfb91cd3a4320d51e907e7916df7274894cd6eb0af90cde7bed5ce2294",
+    "meshes/fae367145c7d26ad6c199becc3f34967ccc22e7e426cf7d4a5021371662d59bd.stl": "fae367145c7d26ad6c199becc3f34967ccc22e7e426cf7d4a5021371662d59bd"
+  }
+}

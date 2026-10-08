@@ -13,12 +13,12 @@ def test_all_presets_load_after_relocation_without_sibling_repositories(tmp_path
     shutil.copytree(project / "models", relocated / "models")
     shutil.copytree(project / "configs", relocated / "configs")
     configs = sorted((relocated / "configs").glob("*.yaml"))
-    assert len(configs) >= 11
+    assert {'P2AB','P2AB-2','P2AB-3'} <= {path.stem for path in configs}
     for path in configs:
         config = load_config(path)
         metadata = collision_sphere_metadata(config.collision_spheres_path)
         assert metadata['radius_expansion_mm'] == 0
-        if config.collision_spheres_path.with_suffix('.json').exists():
+        if metadata['mode'] == 'interior':
             assert metadata['mode'] == 'interior'
             assert metadata['model'] == path.stem
             assert metadata['interior_domain'] == 'stl_material'

@@ -96,8 +96,8 @@ def load_config(path: str | Path) -> Config:
         raise ValueError("grid steps must be positive and minimum_dexterity in [0, 1]")
     solver = raw.get("solver", {})
     backend = str(solver.get('backend', 'cuda')).lower()
-    if backend not in {'cpu','cuda'}:
-        raise ValueError('solver.backend must be cpu or cuda')
+    if backend not in {'cpu','cuda','torch'}:
+        raise ValueError('solver.backend must be cpu, cuda or torch')
     if int(solver.get('seed', 0)) < 0:
         raise ValueError('solver.seed must be non-negative')
     if min(int(solver.get('ik_seeds',8)),int(solver.get('batch_size',32)),int(solver.get('ik_iterations',120))) < 1:
