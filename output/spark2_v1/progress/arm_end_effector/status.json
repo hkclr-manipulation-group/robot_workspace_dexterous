@@ -1,0 +1,28 @@
+{
+  "collision_model": {
+    "file": "/home/hkclr-manipulation-spark1/rt_ws/robot_workspace_dexterous/models/spark2_v1/collision_spheres_interior.yaml",
+    "sha256": "860f81b11b05a58783ca2308388b95a583939860a96e9729b7ab51b22c3f4188",
+    "mode": "interior",
+    "radius_expansion_mm": 0.0,
+    "sha256_lf": "860f81b11b05a58783ca2308388b95a583939860a96e9729b7ab51b22c3f4188",
+    "model": "spark2_v1",
+    "total_spheres": 1581,
+    "estimated_links": [
+      "arm_base_link",
+      "arm_L1",
+      "arm_L3",
+      "arm_L4"
+    ],
+    "interior_domain": "stl_material",
+    "preserve_holes_and_cavities": true,
+    "complete_scope": "configured_links_not_volume_coverage",
+    "max_sampled_surface_gap_mm": 37.27576510284785
+  },
+  "resolution_m": 0.025,
+  "self_collision_enabled": true,
+  "state": "initializing",
+  "done": 0,
+  "total": null,
+  "ee_link": "arm_end_effector",
+  "updated_utc": "2026-09-14T13:32:31.936928+00:00"
+}

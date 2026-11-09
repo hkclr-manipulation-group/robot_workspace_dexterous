@@ -118,8 +118,10 @@ def regular_grid(
         raise ValueError("resolution must be positive")
     xs = np.arange(x_range[0], x_range[1] + 0.5 * resolution, resolution)
     ys = np.arange(y_range[0], y_range[1] + 0.5 * resolution, resolution)
-    xx, yy = np.meshgrid(xs, ys, indexing="xy")
-    return np.concatenate([
-        np.column_stack((xx.ravel(), yy.ravel(), np.full(xx.size, z)))
-        for z in heights
-    ]).astype(np.float32)
+    # Fill the final float32 array directly: no per-layer float64 arrays or
+    # concatenate/cast copies. Preserve the existing z/y/x traversal order.
+    points = np.empty((len(heights), len(ys), len(xs), 3), dtype=np.float32)
+    points[..., 0] = xs[None, None, :]
+    points[..., 1] = ys[None, :, None]
+    points[..., 2] = np.asarray(heights)[:, None, None]
+    return points.reshape(-1, 3)

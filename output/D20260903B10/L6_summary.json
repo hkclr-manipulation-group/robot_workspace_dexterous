@@ -1,0 +1,12 @@
+{
+  "rws_cells": 136,
+  "dws_cells": 0,
+  "rws_volume_m3": 0.1360000324249268,
+  "dws_volume_m3": 0.0,
+  "dws_rws_ratio": 0.0,
+  "dws_minimum_dexterity": 1.0,
+  "ee_link": "L6",
+  "orientation_samples": 16,
+  "mean_manipulability_over_rws": 0.010284611955285072,
+  "maximum_finite_condition_number": 15203.6689453125
+}

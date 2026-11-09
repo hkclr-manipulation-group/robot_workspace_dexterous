@@ -1,0 +1,73 @@
+{
+  "rws_cells": 1950,
+  "dws_cells": 290,
+  "rws_volume_m3": 1.95000046491623,
+  "dws_volume_m3": 0.29000006914138804,
+  "dws_rws_ratio": 0.14871794871794872,
+  "dws_minimum_dexterity": 1.0,
+  "collision_model": {
+    "mode": "stl",
+    "file": "/home/hkclr-manipulation-spark1/rt_ws/robot_workspace_dexterous/models/P2AB-4/collision_meshes.yaml",
+    "manifest_sha256": "1f7e3182409898a73fcf8a12757b5203e079bbc44befa5bc14c22707ed6a3534",
+    "assets": {
+      "../meshes/09c362e4c8652c041c0f2bfc7d65e0fc6e6a4c467778591934752eecc4b6e513.stl": "09c362e4c8652c041c0f2bfc7d65e0fc6e6a4c467778591934752eecc4b6e513",
+      "../meshes/82ce5ff19ba2c7fa9d8179d941b2211066c1377e59b44c6dc0889856bae20b70.stl": "82ce5ff19ba2c7fa9d8179d941b2211066c1377e59b44c6dc0889856bae20b70",
+      "../meshes/4ab1fa6e7479e757072b4a0ddbb48eaaa45531c5b5dd1b065a6dcdd75ac4f674.stl": "4ab1fa6e7479e757072b4a0ddbb48eaaa45531c5b5dd1b065a6dcdd75ac4f674",
+      "../meshes/75180f1cfd7e81ed82c6177358b7e5b1d3f7732ebc4cc4794cc3df4b65b757ae.stl": "75180f1cfd7e81ed82c6177358b7e5b1d3f7732ebc4cc4794cc3df4b65b757ae",
+      "../meshes/7e94f2e752f6a400654b263404da7dbb697833e906f22517b1708f32e3823503.stl": "7e94f2e752f6a400654b263404da7dbb697833e906f22517b1708f32e3823503",
+      "../meshes/a996408e66ef1b5bdc5cf713bf2877ac9e3fecf2cb83a9f02103646768c49a56.stl": "a996408e66ef1b5bdc5cf713bf2877ac9e3fecf2cb83a9f02103646768c49a56",
+      "../meshes/33922f005b46b1f73af2d595ad9c8bc5e7ab2185061da7518037939321d3ce03.stl": "33922f005b46b1f73af2d595ad9c8bc5e7ab2185061da7518037939321d3ce03"
+    },
+    "total_triangles": 1896,
+    "mesh_parts": 7,
+    "collision_pairs": 15,
+    "open_mesh_links": [
+      "L1111",
+      "L2222",
+      "L6666"
+    ],
+    "collision_method": "BVH triangle intersection + containment for closed meshes",
+    "open_mesh_policy": "surface intersection only; open STL has no defined solid interior",
+    "contact_tolerance_m": 1e-06,
+    "ik_collision_method": "all returned pose-IK seeds checked against STL; no sphere cost",
+    "joint_contact_policy": "allow_rigid_and_joint_neighbors",
+    "joint_contact_excluded_pairs": [
+      [
+        "L1111",
+        "L2222"
+      ],
+      [
+        "L1111",
+        "base_link"
+      ],
+      [
+        "L2222",
+        "L3333"
+      ],
+      [
+        "L3333",
+        "L4444"
+      ],
+      [
+        "L4444",
+        "L5555"
+      ],
+      [
+        "L5555",
+        "L6666"
+      ]
+    ],
+    "joint_contact_limitation": "Whole listed link pairs are excluded, including collisions away from their joint interfaces.",
+    "fixed_target_occupancy": {
+      "blocked_cells": 2,
+      "unresolved_open_links": [],
+      "policy": "closed material and mesh surfaces; no convex-hull filling"
+    },
+    "self_collision_enabled": true,
+    "self_collision_broad_phase": false
+  },
+  "ee_link": "L6666",
+  "orientation_samples": 16,
+  "mean_manipulability_over_rws": 0.0197448693215847,
+  "maximum_finite_condition_number": 6015683.0
+}

@@ -1,0 +1,24 @@
+{
+  "rws_cells": 1670,
+  "dws_cells": 255,
+  "rws_volume_m3": 1.6700003981590277,
+  "dws_volume_m3": 0.25500006079673776,
+  "dws_rws_ratio": 0.15269461077844312,
+  "dws_minimum_dexterity": 1.0,
+  "collision_model": {
+    "file": "/home/hkclr-manipulation-spark1/rt_ws/robot_workspace_dexterous/models/D20260901B/collision_spheres_interior.yaml",
+    "sha256": "9b7b89d0ff838b8b2d930471337078c0fafe0b8f204d04a6d96e975f0541d85e",
+    "mode": "interior",
+    "radius_expansion_mm": 0.0,
+    "sha256_lf": "9b7b89d0ff838b8b2d930471337078c0fafe0b8f204d04a6d96e975f0541d85e",
+    "model": "D20260901B",
+    "total_spheres": 1580,
+    "estimated_links": [],
+    "max_sampled_surface_gap_mm": 15.776326009257838,
+    "self_collision_enabled": true
+  },
+  "ee_link": "Link06",
+  "orientation_samples": 16,
+  "mean_manipulability_over_rws": 0.02123100869357586,
+  "maximum_finite_condition_number": 4427402.5
+}

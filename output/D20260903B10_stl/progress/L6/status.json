@@ -1,0 +1,67 @@
+{
+  "collision_model": {
+    "mode": "stl",
+    "file": "/home/hkclr-manipulation-spark1/rt_ws/robot_workspace_dexterous/models/D20260903B10/collision_meshes.yaml",
+    "manifest_sha256": "62b6210f1d800acbafbf67283312da6b2574ec26a903c13f3a308e2df567b9b0",
+    "assets": {
+      "../meshes/c022d2430020118a0e4142d130c727b0c1ab665c66d1b3991fad0c08549c9ad9.stl": "c022d2430020118a0e4142d130c727b0c1ab665c66d1b3991fad0c08549c9ad9",
+      "../meshes/3430ec4bceab0a4ee3c63a6d072db3d0745d6ab0d804febc36fd54fcb40310c7.stl": "3430ec4bceab0a4ee3c63a6d072db3d0745d6ab0d804febc36fd54fcb40310c7",
+      "../meshes/b70040f752162f87a5a20abb42a310d517c75faab604b716df76b4367a02e2f1.stl": "b70040f752162f87a5a20abb42a310d517c75faab604b716df76b4367a02e2f1",
+      "../meshes/d982443373cd86cdd185f585f3df9daf7a277d2e15f32a74d807fe42dd667c62.stl": "d982443373cd86cdd185f585f3df9daf7a277d2e15f32a74d807fe42dd667c62",
+      "../meshes/04a65f3054552c19d6d87068e3c378f93c0d2e479f8137768900607f0f0fee3d.stl": "04a65f3054552c19d6d87068e3c378f93c0d2e479f8137768900607f0f0fee3d",
+      "../meshes/a9f2d3fea076c44b709f4f663020e27e12bab392fa42a1bfc6fe16480d8981f2.stl": "a9f2d3fea076c44b709f4f663020e27e12bab392fa42a1bfc6fe16480d8981f2",
+      "../meshes/99a1a2dbb1f3d3cffdae1e20cb76f1c00cd82837c03f3bc8832edb50f92fa72e.stl": "99a1a2dbb1f3d3cffdae1e20cb76f1c00cd82837c03f3bc8832edb50f92fa72e"
+    },
+    "total_triangles": 2630,
+    "mesh_parts": 7,
+    "collision_pairs": 15,
+    "open_mesh_links": [
+      "L1",
+      "base_link"
+    ],
+    "collision_method": "BVH triangle intersection + containment for closed meshes",
+    "open_mesh_policy": "surface intersection only; open STL has no defined solid interior",
+    "contact_tolerance_m": 1e-06,
+    "ik_collision_method": "all returned pose-IK seeds checked against STL; no sphere cost",
+    "joint_contact_policy": "allow_rigid_and_joint_neighbors",
+    "joint_contact_excluded_pairs": [
+      [
+        "L1",
+        "L2"
+      ],
+      [
+        "L1",
+        "base_link"
+      ],
+      [
+        "L2",
+        "L3"
+      ],
+      [
+        "L3",
+        "L4"
+      ],
+      [
+        "L4",
+        "L5"
+      ],
+      [
+        "L5",
+        "L6"
+      ]
+    ],
+    "joint_contact_limitation": "Whole listed link pairs are excluded, including collisions away from their joint interfaces."
+  },
+  "resolution_m": 0.05,
+  "self_collision_enabled": true,
+  "self_collision_broad_phase": false,
+  "state": "complete",
+  "done": 1102736,
+  "total": 1102736,
+  "elapsed_seconds": 157.92790623602923,
+  "tested_cells": 68921,
+  "completed_cells": 68921,
+  "reachable_cells_so_far": 11194,
+  "ee_link": "L6",
+  "updated_utc": "2026-09-20T13:04:06.669593+00:00"
+}

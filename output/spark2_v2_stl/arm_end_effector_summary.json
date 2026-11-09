@@ -1,0 +1,82 @@
+{
+  "rws_cells": 12153,
+  "dws_cells": 0,
+  "rws_volume_m3": 1.5191235512495045,
+  "dws_volume_m3": 0.0,
+  "dws_rws_ratio": 0.0,
+  "dws_minimum_dexterity": 1.0,
+  "collision_model": {
+    "mode": "stl",
+    "file": "/home/hkclr-manipulation-spark1/rt_ws/robot_workspace_dexterous/models/spark2_v2/collision_meshes.yaml",
+    "manifest_sha256": "8ee84f458b2edb5cdc527db26e837d69938f15c94cc2e06baf6995f53c821d94",
+    "assets": {
+      "../meshes/bc6f16239fa86a46aa81dad52ad4cdc66a7373622e0c138d04e7c9f21721e562.stl": "bc6f16239fa86a46aa81dad52ad4cdc66a7373622e0c138d04e7c9f21721e562",
+      "../meshes/8a93b4b18962ec003b4f31225c6b7712f329fa56e69f5f0003cc9cbdffb373e9.stl": "8a93b4b18962ec003b4f31225c6b7712f329fa56e69f5f0003cc9cbdffb373e9",
+      "../meshes/56b6c9bd9509e96e4c3774014741ae5906dbf59dc38a841e158f923d975f94c5.stl": "56b6c9bd9509e96e4c3774014741ae5906dbf59dc38a841e158f923d975f94c5",
+      "../meshes/4ca6bd686f83cf6ae343c535ef3d44a43c37496b0e20c3d94ccb13e1dbd52966.stl": "4ca6bd686f83cf6ae343c535ef3d44a43c37496b0e20c3d94ccb13e1dbd52966",
+      "../meshes/15fe012fe0e8d06c4c6e6813a1c27e2e6837883b6c189170cfbda34e1518896c.stl": "15fe012fe0e8d06c4c6e6813a1c27e2e6837883b6c189170cfbda34e1518896c",
+      "../meshes/eaadefacc2bb80a0a21af29924ebd66c5db030b18a540e53d3da5b992492fdc4.stl": "eaadefacc2bb80a0a21af29924ebd66c5db030b18a540e53d3da5b992492fdc4",
+      "../meshes/9c6e1987bbbcd59d3321fdbcfc8b909ef739c02608acd8c6b173b57ee361d8e6.stl": "9c6e1987bbbcd59d3321fdbcfc8b909ef739c02608acd8c6b173b57ee361d8e6"
+    },
+    "total_triangles": 371554,
+    "mesh_parts": 7,
+    "collision_pairs": 15,
+    "open_mesh_links": [
+      "arm_L1",
+      "arm_L2",
+      "arm_L3",
+      "arm_L4",
+      "arm_L5",
+      "arm_base_link"
+    ],
+    "collision_method": "BVH triangle intersection + containment for closed meshes",
+    "open_mesh_policy": "surface intersection only; open STL has no defined solid interior",
+    "contact_tolerance_m": 1e-06,
+    "ik_collision_method": "all returned pose-IK seeds checked against STL; no sphere cost",
+    "joint_contact_policy": "allow_rigid_and_joint_neighbors",
+    "joint_contact_excluded_pairs": [
+      [
+        "arm_L1",
+        "arm_L2"
+      ],
+      [
+        "arm_L1",
+        "arm_base_link"
+      ],
+      [
+        "arm_L2",
+        "arm_L3"
+      ],
+      [
+        "arm_L3",
+        "arm_L4"
+      ],
+      [
+        "arm_L4",
+        "arm_L5"
+      ],
+      [
+        "arm_L5",
+        "arm_L6"
+      ],
+      [
+        "arm_L6",
+        "arm_end_effector"
+      ]
+    ],
+    "joint_contact_limitation": "Whole listed link pairs are excluded, including collisions away from their joint interfaces.",
+    "fixed_target_occupancy": {
+      "blocked_cells": 0,
+      "unresolved_open_links": [
+        "arm_base_link"
+      ],
+      "policy": "closed material and mesh surfaces; no convex-hull filling"
+    },
+    "self_collision_enabled": true,
+    "self_collision_broad_phase": false
+  },
+  "ee_link": "arm_end_effector",
+  "orientation_samples": 32,
+  "mean_manipulability_over_rws": 0.012604507617652416,
+  "maximum_finite_condition_number": 5468927.0
+}

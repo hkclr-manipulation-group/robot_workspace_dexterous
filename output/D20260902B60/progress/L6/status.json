@@ -1,0 +1,20 @@
+{
+  "collision_model": {
+    "file": "/home/hkclr-manipulation-spark1/rt_ws/robot_workspace_dexterous/models/D20260902B60/collision_spheres_interior.yaml",
+    "sha256": "228932b49ff7333622f79845195313f9be09154d1afde18ccaff42f91f330229",
+    "mode": "interior",
+    "radius_expansion_mm": 0.0,
+    "sha256_lf": "228932b49ff7333622f79845195313f9be09154d1afde18ccaff42f91f330229",
+    "model": "D20260902B60",
+    "total_spheres": 1792,
+    "estimated_links": [],
+    "max_sampled_surface_gap_mm": 19.11961344407259
+  },
+  "resolution_m": 0.05,
+  "self_collision_enabled": true,
+  "state": "initializing",
+  "done": 0,
+  "total": null,
+  "ee_link": "L6",
+  "updated_utc": "2026-09-14T11:51:24.877369+00:00"
+}

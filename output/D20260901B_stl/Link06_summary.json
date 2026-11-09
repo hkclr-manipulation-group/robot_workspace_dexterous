@@ -1,0 +1,67 @@
+{
+  "rws_cells": 13275,
+  "dws_cells": 2069,
+  "rws_volume_m3": 1.6593734174966817,
+  "dws_volume_m3": 0.25862475335598,
+  "dws_rws_ratio": 0.15585687382297553,
+  "dws_minimum_dexterity": 1.0,
+  "collision_model": {
+    "mode": "stl",
+    "file": "/home/hkclr-manipulation-spark1/rt_ws/robot_workspace_dexterous/models/D20260901B/collision_meshes.yaml",
+    "manifest_sha256": "05502f680e35a36d2c35052a2e156a3378205f79ce26b759805b4d537abcfcf9",
+    "assets": {
+      "../meshes/4e19894921c9c72ea951870b83ebab697d1d6410727f2a0763da806677eb39ae.stl": "4e19894921c9c72ea951870b83ebab697d1d6410727f2a0763da806677eb39ae",
+      "../meshes/9637f000f281e743b7c960c0dd2051b5dc4314d9cff52c38892ee2bf7e807133.stl": "9637f000f281e743b7c960c0dd2051b5dc4314d9cff52c38892ee2bf7e807133",
+      "../meshes/2dae3d435dcf8fae68698e02c7423b5ade28712e5851b46c5baa4c556958119a.stl": "2dae3d435dcf8fae68698e02c7423b5ade28712e5851b46c5baa4c556958119a",
+      "../meshes/1163a6e3a78c401c52c046b54ca031b0bb54755e4781c4f3fbe863378a508257.stl": "1163a6e3a78c401c52c046b54ca031b0bb54755e4781c4f3fbe863378a508257",
+      "../meshes/2dbec4c12505cf534f75a807b376f28546a8585b4e08da675f1be6c9094a7544.stl": "2dbec4c12505cf534f75a807b376f28546a8585b4e08da675f1be6c9094a7544",
+      "../meshes/15ec29a5599553affd3fae5cef93709479f3ca1af4d15d047b573966362502f1.stl": "15ec29a5599553affd3fae5cef93709479f3ca1af4d15d047b573966362502f1",
+      "../meshes/514c2ac3cf5cc5a2a38f9de5ca23e0ddda0490b922554056948450c05be8168d.stl": "514c2ac3cf5cc5a2a38f9de5ca23e0ddda0490b922554056948450c05be8168d"
+    },
+    "total_triangles": 1750,
+    "mesh_parts": 7,
+    "collision_pairs": 15,
+    "open_mesh_links": [
+      "Link06",
+      "baselink"
+    ],
+    "collision_method": "BVH triangle intersection + containment for closed meshes",
+    "open_mesh_policy": "surface intersection only; open STL has no defined solid interior",
+    "contact_tolerance_m": 1e-06,
+    "ik_collision_method": "all returned pose-IK seeds checked against STL; no sphere cost",
+    "joint_contact_policy": "allow_rigid_and_joint_neighbors",
+    "joint_contact_excluded_pairs": [
+      [
+        "Link01",
+        "Link02"
+      ],
+      [
+        "Link01",
+        "baselink"
+      ],
+      [
+        "Link02",
+        "Link03"
+      ],
+      [
+        "Link03",
+        "Link04"
+      ],
+      [
+        "Link04",
+        "Link05"
+      ],
+      [
+        "Link05",
+        "Link06"
+      ]
+    ],
+    "joint_contact_limitation": "Whole listed link pairs are excluded, including collisions away from their joint interfaces.",
+    "self_collision_enabled": true,
+    "self_collision_broad_phase": false
+  },
+  "ee_link": "Link06",
+  "orientation_samples": 16,
+  "mean_manipulability_over_rws": 0.020819054916501045,
+  "maximum_finite_condition_number": 18504902.0
+}
