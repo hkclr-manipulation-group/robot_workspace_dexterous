@@ -17,7 +17,7 @@ from .curobo_solver import (
     _prepare_joint_limits,
     compute_dexterous_workspace,
 )
-from .sampling import DexterousWorkspace
+from .sampling import DexterousWorkspace, shared_orientation_workspace
 from .progress import WorkspaceProgress
 from .visualize import (
     load_zero_pose_collision_spheres,
@@ -64,7 +64,14 @@ def main(argv: list[str] | None = None) -> None:
                         help="Deprecated alias for the default adjacent-joint policy")
     parser.add_argument("--strict-collision", action="store_true",
                         help="Check adjacent joint-interface geometry too (audit mode; may reject all IK seeds)")
+    parser.add_argument('--backend', choices=['cpu', 'cuda', 'torch'], help='Override solver.backend')
+    parser.add_argument('--ik-iterations', type=int, help='CPU IK evaluation limit per seed')
+    parser.add_argument('--seed', type=int, help='CPU random seed (non-negative)')
     args = parser.parse_args(argv)
+    if args.ik_iterations is not None and args.ik_iterations < 1:
+        parser.error('--ik-iterations must be positive')
+    if args.seed is not None and args.seed < 0:
+        parser.error('--seed must be non-negative')
     if args.resolution is not None and (not np.isfinite(args.resolution) or args.resolution <= 0):
         parser.error('--resolution must be finite and positive')
     if not np.isfinite(args.snapshot_seconds) or args.snapshot_seconds <= 0:
@@ -78,12 +85,23 @@ def main(argv: list[str] | None = None) -> None:
     if args.ik_seeds is not None and args.ik_seeds < 1:
         parser.error('--ik-seeds must be positive')
     config = load_config(args.config)
+    from dataclasses import replace
+    config = replace(config, backend=args.backend or config.backend,
+                     ik_iterations=args.ik_iterations or config.ik_iterations,
+                     random_seed=config.random_seed if args.seed is None else args.seed)
+    if config.backend in {'cpu', 'torch'}:
+        from collision_shpere_generation.kinematics import RobotKinematics
+        RobotKinematics(config.urdf_path, config.base_link)
+        if args.debug_cuda:
+            parser.error('--debug-cuda requires --backend cuda')
     if args.collision_backend is not None:
         from dataclasses import replace
         config = replace(config, collision_backend=args.collision_backend)
     if args.allow_joint_contacts and config.collision_backend != "stl":
         parser.error("--allow-joint-contacts requires the STL collision backend")
     contact_ignores = config.self_collision_ignore
+    if config.backend == 'torch' and config.collision_backend != 'spheres':
+        parser.error('--backend torch requires --collision-backend spheres')
     if not args.strict_collision:
         from .joint_contacts import merge_contact_ignores
         contact_ignores = merge_contact_ignores(str(config.urdf_path), contact_ignores)
@@ -97,10 +115,11 @@ def main(argv: list[str] | None = None) -> None:
         if config.collision_meshes_path is None:
             parser.error("STL checking requires robot.collision_meshes")
         root = ET.parse(config.urdf_path).getroot()
-        _prepare_joint_limits(root, config.joint_limit_defaults)
+        if config.backend == 'cuda':
+            _prepare_joint_limits(root, config.joint_limit_defaults)
         links = {link.get("name") for link in root.findall("link")}
         children = {child.get("link") for child in root.findall("joint/child")}
-        if config.base_link not in links - children or set(config.ee_links) - links:
+        if config.base_link not in (links - children if config.backend == 'cuda' else links) or set(config.ee_links) - links:
             raise ValueError("Invalid URDF root or end-effector for STL checking")
         mesh_model = load_mesh_model(config.collision_meshes_path, config.urdf_path,
                                      contact_ignores)
@@ -122,7 +141,8 @@ def main(argv: list[str] | None = None) -> None:
     else:
         if config.collision_spheres_path is None:
             parser.error("Sphere checking requires robot.collision_spheres")
-        validate_robot_inputs(str(config.urdf_path), str(config.collision_spheres_path),
+        if config.backend == 'cuda':
+            validate_robot_inputs(str(config.urdf_path), str(config.collision_spheres_path),
                               config.base_link, config.ee_links, contact_ignores,
                               config.joint_limit_defaults)
         collision_model = {
@@ -133,7 +153,10 @@ def main(argv: list[str] | None = None) -> None:
             )],
         }
     if args.diagnose_only:
-        if mesh_model is not None:
+        if config.backend in {'cpu', 'torch'}:
+            from .cpu_solver import diagnose_cpu_collisions
+            result = diagnose_cpu_collisions(config, mesh_model, contact_ignores, args.diagnostic_samples)
+        elif mesh_model is not None:
             from .mesh_collision import diagnose_mesh_collisions
             result = diagnose_mesh_collisions(mesh_model, config.urdf_path, args.diagnostic_samples)
         else:
@@ -162,7 +185,7 @@ def main(argv: list[str] | None = None) -> None:
     output_dir = Path(args.output_dir).expanduser().resolve()
     output_dir.mkdir(parents=True, exist_ok=True)
     monitors = {link: WorkspaceProgress(output_dir / 'progress' / link, link,
-                {'collision_model': collision_model, 'resolution_m': config.resolution, 'plot_sections': plot_sections,
+                {'backend': config.backend, 'collision_model': collision_model, 'resolution_m': config.resolution, 'plot_sections': plot_sections,
                  'self_collision_enabled': config.self_collision,
                  'self_collision_broad_phase': config.self_collision and config.collision_backend == 'spheres' and not args.no_collision_broad_phase})
                 for link in config.ee_links}
@@ -176,71 +199,75 @@ def main(argv: list[str] | None = None) -> None:
                    'use_cuda_graph': False}
         (output_dir / 'cuda_debug.json').write_text(json.dumps(details, indent=2), encoding='utf-8')
         print(json.dumps(details, indent=2), flush=True)
-    normalized_urdf = _normalized_urdf_for_curobo(
-        str(config.urdf_path), str(output_dir / "normalized_robot.urdf"), config.joint_limit_defaults
-    )
-    collision_robots = None
-    from .gpu_memory import configure_gpu_memory, recommend_batch_size
-    allocation_limit = configure_gpu_memory(config.gpu_memory_fraction)
-    if args.batch_size is None:
-        from dataclasses import replace
-        selected_batch = recommend_batch_size(config.batch_size, allocation_limit)
-        if selected_batch != config.batch_size:
-            config = replace(config, batch_size=selected_batch)
-            print(f'Auto batch size: {selected_batch} (allocation limit {allocation_limit/2**30:.1f} GiB)', flush=True)
-    mesh_checker = None
-    if config.self_collision and mesh_model is not None:
-        from .mesh_collision import MeshCollisionChecker
-        import torch
-        print(f"STL self-collision: {collision_model['total_triangles']:,} triangles; "
-              f"checking all {config.ik_seeds} IK candidates per goal", flush=True)
-        if collision_model['open_mesh_links']:
-            print("Open STL links use surface-intersection checks: " +
-                  ", ".join(collision_model['open_mesh_links']), flush=True)
-        with cuda_stage('build STL BVHs', args.debug_cuda):
-            mesh_checker = MeshCollisionChecker(mesh_model, config.urdf_path,
-                                                 device=f'cuda:{torch.cuda.current_device()}')
-    elif config.self_collision:
-        print(f"loading collision spheres: {config.collision_spheres_path}", flush=True)
-        print("Self-collision: " + ("legacy exhaustive sphere pairs" if args.no_collision_broad_phase
-                                  else "GPU link bounding spheres + internal sphere refinement"), flush=True)
-        with cuda_stage('build collision robots', args.debug_cuda):
-            collision_robots = build_collision_robots(
-                normalized_urdf,
-                str(config.collision_spheres_path),
-                config.base_link,
-                config.ee_links,
-                contact_ignores,
-                self_collision_broad_phase=not args.no_collision_broad_phase,
-            )
+    if config.backend == 'cuda':
+        normalized_urdf = _normalized_urdf_for_curobo(
+            str(config.urdf_path), str(output_dir / "normalized_robot.urdf"), config.joint_limit_defaults
+        )
+        collision_robots = None
+        from .gpu_memory import configure_gpu_memory, recommend_batch_size
+        allocation_limit = configure_gpu_memory(config.gpu_memory_fraction)
+        if args.batch_size is None:
+            from dataclasses import replace
+            selected_batch = recommend_batch_size(config.batch_size, allocation_limit)
+            if selected_batch != config.batch_size:
+                config = replace(config, batch_size=selected_batch)
+                print(f'Auto batch size: {selected_batch} (allocation limit {allocation_limit/2**30:.1f} GiB)', flush=True)
+        mesh_checker = None
+        if config.self_collision and mesh_model is not None:
+            from .mesh_collision import MeshCollisionChecker
+            import torch
+            print(f"STL self-collision: {collision_model['total_triangles']:,} triangles; "
+                  f"checking all {config.ik_seeds} IK candidates per goal", flush=True)
+            if collision_model['open_mesh_links']:
+                print("Open STL links use surface-intersection checks: " +
+                      ", ".join(collision_model['open_mesh_links']), flush=True)
+            with cuda_stage('build STL BVHs', args.debug_cuda):
+                mesh_checker = MeshCollisionChecker(mesh_model, config.urdf_path,
+                                                     device=f'cuda:{torch.cuda.current_device()}')
+        elif config.self_collision:
+            print(f"loading collision spheres: {config.collision_spheres_path}", flush=True)
+            print("Self-collision: " + ("legacy exhaustive sphere pairs" if args.no_collision_broad_phase
+                                      else "GPU link bounding spheres + internal sphere refinement"), flush=True)
+            with cuda_stage('build collision robots', args.debug_cuda):
+                collision_robots = build_collision_robots(
+                    normalized_urdf,
+                    str(config.collision_spheres_path),
+                    config.base_link,
+                    config.ee_links,
+                    contact_ignores,
+                    self_collision_broad_phase=not args.no_collision_broad_phase,
+                )
     workspaces: dict[str, DexterousWorkspace] = {}
     for link in config.ee_links:
         print(f"computing {link}: {len(config.orientations)} orientations per XYZ cell; grid {config.resolution*1000:g} mm", flush=True)
-        workspace = compute_dexterous_workspace(
-            normalized_urdf, config.base_link, link,
-            config.x_range, config.y_range, config.heights, config.resolution,
-            config.orientations, config.ik_seeds, config.batch_size,
-            config.position_tolerance, config.orientation_tolerance,
-            config.self_collision, monitors[link].progress,
-            None if collision_robots is None else collision_robots[link],
-            debug_cuda=args.debug_cuda,
-            snapshot=monitors[link].snapshot,
-            snapshot_seconds=args.snapshot_seconds,
-            mesh_checker=mesh_checker,
-        )
+        if config.backend == 'torch':
+            from .tensor_solver import compute_tensor_workspace
+            workspace = compute_tensor_workspace(config, link, contact_ignores=contact_ignores,
+                progress=monitors[link].progress, snapshot=monitors[link].snapshot,
+                snapshot_seconds=args.snapshot_seconds)
+        elif config.backend == 'cpu':
+            from .cpu_solver import compute_cpu_workspace
+            workspace = compute_cpu_workspace(config, link, mesh_model=mesh_model,
+                contact_ignores=contact_ignores, progress=monitors[link].progress,
+                snapshot=monitors[link].snapshot, snapshot_seconds=args.snapshot_seconds)
+        else:
+            workspace = compute_dexterous_workspace(
+                normalized_urdf, config.base_link, link,
+                config.x_range, config.y_range, config.heights, config.resolution,
+                config.orientations, config.ik_seeds, config.batch_size,
+                config.position_tolerance, config.orientation_tolerance,
+                config.self_collision, monitors[link].progress,
+                None if collision_robots is None else collision_robots[link],
+                debug_cuda=args.debug_cuda,
+                snapshot=monitors[link].snapshot,
+                snapshot_seconds=args.snapshot_seconds,
+                mesh_checker=mesh_checker,
+            )
         reachable_cells = int(np.count_nonzero(workspace.reachable_orientations > 0))
         if reachable_cells == 0:
-            raise RuntimeError(
-                f"{link}: no reachable grid cells were found; check workspace bounds, "
-                "base/tool link names, and self-collision ignores before plotting. "
-                "This means zero accepted IK targets, not just zero cells meeting minimum_dexterity. "
-                "To inspect collision rejection, run: "
-                f'python run.py --config "{args.config}" --collision-backend {config.collision_backend} '
-                + ("--allow-joint-contacts " if args.allow_joint_contacts else "") +
-                "--diagnose-only --diagnostic-samples 32. "
-                "Persistent contacts between joint housings may require model-specific review; "
-                "collision pairs are not ignored automatically."
-            )
+            print(f'WARNING: {link}: no accepted IK targets. Saving the empty sampled workspace; '
+                  'this does not prove that the physical robot has no reachable poses. '
+                  'Inspect --diagnose-only and the conservative outer-sphere fit.',flush=True)
         print(
             f"{link}: {reachable_cells}/{len(workspace.positions)} grid cells reachable, "
             f"maximum dexterity={float(np.max(workspace.dexterity)):.4f}"
@@ -291,6 +318,18 @@ def main(argv: list[str] | None = None) -> None:
             np.isfinite(workspace.condition_number_max)
         ]
         summary.update({
+            'backend': config.backend,
+            'status': 'no_accepted_ik_targets' if reachable_cells == 0 else 'complete',
+            'ik_iterations': config.ik_iterations,
+            'random_seed': config.random_seed,
+            'grid_resolution_m': config.resolution,
+            'grid_x_range': config.x_range,
+            'grid_y_range': config.y_range,
+            'grid_heights': config.heights.tolist(),
+            'orientation_samples_wxyz': config.orientations.tolist(),
+            'ik_seeds': config.ik_seeds,
+            'cpu_ik_iterations': config.ik_iterations if config.backend == 'cpu' else None,
+            'cpu_seed': config.random_seed if config.backend == 'cpu' else None,
             "collision_model": {**collision_model, "self_collision_enabled": config.self_collision,
                                 "self_collision_broad_phase": config.self_collision and config.collision_backend == 'spheres' and not args.no_collision_broad_phase},
             "ee_link": link,
@@ -322,12 +361,7 @@ def main(argv: list[str] | None = None) -> None:
         )
         print(f"dual-arm workspace overview: {overview}")
         ordered = [workspaces[link] for link in config.ee_links]
-        shared = DexterousWorkspace(
-            ordered[0].positions,
-            np.minimum.reduce([item.dexterity for item in ordered]),
-            np.minimum.reduce([item.reachable_orientations for item in ordered]),
-            ordered[0].orientation_count,
-        )
+        shared = shared_orientation_workspace(ordered)
         shared.save(str(output_dir / "shared.npz"))
         save_dexterity_center_views(
             shared,

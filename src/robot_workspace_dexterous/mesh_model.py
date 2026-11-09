@@ -7,7 +7,8 @@ from pathlib import Path
 import xml.etree.ElementTree as ET
 
 import numpy as np
-import yaml
+
+from .yaml_io import load_yaml
 
 from .checksums import matches_text_sha256
 from .urdf_compat import origin_matrix
@@ -36,7 +37,7 @@ def load_mesh_model(manifest_path: str | Path, urdf_path: str | Path,
 
     manifest_path, urdf_path = Path(manifest_path).resolve(), Path(urdf_path).resolve()
     raw = manifest_path.read_bytes()
-    manifest = yaml.safe_load(raw)
+    manifest = load_yaml(raw)
     if manifest.get("version") != 1 or not manifest.get("links"):
         raise ValueError("Invalid STL collision manifest")
     if not matches_text_sha256(urdf_path.read_bytes(), manifest.get("urdf_sha256", "")):

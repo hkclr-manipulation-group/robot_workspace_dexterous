@@ -24,7 +24,7 @@ def fixed_poses(urdf_path):
     return poses
 
 
-def fixed_occupancy(model, urdf_path, points):
+def fixed_occupancy(model, urdf_path, points, base_link=None):
     """Return blocked target centres and open fixed links needing geometry review.
 
     Closed meshes use parity containment (retaining cavities). Open meshes
@@ -32,6 +32,11 @@ def fixed_occupancy(model, urdf_path, points):
     links must be checked at each IK solution, never at the zero pose.
     """
     poses = fixed_poses(urdf_path)
+    if base_link is not None:
+        if base_link not in poses:
+            raise ValueError('Fixed occupancy requires a base fixed relative to the URDF root')
+        base_inverse = np.linalg.inv(poses[base_link])
+        poses = {name:base_inverse @ pose for name,pose in poses.items()}
     blocked = np.zeros(len(points), dtype=bool)
     unresolved = set()
     tolerance = float(model.metadata.get('contact_tolerance_m', 1e-6))

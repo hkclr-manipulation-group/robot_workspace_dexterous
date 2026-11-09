@@ -14,11 +14,13 @@
       <inertia ixx="0.0104990174186969" ixy="1.36186415214932E-05" ixz="3.92976706746001E-06" iyy="0.0603355540758751" iyz="-1.1418137579805E-06" izz="0.0655105144203907" />
     </inertial>
     </link>
-  <joint name="S1" type="fixed">
+  <joint name="S1" type="revolute">
     <origin rpy="-1.5708     -1.5708     0.000000000" xyz="0.000000000 0.000000000 0.000000000" />
     <parent link="S0" />
     <child link="S1" />
-    </joint>
+    <axis xyz="0 0 1" />
+    <limit effort="0" lower="0" upper="0" velocity="0" />
+  </joint>
   <link name="S2">
     <inertial>
       <origin rpy="0 0 0" xyz="0.146750800431702 -0.000102394712500605 0.0369695830679559" />
@@ -26,11 +28,13 @@
       <inertia ixx="0.00589963800443405" ixy="-3.56849066351916E-08" ixz="0.000115714335724619" iyy="0.0669003280937632" iyz="-1.21347704617029E-07" izz="0.0719163151273267" />
     </inertial>
     </link>
-  <joint name="S2" type="fixed">
+  <joint name="S2" type="revolute">
     <origin rpy=" 0.000000000  0.000000000  0.000000000" xyz=" 0.3          0.000000000  0.000000000" />
     <parent link="S1" />
     <child link="S2" />
-    </joint>
+    <axis xyz="0 0 1" />
+    <limit effort="0" lower="0" upper="0" velocity="0" />
+  </joint>
   <link name="S3">
     <inertial>
       <origin rpy="0 0 0" xyz="2.40768963831646E-06 -0.0181677491873271 -0.0060945644555344" />
@@ -38,11 +42,13 @@
       <inertia ixx="0.0110635723686587" ixy="1.08920286987205E-06" ixz="9.74965082590477E-08" iyy="0.00770020436061314" iyz="-0.000632404967314379" izz="0.0126428105168128" />
     </inertial>
     </link>
-  <joint name="S3" type="fixed">
+  <joint name="S3" type="revolute">
     <origin rpy=" 0.000000000  0.000000000  1.5708    " xyz=" 0.3          0.000000000  -0.004     " />
     <parent link="S2" />
     <child link="S3" />
-    </joint>
+    <axis xyz="0 0 1" />
+    <limit effort="0" lower="0" upper="0" velocity="0" />
+  </joint>
   <link name="S4">
     <inertial>
       <origin rpy="0 0 0" xyz="-0.00080795 0.0001356 0.17121" />
@@ -50,11 +56,13 @@
       <inertia ixx="0.12559" ixy="-7.8232E-06" ixz="0.0028196" iyy="0.10161" iyz="-1.0089E-06" izz="0.040222" />
     </inertial>
     </link>
-  <joint name="S4" type="fixed">
+  <joint name="S4" type="revolute">
     <origin rpy=" 1.5708      0.000000000  0.000000000" xyz=" 0.000000000  -0.1844      0.000000000" />
     <parent link="S3" />
     <child link="S4" />
-    </joint>
+    <axis xyz="0 0 1" />
+    <limit effort="0" lower="0" upper="0" velocity="0" />
+  </joint>
   <link name="H1">
     <inertial>
       <origin rpy="0 0 0" xyz="-0.00172882376935018 0.000417887463804602 -0.0979992740802513" />
@@ -62,11 +70,13 @@
       <inertia ixx="0.000261804781565193" ixy="-1.93441453133377E-07" ixz="8.00399316303601E-06" iyy="0.000248469677978548" iyz="-2.27389444525046E-07" izz="0.000221150425147204" />
     </inertial>
     </link>
-  <joint name="H1" type="fixed">
+  <joint name="H1" type="revolute">
     <origin rpy=" 0.000000000  0.000000000  0.000000000" xyz=" -0.0215      0.000000000  0.5581     " />
     <parent link="S4" />
     <child link="H1" />
-    </joint>
+    <axis xyz="0 0 1" />
+    <limit effort="0" lower="0" upper="0" velocity="0" />
+  </joint>
   <link name="H2">
     <inertial>
       <origin rpy="0 0 0" xyz="0.0386056182886735 -0.0102828801975141 0.00091637143016793" />
@@ -74,11 +84,13 @@
       <inertia ixx="0.00112393743584269" ixy="8.55963174255124E-06" ixz="-1.08113699950406E-06" iyy="0.000623657626489795" iyz="-1.4182825444934E-07" izz="0.000728070671150008" />
     </inertial>
     </link>
-  <joint name="H2" type="fixed">
+  <joint name="H2" type="revolute">
     <origin rpy=" -1.5708      0.000000000  0.000000000" xyz=" 0.000000000  0.000000000  0.000000000" />
     <parent link="H1" />
     <child link="H2" />
-    </joint>
+    <axis xyz="0 0 1" />
+    <limit effort="0" lower="0" upper="0" velocity="0" />
+  </joint>
   <link name="dummy_world" />
   <joint name="w0" type="fixed">
     <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.3040" />

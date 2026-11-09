@@ -1,12 +1,14 @@
 robot:
   urdf: ../models/P2AB-2/robot.urdf
-  collision_meshes: ../models/P2AB-2/collision_meshes.yaml
+  collision_spheres: ../models/P2AB-2/collision_spheres_outer.yaml
+  self_collision_ignore_file: ../models/P2AB-2/self_collision_ignore.yaml
   base_link: base_link
   ee_links:
   - L66
   joint_limit_defaults:
-    effort: 1.0
     velocity: 1.0
+    effort: 1.0
+  collision_meshes: ../models/P2AB-2/collision_meshes.yaml
 grid:
   x_range:
   - -1.0
@@ -16,17 +18,18 @@ grid:
   - 1.0
   z_min: -1.0
   z_max: 1.0
-  resolution: 0.1
-  z_step: 0.1
+  resolution: 0.05
+  z_step: 0.05
 orientations:
   count: 16
 solver:
-  ik_seeds: 8
-  batch_size: 128
-  gpu_memory_fraction: 0.5
+  ik_seeds: 4
+  batch_size: 4096
+  gpu_memory_fraction: 0.75
   position_tolerance: 0.005
   orientation_tolerance: 0.08
   self_collision: true
-  collision_backend: stl
+  collision_backend: spheres
+  backend: torch
 output:
   minimum_dexterity: 1.0

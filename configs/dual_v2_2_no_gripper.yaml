@@ -1,12 +1,11 @@
 robot:
   urdf: ../models/dual_v2_2_no_gripper/robot.urdf
-  collision_spheres: ../models/dual_v2_2_no_gripper/collision_spheres_interior.yaml
+  collision_spheres: ../models/dual_v2_2_no_gripper/collision_spheres_outer.yaml
   base_link: dummy_world
   ee_links:
   - arm_end_effector_l
   - arm_end_effector_r
   self_collision_ignore_file: ../models/dual_v2_2_no_gripper/self_collision_ignore.yaml
-  collision_meshes: ../models/dual_v2_2_no_gripper/collision_meshes.yaml
 grid:
   x_range:
   - -1.2
@@ -45,6 +44,7 @@ solver:
   position_tolerance: 0.005
   orientation_tolerance: 0.08
   self_collision: true
-  collision_backend: stl
+  collision_backend: spheres
+  backend: torch
 output:
   minimum_dexterity: 1.0

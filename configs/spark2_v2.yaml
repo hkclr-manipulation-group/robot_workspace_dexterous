@@ -1,11 +1,10 @@
 robot:
   urdf: ../models/spark2_v2/robot.urdf
-  collision_spheres: ../models/spark2_v2/collision_spheres_interior.yaml
+  collision_spheres: ../models/spark2_v2/collision_spheres_outer.yaml
   base_link: arm_base_link
   ee_links:
   - arm_end_effector
   self_collision_ignore_file: ../models/spark2_v2/self_collision_ignore.yaml
-  collision_meshes: ../models/spark2_v2/collision_meshes.yaml
 grid:
   x_range:
   - -1.0
@@ -26,6 +25,7 @@ solver:
   position_tolerance: 0.005
   orientation_tolerance: 0.08
   self_collision: true
-  collision_backend: stl
+  collision_backend: spheres
+  backend: torch
 output:
   minimum_dexterity: 1.0

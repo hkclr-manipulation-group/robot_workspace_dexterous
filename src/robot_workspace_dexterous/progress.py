@@ -33,7 +33,7 @@ class WorkspaceProgress:
                    '<img src="preview.png?t='+str(time.time_ns())+'" '
                    'alt="XY, XZ and YZ workspace sections" '
                    'style="display:block;width:auto;min-width:900px;max-width:none">'
-                   '</div>' if has_preview else '<p>Initializing GPU model; waiting for the first completed batch.</p>')
+                   '</div>' if has_preview else '<p>Initializing robot model; waiting for the first completed batch.</p>')
         collision_note = ('Collision results use STL triangle intersections and closed-mesh containment; '
                           'open meshes are checked as surfaces.'
                           if self.metadata.get('collision_model', {}).get('mode') == 'stl'
@@ -67,9 +67,7 @@ Unprocessed cells are unknown. Partial-cell dexterity is a lower bound until all
         tested = np.clip(done - np.arange(len(workspace.positions), dtype=np.int64)
                          * workspace.orientation_count, 0, workspace.orientation_count)
         temporary = self.directory / 'partial.tmp.npz'
-        workspace.save(str(temporary))
-        with np.load(temporary) as saved:
-            arrays = dict(saved)
+        arrays = workspace.to_arrays()
         np.savez_compressed(temporary, **arrays, tested_orientations=tested,
                             complete=done == total, done=done, total=total)
         temporary.replace(self.directory / 'partial.npz')

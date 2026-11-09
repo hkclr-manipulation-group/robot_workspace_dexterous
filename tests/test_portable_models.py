@@ -12,17 +12,29 @@ def test_all_presets_load_after_relocation_without_sibling_repositories(tmp_path
     relocated = tmp_path / "standalone"
     shutil.copytree(project / "models", relocated / "models")
     shutil.copytree(project / "configs", relocated / "configs")
-    configs = sorted((relocated / "configs").glob("*.yaml"))
-    assert len(configs) >= 11
+    configs = sorted((relocated / "configs").rglob("*.yaml"))
+    assert {'P2AB','P2AB-2','P2AB-3'} <= {path.stem for path in configs}
     for path in configs:
         config = load_config(path)
+        if config.collision_backend == 'stl':
+            from robot_workspace_dexterous.mesh_model import load_mesh_model
+            assert config.urdf_path.is_relative_to(relocated)
+            assert config.collision_meshes_path.is_relative_to(relocated)
+            mesh = load_mesh_model(config.collision_meshes_path, config.urdf_path,
+                                   config.self_collision_ignore)
+            assert mesh.parts
+            continue
         metadata = collision_sphere_metadata(config.collision_spheres_path)
-        assert metadata['mode'] == 'interior'
-        assert metadata['model'] == path.stem
         assert metadata['radius_expansion_mm'] == 0
-        assert metadata['interior_domain'] == 'stl_material'
-        assert metadata['preserve_holes_and_cavities'] is True
-        assert metadata['complete_scope'] == 'configured_links_not_volume_coverage'
+        if metadata['mode'] == 'interior':
+            assert metadata['mode'] == 'interior'
+            assert metadata['model'] == path.stem
+            assert metadata['interior_domain'] == 'stl_material'
+            assert metadata['preserve_holes_and_cavities'] is True
+            assert metadata['complete_scope'] == 'configured_links_not_volume_coverage'
+        else:
+            assert metadata['mode'] == 'external'
+            assert 'interior_domain' not in metadata
         for asset in (config.urdf_path, config.collision_spheres_path):
             assert asset.is_relative_to(relocated)
         assert not ET.parse(config.urdf_path).findall(".//mesh")

@@ -204,7 +204,7 @@ def test_stl_config_and_cpu_validation_require_no_sphere_file(tmp_path, capsys):
     config = load_config(path)
     assert config.collision_spheres_path is None
     assert config.collision_backend == "stl"
-    main(["--config", str(path), "--validate-only"])
+    main(["--config", str(path), "--validate-only", '--strict-collision'])
     output = capsys.readouterr().out
     assert "collision mode=stl" in output
     assert '"joint_contact_policy": "strict"' in output
@@ -212,3 +212,5 @@ def test_stl_config_and_cpu_validation_require_no_sphere_file(tmp_path, capsys):
     output = capsys.readouterr().out
     assert '"joint_contact_policy": "allow_rigid_and_joint_neighbors"' in output
     assert '"collision_pairs": 0' in output
+    main(['--config', str(path), '--backend', 'cpu', '--validate-only'])
+    assert '"joint_contact_policy": "allow_rigid_and_joint_neighbors"' in capsys.readouterr().out

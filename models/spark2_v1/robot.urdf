@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<robot name="arm_v1">
+<robot name="spark2_v1">
   <link name="dummy_base_link" />
   <link name="arm_base_link">
     <inertial>
@@ -16,7 +16,7 @@
     </inertial>
     </link>
   <joint name="arm_J1" type="revolute">
-    <origin rpy="0.000000000 0.000000000 0.000000000" xyz="0.000000000 0.000000000 0.0962     " />
+    <origin rpy="0.000000000 0.000000000 0.000000000" xyz="0.000000000 0.000000000 0.0962" />
     <parent link="arm_base_link" />
     <child link="arm_L1" />
     <axis xyz="0 0 1" />
@@ -30,7 +30,7 @@
     </inertial>
     </link>
   <joint name="arm_J2" type="revolute">
-    <origin rpy=" -1.57079632  -1.57079632  0.000000000" xyz=" 0.0965       0.000000000  0.000000000" />
+    <origin rpy="-1.57079632 -1.57079632 0.000000000" xyz="0.0965 0.000000000 0.000000000" />
     <parent link="arm_L1" />
     <child link="arm_L2" />
     <axis xyz="0 0 1" />
@@ -44,7 +44,7 @@
     </inertial>
     </link>
   <joint name="arm_J3" type="revolute">
-    <origin rpy=" 0.000000000  0.000000000  0.000000000" xyz=" 0.3465       0.000000000  0.000000000" />
+    <origin rpy="0.000000000 0.000000000 0.000000000" xyz="0.3465 0.000000000 0.000000000" />
     <parent link="arm_L2" />
     <child link="arm_L3" />
     <axis xyz="0 0 1" />
@@ -58,7 +58,7 @@
     </inertial>
     </link>
   <joint name="arm_J4" type="revolute">
-    <origin rpy=" 0.000000000  0.000000000  0.000000000" xyz=" 0.15         0.000000000  0.000000000" />
+    <origin rpy="0.000000000 0.000000000 0.000000000" xyz="0.15 0.000000000 0.000000000" />
     <parent link="arm_L3" />
     <child link="arm_L4" />
     <axis xyz="0 0 1" />
@@ -72,7 +72,7 @@
     </inertial>
     </link>
   <joint name="arm_J5" type="revolute">
-    <origin rpy=" -1.57079632  -1.57079632  0.000000000" xyz=" 0.000000000  0.0965      0.000000000" />
+    <origin rpy="-1.57079632 -1.57079632 0.000000000" xyz="0.000000000 0.0965 0.000000000" />
     <parent link="arm_L4" />
     <child link="arm_L5" />
     <axis xyz="0 0 1" />
@@ -86,7 +86,7 @@
     </inertial>
     </link>
   <joint name="arm_J6" type="revolute">
-    <origin rpy=" -1.57079632  0.000000000  0.000000000" xyz=" 0.000000000  0.185  0.000000000" />
+    <origin rpy="-1.57079632 0.000000000 0.000000000" xyz="0.000000000 0.185 0.000000000" />
     <parent link="arm_L5" />
     <child link="arm_L6" />
     <axis xyz="0 0 1" />
