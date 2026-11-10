@@ -1,0 +1,108 @@
+version: 1
+urdf_sha256: cdf9c3536ea32b6363cab41659a77348ca20c7966c97e325a1d4216eb4fd7b0b
+links:
+  base_link:
+  - file: /home/hkclr-manipulation-spark1/rt_ws/robot_workspace_dexterous/models/meshes/09c362e4c8652c041c0f2bfc7d65e0fc6e6a4c467778591934752eecc4b6e513.stl
+    sha256: 09c362e4c8652c041c0f2bfc7d65e0fc6e6a4c467778591934752eecc4b6e513
+    scale:
+    - 1.029336078229542
+    - 1.029336078229542
+    - 1.029336078229542
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 0.0
+    - 0.0
+  L1111:
+  - file: /home/hkclr-manipulation-spark1/rt_ws/robot_workspace_dexterous/models/meshes/82ce5ff19ba2c7fa9d8179d941b2211066c1377e59b44c6dc0889856bae20b70.stl
+    sha256: 82ce5ff19ba2c7fa9d8179d941b2211066c1377e59b44c6dc0889856bae20b70
+    scale:
+    - 1.029336078229542
+    - 1.029336078229542
+    - 1.029336078229542
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 0.0
+    - 0.0
+  L2222:
+  - file: /home/hkclr-manipulation-spark1/rt_ws/robot_workspace_dexterous/models/meshes/4ab1fa6e7479e757072b4a0ddbb48eaaa45531c5b5dd1b065a6dcdd75ac4f674.stl
+    sha256: 4ab1fa6e7479e757072b4a0ddbb48eaaa45531c5b5dd1b065a6dcdd75ac4f674
+    scale:
+    - 1.029336078229542
+    - 1.029336078229542
+    - 1.029336078229542
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 0.0
+    - 0.0
+  L3333:
+  - file: /home/hkclr-manipulation-spark1/rt_ws/robot_workspace_dexterous/models/meshes/75180f1cfd7e81ed82c6177358b7e5b1d3f7732ebc4cc4794cc3df4b65b757ae.stl
+    sha256: 75180f1cfd7e81ed82c6177358b7e5b1d3f7732ebc4cc4794cc3df4b65b757ae
+    scale:
+    - 1.029336078229542
+    - 1.029336078229542
+    - 1.029336078229542
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 0.0
+    - 0.0
+  L4444:
+  - file: /home/hkclr-manipulation-spark1/rt_ws/robot_workspace_dexterous/models/meshes/7e94f2e752f6a400654b263404da7dbb697833e906f22517b1708f32e3823503.stl
+    sha256: 7e94f2e752f6a400654b263404da7dbb697833e906f22517b1708f32e3823503
+    scale:
+    - 1.029336078229542
+    - 1.029336078229542
+    - 1.029336078229542
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 0.0
+    - 0.0
+  L5555:
+  - file: /home/hkclr-manipulation-spark1/rt_ws/robot_workspace_dexterous/models/meshes/a996408e66ef1b5bdc5cf713bf2877ac9e3fecf2cb83a9f02103646768c49a56.stl
+    sha256: a996408e66ef1b5bdc5cf713bf2877ac9e3fecf2cb83a9f02103646768c49a56
+    scale:
+    - 1.029336078229542
+    - 1.029336078229542
+    - 1.029336078229542
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 0.0
+    - 0.0
+  L6666:
+  - file: /home/hkclr-manipulation-spark1/rt_ws/robot_workspace_dexterous/models/meshes/33922f005b46b1f73af2d595ad9c8bc5e7ab2185061da7518037939321d3ce03.stl
+    sha256: 33922f005b46b1f73af2d595ad9c8bc5e7ab2185061da7518037939321d3ce03
+    scale:
+    - 1.029336078229542
+    - 1.029336078229542
+    - 1.029336078229542
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 0.0
+    - 0.0

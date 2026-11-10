@@ -1,0 +1,51 @@
+robot:
+  urdf: /home/hkclr-manipulation-spark1/rt_ws/robot_workspace_dexterous/workspace_results/six_model_comparison/models/P2AB-3_open/robot.urdf
+  collision_meshes: /home/hkclr-manipulation-spark1/rt_ws/robot_workspace_dexterous/workspace_results/six_model_comparison/models/P2AB-3_open/collision_meshes.yaml
+  base_link: base_link
+  ee_links:
+  - grasp_tcp
+  joint_limit_defaults:
+    effort: 1.0
+    velocity: 1.0
+  self_collision_ignore:
+    base_link:
+    - L111
+    L111:
+    - L222
+    L222:
+    - L333
+    L333:
+    - L444
+    L444:
+    - L555
+    L555:
+    - L666
+    L666:
+    - gripper_base_link
+    gripper_base_link:
+    - gripper_L1
+    - gripper_L2
+grid:
+  x_range:
+  - -1.2
+  - 1.2
+  y_range:
+  - -1.2
+  - 1.2
+  z_min: -1.2
+  z_max: 1.2
+  resolution: 0.1
+  z_step: 0.1
+orientations:
+  count: 16
+solver:
+  ik_seeds: 8
+  batch_size: 128
+  gpu_memory_fraction: 0.5
+  position_tolerance: 0.005
+  orientation_tolerance: 0.08
+  self_collision: true
+  collision_backend: stl
+  backend: cuda
+output:
+  minimum_dexterity: 1.0

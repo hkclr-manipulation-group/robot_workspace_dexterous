@@ -1,0 +1,44 @@
+{
+  "models": [
+    "spark2_v2_2",
+    "spark2_v1",
+    "P2AB-1",
+    "P2AB-2",
+    "P2AB-3",
+    "P2AB-4"
+  ],
+  "states": [
+    "bare",
+    "open",
+    "holding"
+  ],
+  "normalization": "Sum of arm joint-origin translation lengths normalized to 1 m; gripper unchanged",
+  "grid": {
+    "resolution_m": 0.1,
+    "ranges_m": [
+      -1.2,
+      1.2
+    ],
+    "points": 15625
+  },
+  "orientation_samples": 16,
+  "ik_seeds": 8,
+  "position_tolerance_m": 0.005,
+  "orientation_tolerance_rad": 0.08,
+  "collision": "Full STL triangle intersections; closed-mesh containment; open-mesh surface intersections only",
+  "ignored_pairs": "Direct arm neighbors, mechanical gripper mount, base/finger joints; holding additionally allows intended finger/payload contact",
+  "joint_limits": "Original model limits retained; different across designs",
+  "targets": {
+    "bare": "Flange frame",
+    "open": "Grasp TCP 155 mm from gripper base",
+    "holding": "Same grasp TCP with 30 mm cube attached"
+  },
+  "cumulative": "Count with >= threshold accepted orientations / all reachable grid points; exclude 0/16",
+  "caveats": [
+    "P2AB-3 uses revised upward mounting on opposite flange side; physical mounting compatibility is not verified.",
+    "Workspace IK acceptance does not prove a collision-free path to each pose.",
+    "Bare flange and gripper TCP are different target points; gripper extension changes reach.",
+    "8 existing gripper results reused; 10 new cases recalculated with matching settings."
+  ],
+  "collision_implementation": "Original repository implementation for every reported workspace result; experimental prefilter not used."
+}

@@ -1,0 +1,20 @@
+{
+  "spark2_v2_2_bare": "/home/hkclr-manipulation-spark1/rt_ws/robot_workspace_dexterous/workspace_results/six_model_comparison/output/spark2_v2_2_bare/arm_end_effector.npz",
+  "spark2_v2_2_open": "/home/hkclr-manipulation-spark1/rt_ws/robot_workspace_dexterous/workspace_results/six_model_comparison/output/spark2_v2_2_open/grasp_tcp.npz",
+  "spark2_v2_2_holding": "/home/hkclr-manipulation-spark1/rt_ws/robot_workspace_dexterous/workspace_results/six_model_comparison/output/spark2_v2_2_holding/grasp_tcp.npz",
+  "spark2_v1_bare": "/home/hkclr-manipulation-spark1/rt_ws/robot_workspace_dexterous/workspace_results/six_model_comparison/output/spark2_v1_bare/arm_end_effector.npz",
+  "spark2_v1_open": "/home/hkclr-manipulation-spark1/rt_ws/robot_workspace_dexterous/workspace_results/six_model_comparison/output/spark2_v1_open/grasp_tcp.npz",
+  "spark2_v1_holding": "/home/hkclr-manipulation-spark1/rt_ws/robot_workspace_dexterous/workspace_results/six_model_comparison/output/spark2_v1_holding/grasp_tcp.npz",
+  "P2AB-1_bare": "/home/hkclr-manipulation-spark1/rt_ws/robot_workspace_dexterous/workspace_results/six_model_comparison/output/P2AB-1_bare/L6.npz",
+  "P2AB-1_open": "/home/hkclr-manipulation-spark1/rt_ws/robot_workspace_dexterous/workspace_results/six_model_comparison/output/P2AB-1_open/grasp_tcp.npz",
+  "P2AB-1_holding": "/home/hkclr-manipulation-spark1/rt_ws/robot_workspace_dexterous/workspace_results/six_model_comparison/output/P2AB-1_holding/grasp_tcp.npz",
+  "P2AB-2_bare": "/home/hkclr-manipulation-spark1/rt_ws/robot_workspace_dexterous/workspace_results/six_model_comparison/output/P2AB-2_bare/L66.npz",
+  "P2AB-2_open": "/home/hkclr-manipulation-spark1/rt_ws/robot_workspace_dexterous/workspace_results/six_model_comparison/output/P2AB-2_open/grasp_tcp.npz",
+  "P2AB-2_holding": "/home/hkclr-manipulation-spark1/rt_ws/robot_workspace_dexterous/workspace_results/six_model_comparison/output/P2AB-2_holding/grasp_tcp.npz",
+  "P2AB-3_bare": "/home/hkclr-manipulation-spark1/rt_ws/robot_workspace_dexterous/workspace_results/six_model_comparison/output/P2AB-3_bare/L666.npz",
+  "P2AB-3_open": "/home/hkclr-manipulation-spark1/rt_ws/robot_workspace_dexterous/workspace_results/six_model_comparison/output/P2AB-3_open/grasp_tcp.npz",
+  "P2AB-3_holding": "/home/hkclr-manipulation-spark1/rt_ws/robot_workspace_dexterous/workspace_results/six_model_comparison/output/P2AB-3_holding/grasp_tcp.npz",
+  "P2AB-4_bare": "/home/hkclr-manipulation-spark1/rt_ws/robot_workspace_dexterous/workspace_results/six_model_comparison/output/P2AB-4_bare/L6666.npz",
+  "P2AB-4_open": "/home/hkclr-manipulation-spark1/rt_ws/robot_workspace_dexterous/workspace_results/six_model_comparison/output/P2AB-4_open/grasp_tcp.npz",
+  "P2AB-4_holding": "/home/hkclr-manipulation-spark1/rt_ws/robot_workspace_dexterous/workspace_results/six_model_comparison/output/P2AB-4_holding/grasp_tcp.npz"
+}

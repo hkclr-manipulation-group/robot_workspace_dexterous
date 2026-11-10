@@ -1,0 +1,195 @@
+{
+  "rws_cells": 3418,
+  "dws_cells": 29,
+  "rws_volume_m3": 3.4179967403411875,
+  "dws_volume_m3": 0.02899997234344483,
+  "dws_rws_ratio": 0.008484493856056173,
+  "dws_minimum_dexterity": 1.0,
+  "backend": "cuda",
+  "status": "complete",
+  "ik_iterations": 120,
+  "random_seed": 0,
+  "grid_resolution_m": 0.1,
+  "grid_x_range": [
+    -1.2,
+    1.2
+  ],
+  "grid_y_range": [
+    -1.2,
+    1.2
+  ],
+  "grid_heights": [
+    -1.2000000476837158,
+    -1.100000023841858,
+    -1.0,
+    -0.8999999761581421,
+    -0.7999999523162842,
+    -0.6999999284744263,
+    -0.5999999046325684,
+    -0.49999988079071045,
+    -0.39999985694885254,
+    -0.29999983310699463,
+    -0.19999980926513672,
+    -0.09999978542327881,
+    2.384185791015625e-07,
+    0.10000026226043701,
+    0.20000028610229492,
+    0.30000030994415283,
+    0.40000033378601074,
+    0.5000003576278687,
+    0.6000003814697266,
+    0.7000004053115845,
+    0.8000004291534424,
+    0.9000003337860107,
+    1.0000004768371582,
+    1.1000006198883057,
+    1.200000524520874
+  ],
+  "orientation_samples_wxyz": [
+    [
+      -0.12690071761608124,
+      0.9173538684844971,
+      -0.3566678762435913,
+      0.12306994944810867
+    ],
+    [
+      0.2063281387090683,
+      -0.4212198555469513,
+      0.8537118434906006,
+      0.22622711956501007
+    ],
+    [
+      0.3000830113887787,
+      -0.25674062967300415,
+      -0.8819491863250732,
+      -0.25729402899742126
+    ],
+    [
+      -0.29341140389442444,
+      0.7554249167442322,
+      0.45889344811439514,
+      -0.3642248511314392
+    ],
+    [
+      -0.4229929447174072,
+      -0.8316019177436829,
+      0.16488881409168243,
+      0.3198859393596649
+    ],
+    [
+      0.33915162086486816,
+      0.4795023500919342,
+      -0.652937650680542,
+      0.4782533049583435
+    ],
+    [
+      0.5309697985649109,
+      0.08321285992860794,
+      0.7660454511642456,
+      -0.35259199142456055
+    ],
+    [
+      -0.36108967661857605,
+      -0.5475040674209595,
+      -0.48113343119621277,
+      -0.5816909074783325
+    ],
+    [
+      -0.6307456493377686,
+      0.6845070123672485,
+      -0.01414721179753542,
+      0.36525318026542664
+    ],
+    [
+      0.3655271530151367,
+      -0.4609855115413666,
+      0.44016173481941223,
+      0.6783361434936523
+    ],
+    [
+      0.7245854735374451,
+      0.03917837142944336,
+      -0.5849915146827698,
+      -0.3622511625289917
+    ],
+    [
+      -0.35569459199905396,
+      0.33130112290382385,
+      0.41411298513412476,
+      -0.7695657014846802
+    ],
+    [
+      -0.8133143186569214,
+      -0.46214258670806885,
+      -0.0719320997595787,
+      0.3460777997970581
+    ],
+    [
+      0.33358603715896606,
+      0.3290684223175049,
+      -0.21900679171085358,
+      0.8558447957038879
+    ],
+    [
+      0.8971537947654724,
+      -0.073360376060009,
+      0.29726797342300415,
+      -0.31837886571884155
+    ],
+    [
+      -0.3005966544151306,
+      -0.08470188826322556,
+      -0.15516310930252075,
+      -0.9372255206108093
+    ]
+  ],
+  "ik_seeds": 8,
+  "cpu_ik_iterations": null,
+  "cpu_seed": null,
+  "collision_model": {
+    "mode": "stl",
+    "file": "/home/hkclr-manipulation-spark1/rt_ws/robot_workspace_dexterous/workspace_results/six_model_comparison/models/P2AB-4_open/collision_meshes.yaml",
+    "manifest_sha256": "d18007d8ce0472367eba3f726ee6a8db1f43c274ee6b82d72c811eda9ee3ce81",
+    "assets": {
+      "/home/hkclr-manipulation-spark1/rt_ws/robot_workspace_dexterous/models/meshes/09c362e4c8652c041c0f2bfc7d65e0fc6e6a4c467778591934752eecc4b6e513.stl": "09c362e4c8652c041c0f2bfc7d65e0fc6e6a4c467778591934752eecc4b6e513",
+      "/home/hkclr-manipulation-spark1/rt_ws/robot_workspace_dexterous/models/meshes/82ce5ff19ba2c7fa9d8179d941b2211066c1377e59b44c6dc0889856bae20b70.stl": "82ce5ff19ba2c7fa9d8179d941b2211066c1377e59b44c6dc0889856bae20b70",
+      "/home/hkclr-manipulation-spark1/rt_ws/robot_workspace_dexterous/models/meshes/4ab1fa6e7479e757072b4a0ddbb48eaaa45531c5b5dd1b065a6dcdd75ac4f674.stl": "4ab1fa6e7479e757072b4a0ddbb48eaaa45531c5b5dd1b065a6dcdd75ac4f674",
+      "/home/hkclr-manipulation-spark1/rt_ws/robot_workspace_dexterous/models/meshes/75180f1cfd7e81ed82c6177358b7e5b1d3f7732ebc4cc4794cc3df4b65b757ae.stl": "75180f1cfd7e81ed82c6177358b7e5b1d3f7732ebc4cc4794cc3df4b65b757ae",
+      "/home/hkclr-manipulation-spark1/rt_ws/robot_workspace_dexterous/models/meshes/7e94f2e752f6a400654b263404da7dbb697833e906f22517b1708f32e3823503.stl": "7e94f2e752f6a400654b263404da7dbb697833e906f22517b1708f32e3823503",
+      "/home/hkclr-manipulation-spark1/rt_ws/robot_workspace_dexterous/models/meshes/a996408e66ef1b5bdc5cf713bf2877ac9e3fecf2cb83a9f02103646768c49a56.stl": "a996408e66ef1b5bdc5cf713bf2877ac9e3fecf2cb83a9f02103646768c49a56",
+      "/home/hkclr-manipulation-spark1/rt_ws/robot_workspace_dexterous/models/meshes/33922f005b46b1f73af2d595ad9c8bc5e7ab2185061da7518037939321d3ce03.stl": "33922f005b46b1f73af2d595ad9c8bc5e7ab2185061da7518037939321d3ce03",
+      "/home/hkclr-manipulation-spark1/rt_ws/cuarm_mesh/spark2_v2_2/meshes/gripper/base_link.stl": "b2984a04d1af082ff25c4ebe869c862f16d789078a70209787a3eb1d10fbf6a7",
+      "/home/hkclr-manipulation-spark1/rt_ws/cuarm_mesh/spark2_v2_2/meshes/gripper/L1.stl": "51f577bb713a669fa3b14c0efcd730aab09322a4e0c95cab818191e7b94ea511",
+      "/home/hkclr-manipulation-spark1/rt_ws/cuarm_mesh/spark2_v2_2/meshes/gripper/L2.stl": "4f41d85868b79a626f5b2565cd753fc8252157e2ddd2822923a1c1a10e122ef7"
+    },
+    "total_triangles": 32036,
+    "mesh_parts": 10,
+    "collision_pairs": 36,
+    "open_mesh_links": [
+      "L1111",
+      "L2222",
+      "L6666",
+      "gripper_L2",
+      "gripper_base_link"
+    ],
+    "collision_method": "BVH triangle intersection + containment for closed meshes",
+    "open_mesh_policy": "surface intersection only; open STL has no defined solid interior",
+    "contact_tolerance_m": 1e-06,
+    "ik_collision_method": "all returned pose-IK seeds checked against STL; no sphere cost",
+    "joint_contact_policy": "strict",
+    "joint_contact_excluded_pairs": [],
+    "fixed_target_occupancy": {
+      "blocked_cells": 2,
+      "unresolved_open_links": [],
+      "policy": "closed material and mesh surfaces; no convex-hull filling"
+    },
+    "self_collision_enabled": true,
+    "self_collision_broad_phase": false,
+    "original_manifest_sha256": "d18007d8ce0472367eba3f726ee6a8db1f43c274ee6b82d72c811eda9ee3ce81"
+  },
+  "ee_link": "grasp_tcp",
+  "orientation_samples": 16,
+  "mean_manipulability_over_rws": 0.022210627794265747,
+  "maximum_finite_condition_number": 2526825.25,
+  "reused_from": "/home/hkclr-manipulation-spark1/rt_ws/robot_workspace_dexterous/workspace_results/gripper_demo/output/P2AB-4_open"
+}

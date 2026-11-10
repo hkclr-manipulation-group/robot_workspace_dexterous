@@ -1,0 +1,182 @@
+[
+  {
+    "model": "spark2_v2_2",
+    "state": "bare",
+    "R": 1533,
+    "D": 0,
+    "at_least_50_percent": 28.440965427266796,
+    "at_least_75_percent": 2.935420743639922,
+    "full_coverage_percent": 0.0,
+    "mean_orientation_coverage_percent": 35.4737434387207
+  },
+  {
+    "model": "spark2_v2_2",
+    "state": "open",
+    "R": 2548,
+    "D": 0,
+    "at_least_50_percent": 3.885400313971742,
+    "at_least_75_percent": 0.03924646781789639,
+    "full_coverage_percent": 0.0,
+    "mean_orientation_coverage_percent": 22.164443969726562
+  },
+  {
+    "model": "spark2_v2_2",
+    "state": "holding",
+    "R": 2543,
+    "D": 0,
+    "at_least_50_percent": 4.011010617381046,
+    "at_least_75_percent": 0.039323633503735744,
+    "full_coverage_percent": 0.0,
+    "mean_orientation_coverage_percent": 22.210479736328125
+  },
+  {
+    "model": "spark2_v1",
+    "state": "bare",
+    "R": 1568,
+    "D": 0,
+    "at_least_50_percent": 18.0484693877551,
+    "at_least_75_percent": 0.7653061224489796,
+    "full_coverage_percent": 0.0,
+    "mean_orientation_coverage_percent": 29.615753173828125
+  },
+  {
+    "model": "spark2_v1",
+    "state": "open",
+    "R": 2491,
+    "D": 0,
+    "at_least_50_percent": 0.8831794460056202,
+    "at_least_75_percent": 0.0,
+    "full_coverage_percent": 0.0,
+    "mean_orientation_coverage_percent": 18.22561264038086
+  },
+  {
+    "model": "spark2_v1",
+    "state": "holding",
+    "R": 2496,
+    "D": 0,
+    "at_least_50_percent": 0.8413461538461539,
+    "at_least_75_percent": 0.0,
+    "full_coverage_percent": 0.0,
+    "mean_orientation_coverage_percent": 18.226661682128906
+  },
+  {
+    "model": "P2AB-1",
+    "state": "bare",
+    "R": 2535,
+    "D": 258,
+    "at_least_50_percent": 66.50887573964496,
+    "at_least_75_percent": 45.75936883629191,
+    "full_coverage_percent": 10.177514792899409,
+    "mean_orientation_coverage_percent": 61.3239631652832
+  },
+  {
+    "model": "P2AB-1",
+    "state": "open",
+    "R": 3814,
+    "D": 1,
+    "at_least_50_percent": 30.571578395385423,
+    "at_least_75_percent": 4.640797063450446,
+    "full_coverage_percent": 0.026219192448872573,
+    "mean_orientation_coverage_percent": 34.302894592285156
+  },
+  {
+    "model": "P2AB-1",
+    "state": "holding",
+    "R": 3812,
+    "D": 3,
+    "at_least_50_percent": 32.18782791185729,
+    "at_least_75_percent": 5.823714585519412,
+    "full_coverage_percent": 0.07869884575026233,
+    "mean_orientation_coverage_percent": 35.011146545410156
+  },
+  {
+    "model": "P2AB-2",
+    "state": "bare",
+    "R": 2267,
+    "D": 545,
+    "at_least_50_percent": 71.32774591971769,
+    "at_least_75_percent": 53.94794883105426,
+    "full_coverage_percent": 24.04058226731363,
+    "mean_orientation_coverage_percent": 67.92842864990234
+  },
+  {
+    "model": "P2AB-2",
+    "state": "open",
+    "R": 3355,
+    "D": 11,
+    "at_least_50_percent": 39.642324888226526,
+    "at_least_75_percent": 15.081967213114755,
+    "full_coverage_percent": 0.32786885245901637,
+    "mean_orientation_coverage_percent": 41.22019577026367
+  },
+  {
+    "model": "P2AB-2",
+    "state": "holding",
+    "R": 3353,
+    "D": 13,
+    "at_least_50_percent": 40.17297942141366,
+    "at_least_75_percent": 15.926036385326572,
+    "full_coverage_percent": 0.3877124962719952,
+    "mean_orientation_coverage_percent": 41.65486145019531
+  },
+  {
+    "model": "P2AB-3",
+    "state": "bare",
+    "R": 2436,
+    "D": 235,
+    "at_least_50_percent": 62.315270935960584,
+    "at_least_75_percent": 42.69293924466338,
+    "full_coverage_percent": 9.646962233169129,
+    "mean_orientation_coverage_percent": 58.50522994995117
+  },
+  {
+    "model": "P2AB-3",
+    "state": "open",
+    "R": 3611,
+    "D": 1,
+    "at_least_50_percent": 31.09941844364442,
+    "at_least_75_percent": 5.870949875380781,
+    "full_coverage_percent": 0.027693159789531983,
+    "mean_orientation_coverage_percent": 34.28932571411133
+  },
+  {
+    "model": "P2AB-3",
+    "state": "holding",
+    "R": 3617,
+    "D": 1,
+    "at_least_50_percent": 32.20901299419408,
+    "at_least_75_percent": 7.160630356649158,
+    "full_coverage_percent": 0.02764722145424385,
+    "mean_orientation_coverage_percent": 34.88906478881836
+  },
+  {
+    "model": "P2AB-4",
+    "state": "bare",
+    "R": 2154,
+    "D": 345,
+    "at_least_50_percent": 58.40297121634169,
+    "at_least_75_percent": 39.3686165273909,
+    "full_coverage_percent": 16.016713091922004,
+    "mean_orientation_coverage_percent": 57.49477767944336
+  },
+  {
+    "model": "P2AB-4",
+    "state": "open",
+    "R": 3418,
+    "D": 29,
+    "at_least_50_percent": 29.54944411936805,
+    "at_least_75_percent": 11.878291398478643,
+    "full_coverage_percent": 0.8484493856056173,
+    "mean_orientation_coverage_percent": 35.82870101928711
+  },
+  {
+    "model": "P2AB-4",
+    "state": "holding",
+    "R": 3413,
+    "D": 29,
+    "at_least_50_percent": 29.592733665397013,
+    "at_least_75_percent": 11.924992675065925,
+    "full_coverage_percent": 0.849692352768825,
+    "mean_orientation_coverage_percent": 35.914154052734375
+  }
+]

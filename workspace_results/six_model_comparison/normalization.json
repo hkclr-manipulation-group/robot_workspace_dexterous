@@ -1,0 +1,44 @@
+[
+  {
+    "model": "spark2_v2_2",
+    "original_chain_length_m": 0.9053200000000019,
+    "scale": 1.1045818053285004,
+    "normalized_chain_length_m": 1.0,
+    "joint_limits": "original URDF limits retained"
+  },
+  {
+    "model": "spark2_v1",
+    "original_chain_length_m": 0.9806999999999999,
+    "scale": 1.0196798205363518,
+    "normalized_chain_length_m": 1.0,
+    "joint_limits": "original URDF limits retained"
+  },
+  {
+    "model": "P2AB-1",
+    "original_chain_length_m": 0.9945,
+    "scale": 1.0055304172951232,
+    "normalized_chain_length_m": 1.0,
+    "joint_limits": "original URDF limits retained"
+  },
+  {
+    "model": "P2AB-2",
+    "original_chain_length_m": 0.901821114754201,
+    "scale": 1.1088673614307185,
+    "normalized_chain_length_m": 1.0,
+    "joint_limits": "original URDF limits retained"
+  },
+  {
+    "model": "P2AB-3",
+    "original_chain_length_m": 0.9345000000000001,
+    "scale": 1.070090957731407,
+    "normalized_chain_length_m": 1.0,
+    "joint_limits": "original URDF limits retained"
+  },
+  {
+    "model": "P2AB-4",
+    "original_chain_length_m": 0.9715,
+    "scale": 1.029336078229542,
+    "normalized_chain_length_m": 1.0,
+    "joint_limits": "original URDF limits retained"
+  }
+]

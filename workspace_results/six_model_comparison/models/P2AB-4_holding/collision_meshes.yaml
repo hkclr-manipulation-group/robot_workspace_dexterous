@@ -1,0 +1,168 @@
+version: 1
+urdf_sha256: 9e096eb7ab00d667fc524dde3b26822fe187506efe473cce73a8ebe931a7855d
+links:
+  base_link:
+  - file: /home/hkclr-manipulation-spark1/rt_ws/robot_workspace_dexterous/models/meshes/09c362e4c8652c041c0f2bfc7d65e0fc6e6a4c467778591934752eecc4b6e513.stl
+    sha256: 09c362e4c8652c041c0f2bfc7d65e0fc6e6a4c467778591934752eecc4b6e513
+    scale:
+    - 1.029336078229542
+    - 1.029336078229542
+    - 1.029336078229542
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 0.0
+    - 0.0
+  L1111:
+  - file: /home/hkclr-manipulation-spark1/rt_ws/robot_workspace_dexterous/models/meshes/82ce5ff19ba2c7fa9d8179d941b2211066c1377e59b44c6dc0889856bae20b70.stl
+    sha256: 82ce5ff19ba2c7fa9d8179d941b2211066c1377e59b44c6dc0889856bae20b70
+    scale:
+    - 1.029336078229542
+    - 1.029336078229542
+    - 1.029336078229542
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 0.0
+    - 0.0
+  L2222:
+  - file: /home/hkclr-manipulation-spark1/rt_ws/robot_workspace_dexterous/models/meshes/4ab1fa6e7479e757072b4a0ddbb48eaaa45531c5b5dd1b065a6dcdd75ac4f674.stl
+    sha256: 4ab1fa6e7479e757072b4a0ddbb48eaaa45531c5b5dd1b065a6dcdd75ac4f674
+    scale:
+    - 1.029336078229542
+    - 1.029336078229542
+    - 1.029336078229542
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 0.0
+    - 0.0
+  L3333:
+  - file: /home/hkclr-manipulation-spark1/rt_ws/robot_workspace_dexterous/models/meshes/75180f1cfd7e81ed82c6177358b7e5b1d3f7732ebc4cc4794cc3df4b65b757ae.stl
+    sha256: 75180f1cfd7e81ed82c6177358b7e5b1d3f7732ebc4cc4794cc3df4b65b757ae
+    scale:
+    - 1.029336078229542
+    - 1.029336078229542
+    - 1.029336078229542
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 0.0
+    - 0.0
+  L4444:
+  - file: /home/hkclr-manipulation-spark1/rt_ws/robot_workspace_dexterous/models/meshes/7e94f2e752f6a400654b263404da7dbb697833e906f22517b1708f32e3823503.stl
+    sha256: 7e94f2e752f6a400654b263404da7dbb697833e906f22517b1708f32e3823503
+    scale:
+    - 1.029336078229542
+    - 1.029336078229542
+    - 1.029336078229542
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 0.0
+    - 0.0
+  L5555:
+  - file: /home/hkclr-manipulation-spark1/rt_ws/robot_workspace_dexterous/models/meshes/a996408e66ef1b5bdc5cf713bf2877ac9e3fecf2cb83a9f02103646768c49a56.stl
+    sha256: a996408e66ef1b5bdc5cf713bf2877ac9e3fecf2cb83a9f02103646768c49a56
+    scale:
+    - 1.029336078229542
+    - 1.029336078229542
+    - 1.029336078229542
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 0.0
+    - 0.0
+  L6666:
+  - file: /home/hkclr-manipulation-spark1/rt_ws/robot_workspace_dexterous/models/meshes/33922f005b46b1f73af2d595ad9c8bc5e7ab2185061da7518037939321d3ce03.stl
+    sha256: 33922f005b46b1f73af2d595ad9c8bc5e7ab2185061da7518037939321d3ce03
+    scale:
+    - 1.029336078229542
+    - 1.029336078229542
+    - 1.029336078229542
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 0.0
+    - 0.0
+  gripper_base_link:
+  - file: /home/hkclr-manipulation-spark1/rt_ws/cuarm_mesh/spark2_v2_2/meshes/gripper/base_link.stl
+    sha256: b2984a04d1af082ff25c4ebe869c862f16d789078a70209787a3eb1d10fbf6a7
+    scale:
+    - 1.0
+    - 1.0
+    - 1.0
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 0.0
+    - 0.0
+  gripper_L1:
+  - file: /home/hkclr-manipulation-spark1/rt_ws/cuarm_mesh/spark2_v2_2/meshes/gripper/L1.stl
+    sha256: 51f577bb713a669fa3b14c0efcd730aab09322a4e0c95cab818191e7b94ea511
+    scale:
+    - 1.0
+    - 1.0
+    - 1.0
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 0.0
+    - 0.0
+  gripper_L2:
+  - file: /home/hkclr-manipulation-spark1/rt_ws/cuarm_mesh/spark2_v2_2/meshes/gripper/L2.stl
+    sha256: 4f41d85868b79a626f5b2565cd753fc8252157e2ddd2822923a1c1a10e122ef7
+    scale:
+    - 1.0
+    - 1.0
+    - 1.0
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 0.0
+    - 0.0
+  grasp_tcp:
+  - file: /home/hkclr-manipulation-spark1/rt_ws/robot_workspace_dexterous/workspace_results/six_model_comparison/payload.stl
+    sha256: e969029039c8821e347a08e77030126401d74e09bb745281042fb549c611a9cc
+    scale:
+    - 1.0
+    - 1.0
+    - 1.0
+    xyz:
+    - 0.0
+    - 0.0
+    - 0.0
+    rpy:
+    - 0.0
+    - 0.0
+    - 0.0

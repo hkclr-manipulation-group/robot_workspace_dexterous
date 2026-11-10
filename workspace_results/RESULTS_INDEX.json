@@ -1,10 +1,24 @@
 {
-  "current_results": "gripper_demo_up",
+  "current_results": "six_model_comparison",
   "reused_models_1_2_4_results": "gripper_demo/output",
   "normalization": "normalized_length",
-  "current_plot": "gripper_demo_up/coverage_cumulative_percent.png",
+  "current_plot": "six_model_comparison/cumulative_bars_gripper.png",
   "denominator": "reachable points only; exclude 0/16",
   "threshold_order": ">=16/16 through >=1/16",
   "note": "P2AB-3 upward mount is a revised assembly assumption. Old demos and initial_tcp145_output are historical, not recomputed for revised mount. External mesh assets remain in local rt_ws repositories.",
-  "source": "/home/hkclr-manipulation-spark1/ai_ws/workspace_results"
+  "source": "/home/hkclr-manipulation-spark1/ai_ws/workspace_results",
+  "comparison_models": [
+    "spark2_v2_2",
+    "spark2_v1",
+    "P2AB-1",
+    "P2AB-2",
+    "P2AB-3",
+    "P2AB-4"
+  ],
+  "states": [
+    "bare",
+    "open",
+    "holding"
+  ],
+  "methodology": "six_model_comparison/methodology.json"
 }
