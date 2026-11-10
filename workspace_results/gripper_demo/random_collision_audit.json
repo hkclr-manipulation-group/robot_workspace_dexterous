@@ -1,0 +1,254 @@
+[
+  {
+    "model": "P2AB-1",
+    "samples": 200,
+    "collision_free": 100,
+    "pairs": [
+      {
+        "pair": [
+          "L3",
+          "gripper_base_link"
+        ],
+        "count": 48
+      },
+      {
+        "pair": [
+          "L2",
+          "base_link"
+        ],
+        "count": 44
+      },
+      {
+        "pair": [
+          "L3",
+          "L5"
+        ],
+        "count": 21
+      },
+      {
+        "pair": [
+          "L3",
+          "base_link"
+        ],
+        "count": 18
+      },
+      {
+        "pair": [
+          "L3",
+          "L6"
+        ],
+        "count": 13
+      },
+      {
+        "pair": [
+          "L3",
+          "gripper_L2"
+        ],
+        "count": 9
+      },
+      {
+        "pair": [
+          "base_link",
+          "gripper_base_link"
+        ],
+        "count": 7
+      },
+      {
+        "pair": [
+          "L4",
+          "gripper_base_link"
+        ],
+        "count": 6
+      }
+    ]
+  },
+  {
+    "model": "P2AB-2",
+    "samples": 200,
+    "collision_free": 102,
+    "pairs": [
+      {
+        "pair": [
+          "L22",
+          "base_link"
+        ],
+        "count": 44
+      },
+      {
+        "pair": [
+          "L33",
+          "gripper_base_link"
+        ],
+        "count": 42
+      },
+      {
+        "pair": [
+          "L33",
+          "base_link"
+        ],
+        "count": 19
+      },
+      {
+        "pair": [
+          "L11",
+          "gripper_base_link"
+        ],
+        "count": 11
+      },
+      {
+        "pair": [
+          "L44",
+          "base_link"
+        ],
+        "count": 10
+      },
+      {
+        "pair": [
+          "L33",
+          "gripper_L2"
+        ],
+        "count": 8
+      },
+      {
+        "pair": [
+          "L55",
+          "base_link"
+        ],
+        "count": 8
+      },
+      {
+        "pair": [
+          "base_link",
+          "gripper_base_link"
+        ],
+        "count": 7
+      }
+    ]
+  },
+  {
+    "model": "P2AB-3",
+    "samples": 200,
+    "collision_free": 0,
+    "pairs": [
+      {
+        "pair": [
+          "L555",
+          "gripper_base_link"
+        ],
+        "count": 200
+      },
+      {
+        "pair": [
+          "L444",
+          "gripper_base_link"
+        ],
+        "count": 128
+      },
+      {
+        "pair": [
+          "L333",
+          "gripper_base_link"
+        ],
+        "count": 92
+      },
+      {
+        "pair": [
+          "L222",
+          "base_link"
+        ],
+        "count": 44
+      },
+      {
+        "pair": [
+          "L333",
+          "gripper_L1"
+        ],
+        "count": 44
+      },
+      {
+        "pair": [
+          "L333",
+          "gripper_L2"
+        ],
+        "count": 29
+      },
+      {
+        "pair": [
+          "L333",
+          "L555"
+        ],
+        "count": 22
+      },
+      {
+        "pair": [
+          "L333",
+          "base_link"
+        ],
+        "count": 19
+      }
+    ]
+  },
+  {
+    "model": "P2AB-4",
+    "samples": 200,
+    "collision_free": 117,
+    "pairs": [
+      {
+        "pair": [
+          "L2222",
+          "base_link"
+        ],
+        "count": 45
+      },
+      {
+        "pair": [
+          "L3333",
+          "L5555"
+        ],
+        "count": 26
+      },
+      {
+        "pair": [
+          "L3333",
+          "base_link"
+        ],
+        "count": 20
+      },
+      {
+        "pair": [
+          "L4444",
+          "base_link"
+        ],
+        "count": 13
+      },
+      {
+        "pair": [
+          "L1111",
+          "L4444"
+        ],
+        "count": 11
+      },
+      {
+        "pair": [
+          "L5555",
+          "base_link"
+        ],
+        "count": 7
+      },
+      {
+        "pair": [
+          "L1111",
+          "L5555"
+        ],
+        "count": 7
+      },
+      {
+        "pair": [
+          "L3333",
+          "L6666"
+        ],
+        "count": 6
+      }
+    ]
+  }
+]

@@ -1,0 +1,32 @@
+robot:
+  urdf: /home/hkclr-manipulation-spark1/rt_ws/robot_workspace_dexterous/workspace_results/normalized_length/models/P2AB-4/robot.urdf
+  collision_meshes: /home/hkclr-manipulation-spark1/rt_ws/robot_workspace_dexterous/workspace_results/normalized_length/models/P2AB-4/collision_meshes.yaml
+  base_link: base_link
+  ee_links:
+  - L6666
+  joint_limit_defaults:
+    effort: 1.0
+    velocity: 1.0
+grid:
+  x_range:
+  - -1.1
+  - 1.1
+  y_range:
+  - -1.1
+  - 1.1
+  z_min: -1.1
+  z_max: 1.1
+  resolution: 0.1
+  z_step: 0.1
+orientations:
+  count: 16
+solver:
+  ik_seeds: 8
+  batch_size: 128
+  gpu_memory_fraction: 0.5
+  position_tolerance: 0.005
+  orientation_tolerance: 0.08
+  self_collision: true
+  collision_backend: stl
+output:
+  minimum_dexterity: 1.0

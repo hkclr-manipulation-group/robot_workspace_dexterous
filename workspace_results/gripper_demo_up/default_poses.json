@@ -1,0 +1,70 @@
+[
+  {
+    "model": "P2AB-1",
+    "default_joint_positions": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "gripper_direction": [
+      1.0824674683459273e-14,
+      3.774757896997507e-15,
+      0.9999999999999998
+    ],
+    "zero_pose_collisions": []
+  },
+  {
+    "model": "P2AB-2",
+    "default_joint_positions": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "gripper_direction": [
+      -1.10196022108745e-05,
+      -3.6732309070047585e-06,
+      0.9999999999325374
+    ],
+    "zero_pose_collisions": []
+  },
+  {
+    "model": "P2AB-3",
+    "default_joint_positions": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "gripper_direction": [
+      3.6731920017866085e-06,
+      3.6196151132942314e-06,
+      0.9999999999867026
+    ],
+    "zero_pose_collisions": []
+  },
+  {
+    "model": "P2AB-4",
+    "default_joint_positions": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "gripper_direction": [
+      2.478032632492616e-17,
+      -3.673205103305043e-06,
+      0.9999999999932534
+    ],
+    "zero_pose_collisions": []
+  }
+]

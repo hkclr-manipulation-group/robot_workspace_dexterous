@@ -1,0 +1,186 @@
+[
+  {
+    "model": "P2AB-3",
+    "state": "open",
+    "z_angle_deg": 0,
+    "samples": 1000,
+    "collision_free": 0,
+    "wrist_sweep_collision": 361,
+    "wrist_sweep_samples": 361,
+    "pairs": [
+      {
+        "pair": [
+          "L555",
+          "gripper_base_link"
+        ],
+        "count": 1000
+      },
+      {
+        "pair": [
+          "L444",
+          "gripper_base_link"
+        ],
+        "count": 673
+      },
+      {
+        "pair": [
+          "L333",
+          "gripper_base_link"
+        ],
+        "count": 414
+      },
+      {
+        "pair": [
+          "L333",
+          "gripper_L1"
+        ],
+        "count": 209
+      },
+      {
+        "pair": [
+          "L222",
+          "base_link"
+        ],
+        "count": 194
+      }
+    ]
+  },
+  {
+    "model": "P2AB-3",
+    "state": "open",
+    "z_angle_deg": 90,
+    "samples": 1000,
+    "collision_free": 0,
+    "wrist_sweep_collision": 361,
+    "wrist_sweep_samples": 361,
+    "pairs": [
+      {
+        "pair": [
+          "L555",
+          "gripper_base_link"
+        ],
+        "count": 1000
+      },
+      {
+        "pair": [
+          "L444",
+          "gripper_base_link"
+        ],
+        "count": 698
+      },
+      {
+        "pair": [
+          "L333",
+          "gripper_base_link"
+        ],
+        "count": 403
+      },
+      {
+        "pair": [
+          "L222",
+          "base_link"
+        ],
+        "count": 194
+      },
+      {
+        "pair": [
+          "L333",
+          "gripper_L2"
+        ],
+        "count": 181
+      }
+    ]
+  },
+  {
+    "model": "P2AB-3",
+    "state": "holding",
+    "z_angle_deg": 0,
+    "samples": 1000,
+    "collision_free": 0,
+    "wrist_sweep_collision": 361,
+    "wrist_sweep_samples": 361,
+    "pairs": [
+      {
+        "pair": [
+          "L555",
+          "gripper_base_link"
+        ],
+        "count": 1000
+      },
+      {
+        "pair": [
+          "L444",
+          "gripper_base_link"
+        ],
+        "count": 673
+      },
+      {
+        "pair": [
+          "L333",
+          "gripper_base_link"
+        ],
+        "count": 414
+      },
+      {
+        "pair": [
+          "L222",
+          "base_link"
+        ],
+        "count": 194
+      },
+      {
+        "pair": [
+          "L333",
+          "gripper_L2"
+        ],
+        "count": 157
+      }
+    ]
+  },
+  {
+    "model": "P2AB-3",
+    "state": "holding",
+    "z_angle_deg": 90,
+    "samples": 1000,
+    "collision_free": 0,
+    "wrist_sweep_collision": 361,
+    "wrist_sweep_samples": 361,
+    "pairs": [
+      {
+        "pair": [
+          "L555",
+          "gripper_base_link"
+        ],
+        "count": 1000
+      },
+      {
+        "pair": [
+          "L444",
+          "gripper_base_link"
+        ],
+        "count": 698
+      },
+      {
+        "pair": [
+          "L333",
+          "gripper_base_link"
+        ],
+        "count": 403
+      },
+      {
+        "pair": [
+          "L222",
+          "base_link"
+        ],
+        "count": 194
+      },
+      {
+        "pair": [
+          "L333",
+          "gripper_L1"
+        ],
+        "count": 148
+      }
+    ]
+  }
+]

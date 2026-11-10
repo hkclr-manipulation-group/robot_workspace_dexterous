@@ -1,0 +1,75 @@
+{
+  "rws_cells": 2425,
+  "dws_cells": 214,
+  "rws_volume_m3": 2.424997687339783,
+  "dws_volume_m3": 0.21399979591369633,
+  "dws_rws_ratio": 0.08824742268041237,
+  "dws_minimum_dexterity": 1.0,
+  "collision_model": {
+    "mode": "stl",
+    "file": "/home/hkclr-manipulation-spark1/rt_ws/robot_workspace_dexterous/workspace_results/normalized_length/models/P2AB-3/collision_meshes.yaml",
+    "manifest_sha256": "031ee0182970ec16dc2879186817c0533a86a061d9f8294674ac18af1311c7d4",
+    "assets": {
+      "/home/hkclr-manipulation-spark1/rt_ws/robot_workspace_dexterous/models/meshes/23b8df36383a2fefbbbc9d6dc2f9edd8a40ef23d7aba4f3f9b5f59ea715581ce.stl": "23b8df36383a2fefbbbc9d6dc2f9edd8a40ef23d7aba4f3f9b5f59ea715581ce",
+      "/home/hkclr-manipulation-spark1/rt_ws/robot_workspace_dexterous/models/meshes/94db152263d235bc8a599dc458ced1a4c34307ec52cb223d4045be7d61fb11f4.stl": "94db152263d235bc8a599dc458ced1a4c34307ec52cb223d4045be7d61fb11f4",
+      "/home/hkclr-manipulation-spark1/rt_ws/robot_workspace_dexterous/models/meshes/3d2a79fc191853abee9af6dcdb2db7254ae1fe305922df9615fc3c74ca5f28e8.stl": "3d2a79fc191853abee9af6dcdb2db7254ae1fe305922df9615fc3c74ca5f28e8",
+      "/home/hkclr-manipulation-spark1/rt_ws/robot_workspace_dexterous/models/meshes/1b4617155bb3bc2b8c4b237e46c0448522da1ca43908a16e860b465751e3e172.stl": "1b4617155bb3bc2b8c4b237e46c0448522da1ca43908a16e860b465751e3e172",
+      "/home/hkclr-manipulation-spark1/rt_ws/robot_workspace_dexterous/models/meshes/be7be864d916a17ab662383f9e73e62f2f749a969995c67fb28637b0328a12a5.stl": "be7be864d916a17ab662383f9e73e62f2f749a969995c67fb28637b0328a12a5",
+      "/home/hkclr-manipulation-spark1/rt_ws/robot_workspace_dexterous/models/meshes/49e74f053289148ded891a1520adcd294a36c7e5dfb5f0fc19aa6ca5b421f056.stl": "49e74f053289148ded891a1520adcd294a36c7e5dfb5f0fc19aa6ca5b421f056",
+      "/home/hkclr-manipulation-spark1/rt_ws/robot_workspace_dexterous/models/meshes/3bb57c3f43bacd9e545c7e34fdd251052f2a690eb6433376a006ab5d22e30407.stl": "3bb57c3f43bacd9e545c7e34fdd251052f2a690eb6433376a006ab5d22e30407"
+    },
+    "total_triangles": 1496,
+    "mesh_parts": 7,
+    "collision_pairs": 15,
+    "open_mesh_links": [
+      "L111",
+      "L222",
+      "L333",
+      "L666"
+    ],
+    "collision_method": "BVH triangle intersection + containment for closed meshes",
+    "open_mesh_policy": "surface intersection only; open STL has no defined solid interior",
+    "contact_tolerance_m": 1e-06,
+    "ik_collision_method": "all returned pose-IK seeds checked against STL; no sphere cost",
+    "joint_contact_policy": "allow_rigid_and_joint_neighbors",
+    "joint_contact_excluded_pairs": [
+      [
+        "L111",
+        "L222"
+      ],
+      [
+        "L111",
+        "base_link"
+      ],
+      [
+        "L222",
+        "L333"
+      ],
+      [
+        "L333",
+        "L444"
+      ],
+      [
+        "L444",
+        "L555"
+      ],
+      [
+        "L555",
+        "L666"
+      ]
+    ],
+    "joint_contact_limitation": "Whole listed link pairs are excluded, including collisions away from their joint interfaces.",
+    "fixed_target_occupancy": {
+      "blocked_cells": 2,
+      "unresolved_open_links": [],
+      "policy": "closed material and mesh surfaces; no convex-hull filling"
+    },
+    "self_collision_enabled": true,
+    "self_collision_broad_phase": false,
+    "original_manifest_sha256": "031ee0182970ec16dc2879186817c0533a86a061d9f8294674ac18af1311c7d4"
+  },
+  "ee_link": "L666",
+  "orientation_samples": 16,
+  "mean_manipulability_over_rws": 0.024288205429911613,
+  "maximum_finite_condition_number": 26342176.0
+}

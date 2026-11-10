@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='utf-8'?>
+<robot name="P2AB-42">
+  <link name="base_link">
+    <inertial>
+      <origin xyz="1.428490767659753e-17 1.428490767659753e-17 0.04538541153165507" rpy="0 0 0" />
+      <mass value="0.981863334482295" />
+      <inertia ixx="0.00207066110012447" ixy="9.43558743869236E-20" ixz="-2.57021820007603E-19" iyy="0.00207066110012447" iyz="2.78705460385707E-19" izz="0.00177154344074453" />
+    </inertial>
+    </link>
+  <link name="L1111">
+    <inertial>
+      <origin xyz="0.08210902165237736 0.004663492161303757 0.006607679996894256" rpy="0 0 0" />
+      <mass value="0.388225953253037" />
+      <inertia ixx="0.000306195904386585" ixy="-2.85486900524798E-05" ixz="0.000123929258022414" iyy="0.000610664532848161" iyz="1.1290948548209E-05" izz="0.000621985609354426" />
+    </inertial>
+    </link>
+  <joint name="J1111" type="revolute">
+    <origin xyz="0.0 0.0 0.11425630468347917" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="L1111" />
+    <axis xyz="0 0 1" />
+    <limit lower="-3.14" upper="3.14" effort="1.0" velocity="1.0" />
+  </joint>
+  <link name="L2222">
+    <inertial>
+      <origin xyz="0.20815243069096656 1.5686290316702625e-20 -0.019128160781071643" rpy="0 0 0" />
+      <mass value="0.540441208331664" />
+      <inertia ixx="0.000657159215702567" ixy="-4.27547503002738E-20" ixz="-0.000733790218435572" iyy="0.00408169365339128" iyz="-2.54996319775178E-21" izz="0.00382119079358462" />
+    </inertial>
+    </link>
+  <joint name="J2222" type="revolute">
+    <origin xyz="0.09881626351003603 0.0 0.0" rpy="1.5708 -1.5708 0" />
+    <parent link="L1111" />
+    <child link="L2222" />
+    <axis xyz="0 0 1" />
+    <limit lower="-3.14" upper="3.14" effort="1.0" velocity="1.0" />
+  </joint>
+  <link name="L3333">
+    <inertial>
+      <origin xyz="0.2372123499677581 -5.4781720208420796e-06 0.032298786919502526" rpy="0 0 0" />
+      <mass value="0.437871221546317" />
+      <inertia ixx="0.00034149772089081" ixy="2.3178783432106E-07" ixz="0.000593764015061416" iyy="0.00618985301328023" iyz="-7.25571006182214E-08" izz="0.0061577997292442" />
+    </inertial>
+    </link>
+  <joint name="J3333" type="revolute">
+    <origin xyz="0.2573340195573855 0.0 0.0" rpy="0 0 0" />
+    <parent link="L2222" />
+    <child link="L3333" />
+    <axis xyz="0 0 1" />
+    <limit lower="-3.14" upper="3.14" effort="1.0" velocity="1.0" />
+  </joint>
+  <link name="L4444">
+    <inertial>
+      <origin xyz="-0.0006050758038887647 0.07286285802164302 8.952687294113566e-08" rpy="0 0 0" />
+      <mass value="0.254749024391637" />
+      <inertia ixx="0.000219124963329685" ixy="4.06650377374859E-07" ixz="-6.04338540300299E-11" iyy="0.000124007025526459" iyz="-1.75054711258473E-11" izz="0.000215101003277724" />
+    </inertial>
+    </link>
+  <joint name="J4444" type="revolute">
+    <origin xyz="0.3396809058157489 0.0 0.0" rpy="0 0 0" />
+    <parent link="L3333" />
+    <child link="L4444" />
+    <axis xyz="0 0 1" />
+    <limit lower="-3.14" upper="3.14" effort="1.0" velocity="1.0" />
+  </joint>
+  <link name="L5555">
+    <inertial>
+      <origin xyz="0.07529753790391663 7.142453838298744e-17 0.0" rpy="0 0 0" />
+      <mass value="0.24952099651137" />
+      <inertia ixx="0.000127371456275129" ixy="-4.11928386640565E-21" ixz="-1.41952200439509E-21" iyy="0.000186307903300392" iyz="3.40262774583135E-38" izz="0.000186307903300392" />
+    </inertial>
+    </link>
+  <joint name="J5555" type="revolute">
+    <origin xyz="0.0 0.07565620174987134 0.0" rpy="-1.5708 0 0" />
+    <parent link="L4444" />
+    <child link="L5555" />
+    <axis xyz="0 0 1" />
+    <limit lower="-3.14" upper="3.14" effort="1.0" velocity="1.0" />
+  </joint>
+  <link name="L6666">
+    <inertial>
+      <origin xyz="-6.428208454468874e-17 0.0 0.00514668039114771" rpy="0 0 0" />
+      <mass value="0.0331830724035422" />
+      <inertia ixx="9.03893065992322E-06" ixy="0" ixz="0" iyy="9.03893065992322E-06" iyz="-1.04203497169319E-38" izz="1.75248101131207E-05" />
+    </inertial>
+    </link>
+  <joint name="J6666" type="revolute">
+    <origin xyz="0.11425630468347917 0.0 0.0" rpy="-1.5708 0 -1.5708" />
+    <parent link="L5555" />
+    <child link="L6666" />
+    <axis xyz="0 0 1" />
+    <limit lower="-3.14" upper="3.14" effort="1.0" velocity="1.0" />
+  </joint>
+</robot>

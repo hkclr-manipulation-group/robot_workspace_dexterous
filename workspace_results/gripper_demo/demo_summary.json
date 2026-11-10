@@ -1,0 +1,278 @@
+[
+  {
+    "model": "P2AB-1",
+    "task": "front",
+    "success": true,
+    "failure": null,
+    "checked_configurations": 216,
+    "joint_path_length_rad": 5.732612544758521,
+    "max_position_error_m": 7.807540804294138e-14,
+    "max_orientation_error_rad": 3.661403768090208e-12,
+    "elapsed_s": 0.3827831509988755,
+    "pick": [
+      0.4,
+      -0.22,
+      0.16
+    ],
+    "place": [
+      0.4,
+      0.22,
+      0.16
+    ],
+    "height": 0.4,
+    "obstacle": false
+  },
+  {
+    "model": "P2AB-1",
+    "task": "side",
+    "success": false,
+    "failure": "transfer: no collision-free IK found",
+    "checked_configurations": 116,
+    "joint_path_length_rad": 3.0954707052614983,
+    "max_position_error_m": 0.0003042592349143629,
+    "max_orientation_error_rad": 0.037910634215194895,
+    "elapsed_s": 0.3997019848320633,
+    "pick": [
+      0.25,
+      0.4,
+      0.16
+    ],
+    "place": [
+      -0.25,
+      0.4,
+      0.16
+    ],
+    "height": 0.4,
+    "obstacle": false
+  },
+  {
+    "model": "P2AB-1",
+    "task": "obstacle",
+    "success": false,
+    "failure": "lift: no collision-free IK found",
+    "checked_configurations": 96,
+    "joint_path_length_rad": 2.4624394867694552,
+    "max_position_error_m": 5.474255194514172e-16,
+    "max_orientation_error_rad": 1.4163888147351706e-14,
+    "elapsed_s": 0.3806089679710567,
+    "pick": [
+      0.4,
+      -0.25,
+      0.16
+    ],
+    "place": [
+      0.4,
+      0.25,
+      0.16
+    ],
+    "height": 0.48,
+    "obstacle": true
+  },
+  {
+    "model": "P2AB-2",
+    "task": "front",
+    "success": true,
+    "failure": null,
+    "checked_configurations": 485,
+    "joint_path_length_rad": 20.340025468701864,
+    "max_position_error_m": 0.0007473603494056414,
+    "max_orientation_error_rad": 0.04003422890638268,
+    "elapsed_s": 0.607731960946694,
+    "pick": [
+      0.4,
+      -0.22,
+      0.16
+    ],
+    "place": [
+      0.4,
+      0.22,
+      0.16
+    ],
+    "height": 0.4,
+    "obstacle": false
+  },
+  {
+    "model": "P2AB-2",
+    "task": "side",
+    "success": false,
+    "failure": "lift: interpolated joint path collision",
+    "checked_configurations": 108,
+    "joint_path_length_rad": 3.341588225860555,
+    "max_position_error_m": 5.8761542341596385e-05,
+    "max_orientation_error_rad": 0.0037778009918259903,
+    "elapsed_s": 0.34766773506999016,
+    "pick": [
+      0.25,
+      0.4,
+      0.16
+    ],
+    "place": [
+      -0.25,
+      0.4,
+      0.16
+    ],
+    "height": 0.4,
+    "obstacle": false
+  },
+  {
+    "model": "P2AB-2",
+    "task": "obstacle",
+    "success": true,
+    "failure": null,
+    "checked_configurations": 415,
+    "joint_path_length_rad": 12.784493118593247,
+    "max_position_error_m": 1.0046935738063643e-13,
+    "max_orientation_error_rad": 5.034568951641547e-12,
+    "elapsed_s": 0.486210874048993,
+    "pick": [
+      0.4,
+      -0.25,
+      0.16
+    ],
+    "place": [
+      0.4,
+      0.25,
+      0.16
+    ],
+    "height": 0.48,
+    "obstacle": true
+  },
+  {
+    "model": "P2AB-3",
+    "task": "front",
+    "success": false,
+    "failure": "approach: no collision-free IK found",
+    "checked_configurations": 5,
+    "joint_path_length_rad": 0.0,
+    "max_position_error_m": 0.0,
+    "max_orientation_error_rad": 0.0,
+    "elapsed_s": 0.24904930009506643,
+    "pick": [
+      0.4,
+      -0.22,
+      0.16
+    ],
+    "place": [
+      0.4,
+      0.22,
+      0.16
+    ],
+    "height": 0.4,
+    "obstacle": false
+  },
+  {
+    "model": "P2AB-3",
+    "task": "side",
+    "success": false,
+    "failure": "approach: no collision-free IK found",
+    "checked_configurations": 5,
+    "joint_path_length_rad": 0.0,
+    "max_position_error_m": 0.0,
+    "max_orientation_error_rad": 0.0,
+    "elapsed_s": 0.21085387701168656,
+    "pick": [
+      0.25,
+      0.4,
+      0.16
+    ],
+    "place": [
+      -0.25,
+      0.4,
+      0.16
+    ],
+    "height": 0.4,
+    "obstacle": false
+  },
+  {
+    "model": "P2AB-3",
+    "task": "obstacle",
+    "success": false,
+    "failure": "approach: no collision-free IK found",
+    "checked_configurations": 4,
+    "joint_path_length_rad": 0.0,
+    "max_position_error_m": 0.0,
+    "max_orientation_error_rad": 0.0,
+    "elapsed_s": 0.25648703216575086,
+    "pick": [
+      0.4,
+      -0.25,
+      0.16
+    ],
+    "place": [
+      0.4,
+      0.25,
+      0.16
+    ],
+    "height": 0.48,
+    "obstacle": true
+  },
+  {
+    "model": "P2AB-4",
+    "task": "front",
+    "success": false,
+    "failure": "lift: no collision-free IK found",
+    "checked_configurations": 92,
+    "joint_path_length_rad": 2.600267994498448,
+    "max_position_error_m": 0.00042083088347645673,
+    "max_orientation_error_rad": 0.02355120480633623,
+    "elapsed_s": 0.5093202900607139,
+    "pick": [
+      0.4,
+      -0.22,
+      0.16
+    ],
+    "place": [
+      0.4,
+      0.22,
+      0.16
+    ],
+    "height": 0.4,
+    "obstacle": false
+  },
+  {
+    "model": "P2AB-4",
+    "task": "side",
+    "success": false,
+    "failure": "lift: no collision-free IK found",
+    "checked_configurations": 75,
+    "joint_path_length_rad": 1.9660907669738197,
+    "max_position_error_m": 4.744917734735053e-14,
+    "max_orientation_error_rad": 1.1806154582312649e-12,
+    "elapsed_s": 0.3879537279717624,
+    "pick": [
+      0.25,
+      0.4,
+      0.16
+    ],
+    "place": [
+      -0.25,
+      0.4,
+      0.16
+    ],
+    "height": 0.4,
+    "obstacle": false
+  },
+  {
+    "model": "P2AB-4",
+    "task": "obstacle",
+    "success": false,
+    "failure": "lift: no collision-free IK found",
+    "checked_configurations": 91,
+    "joint_path_length_rad": 2.562556434878815,
+    "max_position_error_m": 3.5824540371783725e-05,
+    "max_orientation_error_rad": 0.002044708435604355,
+    "elapsed_s": 0.4720200151205063,
+    "pick": [
+      0.4,
+      -0.25,
+      0.16
+    ],
+    "place": [
+      0.4,
+      0.25,
+      0.16
+    ],
+    "height": 0.48,
+    "obstacle": true
+  }
+]

@@ -1,0 +1,58 @@
+[
+  {
+    "model": "P2AB-1",
+    "state": "open",
+    "R": 3814,
+    "D": 1,
+    "D_R_percent": 0.026219192448872573
+  },
+  {
+    "model": "P2AB-2",
+    "state": "open",
+    "R": 3355,
+    "D": 11,
+    "D_R_percent": 0.32786885245901637
+  },
+  {
+    "model": "P2AB-3",
+    "state": "open",
+    "R": 0,
+    "D": 0,
+    "D_R_percent": 0
+  },
+  {
+    "model": "P2AB-4",
+    "state": "open",
+    "R": 3418,
+    "D": 29,
+    "D_R_percent": 0.8484493856056173
+  },
+  {
+    "model": "P2AB-1",
+    "state": "holding",
+    "R": 3812,
+    "D": 3,
+    "D_R_percent": 0.07869884575026233
+  },
+  {
+    "model": "P2AB-2",
+    "state": "holding",
+    "R": 3353,
+    "D": 13,
+    "D_R_percent": 0.3877124962719952
+  },
+  {
+    "model": "P2AB-3",
+    "state": "holding",
+    "R": 0,
+    "D": 0,
+    "D_R_percent": 0
+  },
+  {
+    "model": "P2AB-4",
+    "state": "holding",
+    "R": 3413,
+    "D": 29,
+    "D_R_percent": 0.849692352768825
+  }
+]

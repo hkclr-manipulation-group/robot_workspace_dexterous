@@ -1,0 +1,1238 @@
+{
+  "sources": {
+    "P2AB-1_open": "/home/hkclr-manipulation-spark1/rt_ws/robot_workspace_dexterous/workspace_results/gripper_demo/output/P2AB-1_open/grasp_tcp.npz",
+    "P2AB-1_holding": "/home/hkclr-manipulation-spark1/rt_ws/robot_workspace_dexterous/workspace_results/gripper_demo/output/P2AB-1_holding/grasp_tcp.npz",
+    "P2AB-2_open": "/home/hkclr-manipulation-spark1/rt_ws/robot_workspace_dexterous/workspace_results/gripper_demo/output/P2AB-2_open/grasp_tcp.npz",
+    "P2AB-2_holding": "/home/hkclr-manipulation-spark1/rt_ws/robot_workspace_dexterous/workspace_results/gripper_demo/output/P2AB-2_holding/grasp_tcp.npz",
+    "P2AB-3_open": "/home/hkclr-manipulation-spark1/rt_ws/robot_workspace_dexterous/workspace_results/gripper_demo_up/output/P2AB-3_open/grasp_tcp.npz",
+    "P2AB-3_holding": "/home/hkclr-manipulation-spark1/rt_ws/robot_workspace_dexterous/workspace_results/gripper_demo_up/output/P2AB-3_holding/grasp_tcp.npz",
+    "P2AB-4_open": "/home/hkclr-manipulation-spark1/rt_ws/robot_workspace_dexterous/workspace_results/gripper_demo/output/P2AB-4_open/grasp_tcp.npz",
+    "P2AB-4_holding": "/home/hkclr-manipulation-spark1/rt_ws/robot_workspace_dexterous/workspace_results/gripper_demo/output/P2AB-4_holding/grasp_tcp.npz"
+  },
+  "bins": [
+    {
+      "model": "P2AB-1",
+      "state": "open",
+      "reachable_directions": 0,
+      "total_directions": 16,
+      "coverage_percent": 0.0,
+      "points": 11811,
+      "fraction_of_grid": 0.755904
+    },
+    {
+      "model": "P2AB-1",
+      "state": "open",
+      "reachable_directions": 1,
+      "total_directions": 16,
+      "coverage_percent": 6.25,
+      "points": 544,
+      "fraction_of_grid": 0.034816
+    },
+    {
+      "model": "P2AB-1",
+      "state": "open",
+      "reachable_directions": 2,
+      "total_directions": 16,
+      "coverage_percent": 12.5,
+      "points": 499,
+      "fraction_of_grid": 0.031936
+    },
+    {
+      "model": "P2AB-1",
+      "state": "open",
+      "reachable_directions": 3,
+      "total_directions": 16,
+      "coverage_percent": 18.75,
+      "points": 342,
+      "fraction_of_grid": 0.021888
+    },
+    {
+      "model": "P2AB-1",
+      "state": "open",
+      "reachable_directions": 4,
+      "total_directions": 16,
+      "coverage_percent": 25.0,
+      "points": 321,
+      "fraction_of_grid": 0.020544
+    },
+    {
+      "model": "P2AB-1",
+      "state": "open",
+      "reachable_directions": 5,
+      "total_directions": 16,
+      "coverage_percent": 31.25,
+      "points": 315,
+      "fraction_of_grid": 0.02016
+    },
+    {
+      "model": "P2AB-1",
+      "state": "open",
+      "reachable_directions": 6,
+      "total_directions": 16,
+      "coverage_percent": 37.5,
+      "points": 298,
+      "fraction_of_grid": 0.019072
+    },
+    {
+      "model": "P2AB-1",
+      "state": "open",
+      "reachable_directions": 7,
+      "total_directions": 16,
+      "coverage_percent": 43.75,
+      "points": 329,
+      "fraction_of_grid": 0.021056
+    },
+    {
+      "model": "P2AB-1",
+      "state": "open",
+      "reachable_directions": 8,
+      "total_directions": 16,
+      "coverage_percent": 50.0,
+      "points": 304,
+      "fraction_of_grid": 0.019456
+    },
+    {
+      "model": "P2AB-1",
+      "state": "open",
+      "reachable_directions": 9,
+      "total_directions": 16,
+      "coverage_percent": 56.25,
+      "points": 276,
+      "fraction_of_grid": 0.017664
+    },
+    {
+      "model": "P2AB-1",
+      "state": "open",
+      "reachable_directions": 10,
+      "total_directions": 16,
+      "coverage_percent": 62.5,
+      "points": 247,
+      "fraction_of_grid": 0.015808
+    },
+    {
+      "model": "P2AB-1",
+      "state": "open",
+      "reachable_directions": 11,
+      "total_directions": 16,
+      "coverage_percent": 68.75,
+      "points": 162,
+      "fraction_of_grid": 0.010368
+    },
+    {
+      "model": "P2AB-1",
+      "state": "open",
+      "reachable_directions": 12,
+      "total_directions": 16,
+      "coverage_percent": 75.0,
+      "points": 96,
+      "fraction_of_grid": 0.006144
+    },
+    {
+      "model": "P2AB-1",
+      "state": "open",
+      "reachable_directions": 13,
+      "total_directions": 16,
+      "coverage_percent": 81.25,
+      "points": 50,
+      "fraction_of_grid": 0.0032
+    },
+    {
+      "model": "P2AB-1",
+      "state": "open",
+      "reachable_directions": 14,
+      "total_directions": 16,
+      "coverage_percent": 87.5,
+      "points": 21,
+      "fraction_of_grid": 0.001344
+    },
+    {
+      "model": "P2AB-1",
+      "state": "open",
+      "reachable_directions": 15,
+      "total_directions": 16,
+      "coverage_percent": 93.75,
+      "points": 9,
+      "fraction_of_grid": 0.000576
+    },
+    {
+      "model": "P2AB-1",
+      "state": "open",
+      "reachable_directions": 16,
+      "total_directions": 16,
+      "coverage_percent": 100.0,
+      "points": 1,
+      "fraction_of_grid": 6.4e-05
+    },
+    {
+      "model": "P2AB-1",
+      "state": "holding",
+      "reachable_directions": 0,
+      "total_directions": 16,
+      "coverage_percent": 0.0,
+      "points": 11813,
+      "fraction_of_grid": 0.756032
+    },
+    {
+      "model": "P2AB-1",
+      "state": "holding",
+      "reachable_directions": 1,
+      "total_directions": 16,
+      "coverage_percent": 6.25,
+      "points": 540,
+      "fraction_of_grid": 0.03456
+    },
+    {
+      "model": "P2AB-1",
+      "state": "holding",
+      "reachable_directions": 2,
+      "total_directions": 16,
+      "coverage_percent": 12.5,
+      "points": 501,
+      "fraction_of_grid": 0.032064
+    },
+    {
+      "model": "P2AB-1",
+      "state": "holding",
+      "reachable_directions": 3,
+      "total_directions": 16,
+      "coverage_percent": 18.75,
+      "points": 341,
+      "fraction_of_grid": 0.021824
+    },
+    {
+      "model": "P2AB-1",
+      "state": "holding",
+      "reachable_directions": 4,
+      "total_directions": 16,
+      "coverage_percent": 25.0,
+      "points": 307,
+      "fraction_of_grid": 0.019648
+    },
+    {
+      "model": "P2AB-1",
+      "state": "holding",
+      "reachable_directions": 5,
+      "total_directions": 16,
+      "coverage_percent": 31.25,
+      "points": 300,
+      "fraction_of_grid": 0.0192
+    },
+    {
+      "model": "P2AB-1",
+      "state": "holding",
+      "reachable_directions": 6,
+      "total_directions": 16,
+      "coverage_percent": 37.5,
+      "points": 302,
+      "fraction_of_grid": 0.019328
+    },
+    {
+      "model": "P2AB-1",
+      "state": "holding",
+      "reachable_directions": 7,
+      "total_directions": 16,
+      "coverage_percent": 43.75,
+      "points": 294,
+      "fraction_of_grid": 0.018816
+    },
+    {
+      "model": "P2AB-1",
+      "state": "holding",
+      "reachable_directions": 8,
+      "total_directions": 16,
+      "coverage_percent": 50.0,
+      "points": 307,
+      "fraction_of_grid": 0.019648
+    },
+    {
+      "model": "P2AB-1",
+      "state": "holding",
+      "reachable_directions": 9,
+      "total_directions": 16,
+      "coverage_percent": 56.25,
+      "points": 276,
+      "fraction_of_grid": 0.017664
+    },
+    {
+      "model": "P2AB-1",
+      "state": "holding",
+      "reachable_directions": 10,
+      "total_directions": 16,
+      "coverage_percent": 62.5,
+      "points": 233,
+      "fraction_of_grid": 0.014912
+    },
+    {
+      "model": "P2AB-1",
+      "state": "holding",
+      "reachable_directions": 11,
+      "total_directions": 16,
+      "coverage_percent": 68.75,
+      "points": 189,
+      "fraction_of_grid": 0.012096
+    },
+    {
+      "model": "P2AB-1",
+      "state": "holding",
+      "reachable_directions": 12,
+      "total_directions": 16,
+      "coverage_percent": 75.0,
+      "points": 107,
+      "fraction_of_grid": 0.006848
+    },
+    {
+      "model": "P2AB-1",
+      "state": "holding",
+      "reachable_directions": 13,
+      "total_directions": 16,
+      "coverage_percent": 81.25,
+      "points": 67,
+      "fraction_of_grid": 0.004288
+    },
+    {
+      "model": "P2AB-1",
+      "state": "holding",
+      "reachable_directions": 14,
+      "total_directions": 16,
+      "coverage_percent": 87.5,
+      "points": 36,
+      "fraction_of_grid": 0.002304
+    },
+    {
+      "model": "P2AB-1",
+      "state": "holding",
+      "reachable_directions": 15,
+      "total_directions": 16,
+      "coverage_percent": 93.75,
+      "points": 9,
+      "fraction_of_grid": 0.000576
+    },
+    {
+      "model": "P2AB-1",
+      "state": "holding",
+      "reachable_directions": 16,
+      "total_directions": 16,
+      "coverage_percent": 100.0,
+      "points": 3,
+      "fraction_of_grid": 0.000192
+    },
+    {
+      "model": "P2AB-2",
+      "state": "open",
+      "reachable_directions": 0,
+      "total_directions": 16,
+      "coverage_percent": 0.0,
+      "points": 12270,
+      "fraction_of_grid": 0.78528
+    },
+    {
+      "model": "P2AB-2",
+      "state": "open",
+      "reachable_directions": 1,
+      "total_directions": 16,
+      "coverage_percent": 6.25,
+      "points": 346,
+      "fraction_of_grid": 0.022144
+    },
+    {
+      "model": "P2AB-2",
+      "state": "open",
+      "reachable_directions": 2,
+      "total_directions": 16,
+      "coverage_percent": 12.5,
+      "points": 288,
+      "fraction_of_grid": 0.018432
+    },
+    {
+      "model": "P2AB-2",
+      "state": "open",
+      "reachable_directions": 3,
+      "total_directions": 16,
+      "coverage_percent": 18.75,
+      "points": 307,
+      "fraction_of_grid": 0.019648
+    },
+    {
+      "model": "P2AB-2",
+      "state": "open",
+      "reachable_directions": 4,
+      "total_directions": 16,
+      "coverage_percent": 25.0,
+      "points": 252,
+      "fraction_of_grid": 0.016128
+    },
+    {
+      "model": "P2AB-2",
+      "state": "open",
+      "reachable_directions": 5,
+      "total_directions": 16,
+      "coverage_percent": 31.25,
+      "points": 304,
+      "fraction_of_grid": 0.019456
+    },
+    {
+      "model": "P2AB-2",
+      "state": "open",
+      "reachable_directions": 6,
+      "total_directions": 16,
+      "coverage_percent": 37.5,
+      "points": 296,
+      "fraction_of_grid": 0.018944
+    },
+    {
+      "model": "P2AB-2",
+      "state": "open",
+      "reachable_directions": 7,
+      "total_directions": 16,
+      "coverage_percent": 43.75,
+      "points": 232,
+      "fraction_of_grid": 0.014848
+    },
+    {
+      "model": "P2AB-2",
+      "state": "open",
+      "reachable_directions": 8,
+      "total_directions": 16,
+      "coverage_percent": 50.0,
+      "points": 233,
+      "fraction_of_grid": 0.014912
+    },
+    {
+      "model": "P2AB-2",
+      "state": "open",
+      "reachable_directions": 9,
+      "total_directions": 16,
+      "coverage_percent": 56.25,
+      "points": 214,
+      "fraction_of_grid": 0.013696
+    },
+    {
+      "model": "P2AB-2",
+      "state": "open",
+      "reachable_directions": 10,
+      "total_directions": 16,
+      "coverage_percent": 62.5,
+      "points": 192,
+      "fraction_of_grid": 0.012288
+    },
+    {
+      "model": "P2AB-2",
+      "state": "open",
+      "reachable_directions": 11,
+      "total_directions": 16,
+      "coverage_percent": 68.75,
+      "points": 185,
+      "fraction_of_grid": 0.01184
+    },
+    {
+      "model": "P2AB-2",
+      "state": "open",
+      "reachable_directions": 12,
+      "total_directions": 16,
+      "coverage_percent": 75.0,
+      "points": 195,
+      "fraction_of_grid": 0.01248
+    },
+    {
+      "model": "P2AB-2",
+      "state": "open",
+      "reachable_directions": 13,
+      "total_directions": 16,
+      "coverage_percent": 81.25,
+      "points": 155,
+      "fraction_of_grid": 0.00992
+    },
+    {
+      "model": "P2AB-2",
+      "state": "open",
+      "reachable_directions": 14,
+      "total_directions": 16,
+      "coverage_percent": 87.5,
+      "points": 95,
+      "fraction_of_grid": 0.00608
+    },
+    {
+      "model": "P2AB-2",
+      "state": "open",
+      "reachable_directions": 15,
+      "total_directions": 16,
+      "coverage_percent": 93.75,
+      "points": 50,
+      "fraction_of_grid": 0.0032
+    },
+    {
+      "model": "P2AB-2",
+      "state": "open",
+      "reachable_directions": 16,
+      "total_directions": 16,
+      "coverage_percent": 100.0,
+      "points": 11,
+      "fraction_of_grid": 0.000704
+    },
+    {
+      "model": "P2AB-2",
+      "state": "holding",
+      "reachable_directions": 0,
+      "total_directions": 16,
+      "coverage_percent": 0.0,
+      "points": 12272,
+      "fraction_of_grid": 0.785408
+    },
+    {
+      "model": "P2AB-2",
+      "state": "holding",
+      "reachable_directions": 1,
+      "total_directions": 16,
+      "coverage_percent": 6.25,
+      "points": 339,
+      "fraction_of_grid": 0.021696
+    },
+    {
+      "model": "P2AB-2",
+      "state": "holding",
+      "reachable_directions": 2,
+      "total_directions": 16,
+      "coverage_percent": 12.5,
+      "points": 287,
+      "fraction_of_grid": 0.018368
+    },
+    {
+      "model": "P2AB-2",
+      "state": "holding",
+      "reachable_directions": 3,
+      "total_directions": 16,
+      "coverage_percent": 18.75,
+      "points": 307,
+      "fraction_of_grid": 0.019648
+    },
+    {
+      "model": "P2AB-2",
+      "state": "holding",
+      "reachable_directions": 4,
+      "total_directions": 16,
+      "coverage_percent": 25.0,
+      "points": 247,
+      "fraction_of_grid": 0.015808
+    },
+    {
+      "model": "P2AB-2",
+      "state": "holding",
+      "reachable_directions": 5,
+      "total_directions": 16,
+      "coverage_percent": 31.25,
+      "points": 310,
+      "fraction_of_grid": 0.01984
+    },
+    {
+      "model": "P2AB-2",
+      "state": "holding",
+      "reachable_directions": 6,
+      "total_directions": 16,
+      "coverage_percent": 37.5,
+      "points": 291,
+      "fraction_of_grid": 0.018624
+    },
+    {
+      "model": "P2AB-2",
+      "state": "holding",
+      "reachable_directions": 7,
+      "total_directions": 16,
+      "coverage_percent": 43.75,
+      "points": 225,
+      "fraction_of_grid": 0.0144
+    },
+    {
+      "model": "P2AB-2",
+      "state": "holding",
+      "reachable_directions": 8,
+      "total_directions": 16,
+      "coverage_percent": 50.0,
+      "points": 229,
+      "fraction_of_grid": 0.014656
+    },
+    {
+      "model": "P2AB-2",
+      "state": "holding",
+      "reachable_directions": 9,
+      "total_directions": 16,
+      "coverage_percent": 56.25,
+      "points": 210,
+      "fraction_of_grid": 0.01344
+    },
+    {
+      "model": "P2AB-2",
+      "state": "holding",
+      "reachable_directions": 10,
+      "total_directions": 16,
+      "coverage_percent": 62.5,
+      "points": 190,
+      "fraction_of_grid": 0.01216
+    },
+    {
+      "model": "P2AB-2",
+      "state": "holding",
+      "reachable_directions": 11,
+      "total_directions": 16,
+      "coverage_percent": 68.75,
+      "points": 184,
+      "fraction_of_grid": 0.011776
+    },
+    {
+      "model": "P2AB-2",
+      "state": "holding",
+      "reachable_directions": 12,
+      "total_directions": 16,
+      "coverage_percent": 75.0,
+      "points": 190,
+      "fraction_of_grid": 0.01216
+    },
+    {
+      "model": "P2AB-2",
+      "state": "holding",
+      "reachable_directions": 13,
+      "total_directions": 16,
+      "coverage_percent": 81.25,
+      "points": 169,
+      "fraction_of_grid": 0.010816
+    },
+    {
+      "model": "P2AB-2",
+      "state": "holding",
+      "reachable_directions": 14,
+      "total_directions": 16,
+      "coverage_percent": 87.5,
+      "points": 107,
+      "fraction_of_grid": 0.006848
+    },
+    {
+      "model": "P2AB-2",
+      "state": "holding",
+      "reachable_directions": 15,
+      "total_directions": 16,
+      "coverage_percent": 93.75,
+      "points": 55,
+      "fraction_of_grid": 0.00352
+    },
+    {
+      "model": "P2AB-2",
+      "state": "holding",
+      "reachable_directions": 16,
+      "total_directions": 16,
+      "coverage_percent": 100.0,
+      "points": 13,
+      "fraction_of_grid": 0.000832
+    },
+    {
+      "model": "P2AB-3",
+      "state": "open",
+      "reachable_directions": 0,
+      "total_directions": 16,
+      "coverage_percent": 0.0,
+      "points": 12014,
+      "fraction_of_grid": 0.768896
+    },
+    {
+      "model": "P2AB-3",
+      "state": "open",
+      "reachable_directions": 1,
+      "total_directions": 16,
+      "coverage_percent": 6.25,
+      "points": 536,
+      "fraction_of_grid": 0.034304
+    },
+    {
+      "model": "P2AB-3",
+      "state": "open",
+      "reachable_directions": 2,
+      "total_directions": 16,
+      "coverage_percent": 12.5,
+      "points": 490,
+      "fraction_of_grid": 0.03136
+    },
+    {
+      "model": "P2AB-3",
+      "state": "open",
+      "reachable_directions": 3,
+      "total_directions": 16,
+      "coverage_percent": 18.75,
+      "points": 345,
+      "fraction_of_grid": 0.02208
+    },
+    {
+      "model": "P2AB-3",
+      "state": "open",
+      "reachable_directions": 4,
+      "total_directions": 16,
+      "coverage_percent": 25.0,
+      "points": 302,
+      "fraction_of_grid": 0.019328
+    },
+    {
+      "model": "P2AB-3",
+      "state": "open",
+      "reachable_directions": 5,
+      "total_directions": 16,
+      "coverage_percent": 31.25,
+      "points": 280,
+      "fraction_of_grid": 0.01792
+    },
+    {
+      "model": "P2AB-3",
+      "state": "open",
+      "reachable_directions": 6,
+      "total_directions": 16,
+      "coverage_percent": 37.5,
+      "points": 265,
+      "fraction_of_grid": 0.01696
+    },
+    {
+      "model": "P2AB-3",
+      "state": "open",
+      "reachable_directions": 7,
+      "total_directions": 16,
+      "coverage_percent": 43.75,
+      "points": 270,
+      "fraction_of_grid": 0.01728
+    },
+    {
+      "model": "P2AB-3",
+      "state": "open",
+      "reachable_directions": 8,
+      "total_directions": 16,
+      "coverage_percent": 50.0,
+      "points": 258,
+      "fraction_of_grid": 0.016512
+    },
+    {
+      "model": "P2AB-3",
+      "state": "open",
+      "reachable_directions": 9,
+      "total_directions": 16,
+      "coverage_percent": 56.25,
+      "points": 260,
+      "fraction_of_grid": 0.01664
+    },
+    {
+      "model": "P2AB-3",
+      "state": "open",
+      "reachable_directions": 10,
+      "total_directions": 16,
+      "coverage_percent": 62.5,
+      "points": 228,
+      "fraction_of_grid": 0.014592
+    },
+    {
+      "model": "P2AB-3",
+      "state": "open",
+      "reachable_directions": 11,
+      "total_directions": 16,
+      "coverage_percent": 68.75,
+      "points": 165,
+      "fraction_of_grid": 0.01056
+    },
+    {
+      "model": "P2AB-3",
+      "state": "open",
+      "reachable_directions": 12,
+      "total_directions": 16,
+      "coverage_percent": 75.0,
+      "points": 112,
+      "fraction_of_grid": 0.007168
+    },
+    {
+      "model": "P2AB-3",
+      "state": "open",
+      "reachable_directions": 13,
+      "total_directions": 16,
+      "coverage_percent": 81.25,
+      "points": 76,
+      "fraction_of_grid": 0.004864
+    },
+    {
+      "model": "P2AB-3",
+      "state": "open",
+      "reachable_directions": 14,
+      "total_directions": 16,
+      "coverage_percent": 87.5,
+      "points": 20,
+      "fraction_of_grid": 0.00128
+    },
+    {
+      "model": "P2AB-3",
+      "state": "open",
+      "reachable_directions": 15,
+      "total_directions": 16,
+      "coverage_percent": 93.75,
+      "points": 3,
+      "fraction_of_grid": 0.000192
+    },
+    {
+      "model": "P2AB-3",
+      "state": "open",
+      "reachable_directions": 16,
+      "total_directions": 16,
+      "coverage_percent": 100.0,
+      "points": 1,
+      "fraction_of_grid": 6.4e-05
+    },
+    {
+      "model": "P2AB-3",
+      "state": "holding",
+      "reachable_directions": 0,
+      "total_directions": 16,
+      "coverage_percent": 0.0,
+      "points": 12008,
+      "fraction_of_grid": 0.768512
+    },
+    {
+      "model": "P2AB-3",
+      "state": "holding",
+      "reachable_directions": 1,
+      "total_directions": 16,
+      "coverage_percent": 6.25,
+      "points": 551,
+      "fraction_of_grid": 0.035264
+    },
+    {
+      "model": "P2AB-3",
+      "state": "holding",
+      "reachable_directions": 2,
+      "total_directions": 16,
+      "coverage_percent": 12.5,
+      "points": 479,
+      "fraction_of_grid": 0.030656
+    },
+    {
+      "model": "P2AB-3",
+      "state": "holding",
+      "reachable_directions": 3,
+      "total_directions": 16,
+      "coverage_percent": 18.75,
+      "points": 342,
+      "fraction_of_grid": 0.021888
+    },
+    {
+      "model": "P2AB-3",
+      "state": "holding",
+      "reachable_directions": 4,
+      "total_directions": 16,
+      "coverage_percent": 25.0,
+      "points": 299,
+      "fraction_of_grid": 0.019136
+    },
+    {
+      "model": "P2AB-3",
+      "state": "holding",
+      "reachable_directions": 5,
+      "total_directions": 16,
+      "coverage_percent": 31.25,
+      "points": 265,
+      "fraction_of_grid": 0.01696
+    },
+    {
+      "model": "P2AB-3",
+      "state": "holding",
+      "reachable_directions": 6,
+      "total_directions": 16,
+      "coverage_percent": 37.5,
+      "points": 254,
+      "fraction_of_grid": 0.016256
+    },
+    {
+      "model": "P2AB-3",
+      "state": "holding",
+      "reachable_directions": 7,
+      "total_directions": 16,
+      "coverage_percent": 43.75,
+      "points": 262,
+      "fraction_of_grid": 0.016768
+    },
+    {
+      "model": "P2AB-3",
+      "state": "holding",
+      "reachable_directions": 8,
+      "total_directions": 16,
+      "coverage_percent": 50.0,
+      "points": 255,
+      "fraction_of_grid": 0.01632
+    },
+    {
+      "model": "P2AB-3",
+      "state": "holding",
+      "reachable_directions": 9,
+      "total_directions": 16,
+      "coverage_percent": 56.25,
+      "points": 237,
+      "fraction_of_grid": 0.015168
+    },
+    {
+      "model": "P2AB-3",
+      "state": "holding",
+      "reachable_directions": 10,
+      "total_directions": 16,
+      "coverage_percent": 62.5,
+      "points": 224,
+      "fraction_of_grid": 0.014336
+    },
+    {
+      "model": "P2AB-3",
+      "state": "holding",
+      "reachable_directions": 11,
+      "total_directions": 16,
+      "coverage_percent": 68.75,
+      "points": 190,
+      "fraction_of_grid": 0.01216
+    },
+    {
+      "model": "P2AB-3",
+      "state": "holding",
+      "reachable_directions": 12,
+      "total_directions": 16,
+      "coverage_percent": 75.0,
+      "points": 137,
+      "fraction_of_grid": 0.008768
+    },
+    {
+      "model": "P2AB-3",
+      "state": "holding",
+      "reachable_directions": 13,
+      "total_directions": 16,
+      "coverage_percent": 81.25,
+      "points": 88,
+      "fraction_of_grid": 0.005632
+    },
+    {
+      "model": "P2AB-3",
+      "state": "holding",
+      "reachable_directions": 14,
+      "total_directions": 16,
+      "coverage_percent": 87.5,
+      "points": 25,
+      "fraction_of_grid": 0.0016
+    },
+    {
+      "model": "P2AB-3",
+      "state": "holding",
+      "reachable_directions": 15,
+      "total_directions": 16,
+      "coverage_percent": 93.75,
+      "points": 8,
+      "fraction_of_grid": 0.000512
+    },
+    {
+      "model": "P2AB-3",
+      "state": "holding",
+      "reachable_directions": 16,
+      "total_directions": 16,
+      "coverage_percent": 100.0,
+      "points": 1,
+      "fraction_of_grid": 6.4e-05
+    },
+    {
+      "model": "P2AB-4",
+      "state": "open",
+      "reachable_directions": 0,
+      "total_directions": 16,
+      "coverage_percent": 0.0,
+      "points": 12207,
+      "fraction_of_grid": 0.781248
+    },
+    {
+      "model": "P2AB-4",
+      "state": "open",
+      "reachable_directions": 1,
+      "total_directions": 16,
+      "coverage_percent": 6.25,
+      "points": 512,
+      "fraction_of_grid": 0.032768
+    },
+    {
+      "model": "P2AB-4",
+      "state": "open",
+      "reachable_directions": 2,
+      "total_directions": 16,
+      "coverage_percent": 12.5,
+      "points": 415,
+      "fraction_of_grid": 0.02656
+    },
+    {
+      "model": "P2AB-4",
+      "state": "open",
+      "reachable_directions": 3,
+      "total_directions": 16,
+      "coverage_percent": 18.75,
+      "points": 352,
+      "fraction_of_grid": 0.022528
+    },
+    {
+      "model": "P2AB-4",
+      "state": "open",
+      "reachable_directions": 4,
+      "total_directions": 16,
+      "coverage_percent": 25.0,
+      "points": 309,
+      "fraction_of_grid": 0.019776
+    },
+    {
+      "model": "P2AB-4",
+      "state": "open",
+      "reachable_directions": 5,
+      "total_directions": 16,
+      "coverage_percent": 31.25,
+      "points": 303,
+      "fraction_of_grid": 0.019392
+    },
+    {
+      "model": "P2AB-4",
+      "state": "open",
+      "reachable_directions": 6,
+      "total_directions": 16,
+      "coverage_percent": 37.5,
+      "points": 278,
+      "fraction_of_grid": 0.017792
+    },
+    {
+      "model": "P2AB-4",
+      "state": "open",
+      "reachable_directions": 7,
+      "total_directions": 16,
+      "coverage_percent": 43.75,
+      "points": 239,
+      "fraction_of_grid": 0.015296
+    },
+    {
+      "model": "P2AB-4",
+      "state": "open",
+      "reachable_directions": 8,
+      "total_directions": 16,
+      "coverage_percent": 50.0,
+      "points": 199,
+      "fraction_of_grid": 0.012736
+    },
+    {
+      "model": "P2AB-4",
+      "state": "open",
+      "reachable_directions": 9,
+      "total_directions": 16,
+      "coverage_percent": 56.25,
+      "points": 152,
+      "fraction_of_grid": 0.009728
+    },
+    {
+      "model": "P2AB-4",
+      "state": "open",
+      "reachable_directions": 10,
+      "total_directions": 16,
+      "coverage_percent": 62.5,
+      "points": 138,
+      "fraction_of_grid": 0.008832
+    },
+    {
+      "model": "P2AB-4",
+      "state": "open",
+      "reachable_directions": 11,
+      "total_directions": 16,
+      "coverage_percent": 68.75,
+      "points": 115,
+      "fraction_of_grid": 0.00736
+    },
+    {
+      "model": "P2AB-4",
+      "state": "open",
+      "reachable_directions": 12,
+      "total_directions": 16,
+      "coverage_percent": 75.0,
+      "points": 95,
+      "fraction_of_grid": 0.00608
+    },
+    {
+      "model": "P2AB-4",
+      "state": "open",
+      "reachable_directions": 13,
+      "total_directions": 16,
+      "coverage_percent": 81.25,
+      "points": 115,
+      "fraction_of_grid": 0.00736
+    },
+    {
+      "model": "P2AB-4",
+      "state": "open",
+      "reachable_directions": 14,
+      "total_directions": 16,
+      "coverage_percent": 87.5,
+      "points": 105,
+      "fraction_of_grid": 0.00672
+    },
+    {
+      "model": "P2AB-4",
+      "state": "open",
+      "reachable_directions": 15,
+      "total_directions": 16,
+      "coverage_percent": 93.75,
+      "points": 62,
+      "fraction_of_grid": 0.003968
+    },
+    {
+      "model": "P2AB-4",
+      "state": "open",
+      "reachable_directions": 16,
+      "total_directions": 16,
+      "coverage_percent": 100.0,
+      "points": 29,
+      "fraction_of_grid": 0.001856
+    },
+    {
+      "model": "P2AB-4",
+      "state": "holding",
+      "reachable_directions": 0,
+      "total_directions": 16,
+      "coverage_percent": 0.0,
+      "points": 12212,
+      "fraction_of_grid": 0.781568
+    },
+    {
+      "model": "P2AB-4",
+      "state": "holding",
+      "reachable_directions": 1,
+      "total_directions": 16,
+      "coverage_percent": 6.25,
+      "points": 511,
+      "fraction_of_grid": 0.032704
+    },
+    {
+      "model": "P2AB-4",
+      "state": "holding",
+      "reachable_directions": 2,
+      "total_directions": 16,
+      "coverage_percent": 12.5,
+      "points": 412,
+      "fraction_of_grid": 0.026368
+    },
+    {
+      "model": "P2AB-4",
+      "state": "holding",
+      "reachable_directions": 3,
+      "total_directions": 16,
+      "coverage_percent": 18.75,
+      "points": 349,
+      "fraction_of_grid": 0.022336
+    },
+    {
+      "model": "P2AB-4",
+      "state": "holding",
+      "reachable_directions": 4,
+      "total_directions": 16,
+      "coverage_percent": 25.0,
+      "points": 317,
+      "fraction_of_grid": 0.020288
+    },
+    {
+      "model": "P2AB-4",
+      "state": "holding",
+      "reachable_directions": 5,
+      "total_directions": 16,
+      "coverage_percent": 31.25,
+      "points": 299,
+      "fraction_of_grid": 0.019136
+    },
+    {
+      "model": "P2AB-4",
+      "state": "holding",
+      "reachable_directions": 6,
+      "total_directions": 16,
+      "coverage_percent": 37.5,
+      "points": 280,
+      "fraction_of_grid": 0.01792
+    },
+    {
+      "model": "P2AB-4",
+      "state": "holding",
+      "reachable_directions": 7,
+      "total_directions": 16,
+      "coverage_percent": 43.75,
+      "points": 235,
+      "fraction_of_grid": 0.01504
+    },
+    {
+      "model": "P2AB-4",
+      "state": "holding",
+      "reachable_directions": 8,
+      "total_directions": 16,
+      "coverage_percent": 50.0,
+      "points": 192,
+      "fraction_of_grid": 0.012288
+    },
+    {
+      "model": "P2AB-4",
+      "state": "holding",
+      "reachable_directions": 9,
+      "total_directions": 16,
+      "coverage_percent": 56.25,
+      "points": 152,
+      "fraction_of_grid": 0.009728
+    },
+    {
+      "model": "P2AB-4",
+      "state": "holding",
+      "reachable_directions": 10,
+      "total_directions": 16,
+      "coverage_percent": 62.5,
+      "points": 137,
+      "fraction_of_grid": 0.008768
+    },
+    {
+      "model": "P2AB-4",
+      "state": "holding",
+      "reachable_directions": 11,
+      "total_directions": 16,
+      "coverage_percent": 68.75,
+      "points": 122,
+      "fraction_of_grid": 0.007808
+    },
+    {
+      "model": "P2AB-4",
+      "state": "holding",
+      "reachable_directions": 12,
+      "total_directions": 16,
+      "coverage_percent": 75.0,
+      "points": 92,
+      "fraction_of_grid": 0.005888
+    },
+    {
+      "model": "P2AB-4",
+      "state": "holding",
+      "reachable_directions": 13,
+      "total_directions": 16,
+      "coverage_percent": 81.25,
+      "points": 114,
+      "fraction_of_grid": 0.007296
+    },
+    {
+      "model": "P2AB-4",
+      "state": "holding",
+      "reachable_directions": 14,
+      "total_directions": 16,
+      "coverage_percent": 87.5,
+      "points": 104,
+      "fraction_of_grid": 0.006656
+    },
+    {
+      "model": "P2AB-4",
+      "state": "holding",
+      "reachable_directions": 15,
+      "total_directions": 16,
+      "coverage_percent": 93.75,
+      "points": 68,
+      "fraction_of_grid": 0.004352
+    },
+    {
+      "model": "P2AB-4",
+      "state": "holding",
+      "reachable_directions": 16,
+      "total_directions": 16,
+      "coverage_percent": 100.0,
+      "points": 29,
+      "fraction_of_grid": 0.001856
+    }
+  ]
+}

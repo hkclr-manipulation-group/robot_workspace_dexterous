@@ -1,0 +1,10 @@
+{
+  "current_results": "gripper_demo_up",
+  "reused_models_1_2_4_results": "gripper_demo/output",
+  "normalization": "normalized_length",
+  "current_plot": "gripper_demo_up/coverage_cumulative_percent.png",
+  "denominator": "reachable points only; exclude 0/16",
+  "threshold_order": ">=16/16 through >=1/16",
+  "note": "P2AB-3 upward mount is a revised assembly assumption. Old demos and initial_tcp145_output are historical, not recomputed for revised mount. External mesh assets remain in local rt_ws repositories.",
+  "source": "/home/hkclr-manipulation-spark1/ai_ws/workspace_results"
+}
