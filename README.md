@@ -285,3 +285,7 @@ The default `stl` backend checks the original triangle meshes. Use
 `--collision-backend spheres` for an approximate sphere comparison. The full
 workspace run requires CUDA/PyTorch/cuRobo; validation checks model, mesh, and
 configuration consistency without sampling the workspace.
+
+### Common joint range for design reviews
+
+Use `--compare-half-turn` to compare six-axis arms with J1–J6 each bounded to −180° through +180°. For example, run `python run.py --config configs/P2AB-1.yaml --backend cpu --compare-half-turn --output-dir output/P2AB-1_half_turn`. Use a separate output directory for each comparison. The runner validates the source collision model, applies the limits to a temporary kinematic copy and records the joint names and bounds in the workspace summary. Self-collision filtering must be enabled. Tool opening, rigid joints and the configured end-effector orientation samples retain their own definitions. The original URDF supplies the limits when the flag is omitted.

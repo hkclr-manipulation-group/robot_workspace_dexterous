@@ -67,7 +67,15 @@ def main(argv: list[str] | None = None) -> None:
     parser.add_argument('--backend', choices=['cpu', 'cuda', 'torch'], help='Override solver.backend')
     parser.add_argument('--ik-iterations', type=int, help='CPU IK evaluation limit per seed')
     parser.add_argument('--seed', type=int, help='CPU random seed (non-negative)')
+    parser.add_argument("--compare-half-turn", action="store_true",
+                        help="Offline comparison: give each of six arm joints a -180 to +180 degree range")
     args = parser.parse_args(argv)
+    from contextlib import ExitStack
+    with ExitStack() as resources:
+        return _run(args, parser, resources)
+
+
+def _run(args, parser, resources):
     if args.ik_iterations is not None and args.ik_iterations < 1:
         parser.error('--ik-iterations must be positive')
     if args.seed is not None and args.seed < 0:
@@ -141,10 +149,9 @@ def main(argv: list[str] | None = None) -> None:
     else:
         if config.collision_spheres_path is None:
             parser.error("Sphere checking requires robot.collision_spheres")
-        if config.backend == 'cuda':
-            validate_robot_inputs(str(config.urdf_path), str(config.collision_spheres_path),
+        validate_robot_inputs(str(config.urdf_path), str(config.collision_spheres_path),
                               config.base_link, config.ee_links, contact_ignores,
-                              config.joint_limit_defaults)
+                              config.joint_limit_defaults, backend=config.backend)
         collision_model = {
             **collision_sphere_metadata(config.collision_spheres_path),
             "joint_contact_policy": "strict" if args.strict_collision else "adjacent_joint_interfaces",
@@ -152,6 +159,18 @@ def main(argv: list[str] | None = None) -> None:
                 {tuple(sorted((first, second))) for first, others in contact_ignores.items() for second in others}
             )],
         }
+    if args.compare_half_turn:
+        from tempfile import TemporaryDirectory
+        from .comparison_limits import write_half_turn_arm
+        if not config.self_collision:
+            parser.error("--compare-half-turn requires self-collision filtering")
+        folder = resources.enter_context(TemporaryDirectory(prefix="workspace-half-turn-"))
+        effective = Path(folder) / "comparison.urdf"
+        joints = write_half_turn_arm(config.urdf_path, effective)
+        collision_model["joint_range_comparison"] = {
+            "source_urdf": str(config.urdf_path), "joints": joints, "limits_deg": [-180, 180]}
+        config = replace(config, urdf_path=effective)
+        print("Offline joint-range comparison: -180 to +180 degrees for " + ", ".join(joints))
     if args.diagnose_only:
         if config.backend in {'cpu', 'torch'}:
             from .cpu_solver import diagnose_cpu_collisions

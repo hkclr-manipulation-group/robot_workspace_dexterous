@@ -1,5 +1,5 @@
 version: 1
-urdf_sha256: c57e5c53de73d293ba72a74a8504585a17411fd066ccffcedb090fffaabf9ee5
+urdf_sha256: 18b48edeca63e1ad53282e0f8a63f69ee51fbab30f18925885a3b0d4a5bc9c39
 links:
   arm_base_link:
   - file: ../meshes/bc6f16239fa86a46aa81dad52ad4cdc66a7373622e0c138d04e7c9f21721e562.stl

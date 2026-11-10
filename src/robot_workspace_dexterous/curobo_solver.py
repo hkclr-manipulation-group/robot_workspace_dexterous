@@ -149,12 +149,18 @@ def _load_collision_spheres(path: str) -> dict[str, list[dict[str, object]]]:
 def validate_robot_inputs(
     urdf_path: str, collision_spheres_path: str, base_link: str,
     ee_links: tuple[str, ...], self_collision_ignore: dict[str, list[str]],
-    joint_limit_defaults: dict[str, float] | None = None,
+    joint_limit_defaults: dict[str, float] | None = None, *, backend: str = "cuda",
 ) -> dict[str, list[dict[str, object]]]:
     """Validate portable robot inputs without importing CUDA or cuRobo."""
     root = ET.parse(urdf_path).getroot()
-    _prepare_joint_limits(root, joint_limit_defaults)
-    align_joint_axes(root)
+    if backend == "cuda":
+        _prepare_joint_limits(root, joint_limit_defaults)
+        align_joint_axes(root)
+    elif backend in {"cpu", "torch"}:
+        from collision_shpere_generation.kinematics import RobotKinematics
+        RobotKinematics(urdf_path, base_link)
+    else:
+        raise ValueError(f"Unknown workspace backend: {backend}")
     urdf_links = {link.get("name") for link in root.findall("link")}
     child_links = {
         child.get("link")
@@ -162,7 +168,7 @@ def validate_robot_inputs(
         if child.get("link") is not None
     }
     root_links = urdf_links.difference(child_links)
-    if base_link not in root_links:
+    if backend == "cuda" and base_link not in root_links:
         raise ValueError(
             f"base_link must be a URDF root; got {base_link!r}, expected one of "
             + ", ".join(sorted(root_links))
