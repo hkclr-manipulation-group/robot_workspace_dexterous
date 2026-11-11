@@ -1,0 +1,19 @@
+{
+  "status": "complete",
+  "directions": [
+    "Top (-Z)",
+    "Bottom (+Z)",
+    "Left (-Y)",
+    "Right (+Y)",
+    "Front (-X)",
+    "Back (+X)"
+  ],
+  "rolls_deg": [
+    0,
+    90,
+    180,
+    270
+  ],
+  "grid_points": 2197,
+  "singularity_note": "J=[Jv/(1m);Jw]; condition >=100 flags sampled near-singular configurations, not intrinsically singular positions"
+}

@@ -1,0 +1,38 @@
+{
+  "spark2_v1": {
+    "status": "PASS",
+    "accepted_configurations": 1985
+  },
+  "spark2_v2_2": {
+    "status": "PASS",
+    "accepted_configurations": 2438
+  },
+  "P2AB-1": {
+    "status": "PASS",
+    "accepted_configurations": 5508
+  },
+  "P2AB-2": {
+    "status": "PASS",
+    "accepted_configurations": 4931
+  },
+  "P2AB-3": {
+    "status": "PASS",
+    "accepted_configurations": 4924
+  },
+  "P2AB-4": {
+    "status": "PASS",
+    "accepted_configurations": 3961
+  },
+  "external_piper": {
+    "status": "PASS",
+    "accepted_configurations": 975
+  },
+  "external_ur5": {
+    "status": "PASS",
+    "accepted_configurations": 6584
+  },
+  "external_panda": {
+    "status": "PASS",
+    "accepted_configurations": 2532
+  }
+}
