@@ -1,0 +1,301 @@
+<?xml version='1.0' encoding='utf-8'?>
+<robot name="piper">
+  <link name="base_link">
+    <inertial>
+      <origin xyz="-0.0063089746897850504 3.421004406885894e-05 0.055214072997394385" rpy="0 0 0" />
+      <mass value="1.02" />
+      <inertia ixx="0.00267433" ixy="-0.00000073" ixz="-0.00017389" iyy="0.00282612" iyz="0.0000004" izz="0.00089624" />
+    </inertial>
+    <visual>
+      <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="../../../../../collision_shpere_generation/models/external_piper/meshes/fd4a3d6d0266205fe3f725f048645be66592c23564db22e08b0807d5569b2c64.stl" scale="1.3320157044531036 1.3320157044531036 1.3320157044531036" />
+      </geometry>
+      <material name="">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="../../../../../collision_shpere_generation/models/external_piper/meshes/fd4a3d6d0266205fe3f725f048645be66592c23564db22e08b0807d5569b2c64.stl" scale="1.3320157044531036 1.3320157044531036 1.3320157044531036" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="link1">
+    <inertial>
+      <origin xyz="0.00016184621392994526 0.00013937168358832245 -0.005842185042646035" rpy="0 0 0" />
+      <mass value="0.71" />
+      <inertia ixx="0.00048916" ixy="-0.00000036" ixz="-0.00000224" iyy="0.00040472" iyz="-0.00000242" izz="0.00043982" />
+    </inertial>
+    <visual>
+      <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="../../../../../collision_shpere_generation/models/external_piper/meshes/9ee6e1d67c0241f42a0dbaf5c676d19230375ed078ee1943bb8c4c37ab303d14.stl" scale="1.3320157044531036 1.3320157044531036 1.3320157044531036" />
+      </geometry>
+      <material name="">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="../../../../../collision_shpere_generation/models/external_piper/meshes/9ee6e1d67c0241f42a0dbaf5c676d19230375ed078ee1943bb8c4c37ab303d14.stl" scale="1.3320157044531036 1.3320157044531036 1.3320157044531036" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint1" type="revolute">
+    <origin xyz="0.0 0.0 0.16383793164773175" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="link1" />
+    <axis xyz="0 0 1" />
+    <limit lower="-2.618" upper="2.168" effort="100" velocity="5" />
+  </joint>
+  <link name="link2">
+    <inertial>
+      <origin xyz="0.2646264253891787 -0.014554834555948956 0.001893083556613795" rpy="0 0 0" />
+      <mass value="1.17" />
+      <inertia ixx="0.00116918" ixy="-0.00180037" ixz="0.00025146" iyy="0.06785384" iyz="-0.00000455" izz="0.06774489" />
+    </inertial>
+    <visual>
+      <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="../../../../../collision_shpere_generation/models/external_piper/meshes/0d37675b699b643f2e15348de99aed535fac10dc5f09a79b8e4b0acfaf4e0378.stl" scale="1.3320157044531036 1.3320157044531036 1.3320157044531036" />
+      </geometry>
+      <material name="">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="../../../../../collision_shpere_generation/models/external_piper/meshes/0d37675b699b643f2e15348de99aed535fac10dc5f09a79b8e4b0acfaf4e0378.stl" scale="1.3320157044531036 1.3320157044531036 1.3320157044531036" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint2" type="revolute">
+    <origin xyz="0.0 0.0 0.0" rpy="1.5708 -0.10095 -3.1416" />
+    <parent link="link1" />
+    <child link="link2" />
+    <axis xyz="0 0 1" />
+    <limit lower="0" upper="3.14" effort="100" velocity="5" />
+  </joint>
+  <link name="link3">
+    <inertial>
+      <origin xyz="-0.027004974983063913 -0.1783768776599742 -0.0006109724968063675" rpy="0 0 0" />
+      <mass value="0.5" />
+      <inertia ixx="0.01361711" ixy="0.00165794" ixz="-0.00000048" iyy="0.00045024" iyz="-0.00000045" izz="0.01380322" />
+    </inertial>
+    <visual>
+      <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="../../../../../collision_shpere_generation/models/external_piper/meshes/e8ae51f17c0c7f6d67b753922e2cc269f5e8372a65734f859231639a64fe8fad.stl" scale="1.3320157044531036 1.3320157044531036 1.3320157044531036" />
+      </geometry>
+      <material name="">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="../../../../../collision_shpere_generation/models/external_piper/meshes/e8ae51f17c0c7f6d67b753922e2cc269f5e8372a65734f859231639a64fe8fad.stl" scale="1.3320157044531036 1.3320157044531036 1.3320157044531036" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint3" type="revolute">
+    <origin xyz="0.37966443624026813 0.0 0.0" rpy="0 0 -1.759" />
+    <parent link="link2" />
+    <child link="link3" />
+    <axis xyz="0 0 1" />
+    <limit lower="-2.967" upper="0" effort="100" velocity="5" />
+  </joint>
+  <link name="link4">
+    <inertial>
+      <origin xyz="-0.00012875740549223556 0.0011669316396807161 -0.006618531682245012" rpy="0 0 0" />
+      <mass value="0.38" />
+      <inertia ixx="0.00018501" ixy="0.00000054" ixz="0.00000120" iyy="0.00018965" iyz="-0.00000841" izz="0.00015484" />
+    </inertial>
+    <visual>
+      <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="../../../../../collision_shpere_generation/models/external_piper/meshes/efa33022976218f246f736a6133494b5d0e5486e8b50b52900c42f285ae85558.stl" scale="1.3320157044531036 1.3320157044531036 1.3320157044531036" />
+      </geometry>
+      <material name="">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="../../../../../collision_shpere_generation/models/external_piper/meshes/efa33022976218f246f736a6133494b5d0e5486e8b50b52900c42f285ae85558.stl" scale="1.3320157044531036 1.3320157044531036 1.3320157044531036" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint4" type="revolute">
+    <origin xyz="-0.02928303324669703 -0.33400293789161567 0.0" rpy="1.5708 0 0" />
+    <parent link="link3" />
+    <child link="link4" />
+    <axis xyz="0 0 1" />
+    <limit lower="-1.745" upper="1.745" effort="100" velocity="5" />
+  </joint>
+  <link name="link5">
+    <inertial>
+      <origin xyz="-5.4686453393495624e-05 -0.07545691705819858 -0.004955869881158138" rpy="0 0 0" />
+      <mass value="0.383" />
+      <inertia ixx="0.00166169" ixy="0.00000006" ixz="-0.00000007" iyy="0.00018510" iyz="0.00001026" izz="0.00164321" />
+    </inertial>
+    <visual>
+      <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="../../../../../collision_shpere_generation/models/external_piper/meshes/a1c69d1c7f6f8c60e2c82331c0f444725200ed4053d3e5ec23aa82cb5db5b29f.stl" scale="1.3320157044531036 1.3320157044531036 1.3320157044531036" />
+      </geometry>
+      <material name="">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="../../../../../collision_shpere_generation/models/external_piper/meshes/a1c69d1c7f6f8c60e2c82331c0f444725200ed4053d3e5ec23aa82cb5db5b29f.stl" scale="1.3320157044531036 1.3320157044531036 1.3320157044531036" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint5" type="revolute">
+    <origin xyz="0.0 0.0 0.0" rpy="-1.5708 0 0" />
+    <parent link="link4" />
+    <child link="link5" />
+    <axis xyz="0 0 1" />
+    <limit lower="-1.22" upper="1.22" effort="100" velocity="5" />
+  </joint>
+  <link name="link6">
+    <inertial>
+      <origin xyz="-0.0001175624756828098 1.2067846299972311e-05 -0.0026640314089062074" rpy="0 0 0" />
+      <mass value="0.007" />
+      <inertia ixx="5.73015540542155E-07" ixy="-1.98305403089247E-22" ixz="-7.2791893904596E-23" iyy="5.73015540542155E-07" iyz="-3.4146026640245E-24" izz="1.06738869138926E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="../../../../../collision_shpere_generation/models/external_piper/meshes/88374973bc3bd9e7389b5853cd6e555af9731c30b658b1ee6f85be34a126cb92.stl" scale="1.3320157044531036 1.3320157044531036 1.3320157044531036" />
+      </geometry>
+      <material name="">
+        <color rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="../../../../../collision_shpere_generation/models/external_piper/meshes/88374973bc3bd9e7389b5853cd6e555af9731c30b658b1ee6f85be34a126cb92.stl" scale="1.3320157044531036 1.3320157044531036 1.3320157044531036" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint6" type="revolute">
+    <origin xyz="0.00011756237405932647 -0.12121342910523242 0.0" rpy="1.5708 0 0" />
+    <parent link="link5" />
+    <child link="link6" />
+    <axis xyz="0 0 1" />
+    <limit lower="-2.0944" upper="2.0944" effort="100" velocity="3" />
+  </joint>
+  <link name="gripper_base">
+    <inertial>
+      <origin xyz="-0.000183807162235591 8.05033155577911E-05 0.0321436689908876" rpy="0 0 0" />
+      <mass value="0.45" />
+      <inertia ixx="0.00092934" ixy="0.00000034" ixz="-0.00000738" iyy="0.00071447" iyz="0.00000005" izz="0.00039442" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="../../../../../collision_shpere_generation/models/external_piper/meshes/2895bfa6f1eef2d0ad2cb9dfdedd5f6c760ec07388bcde2b4d1e412e1189c9cb.stl" />
+      </geometry>
+      <material name="">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="../../../../../collision_shpere_generation/models/external_piper/meshes/2895bfa6f1eef2d0ad2cb9dfdedd5f6c760ec07388bcde2b4d1e412e1189c9cb.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint6_to_gripper_base" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="link6" />
+    <child link="gripper_base" />
+  </joint>
+  <link name="link7">
+    <inertial>
+      <origin xyz="0.00065123185041968 -0.0491929869131989 0.00972258769184025" rpy="0 0 0" />
+      <mass value="0.025" />
+      <inertia ixx="0.00007371" ixy="-0.00000113" ixz="0.00000021" iyy="0.00000781" iyz="-0.00001372" izz="0.0000747" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="../../../../../collision_shpere_generation/models/external_piper/meshes/475a7d8db056524d7659fadf5a2c307d62791047b6214d733dfc7846ed1c613d.stl" />
+      </geometry>
+      <material name="">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="../../../../../collision_shpere_generation/models/external_piper/meshes/475a7d8db056524d7659fadf5a2c307d62791047b6214d733dfc7846ed1c613d.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint7" type="prismatic">
+    <origin xyz="0 0 0.1358" rpy="1.5708 0 0" />
+    <parent link="gripper_base" />
+    <child link="link7" />
+    <axis xyz="0 0 1" />
+    <limit lower="0" upper="0.035" effort="10" velocity="1" />
+  </joint>
+  <link name="link8">
+    <inertial>
+      <origin xyz="0.000651231850419722 -0.0491929869131991 0.00972258769184024" rpy="0 0 0" />
+      <mass value="0.025" />
+      <inertia ixx="0.00007371" ixy="-0.00000113" ixz="0.00000021" iyy="0.00000781" iyz="-0.00001372" izz="0.0000747" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="../../../../../collision_shpere_generation/models/external_piper/meshes/3f88d534a85e28a33ef7d2061adacbd1d25214aa9325f9e464aad0f9e4b74606.stl" />
+      </geometry>
+      <material name="">
+        <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="../../../../../collision_shpere_generation/models/external_piper/meshes/3f88d534a85e28a33ef7d2061adacbd1d25214aa9325f9e464aad0f9e4b74606.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint8" type="prismatic">
+    <origin xyz="0 0 0.1358" rpy="1.5708 0 -3.1416" />
+    <parent link="gripper_base" />
+    <child link="link8" />
+    <axis xyz="0 0 -1" />
+    <limit lower="-0.035" upper="0" effort="10" velocity="1" />
+  </joint>
+  <link name="review_grasp_tcp">
+    <visual>
+      <geometry>
+        <mesh filename="payload.stl" />
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="payload.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="review_tcp_joint" type="fixed">
+    <parent link="gripper_base" />
+    <child link="review_grasp_tcp" />
+    <origin xyz="0 0 0.155" rpy="0 0 0" />
+  </joint>
+</robot>

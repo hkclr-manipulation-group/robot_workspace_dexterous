@@ -1,0 +1,8 @@
+{
+  "model": "external_ur5",
+  "state": "open",
+  "processed": 2197,
+  "total": 2197,
+  "reachable_so_far": 503,
+  "elapsed_seconds": 39.464951038360596
+}

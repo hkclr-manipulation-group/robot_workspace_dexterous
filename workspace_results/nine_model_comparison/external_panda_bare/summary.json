@@ -1,0 +1,96 @@
+{
+  "model": "external_panda",
+  "state": "bare",
+  "status": "complete",
+  "R": 143,
+  "D": 44,
+  "threshold_points": [
+    143,
+    143,
+    140,
+    136,
+    132,
+    128,
+    123,
+    114,
+    108,
+    97,
+    92,
+    83,
+    76,
+    70,
+    61,
+    44
+  ],
+  "threshold_percent": [
+    100.0,
+    100.0,
+    97.9020979020979,
+    95.1048951048951,
+    92.3076923076923,
+    89.5104895104895,
+    86.01398601398601,
+    79.72027972027972,
+    75.52447552447552,
+    67.83216783216784,
+    64.33566433566433,
+    58.04195804195804,
+    53.14685314685315,
+    48.95104895104895,
+    42.65734265734265,
+    30.76923076923077
+  ],
+  "backend": "CPU scipy bounded least-squares + FCL",
+  "grid_points": 2197,
+  "iterations": 120,
+  "seeds": 8,
+  "position_tolerance_m": 0.005,
+  "orientation_tolerance_rad": 0.08,
+  "source": {
+    "model": "external_panda",
+    "state": "bare",
+    "base": "panda_link0",
+    "ee": "panda_link8",
+    "locks": {},
+    "fingers": [],
+    "scale": 0.7579993570662853,
+    "original_chain_length_m": 1.3192623327153459,
+    "normalized_chain_length_m": 1.0,
+    "source_revision": "ddd2fffd9de44b02ad15b4bbb2bfa2cec4d60d98",
+    "urdf_sha256": "12e66ec0a6afc7d4c6538206ec75f06313ae6ba3d66c68f1d490ba7f6c612724",
+    "tool_reference": "155 mm along native gripper-base Z; not a validated physical grasp centre",
+    "radius_upper_bound_m": 1.0
+  },
+  "ignored_pairs": [
+    [
+      "panda_link0",
+      "panda_link1"
+    ],
+    [
+      "panda_link1",
+      "panda_link2"
+    ],
+    [
+      "panda_link2",
+      "panda_link3"
+    ],
+    [
+      "panda_link3",
+      "panda_link4"
+    ],
+    [
+      "panda_link4",
+      "panda_link5"
+    ],
+    [
+      "panda_link5",
+      "panda_link6"
+    ],
+    [
+      "panda_link6",
+      "panda_link7"
+    ]
+  ],
+  "open_mesh_links": [],
+  "elapsed_seconds": 1212.2957780361176
+}

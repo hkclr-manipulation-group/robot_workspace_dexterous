@@ -1,0 +1,20 @@
+{
+  "model": "external_panda",
+  "state": "holding",
+  "base": "panda_link0",
+  "ee": "review_grasp_tcp",
+  "locks": {
+    "panda_finger_joint1": 0.015
+  },
+  "fingers": [
+    "panda_leftfinger",
+    "panda_rightfinger"
+  ],
+  "scale": 0.7579993570662853,
+  "original_chain_length_m": 1.3192623327153459,
+  "normalized_chain_length_m": 1.0,
+  "source_revision": "ddd2fffd9de44b02ad15b4bbb2bfa2cec4d60d98",
+  "urdf_sha256": "1058cc114b6d10eacfe3363495749d62b19c7e2958abf70212060984489bef2f",
+  "tool_reference": "OEM Panda Hand TCP: 103.4 mm along hand Z",
+  "radius_upper_bound_m": 1.266
+}

@@ -1,0 +1,21 @@
+{
+  "model": "external_piper",
+  "state": "open",
+  "base": "base_link",
+  "ee": "review_grasp_tcp",
+  "locks": {
+    "joint7": 0.035,
+    "joint8": -0.035
+  },
+  "fingers": [
+    "link7",
+    "link8"
+  ],
+  "scale": 1.3320157044531036,
+  "original_chain_length_m": 0.7507418994061921,
+  "normalized_chain_length_m": 1.0,
+  "source_revision": "ac41fcbcdda598f01b51cf6175ed9a24d0dacadc",
+  "urdf_sha256": "1f8add997315629e6bcbbb76c7d3850f88ffc93e58de871452e57ea38e908c58",
+  "tool_reference": "155 mm along native gripper-base Z; not a validated physical grasp centre",
+  "radius_upper_bound_m": 1.266
+}

@@ -1,0 +1,288 @@
+<?xml version='1.0' encoding='utf-8'?>
+<robot name="panda">
+  <link name="panda_link0">
+    <visual>
+      <geometry>
+        <mesh filename="../../../../../collision_shpere_generation/models/external_panda/meshes/050fe608136d11913287eaea6906538ddc9112cdbf7337a3181d9ed03f55f619.stl" scale="0.7579993570662853 0.7579993570662853 0.7579993570662853" />
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="../../../../../collision_shpere_generation/models/external_panda/meshes/dfc6d94330de8ddb005b311bfdba9f3b8e1aa7c256b71592ee7ff32cb9a9a5aa.stl" scale="0.7579993570662853 0.7579993570662853 0.7579993570662853" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="panda_link1">
+    <visual>
+      <geometry>
+        <mesh filename="../../../../../collision_shpere_generation/models/external_panda/meshes/b061af1bcfb57f32719a1ffda44290619549a41b33a37a49bfebe781b20039a4.stl" scale="0.7579993570662853 0.7579993570662853 0.7579993570662853" />
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="../../../../../collision_shpere_generation/models/external_panda/meshes/e41a39a94108fcf56aacff603fc91ec80541f4c1af17b51a0de5617f5566e6d2.stl" scale="0.7579993570662853 0.7579993570662853 0.7579993570662853" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="panda_joint1" type="revolute">
+    <origin rpy="0 0 0" xyz="0.0 0.0 0.252413785903073" />
+    <parent link="panda_link0" />
+    <child link="panda_link1" />
+    <axis xyz="0 0 1" />
+    <limit effort="87.0" lower="-2.8973" upper="2.8973" velocity="2.175" />
+    <safety_controller k_position="100.0" k_velocity="40.0" soft_lower_limit="-2.8973" soft_upper_limit="2.8973" />
+    <dynamics D="1" K="7000" damping="0.003" friction="0.0" mu_coulomb="0" mu_viscous="16" />
+  </joint>
+  <link name="panda_link2">
+    <visual>
+      <geometry>
+        <mesh filename="../../../../../collision_shpere_generation/models/external_panda/meshes/01ec435e7aee5812eb401489a83bf1717834eb5f21f8f6233e553b2da9be00bb.stl" scale="0.7579993570662853 0.7579993570662853 0.7579993570662853" />
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="../../../../../collision_shpere_generation/models/external_panda/meshes/370f7605a0fae3529db169ded50f52f171024aa792d4d773bc84197301f6a039.stl" scale="0.7579993570662853 0.7579993570662853 0.7579993570662853" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="panda_joint2" type="revolute">
+    <origin rpy="-1.5707963267948966 0 0" xyz="0.0 0.0 0.0" />
+    <parent link="panda_link1" />
+    <child link="panda_link2" />
+    <axis xyz="0 0 1" />
+    <limit effort="87.0" lower="-1.7628" upper="1.7628" velocity="2.175" />
+    <safety_controller k_position="100.0" k_velocity="40.0" soft_lower_limit="-1.7628" soft_upper_limit="1.7628" />
+    <dynamics D="1" K="7000" damping="0.003" friction="0.0" mu_coulomb="0" mu_viscous="16" />
+  </joint>
+  <link name="panda_link3">
+    <visual>
+      <geometry>
+        <mesh filename="../../../../../collision_shpere_generation/models/external_panda/meshes/ce28221fe968ee86787d594222b24d00aa0f47bb64f53eaacbaf6172e81c29b4.stl" scale="0.7579993570662853 0.7579993570662853 0.7579993570662853" />
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="../../../../../collision_shpere_generation/models/external_panda/meshes/0a8d638b9349c6c0eefc4e888636ac4838c4b27170f18a51699321118af709c1.stl" scale="0.7579993570662853 0.7579993570662853 0.7579993570662853" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="panda_joint3" type="revolute">
+    <origin rpy="1.5707963267948966 0 0" xyz="0.0 -0.23952779683294614 0.0" />
+    <parent link="panda_link2" />
+    <child link="panda_link3" />
+    <axis xyz="0 0 1" />
+    <limit effort="87.0" lower="-2.8973" upper="2.8973" velocity="2.175" />
+    <safety_controller k_position="100.0" k_velocity="40.0" soft_lower_limit="-2.8973" soft_upper_limit="2.8973" />
+    <dynamics D="1" K="7000" damping="0.003" friction="0.0" mu_coulomb="0" mu_viscous="16" />
+  </joint>
+  <link name="panda_link4">
+    <visual>
+      <geometry>
+        <mesh filename="../../../../../collision_shpere_generation/models/external_panda/meshes/d3a4029d1396471ad78ea5fd06e440167cb46c3ed7ab57befb2bcdbf1360efbf.stl" scale="0.7579993570662853 0.7579993570662853 0.7579993570662853" />
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="../../../../../collision_shpere_generation/models/external_panda/meshes/0180ebb5772ec9840cb049750cffb29a9ddc90311752a16ea34757782ef9e48d.stl" scale="0.7579993570662853 0.7579993570662853 0.7579993570662853" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="panda_joint4" type="revolute">
+    <origin rpy="1.5707963267948966 0 0" xyz="0.06253494695796855 0.0 0.0" />
+    <parent link="panda_link3" />
+    <child link="panda_link4" />
+    <axis xyz="0 0 1" />
+    <limit effort="87.0" lower="-3.0718" upper="-0.0698" velocity="2.175" />
+    <safety_controller k_position="100.0" k_velocity="40.0" soft_lower_limit="-3.0718" soft_upper_limit="-0.0698" />
+    <dynamics D="1" K="7000" damping="0.003" friction="0.0" mu_coulomb="0" mu_viscous="16" />
+  </joint>
+  <link name="panda_link5">
+    <visual>
+      <geometry>
+        <mesh filename="../../../../../collision_shpere_generation/models/external_panda/meshes/07bab2ced87c546bfbc15ce8249038db0e0e582de1607b4243ebd3669dac1f21.stl" scale="0.7579993570662853 0.7579993570662853 0.7579993570662853" />
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="../../../../../collision_shpere_generation/models/external_panda/meshes/dd17e688c7870e722283525879643d53a74c0024d328b0e14b034b54c8b6c31a.stl" scale="0.7579993570662853 0.7579993570662853 0.7579993570662853" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="panda_joint5" type="revolute">
+    <origin rpy="-1.5707963267948966 0 0" xyz="-0.06253494695796855 0.29107175311345357 0.0" />
+    <parent link="panda_link4" />
+    <child link="panda_link5" />
+    <axis xyz="0 0 1" />
+    <limit effort="12.0" lower="-2.8973" upper="2.8973" velocity="2.61" />
+    <safety_controller k_position="100.0" k_velocity="40.0" soft_lower_limit="-2.8973" soft_upper_limit="2.8973" />
+    <dynamics D="1" K="7000" damping="0.003" friction="0.0" mu_coulomb="0" mu_viscous="16" />
+  </joint>
+  <link name="panda_link6">
+    <visual>
+      <geometry>
+        <mesh filename="../../../../../collision_shpere_generation/models/external_panda/meshes/4475cb620e2e7293eb0f317b5f968f6520f703a4e5d4f7b95f75249e4302fd21.stl" scale="0.7579993570662853 0.7579993570662853 0.7579993570662853" />
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="../../../../../collision_shpere_generation/models/external_panda/meshes/20b768e99a0e0440b5754dcca108016434e57937cc356acd9c352ccd3cb27f77.stl" scale="0.7579993570662853 0.7579993570662853 0.7579993570662853" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="panda_joint6" type="revolute">
+    <origin rpy="1.5707963267948966 0 0" xyz="0.0 0.0 0.0" />
+    <parent link="panda_link5" />
+    <child link="panda_link6" />
+    <axis xyz="0 0 1" />
+    <limit effort="12.0" lower="-0.0175" upper="3.7525" velocity="2.61" />
+    <safety_controller k_position="100.0" k_velocity="40.0" soft_lower_limit="-0.0175" soft_upper_limit="3.7525" />
+    <dynamics D="1" K="7000" damping="0.003" friction="0.0" mu_coulomb="0" mu_viscous="16" />
+  </joint>
+  <link name="panda_link7">
+    <visual>
+      <geometry>
+        <mesh filename="../../../../../collision_shpere_generation/models/external_panda/meshes/463227bda9eb9901637107068f59e861fcb81ac89880706d41c26d18c4b46abe.stl" scale="0.7579993570662853 0.7579993570662853 0.7579993570662853" />
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="../../../../../collision_shpere_generation/models/external_panda/meshes/92ac6afcf7574c034d3170d8a68e95ac9048ab9d0dd5bbd8311b86e551b9ab1c.stl" scale="0.7579993570662853 0.7579993570662853 0.7579993570662853" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="panda_joint7" type="revolute">
+    <origin rpy="1.5707963267948966 0 0" xyz="0.0667039434218331 0.0 0.0" />
+    <parent link="panda_link6" />
+    <child link="panda_link7" />
+    <axis xyz="0 0 1" />
+    <limit effort="12.0" lower="-2.8973" upper="2.8973" velocity="2.61" />
+    <safety_controller k_position="100.0" k_velocity="40.0" soft_lower_limit="-2.8973" soft_upper_limit="2.8973" />
+    <dynamics D="1" K="7000" damping="0.003" friction="0.0" mu_coulomb="0" mu_viscous="16" />
+  </joint>
+  <link name="panda_link8" />
+  <joint name="panda_joint8" type="fixed">
+    <origin rpy="0 0 0" xyz="0.0 0.0 0.08110593120609252" />
+    <parent link="panda_link7" />
+    <child link="panda_link8" />
+  </joint>
+  <joint name="panda_hand_joint" type="fixed">
+    <parent link="panda_link8" />
+    <child link="panda_hand" />
+    <origin rpy="0 0 -0.7853981633974483" xyz="0 0 0" />
+  </joint>
+  <link name="panda_hand">
+    <visual>
+      <geometry>
+        <mesh filename="../../../../../collision_shpere_generation/models/external_panda/meshes/fe5d445d509e44a9bd107ff78f0b03c49752c98e5e0a8ebafddf2b6cf5a8b380.stl" />
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="../../../../../collision_shpere_generation/models/external_panda/meshes/94493e94f30fe940f2c8ca2f155c3bbe67bbff406d3edf5e261670d2f0f6e2ed.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="panda_hand_tcp" />
+  <joint name="panda_hand_tcp_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0.1034" />
+    <parent link="panda_hand" />
+    <child link="panda_hand_tcp" />
+  </joint>
+  <link name="panda_leftfinger">
+    <visual>
+      <geometry>
+        <mesh filename="../../../../../collision_shpere_generation/models/external_panda/meshes/caefea762f2d18ca9412cf6c2e64e5007ad03571181d790a8e0c828b1b2035cf.stl" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 18.5e-3 11e-3" />
+      <geometry>
+        <mesh filename="../../../../../collision_shpere_generation/models/external_panda/meshes/83c3507d219c3fd1c6f77043cae9c0ff59f6687054e11cbc421e24448e29a7a9.stl" />
+      </geometry>
+    </collision>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 6.8e-3 2.2e-3" />
+      <geometry>
+        <mesh filename="../../../../../collision_shpere_generation/models/external_panda/meshes/47e25f42fd63751320ef72e4949f05af80bae16e46828bdb0c2d5a85cea66f0b.stl" />
+      </geometry>
+    </collision>
+    <collision>
+      <origin rpy="0.5235987755982988 0 0" xyz="0 15.9e-3 28.35e-3" />
+      <geometry>
+        <mesh filename="../../../../../collision_shpere_generation/models/external_panda/meshes/1a7236ad3ea209365e4e380a06efa7a8be8f8f4913d360202ea97cd9cab7f574.stl" />
+      </geometry>
+    </collision>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 7.58e-3 45.25e-3" />
+      <geometry>
+        <mesh filename="../../../../../collision_shpere_generation/models/external_panda/meshes/6aec9ce1a44531a7eb5b4a29076c888807033d10bcc5724f67e00bcbfc5a3ce4.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="panda_rightfinger">
+    <visual>
+      <origin rpy="0 0 3.141592653589793" xyz="0 0 0" />
+      <geometry>
+        <mesh filename="../../../../../collision_shpere_generation/models/external_panda/meshes/caefea762f2d18ca9412cf6c2e64e5007ad03571181d790a8e0c828b1b2035cf.stl" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 -18.5e-3 11e-3" />
+      <geometry>
+        <mesh filename="../../../../../collision_shpere_generation/models/external_panda/meshes/83c3507d219c3fd1c6f77043cae9c0ff59f6687054e11cbc421e24448e29a7a9.stl" />
+      </geometry>
+    </collision>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 -6.8e-3 2.2e-3" />
+      <geometry>
+        <mesh filename="../../../../../collision_shpere_generation/models/external_panda/meshes/47e25f42fd63751320ef72e4949f05af80bae16e46828bdb0c2d5a85cea66f0b.stl" />
+      </geometry>
+    </collision>
+    <collision>
+      <origin rpy="-0.5235987755982988 0 0" xyz="0 -15.9e-3 28.35e-3" />
+      <geometry>
+        <mesh filename="../../../../../collision_shpere_generation/models/external_panda/meshes/1a7236ad3ea209365e4e380a06efa7a8be8f8f4913d360202ea97cd9cab7f574.stl" />
+      </geometry>
+    </collision>
+    <collision>
+      <origin rpy="0 0 0" xyz="0 -7.58e-3 45.25e-3" />
+      <geometry>
+        <mesh filename="../../../../../collision_shpere_generation/models/external_panda/meshes/6aec9ce1a44531a7eb5b4a29076c888807033d10bcc5724f67e00bcbfc5a3ce4.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="panda_finger_joint1" type="prismatic">
+    <parent link="panda_hand" />
+    <child link="panda_leftfinger" />
+    <origin rpy="0 0 0" xyz="0 0 0.0584" />
+    <axis xyz="0 1 0" />
+    <limit effort="100" lower="0.0" upper="0.04" velocity="0.2" />
+    <dynamics damping="0.3" />
+  </joint>
+  <joint name="panda_finger_joint2" type="prismatic">
+    <parent link="panda_hand" />
+    <child link="panda_rightfinger" />
+    <origin rpy="0 0 0" xyz="0 0 0.0584" />
+    <axis xyz="0 -1 0" />
+    <limit effort="100" lower="0.0" upper="0.04" velocity="0.2" />
+    <mimic joint="panda_finger_joint1" />
+    <dynamics damping="0.3" />
+  </joint>
+  <link name="review_grasp_tcp">
+    <visual>
+      <geometry>
+        <mesh filename="payload.stl" />
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="payload.stl" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="review_tcp_joint" type="fixed">
+    <parent link="panda_hand" />
+    <child link="review_grasp_tcp" />
+    <origin xyz="0 0 0.1034" rpy="0 0 0" />
+  </joint>
+</robot>

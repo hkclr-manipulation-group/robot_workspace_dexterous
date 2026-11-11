@@ -1,0 +1,152 @@
+{
+  "model": "external_piper",
+  "state": "holding",
+  "status": "complete",
+  "R": 350,
+  "D": 0,
+  "threshold_points": [
+    350,
+    236,
+    92,
+    23,
+    7,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "threshold_percent": [
+    100.0,
+    67.42857142857143,
+    26.285714285714285,
+    6.571428571428571,
+    2.0,
+    0.2857142857142857,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "backend": "CPU scipy bounded least-squares + FCL",
+  "grid_points": 2197,
+  "iterations": 120,
+  "seeds": 8,
+  "position_tolerance_m": 0.005,
+  "orientation_tolerance_rad": 0.08,
+  "source": {
+    "model": "external_piper",
+    "state": "holding",
+    "base": "base_link",
+    "ee": "review_grasp_tcp",
+    "locks": {
+      "joint7": 0.015,
+      "joint8": -0.015
+    },
+    "fingers": [
+      "link7",
+      "link8"
+    ],
+    "scale": 1.3320157044531036,
+    "original_chain_length_m": 0.7507418994061921,
+    "normalized_chain_length_m": 1.0,
+    "source_revision": "ac41fcbcdda598f01b51cf6175ed9a24d0dacadc",
+    "urdf_sha256": "d71299db129dc5b8a55bf0ec9a6afa3099ac6f6f26e1a449568b0548ce1ccd43",
+    "tool_reference": "155 mm along native gripper-base Z; not a validated physical grasp centre",
+    "radius_upper_bound_m": 1.266
+  },
+  "ignored_pairs": [
+    [
+      "base_link",
+      "link1"
+    ],
+    [
+      "link1",
+      "link2"
+    ],
+    [
+      "link2",
+      "link3"
+    ],
+    [
+      "link3",
+      "link4"
+    ],
+    [
+      "link4",
+      "link5"
+    ],
+    [
+      "link5",
+      "link6"
+    ],
+    [
+      "link5",
+      "link8"
+    ],
+    [
+      "link5",
+      "link7"
+    ],
+    [
+      "link6",
+      "link8"
+    ],
+    [
+      "link6",
+      "link7"
+    ],
+    [
+      "gripper_base",
+      "link8"
+    ],
+    [
+      "gripper_base",
+      "link7"
+    ],
+    [
+      "gripper_base",
+      "link6"
+    ],
+    [
+      "gripper_base",
+      "link5"
+    ],
+    [
+      "link7",
+      "link8"
+    ],
+    [
+      "review_grasp_tcp",
+      "link7"
+    ],
+    [
+      "review_grasp_tcp",
+      "link8"
+    ]
+  ],
+  "open_mesh_links": [
+    "base_link",
+    "gripper_base",
+    "link1",
+    "link2",
+    "link3",
+    "link4",
+    "link5",
+    "link7",
+    "link8"
+  ],
+  "elapsed_seconds": 434.29171204566956
+}

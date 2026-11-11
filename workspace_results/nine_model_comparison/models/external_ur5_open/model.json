@@ -1,0 +1,20 @@
+{
+  "model": "external_ur5",
+  "state": "open",
+  "base": "base_link",
+  "ee": "review_grasp_tcp",
+  "locks": {
+    "gripper_J1": 0.0
+  },
+  "fingers": [
+    "gripper_L1",
+    "gripper_L2"
+  ],
+  "scale": 0.9105293222026078,
+  "original_chain_length_m": 1.0982622696663507,
+  "normalized_chain_length_m": 1.0,
+  "source_revision": "39ad110d8f2e8f66856a201cca88aa7a7025e3eb",
+  "urdf_sha256": "77ce8e7bc3165f8a05eed7c47086ac06d63b25d7bf6460fd046fd02b84fbbb38",
+  "tool_reference": "155 mm along native gripper-base Z; not a validated physical grasp centre",
+  "radius_upper_bound_m": 1.266
+}

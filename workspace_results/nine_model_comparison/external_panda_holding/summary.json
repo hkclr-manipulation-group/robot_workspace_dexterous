@@ -1,0 +1,145 @@
+{
+  "model": "external_panda",
+  "state": "holding",
+  "status": "complete",
+  "R": 207,
+  "D": 2,
+  "threshold_points": [
+    207,
+    205,
+    188,
+    174,
+    159,
+    140,
+    125,
+    104,
+    93,
+    79,
+    69,
+    59,
+    47,
+    28,
+    9,
+    2
+  ],
+  "threshold_percent": [
+    100.0,
+    99.03381642512076,
+    90.82125603864735,
+    84.05797101449275,
+    76.81159420289855,
+    67.6328502415459,
+    60.38647342995169,
+    50.24154589371981,
+    44.927536231884055,
+    38.164251207729464,
+    33.33333333333333,
+    28.502415458937197,
+    22.705314009661837,
+    13.526570048309178,
+    4.3478260869565215,
+    0.966183574879227
+  ],
+  "backend": "CPU scipy bounded least-squares + FCL; checkpoint resumed with validated JIT FK/Jacobian",
+  "grid_points": 2197,
+  "iterations": 120,
+  "seeds": 8,
+  "position_tolerance_m": 0.005,
+  "orientation_tolerance_rad": 0.08,
+  "source": {
+    "model": "external_panda",
+    "state": "holding",
+    "base": "panda_link0",
+    "ee": "review_grasp_tcp",
+    "locks": {
+      "panda_finger_joint1": 0.015
+    },
+    "fingers": [
+      "panda_leftfinger",
+      "panda_rightfinger"
+    ],
+    "scale": 0.7579993570662853,
+    "original_chain_length_m": 1.3192623327153459,
+    "normalized_chain_length_m": 1.0,
+    "source_revision": "ddd2fffd9de44b02ad15b4bbb2bfa2cec4d60d98",
+    "urdf_sha256": "1058cc114b6d10eacfe3363495749d62b19c7e2958abf70212060984489bef2f",
+    "tool_reference": "OEM Panda Hand TCP: 103.4 mm along hand Z",
+    "radius_upper_bound_m": 1.266
+  },
+  "ignored_pairs": [
+    [
+      "panda_link0",
+      "panda_link1"
+    ],
+    [
+      "panda_link1",
+      "panda_link2"
+    ],
+    [
+      "panda_link2",
+      "panda_link3"
+    ],
+    [
+      "panda_link3",
+      "panda_link4"
+    ],
+    [
+      "panda_link4",
+      "panda_link5"
+    ],
+    [
+      "panda_link5",
+      "panda_link6"
+    ],
+    [
+      "panda_link6",
+      "panda_link7"
+    ],
+    [
+      "panda_link6",
+      "panda_rightfinger"
+    ],
+    [
+      "panda_link7",
+      "panda_rightfinger"
+    ],
+    [
+      "panda_hand",
+      "panda_rightfinger"
+    ],
+    [
+      "panda_hand",
+      "panda_leftfinger"
+    ],
+    [
+      "panda_hand",
+      "panda_link7"
+    ],
+    [
+      "panda_hand",
+      "panda_link6"
+    ],
+    [
+      "panda_leftfinger",
+      "panda_rightfinger"
+    ],
+    [
+      "panda_leftfinger",
+      "panda_link7"
+    ],
+    [
+      "panda_leftfinger",
+      "panda_link6"
+    ],
+    [
+      "review_grasp_tcp",
+      "panda_leftfinger"
+    ],
+    [
+      "review_grasp_tcp",
+      "panda_rightfinger"
+    ]
+  ],
+  "open_mesh_links": [],
+  "elapsed_seconds": 232.08695912361145
+}

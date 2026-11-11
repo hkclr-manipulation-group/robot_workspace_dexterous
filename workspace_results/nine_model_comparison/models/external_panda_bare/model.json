@@ -1,0 +1,15 @@
+{
+  "model": "external_panda",
+  "state": "bare",
+  "base": "panda_link0",
+  "ee": "panda_link8",
+  "locks": {},
+  "fingers": [],
+  "scale": 0.7579993570662853,
+  "original_chain_length_m": 1.3192623327153459,
+  "normalized_chain_length_m": 1.0,
+  "source_revision": "ddd2fffd9de44b02ad15b4bbb2bfa2cec4d60d98",
+  "urdf_sha256": "12e66ec0a6afc7d4c6538206ec75f06313ae6ba3d66c68f1d490ba7f6c612724",
+  "tool_reference": "155 mm along native gripper-base Z; not a validated physical grasp centre",
+  "radius_upper_bound_m": 1.0
+}

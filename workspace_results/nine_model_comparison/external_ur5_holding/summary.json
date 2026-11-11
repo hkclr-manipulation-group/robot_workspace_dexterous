@@ -1,0 +1,144 @@
+{
+  "model": "external_ur5",
+  "state": "holding",
+  "status": "complete",
+  "R": 503,
+  "D": 43,
+  "threshold_points": [
+    503,
+    483,
+    462,
+    436,
+    407,
+    365,
+    335,
+    297,
+    255,
+    216,
+    189,
+    166,
+    133,
+    103,
+    66,
+    43
+  ],
+  "threshold_percent": [
+    100.0,
+    96.02385685884693,
+    91.84890656063618,
+    86.67992047713717,
+    80.9145129224652,
+    72.56461232604374,
+    66.6003976143141,
+    59.04572564612326,
+    50.695825049701796,
+    42.94234592445328,
+    37.57455268389662,
+    33.00198807157058,
+    26.44135188866799,
+    20.47713717693837,
+    13.12127236580517,
+    8.548707753479125
+  ],
+  "backend": "CPU scipy bounded least-squares + FCL; checkpoint resumed with validated JIT FK/Jacobian",
+  "grid_points": 2197,
+  "iterations": 120,
+  "seeds": 8,
+  "position_tolerance_m": 0.005,
+  "orientation_tolerance_rad": 0.08,
+  "source": {
+    "model": "external_ur5",
+    "state": "holding",
+    "base": "base_link",
+    "ee": "review_grasp_tcp",
+    "locks": {
+      "gripper_J1": 0.032697
+    },
+    "fingers": [
+      "gripper_L1",
+      "gripper_L2"
+    ],
+    "scale": 0.9105293222026078,
+    "original_chain_length_m": 1.0982622696663507,
+    "normalized_chain_length_m": 1.0,
+    "source_revision": "39ad110d8f2e8f66856a201cca88aa7a7025e3eb",
+    "urdf_sha256": "043e10a856a055fbf667136098015e8ccad80a56b7126f30fe8cab4f44df5531",
+    "tool_reference": "155 mm along native gripper-base Z; not a validated physical grasp centre",
+    "radius_upper_bound_m": 1.266
+  },
+  "ignored_pairs": [
+    [
+      "base_link_inertia",
+      "shoulder_link"
+    ],
+    [
+      "shoulder_link",
+      "upper_arm_link"
+    ],
+    [
+      "forearm_link",
+      "wrist_1_link"
+    ],
+    [
+      "forearm_link",
+      "upper_arm_link"
+    ],
+    [
+      "wrist_1_link",
+      "wrist_2_link"
+    ],
+    [
+      "wrist_2_link",
+      "wrist_3_link"
+    ],
+    [
+      "gripper_base_link",
+      "wrist_3_link"
+    ],
+    [
+      "gripper_base_link",
+      "wrist_2_link"
+    ],
+    [
+      "gripper_L1",
+      "gripper_base_link"
+    ],
+    [
+      "gripper_L1",
+      "wrist_3_link"
+    ],
+    [
+      "gripper_L1",
+      "wrist_2_link"
+    ],
+    [
+      "gripper_L1",
+      "gripper_L2"
+    ],
+    [
+      "gripper_L2",
+      "gripper_base_link"
+    ],
+    [
+      "gripper_L2",
+      "wrist_3_link"
+    ],
+    [
+      "gripper_L2",
+      "wrist_2_link"
+    ],
+    [
+      "review_grasp_tcp",
+      "gripper_L1"
+    ],
+    [
+      "review_grasp_tcp",
+      "gripper_L2"
+    ]
+  ],
+  "open_mesh_links": [
+    "gripper_L2",
+    "gripper_base_link"
+  ],
+  "elapsed_seconds": 236.9314260482788
+}

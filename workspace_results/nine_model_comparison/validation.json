@@ -1,0 +1,128 @@
+{
+  "spark2_v1_bare": {
+    "status": "PASS",
+    "archived_exact_grid_subset": true
+  },
+  "spark2_v1_open": {
+    "status": "PASS",
+    "archived_exact_grid_subset": true
+  },
+  "spark2_v1_holding": {
+    "status": "PASS",
+    "archived_exact_grid_subset": true
+  },
+  "spark2_v2_2_bare": {
+    "status": "PASS",
+    "archived_exact_grid_subset": true
+  },
+  "spark2_v2_2_open": {
+    "status": "PASS",
+    "archived_exact_grid_subset": true
+  },
+  "spark2_v2_2_holding": {
+    "status": "PASS",
+    "archived_exact_grid_subset": true
+  },
+  "P2AB-1_bare": {
+    "status": "PASS",
+    "archived_exact_grid_subset": true
+  },
+  "P2AB-1_open": {
+    "status": "PASS",
+    "archived_exact_grid_subset": true
+  },
+  "P2AB-1_holding": {
+    "status": "PASS",
+    "archived_exact_grid_subset": true
+  },
+  "P2AB-2_bare": {
+    "status": "PASS",
+    "archived_exact_grid_subset": true
+  },
+  "P2AB-2_open": {
+    "status": "PASS",
+    "archived_exact_grid_subset": true
+  },
+  "P2AB-2_holding": {
+    "status": "PASS",
+    "archived_exact_grid_subset": true
+  },
+  "P2AB-3_bare": {
+    "status": "PASS",
+    "archived_exact_grid_subset": true
+  },
+  "P2AB-3_open": {
+    "status": "PASS",
+    "archived_exact_grid_subset": true
+  },
+  "P2AB-3_holding": {
+    "status": "PASS",
+    "archived_exact_grid_subset": true
+  },
+  "P2AB-4_bare": {
+    "status": "PASS",
+    "archived_exact_grid_subset": true
+  },
+  "P2AB-4_open": {
+    "status": "PASS",
+    "archived_exact_grid_subset": true
+  },
+  "P2AB-4_holding": {
+    "status": "PASS",
+    "archived_exact_grid_subset": true
+  },
+  "external_piper_bare": {
+    "status": "PASS",
+    "accepted_poses_rechecked": 646,
+    "max_position_error_m": 0.004790034777476932,
+    "max_orientation_error_rad": 0.07923766098259671
+  },
+  "external_piper_open": {
+    "status": "PASS",
+    "accepted_poses_rechecked": 709,
+    "max_position_error_m": 0.004222019107792105,
+    "max_orientation_error_rad": 0.07982643921193805
+  },
+  "external_piper_holding": {
+    "status": "PASS",
+    "accepted_poses_rechecked": 709,
+    "max_position_error_m": 0.004222019107792105,
+    "max_orientation_error_rad": 0.07982643921193805
+  },
+  "external_ur5_bare": {
+    "status": "PASS",
+    "accepted_poses_rechecked": 4437,
+    "max_position_error_m": 0.004896920004961715,
+    "max_orientation_error_rad": 0.07989703192308778
+  },
+  "external_ur5_open": {
+    "status": "PASS",
+    "accepted_poses_rechecked": 4457,
+    "max_position_error_m": 0.004904674731326973,
+    "max_orientation_error_rad": 0.07995619081383551
+  },
+  "external_ur5_holding": {
+    "status": "PASS",
+    "accepted_poses_rechecked": 4459,
+    "max_position_error_m": 0.004904674731326973,
+    "max_orientation_error_rad": 0.07995619081383591
+  },
+  "external_panda_bare": {
+    "status": "PASS",
+    "accepted_poses_rechecked": 1690,
+    "max_position_error_m": 0.004914558940049275,
+    "max_orientation_error_rad": 0.07998701322050947
+  },
+  "external_panda_open": {
+    "status": "PASS",
+    "accepted_poses_rechecked": 1688,
+    "max_position_error_m": 0.004558754746201181,
+    "max_orientation_error_rad": 0.07992880633852292
+  },
+  "external_panda_holding": {
+    "status": "PASS",
+    "accepted_poses_rechecked": 1688,
+    "max_position_error_m": 0.004558754746201181,
+    "max_orientation_error_rad": 0.07992654897249499
+  }
+}
