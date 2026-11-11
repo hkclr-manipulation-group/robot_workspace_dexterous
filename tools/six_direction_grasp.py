@@ -12,7 +12,9 @@ import multiprocessing as mp
 from fast_reference_kinematics import FastReferenceKinematics
 from collision_shpere_generation.mesh_collision import MeshCollisionChecker
 import compare_nine_workspace as base
-ROOT=base.ROOT;OUT=base.WS/'workspace_results/six_direction_grasp';NAMES=base.OURS+base.EXTERNAL
+STATE=os.environ.get('SPARK_DIRECTION_STATE','open')
+assert STATE in ('bare','open')
+ROOT=base.ROOT;OUT=base.WS/'workspace_results'/f'six_direction_{STATE}';NAMES=base.OURS+base.EXTERNAL
 DIRECTIONS=['Top (-Z)','Bottom (+Z)','Left (-Y)','Right (+Y)','Front (-X)','Back (+X)']
 AXES=np.array([[0,0,-1],[0,0,1],[0,-1,0],[0,1,0],[-1,0,0],[1,0,0]],float)
 ORIENTS=[]
@@ -25,9 +27,9 @@ ORIENTS=np.array(ORIENTS);CACHE={}
 def load(name):
  if name in CACHE:return CACHE[name]
  if name in base.EXTERNAL:
-  _,checker,meta,ignores,*_=base.load(name,'holding');p=base.OUT/'models'/f'{name}_holding/robot.urdf';arm=FastReferenceKinematics(p,meta['base'],locked_joints=meta['locks']);ee=meta['ee']
+  _,checker,meta,ignores,*_=base.load(name,STATE);p=base.OUT/'models'/f'{name}_{STATE}/robot.urdf';arm=FastReferenceKinematics(p,meta['base'],locked_joints=meta['locks']);ee=meta['ee']
  else:
-  folder=base.OLD/'models'/f'{name}_holding';cfg=yaml.safe_load((base.OLD/'configs'/f'{name}_holding.yaml').read_text())['robot'];arm=FastReferenceKinematics(folder/'robot.urdf',cfg['base_link']);ee=cfg['ee_links'][0];manifest=yaml.safe_load((folder/'collision_meshes.yaml').read_text());meshes={}
+  folder=base.OLD/'models'/f'{name}_{STATE}';cfg=yaml.safe_load((base.OLD/'configs'/f'{name}_{STATE}.yaml').read_text())['robot'];arm=FastReferenceKinematics(folder/'robot.urdf',cfg['base_link']);ee=cfg['ee_links'][0];manifest=yaml.safe_load((folder/'collision_meshes.yaml').read_text());meshes={}
   for link,entries in manifest['links'].items():
    parts=[]
    for entry in entries:
@@ -65,7 +67,7 @@ def main():
    tmp=OUT/(name+'.partial.npz');np.savez_compressed(tmp,positions=positions,orientations_wxyz=ORIENTS,**d);os.replace(tmp,OUT/(name+'.npz'))
   progress={n:int(d['processed'].sum()) for n,d in data.items()};(OUT/'progress.json').write_text(json.dumps(progress,indent=2));print(progress,flush=True)
  last=time.time()
- with ProcessPoolExecutor(max_workers=10,mp_context=mp.get_context('spawn')) as pool:
+ with ProcessPoolExecutor(max_workers=int(os.environ.get("SPARK_DIRECTION_WORKERS","5")),mp_context=mp.get_context('spawn')) as pool:
   for name,i,ok,q,s,c in pool.map(cell,tasks,chunksize=2):
    d=data[name];d['accepted'][i]=ok;d['solutions'][i]=q;d['sigma_min'][i]=s;d['condition'][i]=c;d['processed'][i]=True
    if time.time()-last>30:save();last=time.time()
