@@ -1,0 +1,347 @@
+{
+  "bare": {
+    "state": "bare",
+    "samples": 8192,
+    "collision_free_samples": 7967,
+    "occupied_50mm_voxels_before": 3884,
+    "occupied_50mm_voxels_after": 3865,
+    "joint_names": [
+      "joint1",
+      "joint2",
+      "joint3",
+      "joint4",
+      "joint5",
+      "joint6"
+    ],
+    "limits_deg": [
+      [
+        -150.00035076524952,
+        124.21724998436248
+      ],
+      [
+        0.0,
+        179.9087476710785
+      ],
+      [
+        -169.99657781531525,
+        0.0
+      ],
+      [
+        -99.98113525032866,
+        99.98113525032866
+      ],
+      [
+        -69.90085100596043,
+        69.90085100596043
+      ],
+      [
+        -120.0002806121996,
+        120.0002806121996
+      ]
+    ],
+    "ignored_pairs": [
+      [
+        "base_link",
+        "link1"
+      ],
+      [
+        "link1",
+        "link2"
+      ],
+      [
+        "link2",
+        "link3"
+      ],
+      [
+        "link3",
+        "link4"
+      ],
+      [
+        "link4",
+        "link5"
+      ],
+      [
+        "link5",
+        "link6"
+      ]
+    ],
+    "open_collision_mesh_links": [
+      "base_link",
+      "link1",
+      "link2",
+      "link3",
+      "link4",
+      "link5"
+    ],
+    "source_revision": "ac41fcbcdda598f01b51cf6175ed9a24d0dacadc",
+    "urdf_sha256": "5e43928f74587624e34aeede0ec91cc495ec71e46e39e54b95b8e9378c9e6fe3",
+    "gripper_note": "OEM open gripper",
+    "fold": {
+      "degrees": [
+        -0.00015204132045432644,
+        85.7878036953201,
+        -1.8231852278786894e-05,
+        1.2852861582418018,
+        12.577125820720166,
+        -49.32399981023785
+      ],
+      "dimensions_mm": [
+        158,
+        98,
+        440
+      ],
+      "exact_dimensions_mm": [
+        157.38324592505808,
+        97.00148452042586,
+        439.4387298454635
+      ],
+      "bounds_mm": [
+        [
+          -58.49999934434891,
+          -48.50026114893243,
+          -1.452830911130576e-14
+        ],
+        [
+          98.8832465807092,
+          48.50122337149343,
+          439.4387298454635
+        ]
+      ],
+      "volume_l": 6.708651157630222,
+      "contacts": [],
+      "below_base_mm": 0,
+      "quarter_boundary_candidates": 2975,
+      "search": "Sobol + in-limit quarter-turn/boundary enumeration + two bounded Powell refinements; best found, not certified global minimum; two differential-evolution runs (100 generations, population multiplier 12)",
+      "refinement_seconds": 25.244771003723145
+    },
+    "elapsed_seconds": 18.450031995773315,
+    "compact_fold": {
+      "degrees": [
+        -41.92158795698843,
+        22.72569210012087,
+        -0.009502064450698683,
+        12.432866874828715,
+        -69.81387305905687,
+        -94.4129181638313
+      ],
+      "dimensions_mm": [
+        291,
+        292,
+        292
+      ],
+      "exact_dimensions_mm": [
+        290.92538549641927,
+        291.0325903426708,
+        291.05149850394065
+      ],
+      "bounds_mm": [
+        [
+          -238.59451569237822,
+          -70.4628037398975,
+          -1.452830911130576e-14
+        ],
+        [
+          52.33086980404106,
+          220.56978660277332,
+          291.05149850394065
+        ]
+      ],
+      "volume_l": 24.642971959311904,
+      "contacts": [],
+      "below_base_mm": 0,
+      "search": "Minimum longest base-axis envelope edge; feasible Sobol starts + two differential evolution runs (100 generations/popsize12) + bounded Powell. Best found, not certified global minimum."
+    }
+  },
+  "open": {
+    "state": "open",
+    "samples": 8192,
+    "collision_free_samples": 7890,
+    "occupied_50mm_voxels_before": 3884,
+    "occupied_50mm_voxels_after": 3856,
+    "joint_names": [
+      "joint1",
+      "joint2",
+      "joint3",
+      "joint4",
+      "joint5",
+      "joint6"
+    ],
+    "limits_deg": [
+      [
+        -150.00035076524952,
+        124.21724998436248
+      ],
+      [
+        0.0,
+        179.9087476710785
+      ],
+      [
+        -169.99657781531525,
+        0.0
+      ],
+      [
+        -99.98113525032866,
+        99.98113525032866
+      ],
+      [
+        -69.90085100596043,
+        69.90085100596043
+      ],
+      [
+        -120.0002806121996,
+        120.0002806121996
+      ]
+    ],
+    "ignored_pairs": [
+      [
+        "base_link",
+        "link1"
+      ],
+      [
+        "link1",
+        "link2"
+      ],
+      [
+        "link2",
+        "link3"
+      ],
+      [
+        "link3",
+        "link4"
+      ],
+      [
+        "link4",
+        "link5"
+      ],
+      [
+        "link5",
+        "link6"
+      ],
+      [
+        "link5",
+        "link8"
+      ],
+      [
+        "link5",
+        "link7"
+      ],
+      [
+        "link6",
+        "link8"
+      ],
+      [
+        "link6",
+        "link7"
+      ],
+      [
+        "gripper_base",
+        "link8"
+      ],
+      [
+        "gripper_base",
+        "link7"
+      ],
+      [
+        "gripper_base",
+        "link6"
+      ],
+      [
+        "gripper_base",
+        "link5"
+      ],
+      [
+        "link7",
+        "link8"
+      ]
+    ],
+    "open_collision_mesh_links": [
+      "base_link",
+      "gripper_base",
+      "link1",
+      "link2",
+      "link3",
+      "link4",
+      "link5",
+      "link7",
+      "link8"
+    ],
+    "source_revision": "ac41fcbcdda598f01b51cf6175ed9a24d0dacadc",
+    "urdf_sha256": "2750a1e1865a5e91fa31210a04020a2f452bd5c59120ce99bb678d1ee613e283",
+    "gripper_note": "OEM open gripper",
+    "fold": {
+      "degrees": [
+        -0.006209677892774425,
+        83.33523189326195,
+        -169.03335178839515,
+        -0.033280777937025365,
+        0.7156003169000947,
+        -64.2896066487828
+      ],
+      "dimensions_mm": [
+        139,
+        98,
+        886
+      ],
+      "exact_dimensions_mm": [
+        138.68344684047796,
+        97.01422017428877,
+        885.2731514878907
+      ],
+      "bounds_mm": [
+        [
+          -98.62323141718007,
+          -48.5029121597776,
+          -1.452830911130576e-14
+        ],
+        [
+          40.060215423297905,
+          48.51130801451116,
+          885.2731514878907
+        ]
+      ],
+      "volume_l": 11.910700857883874,
+      "contacts": [],
+      "below_base_mm": 0,
+      "quarter_boundary_candidates": 2530,
+      "search": "Sobol + in-limit quarter-turn/boundary enumeration + two bounded Powell refinements; best found, not certified global minimum; two differential-evolution runs (100 generations, population multiplier 12)",
+      "refinement_seconds": 13.608787059783936
+    },
+    "elapsed_seconds": 32.80175709724426,
+    "compact_fold": {
+      "degrees": [
+        16.40395484541445,
+        28.066413977154614,
+        -7.06060544601882,
+        47.29190983574803,
+        69.84303427633405,
+        1.055272265859741
+      ],
+      "dimensions_mm": [
+        313,
+        314,
+        314
+      ],
+      "exact_dimensions_mm": [
+        312.93117868045954,
+        313.33957214640907,
+        313.4932159712294
+      ],
+      "bounds_mm": [
+        [
+          -269.1635580109976,
+          -120.46091446479885,
+          -1.452830911130576e-14
+        ],
+        [
+          43.767620669462,
+          192.87865768161024,
+          313.4932159712294
+        ]
+      ],
+      "volume_l": 30.73917653455993,
+      "contacts": [],
+      "below_base_mm": 0,
+      "search": "Minimum longest base-axis envelope edge; feasible Sobol starts + two differential evolution runs (100 generations/popsize12) + bounded Powell. Best found, not certified global minimum."
+    }
+  }
+}

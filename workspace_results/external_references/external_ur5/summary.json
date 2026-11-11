@@ -1,0 +1,333 @@
+{
+  "bare": {
+    "state": "bare",
+    "samples": 8192,
+    "collision_free_samples": 6128,
+    "occupied_50mm_voxels_before": 6163,
+    "occupied_50mm_voxels_after": 5208,
+    "joint_names": [
+      "shoulder_pan_joint",
+      "shoulder_lift_joint",
+      "elbow_joint",
+      "wrist_1_joint",
+      "wrist_2_joint",
+      "wrist_3_joint"
+    ],
+    "limits_deg": [
+      [
+        -360.0,
+        360.0
+      ],
+      [
+        -360.0,
+        360.0
+      ],
+      [
+        -180.0,
+        180.0
+      ],
+      [
+        -360.0,
+        360.0
+      ],
+      [
+        -360.0,
+        360.0
+      ],
+      [
+        -360.0,
+        360.0
+      ]
+    ],
+    "ignored_pairs": [
+      [
+        "base_link_inertia",
+        "shoulder_link"
+      ],
+      [
+        "shoulder_link",
+        "upper_arm_link"
+      ],
+      [
+        "forearm_link",
+        "wrist_1_link"
+      ],
+      [
+        "forearm_link",
+        "upper_arm_link"
+      ],
+      [
+        "wrist_1_link",
+        "wrist_2_link"
+      ],
+      [
+        "wrist_2_link",
+        "wrist_3_link"
+      ]
+    ],
+    "open_collision_mesh_links": [],
+    "source_revision": "39ad110d8f2e8f66856a201cca88aa7a7025e3eb",
+    "urdf_sha256": "31a6680419d248c2d711d4b1b3ec0590002fb6cee948f7c825103e69d6ca9c01",
+    "gripper_note": "Spark2 reference gripper, 1 mm flange spacer",
+    "fold": {
+      "degrees": [
+        92.2369993790445,
+        -180.0,
+        0.0,
+        90.0,
+        -90.0,
+        -360.0
+      ],
+      "dimensions_mm": [
+        276,
+        953,
+        158
+      ],
+      "exact_dimensions_mm": [
+        275.4929485577482,
+        952.1942341899907,
+        157.66970933043956
+      ],
+      "bounds_mm": [
+        [
+          -202.1270888704199,
+          -878.8284341073071,
+          3.91155481338501e-05
+        ],
+        [
+          73.36585968732834,
+          73.36580008268356,
+          157.6697484459877
+        ]
+      ],
+      "volume_l": 41.360359181596166,
+      "contacts": [],
+      "below_base_mm": 0,
+      "quarter_boundary_candidates": 46648,
+      "search": "Sobol + in-limit quarter-turn/boundary enumeration + two bounded Powell refinements; best found, not certified global minimum; two differential-evolution runs (100 generations, population multiplier 12)",
+      "refinement_seconds": 10.815881967544556
+    },
+    "elapsed_seconds": 46.64297699928284,
+    "compact_fold": {
+      "degrees": [
+        145.8763543584646,
+        222.44036385718832,
+        161.39052532769728,
+        132.50533674679258,
+        196.53805124917926,
+        -70.47182149986746
+      ],
+      "dimensions_mm": [
+        436,
+        436,
+        436
+      ],
+      "exact_dimensions_mm": [
+        435.45787577854543,
+        435.4578641394673,
+        435.4564687919259
+      ],
+      "bounds_mm": [
+        [
+          -149.6660608235233,
+          -362.0920640567837,
+          3.91155481338501e-05
+        ],
+        [
+          285.7918149550222,
+          73.36580008268356,
+          435.456507907474
+        ]
+      ],
+      "volume_l": 82.57280431727763,
+      "contacts": [],
+      "below_base_mm": 0,
+      "search": "Minimum longest base-axis envelope edge; feasible Sobol starts + two differential evolution runs (100 generations/popsize12) + bounded Powell. Best found, not certified global minimum."
+    }
+  },
+  "open": {
+    "state": "open",
+    "samples": 8192,
+    "collision_free_samples": 5391,
+    "occupied_50mm_voxels_before": 6163,
+    "occupied_50mm_voxels_after": 4670,
+    "joint_names": [
+      "shoulder_pan_joint",
+      "shoulder_lift_joint",
+      "elbow_joint",
+      "wrist_1_joint",
+      "wrist_2_joint",
+      "wrist_3_joint"
+    ],
+    "limits_deg": [
+      [
+        -360.0,
+        360.0
+      ],
+      [
+        -360.0,
+        360.0
+      ],
+      [
+        -180.0,
+        180.0
+      ],
+      [
+        -360.0,
+        360.0
+      ],
+      [
+        -360.0,
+        360.0
+      ],
+      [
+        -360.0,
+        360.0
+      ]
+    ],
+    "ignored_pairs": [
+      [
+        "base_link_inertia",
+        "shoulder_link"
+      ],
+      [
+        "shoulder_link",
+        "upper_arm_link"
+      ],
+      [
+        "forearm_link",
+        "wrist_1_link"
+      ],
+      [
+        "forearm_link",
+        "upper_arm_link"
+      ],
+      [
+        "wrist_1_link",
+        "wrist_2_link"
+      ],
+      [
+        "wrist_2_link",
+        "wrist_3_link"
+      ],
+      [
+        "gripper_base_link",
+        "wrist_3_link"
+      ],
+      [
+        "gripper_base_link",
+        "wrist_2_link"
+      ],
+      [
+        "gripper_L1",
+        "gripper_base_link"
+      ],
+      [
+        "gripper_L1",
+        "wrist_3_link"
+      ],
+      [
+        "gripper_L1",
+        "wrist_2_link"
+      ],
+      [
+        "gripper_L1",
+        "gripper_L2"
+      ],
+      [
+        "gripper_L2",
+        "gripper_base_link"
+      ],
+      [
+        "gripper_L2",
+        "wrist_3_link"
+      ],
+      [
+        "gripper_L2",
+        "wrist_2_link"
+      ]
+    ],
+    "open_collision_mesh_links": [
+      "gripper_L2",
+      "gripper_base_link"
+    ],
+    "source_revision": "39ad110d8f2e8f66856a201cca88aa7a7025e3eb",
+    "urdf_sha256": "3e043f9783b47076def93a0d0ad6823b5c4acfb331c0a65ce5e4d12c447db291",
+    "gripper_note": "Spark2 reference gripper, 1 mm flange spacer",
+    "fold": {
+      "degrees": [
+        -87.64206627757737,
+        -90.90036905446892,
+        0.2089283651294549,
+        -358.93091622456285,
+        -89.58186174937896,
+        -351.1397907924179
+      ],
+      "dimensions_mm": [
+        278,
+        196,
+        964
+      ],
+      "exact_dimensions_mm": [
+        277.80638275148897,
+        195.24593354537006,
+        963.1786573673361
+      ],
+      "bounds_mm": [
+        [
+          -73.36580008268356,
+          -121.36097999959993,
+          3.91155481338501e-05
+        ],
+        [
+          204.44058266880535,
+          73.88495354577013,
+          963.1786964828842
+        ]
+      ],
+      "volume_l": 52.243356059827086,
+      "contacts": [],
+      "below_base_mm": 0,
+      "quarter_boundary_candidates": 44688,
+      "search": "Sobol + in-limit quarter-turn/boundary enumeration + two bounded Powell refinements; best found, not certified global minimum; two differential-evolution runs (100 generations, population multiplier 12)",
+      "refinement_seconds": 21.759886741638184
+    },
+    "elapsed_seconds": 55.01705288887024,
+    "compact_fold": {
+      "degrees": [
+        55.763916701169364,
+        -137.9967215072737,
+        161.34660019947702,
+        -221.76872205083887,
+        -305.63994292307723,
+        259.891605078371
+      ],
+      "dimensions_mm": [
+        438,
+        438,
+        434
+      ],
+      "exact_dimensions_mm": [
+        437.0185879800501,
+        437.0237128912101,
+        433.0575365981702
+      ],
+      "bounds_mm": [
+        [
+          -363.65272829272175,
+          -287.1430376729806,
+          3.91155481338501e-05
+        ],
+        [
+          73.36585968732834,
+          149.88067521822947,
+          433.05757571371834
+        ]
+      ],
+      "volume_l": 82.70857017424919,
+      "contacts": [],
+      "below_base_mm": 0,
+      "search": "Minimum longest base-axis envelope edge; feasible Sobol starts + two differential evolution runs (100 generations/popsize12) + bounded Powell. Best found, not certified global minimum."
+    }
+  }
+}

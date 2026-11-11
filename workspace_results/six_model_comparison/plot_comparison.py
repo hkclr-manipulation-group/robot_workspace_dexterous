@@ -7,9 +7,9 @@ import matplotlib.pyplot as plt
 from matplotlib.ticker import PercentFormatter
 from matplotlib.patches import Polygon
 out=Path(__file__).parent;old=out.parent
-names=['spark2_v2_2','spark2_v1']+[f'P2AB-{i}' for i in range(1,5)];labels=['Spark2 v2.2','Spark2 v1']+names[2:]
+names=['spark2_v1','spark2_v2_2']+[f'P2AB-{i}' for i in range(1,5)];labels=['Spark2 v1','Spark2 v2.2']+names[2:]
 states=['bare','open','holding'];titles=['Bare arm (flange target)','Open gripper (grasp TCP)','Holding 30 mm cube (grasp TCP)']
-colors=['#222222','#6a51a3','#0072B2','#E69F00','#009E73','#CC79A7'];data={};summary=[];bins=[];provenance={};reference=None
+colors=['#6a51a3','#222222','#0072B2','#E69F00','#009E73','#CC79A7'];data={};summary=[];bins=[];provenance={};reference=None
 for name in names:
  for state in states:
   root=out
@@ -35,7 +35,7 @@ plt.rcParams.update({'font.size':11,'axes.spines.top':False,'axes.spines.right':
 fig,axes=plt.subplots(1,3,figsize=(19,6),sharey=True,layout='constrained')
 for ax,state,title in zip(axes,states,titles):
  for name,label,color in zip(names,labels,colors):
-  ax.plot(np.arange(16),data[name,state][3],label=label,color=color,lw=2.7 if name==names[0] else 2,marker='o',ms=3)
+  ax.plot(np.arange(16),data[name,state][3],label=label,color=color,lw=2.7 if name=='spark2_v2_2' else 2,marker='o',ms=3)
  ax.set_title(title);ax.set_xticks(np.arange(16),[f'≥{t}' for t in range(16,0,-1)],rotation=55);ax.set_xlabel('Required directions (out of 16)');ax.set_ylim(-2,103);ax.grid(alpha=.2);ax.yaxis.set_major_formatter(PercentFormatter(100))
 axes[0].set_ylabel('Cumulative share of reachable points');axes[0].legend(loc='upper left',fontsize=10)
 fig.suptitle('Six-model comparison | cumulative orientation coverage\n1 m arm chain length • same STL collision policy • 10 cm grid • 16 orientations • 8 IK seeds',fontsize=17)

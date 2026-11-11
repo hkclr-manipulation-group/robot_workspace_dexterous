@@ -1,0 +1,352 @@
+{
+  "bare": {
+    "state": "bare",
+    "samples": 8192,
+    "collision_free_samples": 7476,
+    "occupied_50mm_voxels_before": 6360,
+    "occupied_50mm_voxels_after": 5928,
+    "joint_names": [
+      "panda_joint1",
+      "panda_joint2",
+      "panda_joint3",
+      "panda_joint4",
+      "panda_joint5",
+      "panda_joint6",
+      "panda_joint7"
+    ],
+    "limits_deg": [
+      [
+        -166.00306198325342,
+        166.00306198325342
+      ],
+      [
+        -101.00100012566152,
+        101.00100012566152
+      ],
+      [
+        -166.00306198325342,
+        166.00306198325342
+      ],
+      [
+        -176.00117550828628,
+        -3.9992454100131463
+      ],
+      [
+        -166.00306198325342,
+        166.00306198325342
+      ],
+      [
+        -1.0026761414789407,
+        215.0024126228414
+      ],
+      [
+        -166.00306198325342,
+        166.00306198325342
+      ]
+    ],
+    "ignored_pairs": [
+      [
+        "panda_link0",
+        "panda_link1"
+      ],
+      [
+        "panda_link1",
+        "panda_link2"
+      ],
+      [
+        "panda_link2",
+        "panda_link3"
+      ],
+      [
+        "panda_link3",
+        "panda_link4"
+      ],
+      [
+        "panda_link4",
+        "panda_link5"
+      ],
+      [
+        "panda_link5",
+        "panda_link6"
+      ],
+      [
+        "panda_link6",
+        "panda_link7"
+      ]
+    ],
+    "open_collision_mesh_links": [],
+    "source_revision": "ddd2fffd9de44b02ad15b4bbb2bfa2cec4d60d98",
+    "urdf_sha256": "f0eef5e26fe7265a8062ec6371e17480da7bddf5610916aeacc9cf2d470f1826",
+    "gripper_note": "OEM open gripper",
+    "fold": {
+      "degrees": [
+        -165.75504547242792,
+        3.026483275339559,
+        -6.291183901526681,
+        -175.99576559420015,
+        -165.2438087478564,
+        144.09170634253843,
+        -153.63765403767118
+      ],
+      "dimensions_mm": [
+        309,
+        255,
+        700
+      ],
+      "exact_dimensions_mm": [
+        308.345480403494,
+        254.51373539470111,
+        699.2259207963789
+      ],
+      "bounds_mm": [
+        [
+          -236.80119826514633,
+          -127.2659396132938,
+          0.0
+        ],
+        [
+          71.54428213834763,
+          127.24779578140729,
+          699.2259207963789
+        ]
+      ],
+      "volume_l": 54.87396369509495,
+      "contacts": [],
+      "below_base_mm": 0,
+      "quarter_boundary_candidates": 42665,
+      "search": "Sobol + in-limit quarter-turn/boundary enumeration + two bounded Powell refinements; best found, not certified global minimum; two differential-evolution runs (100 generations, population multiplier 12)",
+      "refinement_seconds": 16.865004062652588
+    },
+    "elapsed_seconds": 24.037789821624756,
+    "compact_fold": {
+      "degrees": [
+        165.65987550983476,
+        74.39799898894098,
+        41.07218511697523,
+        -167.3127914878068,
+        99.52365132043147,
+        22.583061633180982,
+        67.05197225105508
+      ],
+      "dimensions_mm": [
+        452,
+        409,
+        452
+      ],
+      "exact_dimensions_mm": [
+        451.0915554141744,
+        408.22116789749055,
+        451.0911330458908
+      ],
+      "bounds_mm": [
+        [
+          -379.5472732758268,
+          -279.8699678144804,
+          0.0
+        ],
+        [
+          71.54428213834763,
+          128.35120008301016,
+          451.0911330458908
+        ]
+      ],
+      "volume_l": 83.06623153833681,
+      "contacts": [],
+      "below_base_mm": 0,
+      "search": "Minimum longest base-axis envelope edge; feasible Sobol starts + two differential evolution runs (100 generations/popsize12) + bounded Powell. Best found, not certified global minimum."
+    }
+  },
+  "open": {
+    "state": "open",
+    "samples": 8192,
+    "collision_free_samples": 7175,
+    "occupied_50mm_voxels_before": 6360,
+    "occupied_50mm_voxels_after": 5728,
+    "joint_names": [
+      "panda_joint1",
+      "panda_joint2",
+      "panda_joint3",
+      "panda_joint4",
+      "panda_joint5",
+      "panda_joint6",
+      "panda_joint7"
+    ],
+    "limits_deg": [
+      [
+        -166.00306198325342,
+        166.00306198325342
+      ],
+      [
+        -101.00100012566152,
+        101.00100012566152
+      ],
+      [
+        -166.00306198325342,
+        166.00306198325342
+      ],
+      [
+        -176.00117550828628,
+        -3.9992454100131463
+      ],
+      [
+        -166.00306198325342,
+        166.00306198325342
+      ],
+      [
+        -1.0026761414789407,
+        215.0024126228414
+      ],
+      [
+        -166.00306198325342,
+        166.00306198325342
+      ]
+    ],
+    "ignored_pairs": [
+      [
+        "panda_link0",
+        "panda_link1"
+      ],
+      [
+        "panda_link1",
+        "panda_link2"
+      ],
+      [
+        "panda_link2",
+        "panda_link3"
+      ],
+      [
+        "panda_link3",
+        "panda_link4"
+      ],
+      [
+        "panda_link4",
+        "panda_link5"
+      ],
+      [
+        "panda_link5",
+        "panda_link6"
+      ],
+      [
+        "panda_link6",
+        "panda_link7"
+      ],
+      [
+        "panda_link6",
+        "panda_rightfinger"
+      ],
+      [
+        "panda_link7",
+        "panda_rightfinger"
+      ],
+      [
+        "panda_hand",
+        "panda_rightfinger"
+      ],
+      [
+        "panda_hand",
+        "panda_leftfinger"
+      ],
+      [
+        "panda_hand",
+        "panda_link7"
+      ],
+      [
+        "panda_hand",
+        "panda_link6"
+      ],
+      [
+        "panda_leftfinger",
+        "panda_rightfinger"
+      ],
+      [
+        "panda_leftfinger",
+        "panda_link7"
+      ],
+      [
+        "panda_leftfinger",
+        "panda_link6"
+      ]
+    ],
+    "open_collision_mesh_links": [],
+    "source_revision": "ddd2fffd9de44b02ad15b4bbb2bfa2cec4d60d98",
+    "urdf_sha256": "ed9d1276429b9d853635e70043b31af1ec5785f373909e647282ae1982c5b2d9",
+    "gripper_note": "OEM open gripper",
+    "fold": {
+      "degrees": [
+        12.487195700656994,
+        -4.056220949914383,
+        154.4155993007895,
+        -175.90352750869195,
+        -116.60869687684128,
+        176.31603941678378,
+        -14.633076488870433
+      ],
+      "dimensions_mm": [
+        310,
+        256,
+        699
+      ],
+      "exact_dimensions_mm": [
+        309.1840970135832,
+        255.5315927659908,
+        698.1140322568338
+      ],
+      "bounds_mm": [
+        [
+          -237.63981487523552,
+          -127.7597864455306,
+          0.0
+        ],
+        [
+          71.54428213834763,
+          127.77180632046023,
+          698.1140322568338
+        ]
+      ],
+      "volume_l": 55.155409995158045,
+      "contacts": [],
+      "below_base_mm": 0,
+      "quarter_boundary_candidates": 41380,
+      "search": "Sobol + in-limit quarter-turn/boundary enumeration + two bounded Powell refinements; best found, not certified global minimum; two differential-evolution runs (100 generations, population multiplier 12)",
+      "refinement_seconds": 19.71080994606018
+    },
+    "elapsed_seconds": 27.975306272506714,
+    "compact_fold": {
+      "degrees": [
+        165.69794851634234,
+        74.39274542072515,
+        40.53587761100878,
+        -164.58127157661932,
+        140.90091622527498,
+        17.38945324343945,
+        42.875285167276544
+      ],
+      "dimensions_mm": [
+        452,
+        422,
+        452
+      ],
+      "exact_dimensions_mm": [
+        451.11819522472393,
+        421.2442373972487,
+        451.1231355024005
+      ],
+      "bounds_mm": [
+        [
+          -379.5739130863763,
+          -292.2252207391246,
+          0.0
+        ],
+        [
+          71.54428213834763,
+          129.01901665812412,
+          451.1231355024005
+        ]
+      ],
+      "volume_l": 85.7273535509651,
+      "contacts": [],
+      "below_base_mm": 0,
+      "search": "Minimum longest base-axis envelope edge; feasible Sobol starts + two differential evolution runs (100 generations/popsize12) + bounded Powell. Best found, not certified global minimum."
+    }
+  }
+}
