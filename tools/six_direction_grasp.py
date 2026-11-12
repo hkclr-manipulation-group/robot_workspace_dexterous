@@ -15,6 +15,8 @@ import compare_nine_workspace as base
 STATE=os.environ.get('SPARK_DIRECTION_STATE','open')
 assert STATE in ('bare','open')
 ROOT=base.ROOT;OUT=base.WS/'workspace_results'/f'six_direction_{STATE}';NAMES=base.OURS+base.EXTERNAL
+if os.environ.get('SPARK_DIRECTION_MODELS'):
+ NAMES=json.loads(os.environ['SPARK_DIRECTION_MODELS']);OUT=base.WS/'workspace_results'/f'dual_single_direction_{STATE}'
 DIRECTIONS=['Top (-Z)','Bottom (+Z)','Left (-Y)','Right (+Y)','Front (-X)','Back (+X)']
 AXES=np.array([[0,0,-1],[0,0,1],[0,-1,0],[0,1,0],[-1,0,0],[1,0,0]],float)
 ORIENTS=[]

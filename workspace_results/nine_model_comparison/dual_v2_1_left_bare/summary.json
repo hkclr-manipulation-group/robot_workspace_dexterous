@@ -1,0 +1,110 @@
+{
+  "model": "dual_v2_1_left",
+  "state": "bare",
+  "status": "complete",
+  "R": 195,
+  "D": 0,
+  "threshold_points": [
+    195,
+    187,
+    181,
+    175,
+    164,
+    148,
+    130,
+    104,
+    77,
+    56,
+    29,
+    11,
+    4,
+    1,
+    0,
+    0
+  ],
+  "threshold_percent": [
+    100.0,
+    95.8974358974359,
+    92.82051282051282,
+    89.74358974358975,
+    84.1025641025641,
+    75.8974358974359,
+    66.66666666666666,
+    53.333333333333336,
+    39.48717948717949,
+    28.717948717948715,
+    14.871794871794872,
+    5.641025641025641,
+    2.051282051282051,
+    0.5128205128205128,
+    0.0,
+    0.0
+  ],
+  "backend": "CPU scipy bounded least-squares + FCL; checkpoint resumed with validated JIT FK/Jacobian",
+  "grid_points": 2197,
+  "iterations": 120,
+  "seeds": 8,
+  "position_tolerance_m": 0.005,
+  "orientation_tolerance_rad": 0.08,
+  "source": {
+    "model": "dual_v2_1_left",
+    "state": "bare",
+    "base": "arm_base_link_l",
+    "ee": "arm_end_effector_l",
+    "locks": {},
+    "fingers": [],
+    "scale": 1.020408163265306,
+    "original_chain_length_m": 0.9800000000000001,
+    "normalized_chain_length_m": 1.0,
+    "radius_upper_bound_m": 1.0,
+    "source_revision": "local URDF hash below",
+    "source_urdf_sha256": "1acd79dfc3f57d96b8617447e803591048ca050145b80571b2d77f6b61e307a9",
+    "urdf_sha256": "0b935a4dabf3bfd1cd80e55680235d0df3be0f7e3754b7e339fc28324e355d2f",
+    "source_assets": {
+      "robot_workspace_dexterous/models/meshes/aef96c3eae5c9902fc08c6ac71a1e0d6e48ca53054e357a50a237cf321345bcf.stl": "aef96c3eae5c9902fc08c6ac71a1e0d6e48ca53054e357a50a237cf321345bcf",
+      "robot_workspace_dexterous/models/meshes/48d4a8ca0ebd30aaee9116bf661aa2c1a156027c891ceceddd57ae25f7268bbd.stl": "48d4a8ca0ebd30aaee9116bf661aa2c1a156027c891ceceddd57ae25f7268bbd",
+      "robot_workspace_dexterous/models/meshes/b863fc2d318eb1b50cdbce8a7285b6e29441bac158322b3eaa11abab8266c0ec.stl": "b863fc2d318eb1b50cdbce8a7285b6e29441bac158322b3eaa11abab8266c0ec",
+      "robot_workspace_dexterous/models/meshes/ae045772107e3c5096e761605d8a483addcb23e206abf89dc2aead4c27a98952.stl": "ae045772107e3c5096e761605d8a483addcb23e206abf89dc2aead4c27a98952",
+      "robot_workspace_dexterous/models/meshes/244b60c12b2d1749135d2f14b82fab62dad86c65153ae6c58864637742427d8b.stl": "244b60c12b2d1749135d2f14b82fab62dad86c65153ae6c58864637742427d8b",
+      "robot_workspace_dexterous/models/meshes/2b717be4628a0aaff81a61b002ef9eac83420ab1c4a31b68df97757b0d05035c.stl": "2b717be4628a0aaff81a61b002ef9eac83420ab1c4a31b68df97757b0d05035c",
+      "robot_workspace_dexterous/models/meshes/3f608afe4084f67e16056596d124f9c6a1991821501540037da149047137517e.stl": "3f608afe4084f67e16056596d124f9c6a1991821501540037da149047137517e"
+    },
+    "mount_note": "Independent left arm; torso/right arm removed; reference gripper +1 mm flange spacer; physical mounting needs review"
+  },
+  "ignored_pairs": [
+    [
+      "arm_L1_l",
+      "arm_L2_l"
+    ],
+    [
+      "arm_L2_l",
+      "arm_L3_l"
+    ],
+    [
+      "arm_L3_l",
+      "arm_L4_l"
+    ],
+    [
+      "arm_L4_l",
+      "arm_L5_l"
+    ],
+    [
+      "arm_L5_l",
+      "arm_L6_l"
+    ],
+    [
+      "arm_L6_l",
+      "arm_L7_l"
+    ]
+  ],
+  "open_mesh_links": [
+    "arm_L1_l",
+    "arm_L2_l",
+    "arm_L3_l",
+    "arm_L4_l",
+    "arm_L5_l",
+    "arm_L6_l",
+    "arm_L7_l"
+  ],
+  "elapsed_seconds": 10975.752055883408
+}

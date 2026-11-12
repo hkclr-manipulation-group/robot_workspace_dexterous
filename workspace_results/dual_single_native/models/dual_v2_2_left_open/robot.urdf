@@ -1,0 +1,220 @@
+<?xml version='1.0' encoding='utf-8'?>
+<robot name="dual_v2_2_left">
+  <link name="arm_base_link_l" />
+  <link name="arm_L1_l">
+    <visual>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+      <geometry>
+        <mesh filename="../../../../models/meshes/63023ba0c2f4e4b2cc5f39c7840c3369be4431e029c26465ccf8bcb24864ac53.stl" scale="1.0 1.0 1.0" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+      <geometry>
+        <mesh filename="../../../../models/meshes/63023ba0c2f4e4b2cc5f39c7840c3369be4431e029c26465ccf8bcb24864ac53.stl" scale="1.0 1.0 1.0" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="arm_L2_l">
+    <visual>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+      <geometry>
+        <mesh filename="../../../../models/meshes/c21ca5d56d9b5493d838a3e63bda234d30fef7e41ee00fc6de1242e3130c52c2.stl" scale="1.0 1.0 1.0" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+      <geometry>
+        <mesh filename="../../../../models/meshes/c21ca5d56d9b5493d838a3e63bda234d30fef7e41ee00fc6de1242e3130c52c2.stl" scale="1.0 1.0 1.0" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="arm_L3_l">
+    <visual>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+      <geometry>
+        <mesh filename="../../../../models/meshes/377084a438cfb72059243252a1808f84dd978e7decc7a35cd7832eeb89b18b80.stl" scale="1.0 1.0 1.0" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+      <geometry>
+        <mesh filename="../../../../models/meshes/377084a438cfb72059243252a1808f84dd978e7decc7a35cd7832eeb89b18b80.stl" scale="1.0 1.0 1.0" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="arm_L4_l">
+    <visual>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+      <geometry>
+        <mesh filename="../../../../models/meshes/cd7e4eb5a1677766a9ffaaac81a65cb3543f368bc40decf30edece639cc71660.stl" scale="1.0 1.0 1.0" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+      <geometry>
+        <mesh filename="../../../../models/meshes/cd7e4eb5a1677766a9ffaaac81a65cb3543f368bc40decf30edece639cc71660.stl" scale="1.0 1.0 1.0" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="arm_L5_l">
+    <visual>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+      <geometry>
+        <mesh filename="../../../../models/meshes/0a556b10180bd59b8f8b38b448b767e6aa8860fa533097738c72abcbf096e2fd.stl" scale="1.0 1.0 1.0" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+      <geometry>
+        <mesh filename="../../../../models/meshes/0a556b10180bd59b8f8b38b448b767e6aa8860fa533097738c72abcbf096e2fd.stl" scale="1.0 1.0 1.0" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="arm_L6_l">
+    <visual>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+      <geometry>
+        <mesh filename="../../../../models/meshes/06c96cc1137be43b53cb9e5f71657a962a04d3d043f1cccfeed9e2134756e4dc.stl" scale="1.0 1.0 1.0" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+      <geometry>
+        <mesh filename="../../../../models/meshes/06c96cc1137be43b53cb9e5f71657a962a04d3d043f1cccfeed9e2134756e4dc.stl" scale="1.0 1.0 1.0" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="arm_L7_l">
+    <visual>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+      <geometry>
+        <mesh filename="../../../../models/meshes/c21feab0b561b29740a23f9c8887b4e7c6652735c7d76ccd46cff449f41f28f2.stl" scale="1.0 1.0 1.0" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+      <geometry>
+        <mesh filename="../../../../models/meshes/c21feab0b561b29740a23f9c8887b4e7c6652735c7d76ccd46cff449f41f28f2.stl" scale="1.0 1.0 1.0" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="arm_end_effector_l" />
+  <joint name="arm_J1_l" type="revolute">
+    <origin rpy="-1.57079632 0.000000000 0.000000000" xyz="0.0 0.211 0.0" />
+    <parent link="arm_base_link_l" />
+    <child link="arm_L1_l" />
+    <axis xyz="0 0 1" />
+    <limit effort="100" lower="-6.28319" upper="6.28319" velocity="5.0" />
+  </joint>
+  <joint name="arm_J2_l" type="revolute">
+    <origin rpy=" -1.57079632  0.000000000  0.000000000" xyz="0.0 0.0 0.0" />
+    <parent link="arm_L1_l" />
+    <child link="arm_L2_l" />
+    <axis xyz="0 0 1" />
+    <limit effort="100" lower="-1.04719755" upper="1.5708" velocity="5.0" />
+  </joint>
+  <joint name="arm_J3_l" type="revolute">
+    <origin rpy=" 1.57079632   0.000000000  0.000000000" xyz="0.0 -0.34955 0.0" />
+    <parent link="arm_L2_l" />
+    <child link="arm_L3_l" />
+    <axis xyz="0 0 1" />
+    <limit effort="100" lower="-6.28319" upper="6.28319" velocity="5.0" />
+  </joint>
+  <joint name="arm_J4_l" type="revolute">
+    <origin rpy=" -1.57079632  0.000000000  0.000000000" xyz="0.038567 0.0 0.0" />
+    <parent link="arm_L3_l" />
+    <child link="arm_L4_l" />
+    <axis xyz="0 0 1" />
+    <limit effort="100" lower="-0.698132" upper="2.53073" velocity="5.0" />
+  </joint>
+  <joint name="arm_J5_l" type="revolute">
+    <origin rpy=" 1.57079632  0.000000000  0.000000000" xyz="0.0 -0.352 0.0" />
+    <parent link="arm_L4_l" />
+    <child link="arm_L5_l" />
+    <axis xyz="0 0 1" />
+    <limit effort="100" lower="-6.28319" upper="6.28319" velocity="5.0" />
+  </joint>
+  <joint name="arm_J6_l" type="revolute">
+    <origin rpy=" -1.57079632  0.000000000  0.000000000" xyz="0.0 0.0 0.0" />
+    <parent link="arm_L5_l" />
+    <child link="arm_L6_l" />
+    <axis xyz="0 0 1" />
+    <limit effort="100" lower="-1.22173" upper="1.22173" velocity="5.0" />
+  </joint>
+  <joint name="arm_J7_l" type="revolute">
+    <origin rpy=" 1.57079632   0.000000000  0.000000000" xyz="0.0 -0.11 0.0" />
+    <parent link="arm_L6_l" />
+    <child link="arm_L7_l" />
+    <axis xyz="0 0 1" />
+    <limit effort="100" lower="-6.28319" upper="6.28319" velocity="5.0" />
+  </joint>
+  <joint name="arm_J8_l" type="fixed">
+    <origin rpy="0 0 0" xyz="0.0 0.0 0.0" />
+    <parent link="arm_L7_l" />
+    <child link="arm_end_effector_l" />
+  </joint>
+  <link name="gripper_base_link">
+    <visual>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+      <geometry>
+        <mesh filename="../../../../../cuarm_mesh/spark2_v2_2/meshes/gripper/base_link.stl" scale="1.0 1.0 1.0" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+      <geometry>
+        <mesh filename="../../../../../cuarm_mesh/spark2_v2_2/meshes/gripper/base_link.stl" scale="1.0 1.0 1.0" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="gripper_L1">
+    <visual>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+      <geometry>
+        <mesh filename="../../../../../cuarm_mesh/spark2_v2_2/meshes/gripper/L1.stl" scale="1.0 1.0 1.0" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+      <geometry>
+        <mesh filename="../../../../../cuarm_mesh/spark2_v2_2/meshes/gripper/L1.stl" scale="1.0 1.0 1.0" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="gripper_L2">
+    <visual>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+      <geometry>
+        <mesh filename="../../../../../cuarm_mesh/spark2_v2_2/meshes/gripper/L2.stl" scale="1.0 1.0 1.0" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+      <geometry>
+        <mesh filename="../../../../../cuarm_mesh/spark2_v2_2/meshes/gripper/L2.stl" scale="1.0 1.0 1.0" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="mount_gripper" type="fixed">
+    <parent link="arm_end_effector_l" />
+    <child link="gripper_base_link" />
+    <origin xyz="0 0 0.001" rpy="0 0 0" />
+  </joint>
+  <joint name="gripper_J1" type="fixed">
+    <origin rpy="1.5708 0 -1.5708" xyz="0.047697 0.0 0.16189" />
+    <parent link="gripper_base_link" />
+    <child link="gripper_L1" />
+  </joint>
+  <joint name="gripper_J1_1" type="fixed">
+    <origin rpy="1.5708 0 1.5708" xyz="-0.047697 0.0 0.16188" />
+    <parent link="gripper_base_link" />
+    <child link="gripper_L2" />
+  </joint>
+  <link name="grasp_tcp" />
+  <joint name="grasp_tcp_joint" type="fixed">
+    <parent link="gripper_base_link" />
+    <child link="grasp_tcp" />
+    <origin xyz="0 0 0.155" rpy="0 0 0" />
+  </joint>
+</robot>

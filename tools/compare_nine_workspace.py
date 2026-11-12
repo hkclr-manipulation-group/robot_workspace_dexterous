@@ -20,6 +20,7 @@ if os.environ.get("SPARK_BENCHMARK_JIT") == "1":
 from collision_shpere_generation.mesh_collision import MeshCollisionChecker
 ROOT=Path(__file__).resolve().parents[2];WS=ROOT/'robot_workspace_dexterous';OLD=WS/'workspace_results/six_model_comparison';OUT=WS/'workspace_results/nine_model_comparison'
 OURS=['spark2_v1','spark2_v2_2','P2AB-1','P2AB-2','P2AB-3','P2AB-4'];EXTERNAL=['external_piper','external_ur5','external_panda'];STATES=['bare','open','holding']
+EXTERNAL+=json.loads(os.environ.get('SPARK_EXTRA_MODELS','[]'))
 CACHE={}
 
 def prepare():
@@ -122,7 +123,7 @@ def run(name,states,workers):
  grid=np.load(OUT/'grid.npz');positions=grid['positions'];orients=grid['orientations_wxyz']
  with ProcessPoolExecutor(max_workers=workers,mp_context=mp.get_context('spawn')) as pool:
   for state in states:
-   dest=OUT/f'{name}_{state}';dest.mkdir(exist_ok=True);archive=dest/'workspace.npz';n=7 if name=='external_panda' else 6
+   dest=OUT/f'{name}_{state}';dest.mkdir(exist_ok=True);archive=dest/'workspace.npz';n=len(load(name,state)[0].joint_names)
    accepted=np.zeros((len(positions),16),bool);solutions=np.full((len(positions),16,n),np.nan);done=np.zeros(len(positions),bool);blocked=np.zeros(len(positions),bool)
    if archive.exists():
     a=np.load(archive)

@@ -1,0 +1,10 @@
+{
+  "dual_v2_1_left": {
+    "status": "PASS",
+    "accepted_configurations": 2136
+  },
+  "dual_v2_2_left": {
+    "status": "PASS",
+    "accepted_configurations": 1892
+  }
+}
