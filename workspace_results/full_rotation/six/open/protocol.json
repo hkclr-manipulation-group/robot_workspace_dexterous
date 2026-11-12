@@ -1,0 +1,973 @@
+{
+  "joint_policy": "All arm revolute joints [-pi, pi]; source limits overridden at runtime",
+  "state": "open",
+  "orientation_set": "six",
+  "orientation_count": 24,
+  "grid_points": 2197,
+  "collision": "FCL mesh; existing rigid/adjacent exclusions retained",
+  "seeds": 8,
+  "max_nfev": 120,
+  "position_tolerance_m": 0.005,
+  "orientation_tolerance_rad": 0.08,
+  "singularity": "Recorded only, not rejected",
+  "models": {
+    "spark2_v1": {
+      "joints": [
+        "arm_J1",
+        "arm_J2",
+        "arm_J3",
+        "arm_J4",
+        "arm_J5",
+        "arm_J6"
+      ],
+      "lower": [
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793
+      ],
+      "upper": [
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793
+      ],
+      "source_urdf": "robot_workspace_dexterous/workspace_results/six_model_comparison/models/spark2_v1_open/robot.urdf",
+      "source_sha256": "857e7a5eb5f19be235fbf7c8098d8571422156c1b91808a46e5b47b2cff1ee6d",
+      "ee": "grasp_tcp",
+      "ignored_pairs": [
+        [
+          "arm_base_link",
+          "arm_L1"
+        ],
+        [
+          "arm_L1",
+          "arm_L2"
+        ],
+        [
+          "arm_L2",
+          "arm_L3"
+        ],
+        [
+          "arm_L3",
+          "arm_L4"
+        ],
+        [
+          "arm_L4",
+          "arm_L5"
+        ],
+        [
+          "arm_L5",
+          "arm_L6"
+        ],
+        [
+          "arm_L6",
+          "arm_end_effector"
+        ],
+        [
+          "arm_L6",
+          "gripper_base_link"
+        ],
+        [
+          "dummy_base_link",
+          "arm_base_link"
+        ],
+        [
+          "gripper_base_link",
+          "gripper_L1"
+        ],
+        [
+          "gripper_base_link",
+          "gripper_L2"
+        ]
+      ],
+      "open_mesh_links": [
+        "arm_L1",
+        "arm_L3",
+        "arm_L4",
+        "arm_base_link",
+        "gripper_L2",
+        "gripper_base_link"
+      ]
+    },
+    "spark2_v2_2": {
+      "joints": [
+        "arm_J1",
+        "arm_J2",
+        "arm_J3",
+        "arm_J4",
+        "arm_J5",
+        "arm_J6"
+      ],
+      "lower": [
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793
+      ],
+      "upper": [
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793
+      ],
+      "source_urdf": "robot_workspace_dexterous/workspace_results/six_model_comparison/models/spark2_v2_2_open/robot.urdf",
+      "source_sha256": "97693ef40c678fed10f9df1cb85b192b33766cf74501e4430d05a7fab0cf9408",
+      "ee": "grasp_tcp",
+      "ignored_pairs": [
+        [
+          "arm_base_link",
+          "arm_L1"
+        ],
+        [
+          "arm_L1",
+          "arm_L2"
+        ],
+        [
+          "arm_L2",
+          "arm_L3"
+        ],
+        [
+          "arm_L3",
+          "arm_L4"
+        ],
+        [
+          "arm_L4",
+          "arm_L5"
+        ],
+        [
+          "arm_L5",
+          "arm_L6"
+        ],
+        [
+          "arm_L6",
+          "arm_end_effector"
+        ],
+        [
+          "arm_L6",
+          "gripper_base_link"
+        ],
+        [
+          "dummy_base_link",
+          "arm_base_link"
+        ],
+        [
+          "gripper_base_link",
+          "gripper_L1"
+        ],
+        [
+          "gripper_base_link",
+          "gripper_L2"
+        ]
+      ],
+      "open_mesh_links": [
+        "arm_L1",
+        "arm_L2",
+        "arm_L3",
+        "arm_L4",
+        "arm_L5",
+        "arm_base_link",
+        "gripper_L2",
+        "gripper_base_link"
+      ]
+    },
+    "P2AB-1": {
+      "joints": [
+        "J1",
+        "J2",
+        "J3",
+        "J4",
+        "J5",
+        "J6"
+      ],
+      "lower": [
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793
+      ],
+      "upper": [
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793
+      ],
+      "source_urdf": "robot_workspace_dexterous/workspace_results/six_model_comparison/models/P2AB-1_open/robot.urdf",
+      "source_sha256": "719697de00a8690b05a20c4a33d240462762db2a5e9cbcbbc5cbb9ed0301578a",
+      "ee": "grasp_tcp",
+      "ignored_pairs": [
+        [
+          "base_link",
+          "L1"
+        ],
+        [
+          "L1",
+          "L2"
+        ],
+        [
+          "L2",
+          "L3"
+        ],
+        [
+          "L3",
+          "L4"
+        ],
+        [
+          "L4",
+          "L5"
+        ],
+        [
+          "L5",
+          "L6"
+        ],
+        [
+          "L6",
+          "gripper_base_link"
+        ],
+        [
+          "gripper_base_link",
+          "gripper_L1"
+        ],
+        [
+          "gripper_base_link",
+          "gripper_L2"
+        ]
+      ],
+      "open_mesh_links": [
+        "gripper_L2",
+        "gripper_base_link"
+      ]
+    },
+    "P2AB-2": {
+      "joints": [
+        "J11",
+        "J22",
+        "J33",
+        "J44",
+        "J55",
+        "J66"
+      ],
+      "lower": [
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793
+      ],
+      "upper": [
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793
+      ],
+      "source_urdf": "robot_workspace_dexterous/workspace_results/six_model_comparison/models/P2AB-2_open/robot.urdf",
+      "source_sha256": "b7789b8936fefd23343aec1472dbfa44e910dbdb59758c1e84855bd461c78c0f",
+      "ee": "grasp_tcp",
+      "ignored_pairs": [
+        [
+          "base_link",
+          "L11"
+        ],
+        [
+          "L11",
+          "L22"
+        ],
+        [
+          "L22",
+          "L33"
+        ],
+        [
+          "L33",
+          "L44"
+        ],
+        [
+          "L44",
+          "L55"
+        ],
+        [
+          "L55",
+          "L66"
+        ],
+        [
+          "L66",
+          "gripper_base_link"
+        ],
+        [
+          "gripper_base_link",
+          "gripper_L1"
+        ],
+        [
+          "gripper_base_link",
+          "gripper_L2"
+        ]
+      ],
+      "open_mesh_links": [
+        "gripper_L2",
+        "gripper_base_link"
+      ]
+    },
+    "P2AB-3": {
+      "joints": [
+        "J111",
+        "J222",
+        "J333",
+        "J444",
+        "J555",
+        "J666"
+      ],
+      "lower": [
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793
+      ],
+      "upper": [
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793
+      ],
+      "source_urdf": "robot_workspace_dexterous/workspace_results/six_model_comparison/models/P2AB-3_open/robot.urdf",
+      "source_sha256": "d9839fd70ee8f333564063238b27c84671fb1db6309faf441be0e7ff68fb0e03",
+      "ee": "grasp_tcp",
+      "ignored_pairs": [
+        [
+          "base_link",
+          "L111"
+        ],
+        [
+          "L111",
+          "L222"
+        ],
+        [
+          "L222",
+          "L333"
+        ],
+        [
+          "L333",
+          "L444"
+        ],
+        [
+          "L444",
+          "L555"
+        ],
+        [
+          "L555",
+          "L666"
+        ],
+        [
+          "L666",
+          "gripper_base_link"
+        ],
+        [
+          "gripper_base_link",
+          "gripper_L1"
+        ],
+        [
+          "gripper_base_link",
+          "gripper_L2"
+        ]
+      ],
+      "open_mesh_links": [
+        "gripper_L2",
+        "gripper_base_link"
+      ]
+    },
+    "P2AB-4": {
+      "joints": [
+        "J1111",
+        "J2222",
+        "J3333",
+        "J4444",
+        "J5555",
+        "J6666"
+      ],
+      "lower": [
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793
+      ],
+      "upper": [
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793
+      ],
+      "source_urdf": "robot_workspace_dexterous/workspace_results/six_model_comparison/models/P2AB-4_open/robot.urdf",
+      "source_sha256": "60dbfe240bb63f533a8b1c901ebbb7a4416924d86f0d84204dc57eaf3c7bd5dd",
+      "ee": "grasp_tcp",
+      "ignored_pairs": [
+        [
+          "base_link",
+          "L1111"
+        ],
+        [
+          "L1111",
+          "L2222"
+        ],
+        [
+          "L2222",
+          "L3333"
+        ],
+        [
+          "L3333",
+          "L4444"
+        ],
+        [
+          "L4444",
+          "L5555"
+        ],
+        [
+          "L5555",
+          "L6666"
+        ],
+        [
+          "L6666",
+          "gripper_base_link"
+        ],
+        [
+          "gripper_base_link",
+          "gripper_L1"
+        ],
+        [
+          "gripper_base_link",
+          "gripper_L2"
+        ]
+      ],
+      "open_mesh_links": [
+        "gripper_L2",
+        "gripper_base_link"
+      ]
+    },
+    "external_piper": {
+      "joints": [
+        "joint1",
+        "joint2",
+        "joint3",
+        "joint4",
+        "joint5",
+        "joint6"
+      ],
+      "lower": [
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793
+      ],
+      "upper": [
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793
+      ],
+      "source_urdf": "robot_workspace_dexterous/workspace_results/nine_model_comparison/models/external_piper_open/robot.urdf",
+      "source_sha256": "1f8add997315629e6bcbbb76c7d3850f88ffc93e58de871452e57ea38e908c58",
+      "ee": "review_grasp_tcp",
+      "ignored_pairs": [
+        [
+          "base_link",
+          "link1"
+        ],
+        [
+          "link1",
+          "link2"
+        ],
+        [
+          "link2",
+          "link3"
+        ],
+        [
+          "link3",
+          "link4"
+        ],
+        [
+          "link4",
+          "link5"
+        ],
+        [
+          "link5",
+          "link6"
+        ],
+        [
+          "link5",
+          "link8"
+        ],
+        [
+          "link5",
+          "link7"
+        ],
+        [
+          "link6",
+          "link8"
+        ],
+        [
+          "link6",
+          "link7"
+        ],
+        [
+          "gripper_base",
+          "link8"
+        ],
+        [
+          "gripper_base",
+          "link7"
+        ],
+        [
+          "gripper_base",
+          "link6"
+        ],
+        [
+          "gripper_base",
+          "link5"
+        ],
+        [
+          "link7",
+          "link8"
+        ]
+      ],
+      "open_mesh_links": [
+        "base_link",
+        "gripper_base",
+        "link1",
+        "link2",
+        "link3",
+        "link4",
+        "link5",
+        "link7",
+        "link8"
+      ]
+    },
+    "external_ur5": {
+      "joints": [
+        "shoulder_pan_joint",
+        "shoulder_lift_joint",
+        "elbow_joint",
+        "wrist_1_joint",
+        "wrist_2_joint",
+        "wrist_3_joint"
+      ],
+      "lower": [
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793
+      ],
+      "upper": [
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793
+      ],
+      "source_urdf": "robot_workspace_dexterous/workspace_results/nine_model_comparison/models/external_ur5_open/robot.urdf",
+      "source_sha256": "77ce8e7bc3165f8a05eed7c47086ac06d63b25d7bf6460fd046fd02b84fbbb38",
+      "ee": "review_grasp_tcp",
+      "ignored_pairs": [
+        [
+          "base_link_inertia",
+          "shoulder_link"
+        ],
+        [
+          "shoulder_link",
+          "upper_arm_link"
+        ],
+        [
+          "forearm_link",
+          "wrist_1_link"
+        ],
+        [
+          "forearm_link",
+          "upper_arm_link"
+        ],
+        [
+          "wrist_1_link",
+          "wrist_2_link"
+        ],
+        [
+          "wrist_2_link",
+          "wrist_3_link"
+        ],
+        [
+          "gripper_base_link",
+          "wrist_3_link"
+        ],
+        [
+          "gripper_base_link",
+          "wrist_2_link"
+        ],
+        [
+          "gripper_L1",
+          "gripper_base_link"
+        ],
+        [
+          "gripper_L1",
+          "wrist_3_link"
+        ],
+        [
+          "gripper_L1",
+          "wrist_2_link"
+        ],
+        [
+          "gripper_L1",
+          "gripper_L2"
+        ],
+        [
+          "gripper_L2",
+          "gripper_base_link"
+        ],
+        [
+          "gripper_L2",
+          "wrist_3_link"
+        ],
+        [
+          "gripper_L2",
+          "wrist_2_link"
+        ]
+      ],
+      "open_mesh_links": [
+        "gripper_L2",
+        "gripper_base_link"
+      ]
+    },
+    "external_panda": {
+      "joints": [
+        "panda_joint1",
+        "panda_joint2",
+        "panda_joint3",
+        "panda_joint4",
+        "panda_joint5",
+        "panda_joint6",
+        "panda_joint7"
+      ],
+      "lower": [
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793
+      ],
+      "upper": [
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793
+      ],
+      "source_urdf": "robot_workspace_dexterous/workspace_results/nine_model_comparison/models/external_panda_open/robot.urdf",
+      "source_sha256": "f85d19d64590c37a16c2302588cf87f5e62d361109a8ae33645fb2285dc881fc",
+      "ee": "review_grasp_tcp",
+      "ignored_pairs": [
+        [
+          "panda_link0",
+          "panda_link1"
+        ],
+        [
+          "panda_link1",
+          "panda_link2"
+        ],
+        [
+          "panda_link2",
+          "panda_link3"
+        ],
+        [
+          "panda_link3",
+          "panda_link4"
+        ],
+        [
+          "panda_link4",
+          "panda_link5"
+        ],
+        [
+          "panda_link5",
+          "panda_link6"
+        ],
+        [
+          "panda_link6",
+          "panda_link7"
+        ],
+        [
+          "panda_link6",
+          "panda_rightfinger"
+        ],
+        [
+          "panda_link7",
+          "panda_rightfinger"
+        ],
+        [
+          "panda_hand",
+          "panda_rightfinger"
+        ],
+        [
+          "panda_hand",
+          "panda_leftfinger"
+        ],
+        [
+          "panda_hand",
+          "panda_link7"
+        ],
+        [
+          "panda_hand",
+          "panda_link6"
+        ],
+        [
+          "panda_leftfinger",
+          "panda_rightfinger"
+        ],
+        [
+          "panda_leftfinger",
+          "panda_link7"
+        ],
+        [
+          "panda_leftfinger",
+          "panda_link6"
+        ]
+      ],
+      "open_mesh_links": []
+    },
+    "dual_v2_1_left": {
+      "joints": [
+        "arm_J1_l",
+        "arm_J2_l",
+        "arm_J3_l",
+        "arm_J4_l",
+        "arm_J5_l",
+        "arm_J6_l",
+        "arm_J7_l"
+      ],
+      "lower": [
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793
+      ],
+      "upper": [
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793
+      ],
+      "source_urdf": "robot_workspace_dexterous/workspace_results/nine_model_comparison/models/dual_v2_1_left_open/robot.urdf",
+      "source_sha256": "ded23ea16738db684882e31ecb337d4399428f640a6a1f12aa4a7ca3041b426e",
+      "ee": "grasp_tcp",
+      "ignored_pairs": [
+        [
+          "arm_L1_l",
+          "arm_L2_l"
+        ],
+        [
+          "arm_L2_l",
+          "arm_L3_l"
+        ],
+        [
+          "arm_L3_l",
+          "arm_L4_l"
+        ],
+        [
+          "arm_L4_l",
+          "arm_L5_l"
+        ],
+        [
+          "arm_L5_l",
+          "arm_L6_l"
+        ],
+        [
+          "arm_L6_l",
+          "arm_L7_l"
+        ],
+        [
+          "arm_L6_l",
+          "gripper_base_link"
+        ],
+        [
+          "arm_L6_l",
+          "gripper_L2"
+        ],
+        [
+          "arm_L6_l",
+          "gripper_L1"
+        ],
+        [
+          "arm_L7_l",
+          "gripper_base_link"
+        ],
+        [
+          "arm_L7_l",
+          "gripper_L2"
+        ],
+        [
+          "arm_L7_l",
+          "gripper_L1"
+        ],
+        [
+          "gripper_L1",
+          "gripper_base_link"
+        ],
+        [
+          "gripper_L1",
+          "gripper_L2"
+        ],
+        [
+          "gripper_L2",
+          "gripper_base_link"
+        ]
+      ],
+      "open_mesh_links": [
+        "arm_L1_l",
+        "arm_L2_l",
+        "arm_L3_l",
+        "arm_L4_l",
+        "arm_L5_l",
+        "arm_L6_l",
+        "arm_L7_l",
+        "gripper_L2",
+        "gripper_base_link"
+      ]
+    },
+    "dual_v2_2_left": {
+      "joints": [
+        "arm_J1_l",
+        "arm_J2_l",
+        "arm_J3_l",
+        "arm_J4_l",
+        "arm_J5_l",
+        "arm_J6_l",
+        "arm_J7_l"
+      ],
+      "lower": [
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793
+      ],
+      "upper": [
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793
+      ],
+      "source_urdf": "robot_workspace_dexterous/workspace_results/nine_model_comparison/models/dual_v2_2_left_open/robot.urdf",
+      "source_sha256": "3b7cf032aec663767e407fd960423f43bdd7d88aa146679441688009b0450c16",
+      "ee": "grasp_tcp",
+      "ignored_pairs": [
+        [
+          "arm_L1_l",
+          "arm_L2_l"
+        ],
+        [
+          "arm_L2_l",
+          "arm_L3_l"
+        ],
+        [
+          "arm_L3_l",
+          "arm_L4_l"
+        ],
+        [
+          "arm_L4_l",
+          "arm_L5_l"
+        ],
+        [
+          "arm_L5_l",
+          "arm_L6_l"
+        ],
+        [
+          "arm_L6_l",
+          "arm_L7_l"
+        ],
+        [
+          "arm_L6_l",
+          "gripper_base_link"
+        ],
+        [
+          "arm_L6_l",
+          "gripper_L2"
+        ],
+        [
+          "arm_L6_l",
+          "gripper_L1"
+        ],
+        [
+          "arm_L7_l",
+          "gripper_base_link"
+        ],
+        [
+          "arm_L7_l",
+          "gripper_L2"
+        ],
+        [
+          "arm_L7_l",
+          "gripper_L1"
+        ],
+        [
+          "gripper_L1",
+          "gripper_base_link"
+        ],
+        [
+          "gripper_L1",
+          "gripper_L2"
+        ],
+        [
+          "gripper_L2",
+          "gripper_base_link"
+        ]
+      ],
+      "open_mesh_links": [
+        "arm_L1_l",
+        "arm_L2_l",
+        "arm_L3_l",
+        "arm_L4_l",
+        "arm_L5_l",
+        "arm_L6_l",
+        "arm_L7_l",
+        "gripper_L2",
+        "gripper_base_link"
+      ]
+    }
+  }
+}

@@ -1,0 +1,695 @@
+{
+  "joint_policy": "All arm revolute joints [-pi, pi]; source limits overridden at runtime",
+  "state": "bare",
+  "orientation_set": "sixteen",
+  "orientation_count": 16,
+  "grid_points": 2197,
+  "collision": "FCL mesh; existing rigid/adjacent exclusions retained",
+  "seeds": 8,
+  "max_nfev": 120,
+  "position_tolerance_m": 0.005,
+  "orientation_tolerance_rad": 0.08,
+  "singularity": "Recorded only, not rejected",
+  "models": {
+    "spark2_v1": {
+      "joints": [
+        "arm_J1",
+        "arm_J2",
+        "arm_J3",
+        "arm_J4",
+        "arm_J5",
+        "arm_J6"
+      ],
+      "lower": [
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793
+      ],
+      "upper": [
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793
+      ],
+      "source_urdf": "robot_workspace_dexterous/workspace_results/six_model_comparison/models/spark2_v1_bare/robot.urdf",
+      "source_sha256": "98fd3cb920234caa05ce745d49d5105a7de21bbe505ced03a10b6948e5c87d78",
+      "ee": "arm_end_effector",
+      "ignored_pairs": [
+        [
+          "arm_base_link",
+          "arm_L1"
+        ],
+        [
+          "arm_L1",
+          "arm_L2"
+        ],
+        [
+          "arm_L2",
+          "arm_L3"
+        ],
+        [
+          "arm_L3",
+          "arm_L4"
+        ],
+        [
+          "arm_L4",
+          "arm_L5"
+        ],
+        [
+          "arm_L5",
+          "arm_L6"
+        ],
+        [
+          "arm_L6",
+          "arm_end_effector"
+        ],
+        [
+          "dummy_base_link",
+          "arm_base_link"
+        ]
+      ],
+      "open_mesh_links": [
+        "arm_L1",
+        "arm_L3",
+        "arm_L4",
+        "arm_base_link"
+      ]
+    },
+    "spark2_v2_2": {
+      "joints": [
+        "arm_J1",
+        "arm_J2",
+        "arm_J3",
+        "arm_J4",
+        "arm_J5",
+        "arm_J6"
+      ],
+      "lower": [
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793
+      ],
+      "upper": [
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793
+      ],
+      "source_urdf": "robot_workspace_dexterous/workspace_results/six_model_comparison/models/spark2_v2_2_bare/robot.urdf",
+      "source_sha256": "6408ac61f95a254804fb2551da78413336ad38086d4b9fb3941a0a1ab326dfbe",
+      "ee": "arm_end_effector",
+      "ignored_pairs": [
+        [
+          "arm_base_link",
+          "arm_L1"
+        ],
+        [
+          "arm_L1",
+          "arm_L2"
+        ],
+        [
+          "arm_L2",
+          "arm_L3"
+        ],
+        [
+          "arm_L3",
+          "arm_L4"
+        ],
+        [
+          "arm_L4",
+          "arm_L5"
+        ],
+        [
+          "arm_L5",
+          "arm_L6"
+        ],
+        [
+          "arm_L6",
+          "arm_end_effector"
+        ],
+        [
+          "dummy_base_link",
+          "arm_base_link"
+        ]
+      ],
+      "open_mesh_links": [
+        "arm_L1",
+        "arm_L2",
+        "arm_L3",
+        "arm_L4",
+        "arm_L5",
+        "arm_base_link"
+      ]
+    },
+    "P2AB-1": {
+      "joints": [
+        "J1",
+        "J2",
+        "J3",
+        "J4",
+        "J5",
+        "J6"
+      ],
+      "lower": [
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793
+      ],
+      "upper": [
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793
+      ],
+      "source_urdf": "robot_workspace_dexterous/workspace_results/six_model_comparison/models/P2AB-1_bare/robot.urdf",
+      "source_sha256": "6d2f882a19ff31227e07e3f61ae16f46638fc3ae5b7f801904c00e83d0f6533e",
+      "ee": "L6",
+      "ignored_pairs": [
+        [
+          "base_link",
+          "L1"
+        ],
+        [
+          "L1",
+          "L2"
+        ],
+        [
+          "L2",
+          "L3"
+        ],
+        [
+          "L3",
+          "L4"
+        ],
+        [
+          "L4",
+          "L5"
+        ],
+        [
+          "L5",
+          "L6"
+        ]
+      ],
+      "open_mesh_links": []
+    },
+    "P2AB-2": {
+      "joints": [
+        "J11",
+        "J22",
+        "J33",
+        "J44",
+        "J55",
+        "J66"
+      ],
+      "lower": [
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793
+      ],
+      "upper": [
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793
+      ],
+      "source_urdf": "robot_workspace_dexterous/workspace_results/six_model_comparison/models/P2AB-2_bare/robot.urdf",
+      "source_sha256": "75584a09023b9a194c931b23bff623371d2aab4df568be1f536c2c82c6b40bde",
+      "ee": "L66",
+      "ignored_pairs": [
+        [
+          "base_link",
+          "L11"
+        ],
+        [
+          "L11",
+          "L22"
+        ],
+        [
+          "L22",
+          "L33"
+        ],
+        [
+          "L33",
+          "L44"
+        ],
+        [
+          "L44",
+          "L55"
+        ],
+        [
+          "L55",
+          "L66"
+        ]
+      ],
+      "open_mesh_links": []
+    },
+    "P2AB-3": {
+      "joints": [
+        "J111",
+        "J222",
+        "J333",
+        "J444",
+        "J555",
+        "J666"
+      ],
+      "lower": [
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793
+      ],
+      "upper": [
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793
+      ],
+      "source_urdf": "robot_workspace_dexterous/workspace_results/six_model_comparison/models/P2AB-3_bare/robot.urdf",
+      "source_sha256": "69c4031a194dc3ca1c8dd5a7433b5727c237991646897d4b0cb6b6785c1cd27a",
+      "ee": "L666",
+      "ignored_pairs": [
+        [
+          "base_link",
+          "L111"
+        ],
+        [
+          "L111",
+          "L222"
+        ],
+        [
+          "L222",
+          "L333"
+        ],
+        [
+          "L333",
+          "L444"
+        ],
+        [
+          "L444",
+          "L555"
+        ],
+        [
+          "L555",
+          "L666"
+        ]
+      ],
+      "open_mesh_links": []
+    },
+    "P2AB-4": {
+      "joints": [
+        "J1111",
+        "J2222",
+        "J3333",
+        "J4444",
+        "J5555",
+        "J6666"
+      ],
+      "lower": [
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793
+      ],
+      "upper": [
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793
+      ],
+      "source_urdf": "robot_workspace_dexterous/workspace_results/six_model_comparison/models/P2AB-4_bare/robot.urdf",
+      "source_sha256": "cdf9c3536ea32b6363cab41659a77348ca20c7966c97e325a1d4216eb4fd7b0b",
+      "ee": "L6666",
+      "ignored_pairs": [
+        [
+          "base_link",
+          "L1111"
+        ],
+        [
+          "L1111",
+          "L2222"
+        ],
+        [
+          "L2222",
+          "L3333"
+        ],
+        [
+          "L3333",
+          "L4444"
+        ],
+        [
+          "L4444",
+          "L5555"
+        ],
+        [
+          "L5555",
+          "L6666"
+        ]
+      ],
+      "open_mesh_links": []
+    },
+    "external_piper": {
+      "joints": [
+        "joint1",
+        "joint2",
+        "joint3",
+        "joint4",
+        "joint5",
+        "joint6"
+      ],
+      "lower": [
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793
+      ],
+      "upper": [
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793
+      ],
+      "source_urdf": "robot_workspace_dexterous/workspace_results/nine_model_comparison/models/external_piper_bare/robot.urdf",
+      "source_sha256": "d6306cb3cc5b8d614439bd4834512612dac7a05aba8a5b79661c4f8c11bddb89",
+      "ee": "link6",
+      "ignored_pairs": [
+        [
+          "base_link",
+          "link1"
+        ],
+        [
+          "link1",
+          "link2"
+        ],
+        [
+          "link2",
+          "link3"
+        ],
+        [
+          "link3",
+          "link4"
+        ],
+        [
+          "link4",
+          "link5"
+        ],
+        [
+          "link5",
+          "link6"
+        ]
+      ],
+      "open_mesh_links": [
+        "base_link",
+        "link1",
+        "link2",
+        "link3",
+        "link4",
+        "link5"
+      ]
+    },
+    "external_ur5": {
+      "joints": [
+        "shoulder_pan_joint",
+        "shoulder_lift_joint",
+        "elbow_joint",
+        "wrist_1_joint",
+        "wrist_2_joint",
+        "wrist_3_joint"
+      ],
+      "lower": [
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793
+      ],
+      "upper": [
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793
+      ],
+      "source_urdf": "robot_workspace_dexterous/workspace_results/nine_model_comparison/models/external_ur5_bare/robot.urdf",
+      "source_sha256": "8c910634f7fdafe58724cf2eea9bbc6816933d5b689c09e39a0c58dc7f1db43a",
+      "ee": "tool0",
+      "ignored_pairs": [
+        [
+          "base_link_inertia",
+          "shoulder_link"
+        ],
+        [
+          "shoulder_link",
+          "upper_arm_link"
+        ],
+        [
+          "forearm_link",
+          "wrist_1_link"
+        ],
+        [
+          "forearm_link",
+          "upper_arm_link"
+        ],
+        [
+          "wrist_1_link",
+          "wrist_2_link"
+        ],
+        [
+          "wrist_2_link",
+          "wrist_3_link"
+        ]
+      ],
+      "open_mesh_links": []
+    },
+    "external_panda": {
+      "joints": [
+        "panda_joint1",
+        "panda_joint2",
+        "panda_joint3",
+        "panda_joint4",
+        "panda_joint5",
+        "panda_joint6",
+        "panda_joint7"
+      ],
+      "lower": [
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793
+      ],
+      "upper": [
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793
+      ],
+      "source_urdf": "robot_workspace_dexterous/workspace_results/nine_model_comparison/models/external_panda_bare/robot.urdf",
+      "source_sha256": "12e66ec0a6afc7d4c6538206ec75f06313ae6ba3d66c68f1d490ba7f6c612724",
+      "ee": "panda_link8",
+      "ignored_pairs": [
+        [
+          "panda_link0",
+          "panda_link1"
+        ],
+        [
+          "panda_link1",
+          "panda_link2"
+        ],
+        [
+          "panda_link2",
+          "panda_link3"
+        ],
+        [
+          "panda_link3",
+          "panda_link4"
+        ],
+        [
+          "panda_link4",
+          "panda_link5"
+        ],
+        [
+          "panda_link5",
+          "panda_link6"
+        ],
+        [
+          "panda_link6",
+          "panda_link7"
+        ]
+      ],
+      "open_mesh_links": []
+    },
+    "dual_v2_1_left": {
+      "joints": [
+        "arm_J1_l",
+        "arm_J2_l",
+        "arm_J3_l",
+        "arm_J4_l",
+        "arm_J5_l",
+        "arm_J6_l",
+        "arm_J7_l"
+      ],
+      "lower": [
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793
+      ],
+      "upper": [
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793
+      ],
+      "source_urdf": "robot_workspace_dexterous/workspace_results/nine_model_comparison/models/dual_v2_1_left_bare/robot.urdf",
+      "source_sha256": "0b935a4dabf3bfd1cd80e55680235d0df3be0f7e3754b7e339fc28324e355d2f",
+      "ee": "arm_end_effector_l",
+      "ignored_pairs": [
+        [
+          "arm_L1_l",
+          "arm_L2_l"
+        ],
+        [
+          "arm_L2_l",
+          "arm_L3_l"
+        ],
+        [
+          "arm_L3_l",
+          "arm_L4_l"
+        ],
+        [
+          "arm_L4_l",
+          "arm_L5_l"
+        ],
+        [
+          "arm_L5_l",
+          "arm_L6_l"
+        ],
+        [
+          "arm_L6_l",
+          "arm_L7_l"
+        ]
+      ],
+      "open_mesh_links": [
+        "arm_L1_l",
+        "arm_L2_l",
+        "arm_L3_l",
+        "arm_L4_l",
+        "arm_L5_l",
+        "arm_L6_l",
+        "arm_L7_l"
+      ]
+    },
+    "dual_v2_2_left": {
+      "joints": [
+        "arm_J1_l",
+        "arm_J2_l",
+        "arm_J3_l",
+        "arm_J4_l",
+        "arm_J5_l",
+        "arm_J6_l",
+        "arm_J7_l"
+      ],
+      "lower": [
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793,
+        -3.141592653589793
+      ],
+      "upper": [
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793,
+        3.141592653589793
+      ],
+      "source_urdf": "robot_workspace_dexterous/workspace_results/nine_model_comparison/models/dual_v2_2_left_bare/robot.urdf",
+      "source_sha256": "6bdba9c05ea50bdf64b6b84bf28553e185937d3b8034e199a57decca17d0e034",
+      "ee": "arm_end_effector_l",
+      "ignored_pairs": [
+        [
+          "arm_L1_l",
+          "arm_L2_l"
+        ],
+        [
+          "arm_L2_l",
+          "arm_L3_l"
+        ],
+        [
+          "arm_L3_l",
+          "arm_L4_l"
+        ],
+        [
+          "arm_L4_l",
+          "arm_L5_l"
+        ],
+        [
+          "arm_L5_l",
+          "arm_L6_l"
+        ],
+        [
+          "arm_L6_l",
+          "arm_L7_l"
+        ]
+      ],
+      "open_mesh_links": [
+        "arm_L1_l",
+        "arm_L2_l",
+        "arm_L3_l",
+        "arm_L4_l",
+        "arm_L5_l",
+        "arm_L6_l",
+        "arm_L7_l"
+      ]
+    }
+  }
+}
