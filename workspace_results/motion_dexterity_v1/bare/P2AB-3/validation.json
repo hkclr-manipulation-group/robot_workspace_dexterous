@@ -1,0 +1,2728 @@
+{
+  "status": "complete",
+  "model": "P2AB-3",
+  "independent_FK": "RobotKinematics (not JIT)",
+  "max_joint_sampling_step_rad": 0.008726646259971648,
+  "path_npz_sha256": "fa5e1f648bf76f08e976f2a143344ae408b46b2da3dcba70db46704805bf522b",
+  "path_json_sha256": "8e217236a11b318f80ec227fbda804bfbd0eb0550163f7045363e3c315e31ec8",
+  "paths": {
+    "MOT-01-P00-D0": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.1607137708423252,
+      "sigma_p05": 0.16303464214577237,
+      "clearance_min_m": 0.0066420168535757445,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 65,
+      "position_error_max_m": 3.073691836201109e-05,
+      "orientation_error_max_rad": 2.911494061515135e-15
+    },
+    "MOT-02-P00-D0": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.1607137708423252,
+      "sigma_p05": 0.163967280542915,
+      "clearance_min_m": 0.006231412217600316,
+      "clearance_pair": [
+        "L333",
+        "L555"
+      ],
+      "checked_samples": 137,
+      "position_error_max_m": 0.00016036569039040022,
+      "orientation_error_max_rad": 0.0009896663144133826
+    },
+    "MOT-01-P00-D1": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.12672149872860605,
+      "sigma_p05": 0.1269867487340242,
+      "clearance_min_m": 0.006642006769521664,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 65,
+      "position_error_max_m": 3.581458649351383e-05,
+      "orientation_error_max_rad": 9.336011979650235e-16
+    },
+    "MOT-02-P00-D1": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.14038276433354008,
+      "sigma_p05": 0.14038276433354008,
+      "clearance_min_m": 0.0066420040276836696,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 193,
+      "position_error_max_m": 1.4842623581270307e-13,
+      "orientation_error_max_rad": 4.267301557728486e-12
+    },
+    "MOT-03-P00-D1": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.12672149872860577,
+      "sigma_p05": 0.1269867518544368,
+      "clearance_min_m": 0.006642001708067518,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 153,
+      "position_error_max_m": 3.581458649569667e-05,
+      "orientation_error_max_rad": 4.351246064479605e-13
+    },
+    "MOT-01-P00-D2": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.1673617553051936,
+      "sigma_p05": 0.16887748473178574,
+      "clearance_min_m": 0.004452879292735057,
+      "clearance_pair": [
+        "L333",
+        "L555"
+      ],
+      "checked_samples": 65,
+      "position_error_max_m": 3.303679817162635e-05,
+      "orientation_error_max_rad": 1.1499479478665274e-09
+    },
+    "MOT-02-P00-D2": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.14925712774673705,
+      "sigma_p05": 0.14942873404089868,
+      "clearance_min_m": 0.006541198198055488,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 179,
+      "position_error_max_m": 0.0001910575301973396,
+      "orientation_error_max_rad": 0.0016313091999087055
+    },
+    "MOT-03-P00-D2": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.1673617553051936,
+      "sigma_p05": 0.16935672661721413,
+      "clearance_min_m": 0.0065582010307377375,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 149,
+      "position_error_max_m": 0.0001067338980104964,
+      "orientation_error_max_rad": 0.0018632778762712571
+    },
+    "MOT-01-P00-D3": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.16199373014161242,
+      "sigma_p05": 0.16346845926787676,
+      "clearance_min_m": 0.0062314122176003375,
+      "clearance_pair": [
+        "L333",
+        "L555"
+      ],
+      "checked_samples": 65,
+      "position_error_max_m": 3.444667600191599e-05,
+      "orientation_error_max_rad": 1.7793481248036884e-09
+    },
+    "MOT-02-P00-D3": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.18755765501201108,
+      "sigma_p05": 0.18755765501201108,
+      "clearance_min_m": 0.006231412217600309,
+      "clearance_pair": [
+        "L333",
+        "L555"
+      ],
+      "checked_samples": 193,
+      "position_error_max_m": 1.5202354861220294e-16,
+      "orientation_error_max_rad": 7.149121948071623e-16
+    },
+    "MOT-03-P00-D3": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.1619937301416124,
+      "sigma_p05": 0.16346865632892216,
+      "clearance_min_m": 0.0062314122176003375,
+      "clearance_pair": [
+        "L333",
+        "L555"
+      ],
+      "checked_samples": 193,
+      "position_error_max_m": 3.4446676001890175e-05,
+      "orientation_error_max_rad": 1.7793483768013772e-09
+    },
+    "MOT-01-P00-D4": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.1749269965594092,
+      "sigma_p05": 0.17494960454693895,
+      "clearance_min_m": 0.00657961808479387,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 65,
+      "position_error_max_m": 2.3584395909850168e-05,
+      "orientation_error_max_rad": 4.8175799679776975e-14
+    },
+    "MOT-02-P00-D4": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.13501201126051424,
+      "sigma_p05": 0.13538574128320752,
+      "clearance_min_m": 0.006548115621654625,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 223,
+      "position_error_max_m": 0.0004537187213178779,
+      "orientation_error_max_rad": 0.0016313092415391932
+    },
+    "MOT-03-P00-D4": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.10103879088048233,
+      "sigma_p05": 0.10677345226036436,
+      "clearance_min_m": 0.002355400214839077,
+      "clearance_pair": [
+        "L333",
+        "L555"
+      ],
+      "checked_samples": 259,
+      "position_error_max_m": 0.000565575957918484,
+      "orientation_error_max_rad": 0.0016313092415376975
+    },
+    "MOT-01-P00-D5": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.1761495756397184,
+      "sigma_p05": 0.17652354441124202,
+      "clearance_min_m": 0.006678307560047259,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 65,
+      "position_error_max_m": 2.4474804567138475e-05,
+      "orientation_error_max_rad": 7.589195510713522e-16
+    },
+    "MOT-02-P00-D5": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.1871035004692643,
+      "sigma_p05": 0.18710350046926433,
+      "clearance_min_m": 0.006599097368803321,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 193,
+      "position_error_max_m": 1.962615573354719e-16,
+      "orientation_error_max_rad": 1.3381329930961954e-15
+    },
+    "MOT-03-P00-D5": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.1761495756397183,
+      "sigma_p05": 0.17652356730450297,
+      "clearance_min_m": 0.006599097368805726,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 193,
+      "position_error_max_m": 2.4474804567138475e-05,
+      "orientation_error_max_rad": 1.2295540198283302e-15
+    },
+    "MOT-02-P01-D0": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.08063320508274596,
+      "sigma_p05": 0.08063320508275286,
+      "clearance_min_m": 0.006642388496660486,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 193,
+      "position_error_max_m": 1.4845411012603583e-13,
+      "orientation_error_max_rad": 4.267771550531842e-12
+    },
+    "MOT-01-P01-D1": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.12672149872860605,
+      "sigma_p05": 0.1269867487340242,
+      "clearance_min_m": 0.006642013524759271,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 65,
+      "position_error_max_m": 3.581458649362231e-05,
+      "orientation_error_max_rad": 8.915693145294269e-16
+    },
+    "MOT-01-P01-D2": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.0757315777389075,
+      "sigma_p05": 0.07958396077870757,
+      "clearance_min_m": 0.006569018240567546,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 73,
+      "position_error_max_m": 5.092436099243612e-05,
+      "orientation_error_max_rad": 2.2788227333298148e-10
+    },
+    "MOT-02-P01-D2": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.07573157773890744,
+      "sigma_p05": 0.0757315777389075,
+      "clearance_min_m": 0.006599393423377699,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 193,
+      "position_error_max_m": 1.642041997679149e-16,
+      "orientation_error_max_rad": 7.442843261441771e-16
+    },
+    "MOT-03-P01-D2": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.0757315777389075,
+      "sigma_p05": 0.07958399480620544,
+      "clearance_min_m": 0.0065320499857075874,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 193,
+      "position_error_max_m": 5.092436099282406e-05,
+      "orientation_error_max_rad": 2.2789395984231579e-10
+    },
+    "MOT-01-P01-D3": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.174926996559409,
+      "sigma_p05": 0.1749496045469386,
+      "clearance_min_m": 0.006556685298629745,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 65,
+      "position_error_max_m": 2.3584395909858452e-05,
+      "orientation_error_max_rad": 4.8142477343824697e-14
+    },
+    "MOT-02-P01-D3": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.16293291889270928,
+      "sigma_p05": 0.1630291196937645,
+      "clearance_min_m": 0.006531014297331414,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 225,
+      "position_error_max_m": 7.209424214003872e-05,
+      "orientation_error_max_rad": 2.2561251553308894e-08
+    },
+    "MOT-03-P01-D3": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.1629329188929623,
+      "sigma_p05": 0.16304314321800734,
+      "clearance_min_m": 0.006531014297332228,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 225,
+      "position_error_max_m": 9.528687784169794e-05,
+      "orientation_error_max_rad": 2.2561251493316763e-08
+    },
+    "MOT-01-P01-D4": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.1696511825930182,
+      "sigma_p05": 0.17023251242278642,
+      "clearance_min_m": 0.0066203167901513135,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 65,
+      "position_error_max_m": 2.5582460971314204e-05,
+      "orientation_error_max_rad": 2.366783860223659e-13
+    },
+    "MOT-02-P01-D4": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.1749603110866746,
+      "sigma_p05": 0.17496031108667473,
+      "clearance_min_m": 0.006537948696426648,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 193,
+      "position_error_max_m": 1.8824747269678055e-16,
+      "orientation_error_max_rad": 4.52434036154767e-16
+    },
+    "MOT-03-P01-D4": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.16965118259299938,
+      "sigma_p05": 0.17023259317953585,
+      "clearance_min_m": 0.006537948696431759,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 193,
+      "position_error_max_m": 2.5582460979574317e-05,
+      "orientation_error_max_rad": 7.930036793830786e-16
+    },
+    "MOT-02-P01-D5": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.16071377084232497,
+      "sigma_p05": 0.1639672805429165,
+      "clearance_min_m": 0.006231412217600366,
+      "clearance_pair": [
+        "L333",
+        "L555"
+      ],
+      "checked_samples": 137,
+      "position_error_max_m": 0.00016036569039025458,
+      "orientation_error_max_rad": 0.000989666314446261
+    },
+    "MOT-03-P01-D5": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.1863580323158173,
+      "sigma_p05": 0.18636598900675214,
+      "clearance_min_m": 0.006231412217600366,
+      "clearance_pair": [
+        "L333",
+        "L555"
+      ],
+      "checked_samples": 133,
+      "position_error_max_m": 0.00013115544228265913,
+      "orientation_error_max_rad": 0.001056253585253428
+    },
+    "MOT-01-P02-D0": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.17948436719213806,
+      "sigma_p05": 0.18079860542892298,
+      "clearance_min_m": 0.006642005337915381,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 65,
+      "position_error_max_m": 2.9489464915947268e-05,
+      "orientation_error_max_rad": 6.856930804421996e-16
+    },
+    "MOT-02-P02-D0": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.12377744784248552,
+      "sigma_p05": 0.12425972860632417,
+      "clearance_min_m": 0.006533991791425663,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 273,
+      "position_error_max_m": 0.0005594609076833422,
+      "orientation_error_max_rad": 0.0016313166416037051
+    },
+    "MOT-03-P02-D0": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.1355472566980365,
+      "sigma_p05": 0.13585747309942436,
+      "clearance_min_m": 0.006535714799672069,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 273,
+      "position_error_max_m": 0.0010186090569005086,
+      "orientation_error_max_rad": 0.0026460910127153385
+    },
+    "MOT-01-P02-D1": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.14127666561776722,
+      "sigma_p05": 0.14332455351892293,
+      "clearance_min_m": 0.006642013593069871,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 65,
+      "position_error_max_m": 3.683572358155542e-05,
+      "orientation_error_max_rad": 4.570131009458668e-16
+    },
+    "MOT-02-P02-D1": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.14127666561776722,
+      "sigma_p05": 0.14127666561777383,
+      "clearance_min_m": 0.006642003356026358,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 193,
+      "position_error_max_m": 1.4853127303209737e-13,
+      "orientation_error_max_rad": 4.267266712754499e-12
+    },
+    "MOT-03-P02-D1": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.14127666561776722,
+      "sigma_p05": 0.14332473590635705,
+      "clearance_min_m": 0.0066420250023404275,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 153,
+      "position_error_max_m": 3.683572358403125e-05,
+      "orientation_error_max_rad": 4.386443729781519e-13
+    },
+    "MOT-01-P02-D2": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.17492699655940905,
+      "sigma_p05": 0.17494960454693864,
+      "clearance_min_m": 0.006620322776987204,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 65,
+      "position_error_max_m": 2.3584395909847383e-05,
+      "orientation_error_max_rad": 4.783060780842206e-14
+    },
+    "MOT-02-P02-D2": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.12377763605350091,
+      "sigma_p05": 0.12425994830182652,
+      "clearance_min_m": 0.006533995651828313,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 273,
+      "position_error_max_m": 0.0005594572711770133,
+      "orientation_error_max_rad": 0.0016313066677598853
+    },
+    "MOT-03-P02-D2": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.12784843516667072,
+      "sigma_p05": 0.12804583562847627,
+      "clearance_min_m": 0.006533995651829589,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 235,
+      "position_error_max_m": 0.00045034583548977713,
+      "orientation_error_max_rad": 0.0016313066672821485
+    },
+    "MOT-01-P02-D3": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.18481488905357799,
+      "sigma_p05": 0.1852353275513727,
+      "clearance_min_m": 0.006599927885959237,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 65,
+      "position_error_max_m": 2.0954920488821812e-05,
+      "orientation_error_max_rad": 6.692955808717196e-16
+    },
+    "MOT-02-P02-D3": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.1848148890535778,
+      "sigma_p05": 0.18481488905357785,
+      "clearance_min_m": 0.006599393138221843,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 193,
+      "position_error_max_m": 1.5700924586837752e-16,
+      "orientation_error_max_rad": 6.359247904814146e-16
+    },
+    "MOT-03-P02-D3": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.18481488905357799,
+      "sigma_p05": 0.18523546906011076,
+      "clearance_min_m": 0.0065993931382136335,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 193,
+      "position_error_max_m": 2.0954920488828524e-05,
+      "orientation_error_max_rad": 6.145832765151898e-16
+    },
+    "MOT-01-P02-D4": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.16199373014161234,
+      "sigma_p05": 0.1634684592678767,
+      "clearance_min_m": 0.006231412217600327,
+      "clearance_pair": [
+        "L333",
+        "L555"
+      ],
+      "checked_samples": 65,
+      "position_error_max_m": 3.444667600194211e-05,
+      "orientation_error_max_rad": 1.7793484529793234e-09
+    },
+    "MOT-02-P02-D4": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.18364707421574633,
+      "sigma_p05": 0.18366273164623406,
+      "clearance_min_m": 0.006531577226879612,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 161,
+      "position_error_max_m": 5.0497887545799355e-05,
+      "orientation_error_max_rad": 7.506388475791526e-09
+    },
+    "MOT-03-P02-D4": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.18441878355097785,
+      "sigma_p05": 0.1851521339387809,
+      "clearance_min_m": 0.0065312954456140555,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 131,
+      "position_error_max_m": 5.812949054527722e-05,
+      "orientation_error_max_rad": 5.19140946221157e-09
+    },
+    "MOT-01-P02-D5": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.1749603110866744,
+      "sigma_p05": 0.17744267836231808,
+      "clearance_min_m": 0.006568666069500955,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 65,
+      "position_error_max_m": 3.3000865848926034e-05,
+      "orientation_error_max_rad": 1.1499806085948501e-09
+    },
+    "MOT-02-P02-D5": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.17496031108667434,
+      "sigma_p05": 0.17496031108667454,
+      "clearance_min_m": 0.00653795060349268,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 193,
+      "position_error_max_m": 1.7109685898544713e-16,
+      "orientation_error_max_rad": 7.13989913236114e-16
+    },
+    "MOT-03-P02-D5": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.1749603110866744,
+      "sigma_p05": 0.17744268709733388,
+      "clearance_min_m": 0.006531043193012856,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 193,
+      "position_error_max_m": 3.3000865849070125e-05,
+      "orientation_error_max_rad": 1.1499807985875641e-09
+    },
+    "MOT-01-P03-D0": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.09958226090447682,
+      "sigma_p05": 0.10396996851055242,
+      "clearance_min_m": 0.006642387586909318,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 81,
+      "position_error_max_m": 5.117934332540963e-05,
+      "orientation_error_max_rad": 4.991282882548592e-16
+    },
+    "MOT-02-P03-D0": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.1576620096646876,
+      "sigma_p05": 0.15766200966468827,
+      "clearance_min_m": 0.006642387825011206,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 193,
+      "position_error_max_m": 1.4844579404996448e-13,
+      "orientation_error_max_rad": 4.2672596434097236e-12
+    },
+    "MOT-03-P03-D0": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.09958226090447711,
+      "sigma_p05": 0.10397010579492655,
+      "clearance_min_m": 0.006642388396180798,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 225,
+      "position_error_max_m": 5.117934339533817e-05,
+      "orientation_error_max_rad": 9.879074434294504e-12
+    },
+    "MOT-01-P03-D1": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.1010387908804925,
+      "sigma_p05": 0.10398717623114317,
+      "clearance_min_m": 0.006693216795393744,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 65,
+      "position_error_max_m": 2.907893751812048e-05,
+      "orientation_error_max_rad": 4.345134107136278e-14
+    },
+    "MOT-02-P03-D1": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.13501184461098217,
+      "sigma_p05": 0.13538555772247068,
+      "clearance_min_m": 0.006548111112345974,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 223,
+      "position_error_max_m": 0.00045372154514777016,
+      "orientation_error_max_rad": 0.0016313192179182626
+    },
+    "MOT-03-P03-D1": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.07610791814090924,
+      "sigma_p05": 0.07893447629617374,
+      "clearance_min_m": 0.006436466781637592,
+      "clearance_pair": [
+        "base_link",
+        "L222"
+      ],
+      "checked_samples": 225,
+      "position_error_max_m": 0.0006431840074505887,
+      "orientation_error_max_rad": 0.0016313166434569735
+    },
+    "MOT-01-P03-D2": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.1848148766418306,
+      "sigma_p05": 0.18523531537462096,
+      "clearance_min_m": 0.006616217935240096,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 65,
+      "position_error_max_m": 2.095492032614824e-05,
+      "orientation_error_max_rad": 6.396344929238839e-16
+    },
+    "MOT-02-P03-D2": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.18481487664183038,
+      "sigma_p05": 0.1848148766418304,
+      "clearance_min_m": 0.006599393049257525,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 193,
+      "position_error_max_m": 1.642041997679149e-16,
+      "orientation_error_max_rad": 6.539573068663908e-16
+    },
+    "MOT-03-P03-D2": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.1848148766418306,
+      "sigma_p05": 0.18523545688325357,
+      "clearance_min_m": 0.006599393049264109,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 193,
+      "position_error_max_m": 2.095492032614824e-05,
+      "orientation_error_max_rad": 7.560184525552959e-16
+    },
+    "MOT-01-P03-D3": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.11969551320220448,
+      "sigma_p05": 0.12172487925412329,
+      "clearance_min_m": 0.006568886946353485,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 69,
+      "position_error_max_m": 4.51384611664389e-05,
+      "orientation_error_max_rad": 1.1343857473958168e-09
+    },
+    "MOT-02-P03-D3": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.13501184461098228,
+      "sigma_p05": 0.13538555772247085,
+      "clearance_min_m": 0.006540811115013333,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 223,
+      "position_error_max_m": 0.00045372154521513517,
+      "orientation_error_max_rad": 0.001631319217958205
+    },
+    "MOT-03-P03-D3": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.13285749597483754,
+      "sigma_p05": 0.13301772182321753,
+      "clearance_min_m": 0.006532072969771445,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 213,
+      "position_error_max_m": 0.0004744634331050954,
+      "orientation_error_max_rad": 0.0017744553323742484
+    },
+    "MOT-01-P03-D4": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.15657495115693268,
+      "sigma_p05": 0.15868086849087956,
+      "clearance_min_m": 0.006573198130626696,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 65,
+      "position_error_max_m": 2.7940272141261976e-05,
+      "orientation_error_max_rad": 2.2789297160841134e-10
+    },
+    "MOT-02-P03-D4": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.18481488905357785,
+      "sigma_p05": 0.1848148890535779,
+      "clearance_min_m": 0.00659939313822187,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 193,
+      "position_error_max_m": 1.3877787807814457e-16,
+      "orientation_error_max_rad": 5.576706320148665e-16
+    },
+    "MOT-03-P03-D4": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.15657495115718684,
+      "sigma_p05": 0.15868113082622104,
+      "clearance_min_m": 0.0065318605343398254,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 193,
+      "position_error_max_m": 2.794027214122879e-05,
+      "orientation_error_max_rad": 2.2789293003274692e-10
+    },
+    "MOT-01-P03-D5": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.11969551136373431,
+      "sigma_p05": 0.1217248771989732,
+      "clearance_min_m": 0.006568890113260033,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 69,
+      "position_error_max_m": 4.5138512293249773e-05,
+      "orientation_error_max_rad": 1.134366828087732e-09
+    },
+    "MOT-02-P03-D5": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.12377763605350076,
+      "sigma_p05": 0.12425994830182646,
+      "clearance_min_m": 0.006533995651828288,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 273,
+      "position_error_max_m": 0.0005594572711769769,
+      "orientation_error_max_rad": 0.0016313066677598415
+    },
+    "MOT-03-P03-D5": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.1136425003974466,
+      "sigma_p05": 0.11392287359512193,
+      "clearance_min_m": 0.00653657270892749,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 285,
+      "position_error_max_m": 0.00047184730177969564,
+      "orientation_error_max_rad": 0.001774442243682963
+    },
+    "MOT-01-P04-D0": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.08724146471949766,
+      "sigma_p05": 0.08804721706732321,
+      "clearance_min_m": 0.006642004027665001,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 65,
+      "position_error_max_m": 1.3573977254518374e-05,
+      "orientation_error_max_rad": 4.2098494279922114e-16
+    },
+    "MOT-02-P04-D0": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.0910471420027186,
+      "sigma_p05": 0.10001284393004345,
+      "clearance_min_m": 0.00666474317529975,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 183,
+      "position_error_max_m": 0.00027710274387787563,
+      "orientation_error_max_rad": 8.072992766148745e-10
+    },
+    "MOT-03-P04-D0": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.0910471420027186,
+      "sigma_p05": 0.10043808249337341,
+      "clearance_min_m": 0.006664743175297361,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 215,
+      "position_error_max_m": 0.00033833828009488407,
+      "orientation_error_max_rad": 8.073092685365185e-10
+    },
+    "MOT-01-P04-D1": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.0893114378732904,
+      "sigma_p05": 0.0899641450358021,
+      "clearance_min_m": 0.006642388496641223,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 65,
+      "position_error_max_m": 1.3170884210878897e-05,
+      "orientation_error_max_rad": 6.736861993823207e-13
+    },
+    "MOT-02-P04-D1": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.09027906227714884,
+      "sigma_p05": 0.09027906227742702,
+      "clearance_min_m": 0.006642388496641399,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 193,
+      "position_error_max_m": 4.0243864970741765e-13,
+      "orientation_error_max_rad": 2.3638169985674268e-12
+    },
+    "MOT-03-P04-D1": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.08931143787329003,
+      "sigma_p05": 0.08996415068708949,
+      "clearance_min_m": 0.006642388496641399,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 193,
+      "position_error_max_m": 1.317088421054742e-05,
+      "orientation_error_max_rad": 2.3591298620765948e-12
+    },
+    "MOT-01-P04-D2": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.04454121873407064,
+      "sigma_p05": 0.04501476667872596,
+      "clearance_min_m": 0.006627115259731807,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 93,
+      "position_error_max_m": 4.1200873625832475e-05,
+      "orientation_error_max_rad": 1.4023438893909333e-10
+    },
+    "MOT-02-P04-D2": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.042128299390153404,
+      "sigma_p05": 0.04381419163127802,
+      "clearance_min_m": 0.0054176923042901035,
+      "clearance_pair": [
+        "L333",
+        "L555"
+      ],
+      "checked_samples": 335,
+      "position_error_max_m": 0.0014116512477637309,
+      "orientation_error_max_rad": 0.009856944491703561
+    },
+    "MOT-03-P04-D2": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.04127869720727854,
+      "sigma_p05": 0.04314761257703484,
+      "clearance_min_m": 0.0054176923042901035,
+      "clearance_pair": [
+        "L333",
+        "L555"
+      ],
+      "checked_samples": 333,
+      "position_error_max_m": 0.0015400177875910127,
+      "orientation_error_max_rad": 0.009313377399168639
+    },
+    "MOT-01-P04-D3": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.04251808156334396,
+      "sigma_p05": 0.04522223202628229,
+      "clearance_min_m": 0.0032230283914060007,
+      "clearance_pair": [
+        "L333",
+        "L666"
+      ],
+      "checked_samples": 113,
+      "position_error_max_m": 0.00011451193396585445,
+      "orientation_error_max_rad": 2.1778419414787947e-10
+    },
+    "MOT-02-P04-D3": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.04251808156317806,
+      "sigma_p05": 0.04251808156317809,
+      "clearance_min_m": 0.003219740677535596,
+      "clearance_pair": [
+        "L333",
+        "L666"
+      ],
+      "checked_samples": 193,
+      "position_error_max_m": 3.0873998468881225e-14,
+      "orientation_error_max_rad": 2.3712007942926754e-12
+    },
+    "MOT-03-P04-D3": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.04251808156334396,
+      "sigma_p05": 0.04522183045197715,
+      "clearance_min_m": 0.0032230283914060007,
+      "clearance_pair": [
+        "L333",
+        "L666"
+      ],
+      "checked_samples": 193,
+      "position_error_max_m": 0.00011451193397580392,
+      "orientation_error_max_rad": 2.1766308647196352e-10
+    },
+    "MOT-01-P04-D4": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.1854843999640641,
+      "sigma_p05": 0.1856716779755697,
+      "clearance_min_m": 0.006530932435343109,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 65,
+      "position_error_max_m": 1.339852234730984e-05,
+      "orientation_error_max_rad": 8.656444764686978e-11
+    },
+    "MOT-02-P04-D4": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.08152779897058068,
+      "sigma_p05": 0.08167273426717848,
+      "clearance_min_m": 0.0066651273998045235,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 169,
+      "position_error_max_m": 8.549456807623703e-05,
+      "orientation_error_max_rad": 8.188351832012366e-10
+    },
+    "MOT-03-P04-D4": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.07344271720595401,
+      "sigma_p05": 0.07358419568890948,
+      "clearance_min_m": 0.004444878723777301,
+      "clearance_pair": [
+        "L333",
+        "L666"
+      ],
+      "checked_samples": 157,
+      "position_error_max_m": 7.508209799060017e-05,
+      "orientation_error_max_rad": 0.00034461218768681737
+    },
+    "MOT-01-P04-D5": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.1539141019501122,
+      "sigma_p05": 0.1544026395810607,
+      "clearance_min_m": 0.006569061470931923,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 65,
+      "position_error_max_m": 1.161206211843418e-05,
+      "orientation_error_max_rad": 6.099654983573791e-11
+    },
+    "MOT-02-P04-D5": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.15883798261589005,
+      "sigma_p05": 0.15883798261589005,
+      "clearance_min_m": 0.006642387824983052,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 193,
+      "position_error_max_m": 1.777268017945477e-16,
+      "orientation_error_max_rad": 1.9616764721227033e-12
+    },
+    "MOT-03-P04-D5": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.15391410194986604,
+      "sigma_p05": 0.1544026523730878,
+      "clearance_min_m": 0.00653247800827943,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 193,
+      "position_error_max_m": 1.1612062438724718e-05,
+      "orientation_error_max_rad": 6.134099852043366e-11
+    },
+    "MOT-01-P05-D1": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.1613949716802983,
+      "sigma_p05": 0.16356110181523423,
+      "clearance_min_m": 0.006642004027664973,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 65,
+      "position_error_max_m": 1.859216849397836e-05,
+      "orientation_error_max_rad": 8.343264642973862e-16
+    },
+    "MOT-02-P05-D1": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.15938036826260127,
+      "sigma_p05": 0.16393646400483608,
+      "clearance_min_m": 0.006664744283967932,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 265,
+      "position_error_max_m": 0.0002657479676024102,
+      "orientation_error_max_rad": 8.072995726274296e-10
+    },
+    "MOT-03-P05-D1": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.15232110134860627,
+      "sigma_p05": 0.1527936383999217,
+      "clearance_min_m": 0.006664744425048776,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 275,
+      "position_error_max_m": 0.0002710341925164743,
+      "orientation_error_max_rad": 1.088434205678607e-09
+    },
+    "MOT-01-P05-D4": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.15500268152106939,
+      "sigma_p05": 0.15549078031887906,
+      "clearance_min_m": 0.006569061433087605,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 65,
+      "position_error_max_m": 1.1609816254634435e-05,
+      "orientation_error_max_rad": 6.179390814488294e-11
+    },
+    "MOT-02-P05-D4": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.1599155475891461,
+      "sigma_p05": 0.15991554758914614,
+      "clearance_min_m": 0.006642388496632998,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 193,
+      "position_error_max_m": 2.3993361329301803e-16,
+      "orientation_error_max_rad": 1.961701990415318e-12
+    },
+    "MOT-03-P05-D4": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.15500268152102392,
+      "sigma_p05": 0.15549079274341457,
+      "clearance_min_m": 0.006531758957462827,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 193,
+      "position_error_max_m": 1.1609816290519591e-05,
+      "orientation_error_max_rad": 6.288165394021946e-11
+    },
+    "MOT-01-P06-D0": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.07795598186378348,
+      "sigma_p05": 0.07931839360138107,
+      "clearance_min_m": 0.006642007096317556,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 65,
+      "position_error_max_m": 1.5551377656766974e-05,
+      "orientation_error_max_rad": 2.9085425496327887e-12
+    },
+    "MOT-02-P06-D0": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.03680982536873032,
+      "sigma_p05": 0.040605889325486436,
+      "clearance_min_m": 0.0008015047292284144,
+      "clearance_pair": [
+        "L333",
+        "L555"
+      ],
+      "checked_samples": 309,
+      "position_error_max_m": 0.0018993445768648862,
+      "orientation_error_max_rad": 0.006693805912370262
+    },
+    "MOT-01-P06-D1": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.1548586180310676,
+      "sigma_p05": 0.15530755914368674,
+      "clearance_min_m": 0.006642007111478251,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 65,
+      "position_error_max_m": 1.2254758311188433e-05,
+      "orientation_error_max_rad": 5.821839244602944e-12
+    },
+    "MOT-02-P06-D1": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.15938036826260138,
+      "sigma_p05": 0.15938036826260332,
+      "clearance_min_m": 0.006642003356008056,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 193,
+      "position_error_max_m": 3.912499268524525e-14,
+      "orientation_error_max_rad": 2.3641325626112067e-12
+    },
+    "MOT-03-P06-D1": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.1548586180310684,
+      "sigma_p05": 0.1553075719157018,
+      "clearance_min_m": 0.006642013120066458,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 161,
+      "position_error_max_m": 1.2254758307402023e-05,
+      "orientation_error_max_rad": 6.51896873812461e-13
+    },
+    "MOT-02-P06-D2": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.1176374673771806,
+      "sigma_p05": 0.12154828291974717,
+      "clearance_min_m": 0.0066651285243985925,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 177,
+      "position_error_max_m": 0.00013046934139936177,
+      "orientation_error_max_rad": 8.188357016291158e-10
+    },
+    "MOT-03-P06-D2": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.11598740517944232,
+      "sigma_p05": 0.11739766741088688,
+      "clearance_min_m": 0.0066651285243985925,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 207,
+      "position_error_max_m": 0.00011556269368194343,
+      "orientation_error_max_rad": 8.455034896596011e-10
+    },
+    "MOT-01-P06-D3": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.15883798261589016,
+      "sigma_p05": 0.1613493224618879,
+      "clearance_min_m": 0.006642388496631297,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 73,
+      "position_error_max_m": 2.0991924138026855e-05,
+      "orientation_error_max_rad": 1.0022471582456499e-15
+    },
+    "MOT-02-P06-D3": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.15883798261588997,
+      "sigma_p05": 0.15883798261588997,
+      "clearance_min_m": 0.006642388496633027,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 193,
+      "position_error_max_m": 3.617639428675444e-16,
+      "orientation_error_max_rad": 1.961594525589046e-12
+    },
+    "MOT-03-P06-D3": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.15883798261589016,
+      "sigma_p05": 0.161349451238965,
+      "clearance_min_m": 0.006642388496633027,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 193,
+      "position_error_max_m": 2.0991924137892055e-05,
+      "orientation_error_max_rad": 1.958828111971063e-12
+    },
+    "MOT-01-P06-D4": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.05211377770361197,
+      "sigma_p05": 0.05212170321253839,
+      "clearance_min_m": 0.006678014572119749,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 65,
+      "position_error_max_m": 1.7662519958234297e-05,
+      "orientation_error_max_rad": 1.6465410234113111e-12
+    },
+    "MOT-02-P06-D4": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.00017161631999391768,
+      "sigma_p05": 0.027994223280276013,
+      "clearance_min_m": 0.006531044494434331,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 207,
+      "position_error_max_m": 6.635597147220484e-05,
+      "orientation_error_max_rad": 6.699239730305149e-06
+    },
+    "MOT-03-P06-D4": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.0001714218009327231,
+      "sigma_p05": 0.02794642563585434,
+      "clearance_min_m": 0.006531044494435169,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 207,
+      "position_error_max_m": 8.386637691523985e-05,
+      "orientation_error_max_rad": 6.69923973035402e-06
+    },
+    "MOT-01-P06-D5": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.04251760127741094,
+      "sigma_p05": 0.04299652008935406,
+      "clearance_min_m": 0.005417692304289939,
+      "clearance_pair": [
+        "L333",
+        "L555"
+      ],
+      "checked_samples": 65,
+      "position_error_max_m": 2.088805802686336e-05,
+      "orientation_error_max_rad": 9.760630283359361e-12
+    },
+    "MOT-02-P06-D5": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.04251760127741094,
+      "sigma_p05": 0.04251760127754416,
+      "clearance_min_m": 0.005417692304289939,
+      "clearance_pair": [
+        "L333",
+        "L555"
+      ],
+      "checked_samples": 193,
+      "position_error_max_m": 2.5668790906899317e-14,
+      "orientation_error_max_rad": 2.7711273961790983e-12
+    },
+    "MOT-03-P06-D5": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.04251760127741094,
+      "sigma_p05": 0.042996718423174464,
+      "clearance_min_m": 0.005417692304289939,
+      "clearance_pair": [
+        "L333",
+        "L555"
+      ],
+      "checked_samples": 193,
+      "position_error_max_m": 2.0888058026756e-05,
+      "orientation_error_max_rad": 4.695151777527532e-13
+    },
+    "MOT-01-P07-D0": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.1709526938789547,
+      "sigma_p05": 0.1713393751386241,
+      "clearance_min_m": 0.006642391565153856,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 65,
+      "position_error_max_m": 1.2420944110890023e-05,
+      "orientation_error_max_rad": 7.158191707985211e-13
+    },
+    "MOT-02-P07-D0": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.1748078701689745,
+      "sigma_p05": 0.17480787016897462,
+      "clearance_min_m": 0.006642387824991788,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 193,
+      "position_error_max_m": 3.914365833442803e-14,
+      "orientation_error_max_rad": 2.364049569805489e-12
+    },
+    "MOT-03-P07-D0": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.1709526938789303,
+      "sigma_p05": 0.17133939457438627,
+      "clearance_min_m": 0.006642397560063431,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 161,
+      "position_error_max_m": 1.2420944156576138e-05,
+      "orientation_error_max_rad": 6.523238979281888e-13
+    },
+    "MOT-01-P07-D1": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.09008634675439685,
+      "sigma_p05": 0.09592832022452248,
+      "clearance_min_m": 0.00666512866742631,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 105,
+      "position_error_max_m": 7.348014755618858e-05,
+      "orientation_error_max_rad": 5.272565172638376e-15
+    },
+    "MOT-02-P07-D1": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.09008634675439685,
+      "sigma_p05": 0.09291036065147243,
+      "clearance_min_m": 0.006665128439137548,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 217,
+      "position_error_max_m": 0.00010811430056240643,
+      "orientation_error_max_rad": 7.586886033801816e-10
+    },
+    "MOT-03-P07-D1": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.09008634675439685,
+      "sigma_p05": 0.09851559815388379,
+      "clearance_min_m": 0.006665128547298089,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 233,
+      "position_error_max_m": 9.550134244053947e-05,
+      "orientation_error_max_rad": 8.785882579115627e-10
+    },
+    "MOT-01-P07-D2": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.0751082433509257,
+      "sigma_p05": 0.08216513059729758,
+      "clearance_min_m": 0.00666512836472303,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 111,
+      "position_error_max_m": 0.0001049080826136462,
+      "orientation_error_max_rad": 2.818943547852653e-12
+    },
+    "MOT-02-P07-D2": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.15883798261588997,
+      "sigma_p05": 0.15883798261588997,
+      "clearance_min_m": 0.006642387824983118,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 193,
+      "position_error_max_m": 2.631413919144618e-16,
+      "orientation_error_max_rad": 1.961690353845901e-12
+    },
+    "MOT-03-P07-D2": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.07510824335092592,
+      "sigma_p05": 0.0821650128163318,
+      "clearance_min_m": 0.0066423878249835385,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 193,
+      "position_error_max_m": 0.00010490808261352192,
+      "orientation_error_max_rad": 3.4380886551916036e-12
+    },
+    "MOT-01-P07-D3": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.07350749678775724,
+      "sigma_p05": 0.07703609941351933,
+      "clearance_min_m": 0.006665127399801904,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 67,
+      "position_error_max_m": 3.693300075549524e-05,
+      "orientation_error_max_rad": 2.2698852916399176e-12
+    },
+    "MOT-02-P07-D3": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.08152779897058075,
+      "sigma_p05": 0.08167273426717857,
+      "clearance_min_m": 0.006665127399804475,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 169,
+      "position_error_max_m": 8.549456807633983e-05,
+      "orientation_error_max_rad": 8.188350292283129e-10
+    },
+    "MOT-03-P07-D3": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.053221913339285505,
+      "sigma_p05": 0.053293805283022924,
+      "clearance_min_m": 0.006665127399804475,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 175,
+      "position_error_max_m": 9.957367012993083e-05,
+      "orientation_error_max_rad": 8.18835575960039e-10
+    },
+    "MOT-01-P07-D4": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.052734089318274516,
+      "sigma_p05": 0.052791898333245005,
+      "clearance_min_m": 0.006640156070027023,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 65,
+      "position_error_max_m": 1.8136161598933495e-05,
+      "orientation_error_max_rad": 1.3859092336628857e-15
+    },
+    "MOT-02-P07-D4": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.052734089318274516,
+      "sigma_p05": 0.05273408931849409,
+      "clearance_min_m": 0.006632322051015383,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 193,
+      "position_error_max_m": 3.2791424961089335e-14,
+      "orientation_error_max_rad": 2.923462928809383e-12
+    },
+    "MOT-03-P07-D4": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.052734089318274516,
+      "sigma_p05": 0.052791893146929086,
+      "clearance_min_m": 0.006632322051017098,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 193,
+      "position_error_max_m": 1.8136161588578032e-05,
+      "orientation_error_max_rad": 2.2763411613035247e-12
+    },
+    "MOT-01-P07-D5": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.05273487667069353,
+      "sigma_p05": 0.05905448486600324,
+      "clearance_min_m": 0.006568817634979447,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 65,
+      "position_error_max_m": 1.3009219162507148e-05,
+      "orientation_error_max_rad": 1.830287479117634e-08
+    },
+    "MOT-02-P07-D5": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.044207809674580364,
+      "sigma_p05": 0.04981142355529731,
+      "clearance_min_m": 0.006533540120702063,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 347,
+      "position_error_max_m": 0.0017733908497456342,
+      "orientation_error_max_rad": 0.0066942961817818515
+    },
+    "MOT-03-P07-D5": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.047833301853304595,
+      "sigma_p05": 0.05203878981094009,
+      "clearance_min_m": 0.0065343412836675495,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 327,
+      "position_error_max_m": 0.0014108421561089984,
+      "orientation_error_max_rad": 0.006086171500487027
+    },
+    "MOT-01-P08-D0": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.14054070812671313,
+      "sigma_p05": 0.140618932880675,
+      "clearance_min_m": 0.006642002517631769,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 79,
+      "position_error_max_m": 3.556680650306087e-05,
+      "orientation_error_max_rad": 4.711933388078316e-16
+    },
+    "MOT-02-P08-D0": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.06058496725027651,
+      "sigma_p05": 0.07085271999851996,
+      "clearance_min_m": 0.006664741434260042,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 177,
+      "position_error_max_m": 0.00027238745534390675,
+      "orientation_error_max_rad": 2.4427294279886095e-09
+    },
+    "MOT-03-P08-D0": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.05750438577548309,
+      "sigma_p05": 0.05894356648757248,
+      "clearance_min_m": 0.006534739655964974,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 317,
+      "position_error_max_m": 0.0019952994875388147,
+      "orientation_error_max_rad": 0.00411788851498281
+    },
+    "MOT-01-P08-D1": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.1405407081265921,
+      "sigma_p05": 0.14061893327876912,
+      "clearance_min_m": 0.006642386993276882,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 79,
+      "position_error_max_m": 3.575328961104558e-05,
+      "orientation_error_max_rad": 5.764197286403969e-16
+    },
+    "MOT-02-P08-D1": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.14054070812656613,
+      "sigma_p05": 0.1405407081265662,
+      "clearance_min_m": 0.006642388496685092,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 193,
+      "position_error_max_m": 3.9448475861758273e-13,
+      "orientation_error_max_rad": 8.14789255962444e-12
+    },
+    "MOT-03-P08-D1": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.1405407081265921,
+      "sigma_p05": 0.14061893326621316,
+      "clearance_min_m": 0.006642386949339028,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 257,
+      "position_error_max_m": 3.5753289611034686e-05,
+      "orientation_error_max_rad": 6.185968491970923e-16
+    },
+    "MOT-01-P08-D2": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.11452161834999983,
+      "sigma_p05": 0.11663387545272828,
+      "clearance_min_m": 0.0065822571919390595,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 87,
+      "position_error_max_m": 3.2008640622785636e-05,
+      "orientation_error_max_rad": 5.34046957896666e-16
+    },
+    "MOT-02-P08-D2": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.051326269852993794,
+      "sigma_p05": 0.05188205502757228,
+      "clearance_min_m": 0.006535814483875781,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 295,
+      "position_error_max_m": 0.0009332228876604826,
+      "orientation_error_max_rad": 0.004914534379711591
+    },
+    "MOT-03-P08-D2": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.049898966286460594,
+      "sigma_p05": 0.050472805543610014,
+      "clearance_min_m": 0.006535814483878926,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 289,
+      "position_error_max_m": 0.0013582368633612652,
+      "orientation_error_max_rad": 0.00491453437956097
+    },
+    "MOT-01-P08-D3": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.07471550017629222,
+      "sigma_p05": 0.08022228377686508,
+      "clearance_min_m": 0.0066437507721005895,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 105,
+      "position_error_max_m": 8.692519831358315e-05,
+      "orientation_error_max_rad": 2.6604421212057075e-15
+    },
+    "MOT-02-P08-D3": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.07471550017629222,
+      "sigma_p05": 0.07471550017723844,
+      "clearance_min_m": 0.006553748037719635,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 193,
+      "position_error_max_m": 1.4993616924259262e-13,
+      "orientation_error_max_rad": 5.594760717570218e-12
+    },
+    "MOT-03-P08-D3": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.07471550017629222,
+      "sigma_p05": 0.08022253459893654,
+      "clearance_min_m": 0.0065537480377194195,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 193,
+      "position_error_max_m": 8.692519831467379e-05,
+      "orientation_error_max_rad": 1.4680066755712318e-12
+    },
+    "MOT-01-P08-D4": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.0454320392700348,
+      "sigma_p05": 0.05023177745032441,
+      "clearance_min_m": 0.00666512590800471,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 71,
+      "position_error_max_m": 5.648167374940704e-05,
+      "orientation_error_max_rad": 3.4116037754263365e-13
+    },
+    "MOT-02-P08-D4": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.09559392981917494,
+      "sigma_p05": 0.0964794004497057,
+      "clearance_min_m": 0.00666512590800471,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 161,
+      "position_error_max_m": 0.00010687807624354182,
+      "orientation_error_max_rad": 3.0040999133968124e-09
+    },
+    "MOT-03-P08-D4": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.09479933139601238,
+      "sigma_p05": 0.09488010427952195,
+      "clearance_min_m": 0.00666512590800471,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 141,
+      "position_error_max_m": 8.239331215076567e-05,
+      "orientation_error_max_rad": 4.167115735734571e-09
+    },
+    "MOT-01-P08-D5": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.06058496725027605,
+      "sigma_p05": 0.0639415223091048,
+      "clearance_min_m": 0.006664744954704026,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 67,
+      "position_error_max_m": 3.430738062612407e-05,
+      "orientation_error_max_rad": 3.3250825131592576e-14
+    },
+    "MOT-02-P08-D5": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.06058496725027588,
+      "sigma_p05": 0.06058496725027594,
+      "clearance_min_m": 0.006642004027632447,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 193,
+      "position_error_max_m": 3.376612743967843e-16,
+      "orientation_error_max_rad": 1.9616856527281073e-12
+    },
+    "MOT-03-P08-D5": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.06058496725027605,
+      "sigma_p05": 0.06394155301714101,
+      "clearance_min_m": 0.006642004027562136,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 193,
+      "position_error_max_m": 3.430738062657127e-05,
+      "orientation_error_max_rad": 1.9600482187206794e-12
+    },
+    "MOT-01-P09-D0": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.14054070295609963,
+      "sigma_p05": 0.14061892777860024,
+      "clearance_min_m": 0.006642002524236582,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 79,
+      "position_error_max_m": 3.562913907706174e-05,
+      "orientation_error_max_rad": 4.968874746307216e-16
+    },
+    "MOT-02-P09-D0": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.1405407029560722,
+      "sigma_p05": 0.14054070295607227,
+      "clearance_min_m": 0.006642004027707483,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 193,
+      "position_error_max_m": 3.9441711418201195e-13,
+      "orientation_error_max_rad": 8.148232954994609e-12
+    },
+    "MOT-03-P09-D0": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.14054070295609963,
+      "sigma_p05": 0.14061892775809673,
+      "clearance_min_m": 0.006642002480320226,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 257,
+      "position_error_max_m": 3.5629139076943525e-05,
+      "orientation_error_max_rad": 5.066621743512147e-16
+    },
+    "MOT-01-P09-D1": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.024631224111700153,
+      "sigma_p05": 0.040626796307837186,
+      "clearance_min_m": 0.006642388496684942,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 137,
+      "position_error_max_m": 0.0005054542132326211,
+      "orientation_error_max_rad": 2.002883734274832e-12
+    },
+    "MOT-02-P09-D1": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.04753476084665336,
+      "sigma_p05": 0.048706370628054135,
+      "clearance_min_m": 0.006546200349866809,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 319,
+      "position_error_max_m": 0.0013007935939726386,
+      "orientation_error_max_rad": 0.004811460225962713
+    },
+    "MOT-03-P09-D1": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.026323159719134653,
+      "sigma_p05": 0.050092026739274854,
+      "clearance_min_m": 0.006665124825010464,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 209,
+      "position_error_max_m": 0.0011840935241843689,
+      "orientation_error_max_rad": 3.0041132547774686e-09
+    },
+    "MOT-01-P09-D2": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.04773894707500734,
+      "sigma_p05": 0.0556680083980266,
+      "clearance_min_m": 0.006570402255734936,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 119,
+      "position_error_max_m": 0.000172743851255488,
+      "orientation_error_max_rad": 4.40466445392891e-12
+    },
+    "MOT-02-P09-D2": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.04773894707500686,
+      "sigma_p05": 0.04773894707500694,
+      "clearance_min_m": 0.00655383126670793,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 193,
+      "position_error_max_m": 3.433175098891678e-16,
+      "orientation_error_max_rad": 7.403514528275185e-16
+    },
+    "MOT-03-P09-D2": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.04773894707500734,
+      "sigma_p05": 0.055668008395358966,
+      "clearance_min_m": 0.006553831266716863,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 193,
+      "position_error_max_m": 0.0001727438511375598,
+      "orientation_error_max_rad": 7.86029384593538e-12
+    },
+    "MOT-01-P09-D3": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.047739094629418374,
+      "sigma_p05": 0.05148387826047394,
+      "clearance_min_m": 0.0065688181098352335,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 71,
+      "position_error_max_m": 6.657642242964838e-05,
+      "orientation_error_max_rad": 4.9225958327164365e-09
+    },
+    "MOT-02-P09-D3": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.04753538359328016,
+      "sigma_p05": 0.04870704103939827,
+      "clearance_min_m": 0.006546192590856749,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 319,
+      "position_error_max_m": 0.001300772850833527,
+      "orientation_error_max_rad": 0.004811398360805838
+    },
+    "MOT-03-P09-D3": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.047739094629418374,
+      "sigma_p05": 0.04850980143999583,
+      "clearance_min_m": 0.0065330694184137245,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 301,
+      "position_error_max_m": 0.0010747824768624378,
+      "orientation_error_max_rad": 0.004661318452329311
+    },
+    "MOT-02-P09-D4": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.08085816687343134,
+      "sigma_p05": 0.08085816687343142,
+      "clearance_min_m": 0.006642003355976087,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 193,
+      "position_error_max_m": 2.6184564772601417e-16,
+      "orientation_error_max_rad": 1.9616477788722955e-12
+    },
+    "MOT-01-P09-D5": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.060032617220691524,
+      "sigma_p05": 0.0620877236857605,
+      "clearance_min_m": 0.006568649986554313,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 91,
+      "position_error_max_m": 4.786099502311696e-05,
+      "orientation_error_max_rad": 1.1658686060134556e-09
+    },
+    "MOT-02-P09-D5": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.07916093552516547,
+      "sigma_p05": 0.09091763534312798,
+      "clearance_min_m": 0.006664740636756616,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 263,
+      "position_error_max_m": 0.00029205777456451677,
+      "orientation_error_max_rad": 2.9617859940457587e-09
+    },
+    "MOT-03-P09-D5": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.07916093552516547,
+      "sigma_p05": 0.09088142424894685,
+      "clearance_min_m": 0.006542223321695029,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 277,
+      "position_error_max_m": 0.000325281642895135,
+      "orientation_error_max_rad": 0.0012192831924418255
+    },
+    "MOT-01-P10-D0": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.14054070812623046,
+      "sigma_p05": 0.14054243947801048,
+      "clearance_min_m": 0.006485356785323028,
+      "clearance_pair": [
+        "base_link",
+        "L222"
+      ],
+      "checked_samples": 65,
+      "position_error_max_m": 2.4208640132290785e-05,
+      "orientation_error_max_rad": 5.366832539082157e-16
+    },
+    "MOT-02-P10-D0": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.14054070812623046,
+      "sigma_p05": 0.1432555938229221,
+      "clearance_min_m": 0.006485355956958462,
+      "clearance_pair": [
+        "base_link",
+        "L222"
+      ],
+      "checked_samples": 221,
+      "position_error_max_m": 0.0001245109959169163,
+      "orientation_error_max_rad": 2.4775642926702074e-09
+    },
+    "MOT-03-P10-D0": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.14054070812623046,
+      "sigma_p05": 0.14328961426337444,
+      "clearance_min_m": 0.0064853562240759855,
+      "clearance_pair": [
+        "base_link",
+        "L222"
+      ],
+      "checked_samples": 193,
+      "position_error_max_m": 8.279791309445248e-05,
+      "orientation_error_max_rad": 2.477559316794213e-09
+    },
+    "MOT-01-P10-D1": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.14054070812550076,
+      "sigma_p05": 0.14054248159465124,
+      "clearance_min_m": 0.006485356726230389,
+      "clearance_pair": [
+        "base_link",
+        "L222"
+      ],
+      "checked_samples": 65,
+      "position_error_max_m": 2.501223579511023e-05,
+      "orientation_error_max_rad": 3.2845476656442682e-12
+    },
+    "MOT-02-P10-D1": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.14054070812631794,
+      "sigma_p05": 0.14054070812649738,
+      "clearance_min_m": 0.006485356726243087,
+      "clearance_pair": [
+        "base_link",
+        "L222"
+      ],
+      "checked_samples": 193,
+      "position_error_max_m": 3.9445655859173554e-13,
+      "orientation_error_max_rad": 8.147708617630168e-12
+    },
+    "MOT-03-P10-D1": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.14054070812547473,
+      "sigma_p05": 0.14054287694824327,
+      "clearance_min_m": 0.0064853567262249424,
+      "clearance_pair": [
+        "base_link",
+        "L222"
+      ],
+      "checked_samples": 193,
+      "position_error_max_m": 2.5012235779532292e-05,
+      "orientation_error_max_rad": 8.168425273817457e-12
+    },
+    "MOT-01-P10-D2": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.09053121551202746,
+      "sigma_p05": 0.09221194692960781,
+      "clearance_min_m": 0.006568836557296802,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 65,
+      "position_error_max_m": 2.6929244473201956e-05,
+      "orientation_error_max_rad": 1.1514010240816985e-09
+    },
+    "MOT-02-P10-D2": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.05721271346333816,
+      "sigma_p05": 0.05800164864136393,
+      "clearance_min_m": 0.0065358144838206815,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 277,
+      "position_error_max_m": 0.0016361621228629002,
+      "orientation_error_max_rad": 0.004914534378450089
+    },
+    "MOT-03-P10-D2": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.057202294032767095,
+      "sigma_p05": 0.05896612188735474,
+      "clearance_min_m": 0.006533021618754118,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 295,
+      "position_error_max_m": 0.001808397286281827,
+      "orientation_error_max_rad": 0.005005844744265907
+    },
+    "MOT-01-P10-D3": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.06640428776108258,
+      "sigma_p05": 0.07005227974276529,
+      "clearance_min_m": 0.006531393947816383,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 67,
+      "position_error_max_m": 6.83536326712224e-05,
+      "orientation_error_max_rad": 4.9225817729808214e-09
+    },
+    "MOT-02-P10-D3": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.13143458140308997,
+      "sigma_p05": 0.13143458140309,
+      "clearance_min_m": 0.006467486996767663,
+      "clearance_pair": [
+        "base_link",
+        "L222"
+      ],
+      "checked_samples": 193,
+      "position_error_max_m": 4.1085594784725086e-13,
+      "orientation_error_max_rad": 1.3742369731508864e-11
+    },
+    "MOT-03-P10-D3": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.06640428776108163,
+      "sigma_p05": 0.07005225271035519,
+      "clearance_min_m": 0.006534911905898804,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 193,
+      "position_error_max_m": 6.835363267130119e-05,
+      "orientation_error_max_rad": 4.922533810934626e-09
+    },
+    "MOT-01-P10-D4": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.10579180258357901,
+      "sigma_p05": 0.10589597003718502,
+      "clearance_min_m": 0.006531549977793792,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 91,
+      "position_error_max_m": 4.747640700234467e-05,
+      "orientation_error_max_rad": 1.1656671225623236e-09
+    },
+    "MOT-02-P10-D4": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.10579180258361244,
+      "sigma_p05": 0.10594938854808071,
+      "clearance_min_m": 0.006664740636844929,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 199,
+      "position_error_max_m": 0.0003542523941217686,
+      "orientation_error_max_rad": 2.9616906024210196e-09
+    },
+    "MOT-03-P10-D4": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.10579180258361244,
+      "sigma_p05": 0.10605366321857286,
+      "clearance_min_m": 0.004216787489473365,
+      "clearance_pair": [
+        "L333",
+        "L555"
+      ],
+      "checked_samples": 217,
+      "position_error_max_m": 0.0004039924845981987,
+      "orientation_error_max_rad": 0.0012192831926114026
+    },
+    "MOT-01-P10-D5": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.17572166741591735,
+      "sigma_p05": 0.17578450257418712,
+      "clearance_min_m": 0.006568656220465169,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 65,
+      "position_error_max_m": 2.90361193909091e-05,
+      "orientation_error_max_rad": 4.2675511190796794e-10
+    },
+    "MOT-02-P10-D5": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.17572166741591735,
+      "sigma_p05": 0.17572166741591752,
+      "clearance_min_m": 0.006642004027632441,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 193,
+      "position_error_max_m": 2.1677804106152878e-16,
+      "orientation_error_max_rad": 1.9622966376849947e-12
+    },
+    "MOT-03-P10-D5": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.17572166741591735,
+      "sigma_p05": 0.17578450507766658,
+      "clearance_min_m": 0.006532426146596003,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 193,
+      "position_error_max_m": 2.9036119398563835e-05,
+      "orientation_error_max_rad": 4.28972759322281e-10
+    },
+    "MOT-01-P11-D0": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.14054070295598994,
+      "sigma_p05": 0.14054169356419377,
+      "clearance_min_m": 0.006665125846234269,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 65,
+      "position_error_max_m": 1.9723747590993977e-05,
+      "orientation_error_max_rad": 3.2145335152549655e-12
+    },
+    "MOT-02-P11-D0": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.14054070812620464,
+      "sigma_p05": 0.14054070812620467,
+      "clearance_min_m": 0.006485344411009018,
+      "clearance_pair": [
+        "base_link",
+        "L222"
+      ],
+      "checked_samples": 193,
+      "position_error_max_m": 3.9450663478666824e-13,
+      "orientation_error_max_rad": 8.14846988297228e-12
+    },
+    "MOT-03-P11-D0": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.14054070295598994,
+      "sigma_p05": 0.14054191451093503,
+      "clearance_min_m": 0.0066423878250359844,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 193,
+      "position_error_max_m": 1.9723747584254034e-05,
+      "orientation_error_max_rad": 8.210712356859276e-12
+    },
+    "MOT-01-P11-D1": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.05645480646605205,
+      "sigma_p05": 0.060678774060317985,
+      "clearance_min_m": 0.006642388496685046,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 65,
+      "position_error_max_m": 2.429456941223163e-05,
+      "orientation_error_max_rad": 6.97374529749347e-16
+    },
+    "MOT-02-P11-D1": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.05304443504438962,
+      "sigma_p05": 0.0537338489860401,
+      "clearance_min_m": 0.006546200349770078,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 311,
+      "position_error_max_m": 0.00139129706298176,
+      "orientation_error_max_rad": 0.004811460225066459
+    },
+    "MOT-03-P11-D1": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.04843557575547984,
+      "sigma_p05": 0.04917334719665634,
+      "clearance_min_m": 0.006532337296702165,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 273,
+      "position_error_max_m": 0.0006685382362620472,
+      "orientation_error_max_rad": 0.0028329746483529692
+    },
+    "MOT-01-P11-D2": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.09053243517860993,
+      "sigma_p05": 0.09221318536114315,
+      "clearance_min_m": 0.006570328178540687,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 65,
+      "position_error_max_m": 2.6929365667911904e-05,
+      "orientation_error_max_rad": 1.151417171858052e-09
+    },
+    "MOT-02-P11-D2": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.13615922785096657,
+      "sigma_p05": 0.1361592278509666,
+      "clearance_min_m": 0.006553748149068626,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 193,
+      "position_error_max_m": 2.494777519050369e-13,
+      "orientation_error_max_rad": 4.2631548122452066e-12
+    },
+    "MOT-03-P11-D2": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.0905324351786116,
+      "sigma_p05": 0.09221321788886606,
+      "clearance_min_m": 0.006531153684304831,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 193,
+      "position_error_max_m": 2.692936563360217e-05,
+      "orientation_error_max_rad": 1.152547321040512e-09
+    },
+    "MOT-01-P11-D3": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.13143618270593135,
+      "sigma_p05": 0.1435080922632666,
+      "clearance_min_m": 0.006420287021646937,
+      "clearance_pair": [
+        "base_link",
+        "L222"
+      ],
+      "checked_samples": 67,
+      "position_error_max_m": 3.61498924543049e-05,
+      "orientation_error_max_rad": 1.68642209686154e-08
+    },
+    "MOT-02-P11-D3": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.052993104594313764,
+      "sigma_p05": 0.05345471322297645,
+      "clearance_min_m": 0.0064201773560240835,
+      "clearance_pair": [
+        "base_link",
+        "L222"
+      ],
+      "checked_samples": 311,
+      "position_error_max_m": 0.0016927283503648098,
+      "orientation_error_max_rad": 0.004811360170533082
+    },
+    "MOT-03-P11-D3": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.0012139494161006934,
+      "sigma_p05": 0.01675793880519961,
+      "clearance_min_m": 0.006420174732088203,
+      "clearance_pair": [
+        "base_link",
+        "L222"
+      ],
+      "checked_samples": 145,
+      "position_error_max_m": 6.521271184696025e-05,
+      "orientation_error_max_rad": 2.9359243629096126e-05
+    },
+    "MOT-01-P11-D4": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.17572166741572898,
+      "sigma_p05": 0.17578450209152946,
+      "clearance_min_m": 0.0064202672914434045,
+      "clearance_pair": [
+        "base_link",
+        "L222"
+      ],
+      "checked_samples": 65,
+      "position_error_max_m": 2.9374631390181082e-05,
+      "orientation_error_max_rad": 4.2675545811325285e-10
+    },
+    "MOT-02-P11-D4": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.17572166741572898,
+      "sigma_p05": 0.17572166741572903,
+      "clearance_min_m": 0.006485345239331003,
+      "clearance_pair": [
+        "base_link",
+        "L222"
+      ],
+      "checked_samples": 193,
+      "position_error_max_m": 1.3884305340790618e-16,
+      "orientation_error_max_rad": 1.961634200591427e-12
+    },
+    "MOT-03-P11-D4": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.17572166741572898,
+      "sigma_p05": 0.17578450462113798,
+      "clearance_min_m": 0.006420175357490518,
+      "clearance_pair": [
+        "base_link",
+        "L222"
+      ],
+      "checked_samples": 193,
+      "position_error_max_m": 2.9374631382599727e-05,
+      "orientation_error_max_rad": 4.246870451368333e-10
+    },
+    "MOT-01-P11-D5": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.10044700620477028,
+      "sigma_p05": 0.10363527903964001,
+      "clearance_min_m": 0.006665130016004611,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 103,
+      "position_error_max_m": 6.588887448717683e-05,
+      "orientation_error_max_rad": 2.2245058251310837e-15
+    },
+    "MOT-02-P11-D5": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.105781954479697,
+      "sigma_p05": 0.10588291595036743,
+      "clearance_min_m": 0.006665130016004611,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 247,
+      "position_error_max_m": 0.00014253172501347191,
+      "orientation_error_max_rad": 3.0040226954386856e-09
+    },
+    "MOT-03-P11-D5": {
+      "accepted_at_refined_resolution": true,
+      "reason": null,
+      "sigma_min": 0.10133777288395986,
+      "sigma_p05": 0.10144201084591543,
+      "clearance_min_m": 0.006665130016004611,
+      "clearance_pair": [
+        "L444",
+        "L666"
+      ],
+      "checked_samples": 235,
+      "position_error_max_m": 0.00011704454305770988,
+      "orientation_error_max_rad": 3.0040212489064798e-09
+    }
+  },
+  "original_successes": 194,
+  "refined_successes": 194
+}

@@ -1,0 +1,115 @@
+{
+  "name": "motion_dexterity_v1",
+  "state": "open",
+  "models": [
+    "spark2_v1",
+    "spark2_v2_2",
+    "P2AB-1",
+    "P2AB-2",
+    "P2AB-3",
+    "P2AB-4",
+    "external_piper",
+    "external_ur5",
+    "external_panda",
+    "dual_v2_1_left",
+    "dual_v2_2_left"
+  ],
+  "centres_m": [
+    [
+      0.2,
+      0.2,
+      0.2
+    ],
+    [
+      0.2,
+      -0.2,
+      0.2
+    ],
+    [
+      -0.2,
+      0.2,
+      0.2
+    ],
+    [
+      -0.2,
+      -0.2,
+      0.2
+    ],
+    [
+      0.6,
+      0.0,
+      0.2
+    ],
+    [
+      -0.6,
+      0.0,
+      0.2
+    ],
+    [
+      0.0,
+      0.6,
+      0.2
+    ],
+    [
+      0.0,
+      -0.6,
+      0.2
+    ],
+    [
+      0.2,
+      0.0,
+      0.6
+    ],
+    [
+      -0.2,
+      0.0,
+      0.6
+    ],
+    [
+      0.2,
+      0.0,
+      -0.2
+    ],
+    [
+      -0.2,
+      0.0,
+      -0.2
+    ]
+  ],
+  "paths_per_model": 216,
+  "extra_seven_axis_paths": 72,
+  "kinds": [
+    "MOT-01",
+    "MOT-02",
+    "MOT-03",
+    "MOT-04 (7 DOF only)"
+  ],
+  "translation_m": 0.12,
+  "rotation_rad": 1.5707963267948966,
+  "redundancy": "20 null-space predictor/projector steps of 0.025 rad; both signs tried; final joint displacement >=0.25 rad",
+  "starts": "one cached branch per allowed roll, refined; at most four starts, no exhaustive branch search",
+  "angular_policy": "unwrapped full-turn joints, no native angular stops",
+  "position_tolerance_m": 0.002,
+  "orientation_tolerance_rad": 0.02,
+  "max_joint_sampling_step_rad": 0.017453292519943295,
+  "initial_path_intervals": 16,
+  "max_refinement_depth": 3,
+  "collision": "same meshes/exemptions; FCL; non-exempt distance",
+  "J_normalisation_m": 1.0,
+  "timing": "not evaluated",
+  "scope": "12 common anchor positions; not full-workspace success rate",
+  "script_sha256": "359a9c49186535e42ec15f201fc2c8bb7f7f31b6ffe747d2ad5f2845628d0e0c",
+  "static_npz_sha256": {
+    "spark2_v1": "84a4f9d1439080a51ac30e2600b18d6d1f808633ca8b8bfd355f98b80e095331",
+    "spark2_v2_2": "d17f06e9a27c65c1692f99b7c78f1a895c737a0111d0f2a328db858511cbec87",
+    "P2AB-1": "0d4448c91e8e6dc38679e8286b4184d8fb7f65fae44066b8d95ad92022254e5e",
+    "P2AB-2": "3a1a2025d4c130d73b9ebe3a1d64788138229e0ed70d15db502bc94b6ba53e2e",
+    "P2AB-3": "fe3c556c1959c50fc922aae6d0eb2e8bbb884b7b5b8e925ea1f20dcdd085cfda",
+    "P2AB-4": "9d4326d8e5c819984edcf6feed7f8ba288efe6b923c3cb88645bce17bccb6362",
+    "external_piper": "43a08867f58f39846168d8bbb1d5feccd7f25f5b86b5026d6f1d58b7412e2455",
+    "external_ur5": "882c616d58523b4173a22dc7ccdab5c6574e375f3bfd95c8ac70be416e0acdaa",
+    "external_panda": "f6095d7a5365c31a25454b4cf1770a386c69c35e244dffe3d6059ee749c8876d",
+    "dual_v2_1_left": "9e6048dd239187c1bbae3d35f1edccaf5517a91e2b7e2ae70d372337942e41fb",
+    "dual_v2_2_left": "bde011af77e50e76a1d4a8ff9ca51ee1e78b7efc965e1e37e920ceeb9f1e6cf6"
+  }
+}
